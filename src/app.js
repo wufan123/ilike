@@ -9,11 +9,10 @@ const App = StackNavigator(
     {
         MainPage: { screen: MainPage },
         Welcome: { screen: Welcome }
-
     },
     {
         navigationOptions: {
-            header: null, 
+            header: null,
         }
     });
 

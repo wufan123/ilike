@@ -9,6 +9,6 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
 } from 'react-native';
-import Zmfilm from './js/app';
+import Zmfilm from './src/app';
 
 AppRegistry.registerComponent('zmfilm', () => Zmfilm);

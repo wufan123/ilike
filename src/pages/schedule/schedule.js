@@ -10,7 +10,7 @@ function tabBarIcons(focused) {
   if (focused) {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_schedule_s.png')}
+        source={require('../../assets/tabs/icon_schedule_s.png')}
         style={[styles.tab_icon]}
       />
     );
@@ -18,7 +18,7 @@ function tabBarIcons(focused) {
   else {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_schedule_n.png')}
+        source={require('../../assets/tabs/icon_schedule_n.png')}
         style={[styles.tab_icon]}
       />
     );

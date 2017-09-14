@@ -14,7 +14,7 @@ class Header extends Component {
 
         return (
             <View style={styles.headerContainer} >
-                <Image style={styles.backImg} source={require('../../images/common/back.png')}></Image>
+                <Image style={styles.backImg} source={require('../../assets/common/back.png')}></Image>
                 <View style={styles.centerBox}>
                     {this.props.title ? (<Text style={styles.title}>{this.props.title}</Text>) : null}
 

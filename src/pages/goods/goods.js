@@ -10,7 +10,7 @@ function tabBarIcons(focused) {
   if (focused) {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_goods_s.png')}
+        source={require('../../assets/tabs/icon_goods_s.png')}
         style={[styles.tab_icon]}
       />
     );
@@ -18,7 +18,7 @@ function tabBarIcons(focused) {
   else {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_goods_n.png')}
+        source={require('../../assets/tabs/icon_goods_n.png')}
         style={[styles.tab_icon]}
       />
     );
@@ -29,7 +29,7 @@ class GoodsScreen extends Component {
   static navigationOptions = {
     tabBarLabel: '卖品',
     tabBarIcon: ({focused}) => tabBarIcons(focused)
-  }
+  } 
 
   render() {
     return (

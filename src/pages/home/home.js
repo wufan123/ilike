@@ -11,14 +11,15 @@ import {
   StyleSheet
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import SeatSelectView from '../../common/SeatSelectView'
+import SeatSelectView from '../common/SeatSelectView'
+import Header from '../common/header'
 const { width, height } = Dimensions.get('window')
 
 function tabBarIcons(focused) {
   if (focused) {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_home_s.png')}
+        source={require('../../assets/tabs/icon_home_s.png')}
         style={[styles.tab_icon]}
       />
     );
@@ -26,7 +27,7 @@ function tabBarIcons(focused) {
   else {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_home_n.png')}
+        source={require('../../assets/tabs/icon_home_n.png')}
         style={[styles.tab_icon]}
       />
     );
@@ -36,16 +37,26 @@ function tabBarIcons(focused) {
 class HomeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: '首页',
-    tabBarIcon: ({focused}) => tabBarIcons(focused)
+    tabBarIcon: ({ focused }) => tabBarIcons(focused)
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '首页',
+      tab: ['热映', '待映']
+    }
+  }
+  changeSelect(selectItem) {
   }
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View style={{flex:1}}>
+      <View class="style.homeContainer">
+        <Header tab={this.state.tab} changeSelect={this.changeSelect}></Header>
         <Button
           onPress={() => navigate('Schedule')}
           title="Chat with Lucy"
-         />
+        />
       </View>
     )
   };
@@ -57,7 +68,11 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
   },
+  homeContainer: {
+    flex: 1
+  }
 });
+
 
 
 module.exports = HomeScreen;
