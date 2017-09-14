@@ -1,36 +1,49 @@
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import {
-  View,
-  Text
-} from 'react-native';
 import HomeScreen from './home/home'
 import ScheduleScreen from './schedule/schedule'
+import GoodsScreen from './goods/goods'
+import MeScreen from './me/me'
 
 const HomeStack = StackNavigator({
   Home: {
     screen: HomeScreen
   },
-  Schedules: {
+  Schedule: {
     screen: ScheduleScreen
-  }
+  },
+
 });
 
 const ScheduleStack = StackNavigator({
   Schedule: {screen: ScheduleScreen}
+});
+
+const GoodsStack = StackNavigator({
+  Goods: {screen: GoodsScreen}
+});
+
+const MeStack = StackNavigator({
+  Me: {screen: MeScreen}
 })
 
 const Zmfilm = TabNavigator({
-    Home: {
+    HomeStatck: {
         screen: HomeStack,
       },
-    Schedule: {
+    ScheduleStack: {
       screen: ScheduleStack,
     },
+    GoodsStack: {
+      screen: GoodsStack
+    },
+    MeStack: {
+      screen: MeStack
+    }
   }, {
     tabBarPosition: 'bottom',
     animationEnabled: true,
     tabBarOptions: {
-      activeTintColor: '#e91e63',
+      activeTintColor: '#dc3c38',
     },
 });
 

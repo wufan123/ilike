@@ -10,7 +10,7 @@ function tabBarIcons(focused) {
   if (focused) {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_schedule_s.png')}
+        source={require('../../../resources/tabs/icon_goods_s.png')}
         style={[styles.tab_icon]}
       />
     );
@@ -18,16 +18,16 @@ function tabBarIcons(focused) {
   else {
     return (
       <Image
-        source={require('../../../resources/tabs/icon_schedule_n.png')}
+        source={require('../../../resources/tabs/icon_goods_n.png')}
         style={[styles.tab_icon]}
       />
     );
   }
 }
 
-class ScheduleScreen extends Component {
+class GoodsScreen extends Component {
   static navigationOptions = {
-    tabBarLabel: '排期',
+    tabBarLabel: '卖品',
     tabBarIcon: ({focused}) => tabBarIcons(focused)
   }
 
@@ -35,7 +35,7 @@ class ScheduleScreen extends Component {
     return (
       <View>
         <Text>
-          schedule
+          goods
         </Text>
       </View>
     )
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = ScheduleScreen;
+module.exports = GoodsScreen;
