@@ -3456,6 +3456,10 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-alipay@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-native-alipay/-/react-native-alipay-0.1.5.tgz#f763393be404b45f64a987e1346580068c4125cc"
+
 react-native-camera@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-0.10.0.tgz#5d973c9a8aab95f68aede395ba310eae0c3cecdd"
