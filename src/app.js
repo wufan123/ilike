@@ -3,7 +3,7 @@ import { Text, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation'
 import Welcome from './pages/welcome'
 import MainPage from './pages/main'
-
+import * as WeChat from 'react-native-wechat';
 
 const App = StackNavigator(
     {
@@ -16,6 +16,5 @@ const App = StackNavigator(
         }
     });
 
-
-
+// WeChat.registerApp('appid');
 export default App

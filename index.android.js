@@ -11,4 +11,5 @@ import {
 } from 'react-native';
 import Zmfilm from './src/app';
 
+
 AppRegistry.registerComponent('zmfilm', () => Zmfilm);

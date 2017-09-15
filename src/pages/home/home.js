@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SeatSelectView from '../common/SeatSelectView'
+import * as WeChat from 'react-native-wechat';
 import Header from '../common/header'
 const { width, height } = Dimensions.get('window')
 
@@ -53,7 +54,17 @@ class HomeScreen extends Component {
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={this.changeSelect}></Header>
         <Button
-          onPress={() => navigate('Schedule')}
+          onPress={() => {
+              WeChat.shareToTimeline({
+                  type: 'imageUrl',
+                  title: 'web image',
+                  description: 'share web image to time line',
+                  mediaTagName: 'email signature',
+                  messageAction: undefined,
+                  messageExt: undefined,
+                  imageUrl: 'http://www.ncloud.hk/email-signature-262x100.png'
+              })
+          }}
           title="Chat with Lucy"
         />
       </View>
