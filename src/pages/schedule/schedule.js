@@ -7,22 +7,13 @@ import {
 } from 'react-native';
 
 function tabBarIcons(focused) {
-  if (focused) {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_schedule_s.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
-  else {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_schedule_n.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
+  let icon = focused ?require('../../assets/tabs/icon_schedule_s.png') :require( '../../assets/tabs/icon_schedule_n.png')
+  return (
+    <Image
+      source={icon}
+      style={[styles.tab_icon]}
+    />
+  );
 }
 
 class ScheduleScreen extends Component {
