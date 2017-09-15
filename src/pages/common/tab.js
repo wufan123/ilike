@@ -54,7 +54,7 @@ class TopTab extends Component {
             <View style={styles.tab}>
                 {this.props.tab.map(
                     (item, index) => {
-                        return (<TouchableHighlight style={this.getItemBoxStyle(index, item == this.state.tabSelcted)} onPress={() => this.changeSelect(item)}><Text
+                        return (<TouchableHighlight key={index} style={this.getItemBoxStyle(index, item == this.state.tabSelcted)} onPress={() => this.changeSelect(item)}><Text
                             style={this.getItemStyle(index, item == this.state.tabSelcted)}>{item}</Text></TouchableHighlight>)
                     })
                 }

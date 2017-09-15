@@ -9,22 +9,13 @@ import Video from 'react-native-video'
 import {pay} from 'react-native-alipay';
 
 function tabBarIcons(focused) {
-    if (focused) {
-        return (
-            <Image
-                source={require('../../assets/tabs/icon_me_s.png')}
-                style={[styles.tab_icon]}
-            />
-        );
-    }
-    else {
-        return (
-            <Image
-                source={require('../../assets/tabs/icon_me_n.png')}
-                style={[styles.tab_icon]}
-            />
-        );
-    }
+    let icon = focused ? require('../../assets/tabs/icon_me_s.png') : require('../../assets/tabs/icon_me_n.png')
+    return (
+        <Image
+            source={icon}
+            style={[styles.tab_icon]}
+        />
+    );
 }
 
 class MeScreen extends Component {
