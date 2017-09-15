@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  SegmentedControlIOS,
   Button,
   ScrollView,
   TouchableWithoutFeedback,
@@ -51,7 +50,7 @@ class HomeScreen extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
-      <View class="style.homeContainer">
+      <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={this.changeSelect}></Header>
         <Button
           onPress={() => navigate('Schedule')}
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
     height: 26,
   },
   homeContainer: {
-    flex: 1
+    flex: 1,
   }
 });
 
