@@ -5,6 +5,7 @@ import {
     Image,
     StyleSheet
 } from 'react-native';
+import Video from 'react-native-video'
 
 function tabBarIcons(focused) {
     if (focused) {
@@ -32,13 +33,19 @@ class MeScreen extends Component {
     }
 
     render() {
-        const { navigate } = this.props.navigation;
+        const {navigate} = this.props.navigation;
         return (<View >
             <Button
                 onPress={() => {
                     navigate('QrCodeScan')
                 }}
                 title="qrCode"/>
+            <Button
+                style={{top: 20}}
+                onPress={() => {
+                    navigate('VideoView')
+                }}
+                title="video"/>
         </View>)
     }
 }

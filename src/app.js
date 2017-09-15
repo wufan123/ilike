@@ -3,7 +3,8 @@ import { Text, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation'
 import Welcome from './pages/welcome'
 import MainPage from './pages/main'
-import QrCodeScan from './pages/qr_code/qrCodeScan'
+import QrCodeScan from './pages/common/qrCodeScan'
+import VideoView from './pages/common/videoView'
 import * as WeChat from 'react-native-wechat';
 
 const App = StackNavigator(
@@ -11,6 +12,7 @@ const App = StackNavigator(
         MainPage: { screen: MainPage },
         Welcome: { screen: Welcome },
         QrCodeScan: { screen: QrCodeScan },
+        VideoView: { screen: VideoView }
     },
     {
         navigationOptions: {
