@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Text, View, StyleSheet, Dimensions } from 'react-native';
+import { Image, Text, View, StyleSheet, Dimensions, Platform} from 'react-native';
 import Tab from './tab'
 class Header extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class Header extends Component {
                     <Tab tab={this.props.tab} changeSelect={this.changeSelect}></Tab>
                 </View>
                 <Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text>
-            </View >
+            </View>
         );
     }
 }
@@ -29,7 +29,15 @@ class Header extends Component {
 const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
-        height: 40,
+        ...Platform.select({
+          ios: {
+            height: 64,
+            paddingTop: 20
+          },
+          android: {
+            height: 44
+          }
+        }),
         backgroundColor: '#dc3c38',
         alignItems: 'center',
         paddingLeft: 5,
@@ -58,7 +66,6 @@ const styles = StyleSheet.create({
         textAlign: 'right',
         width: 100,
     },
-
 });
 
 export default Header
