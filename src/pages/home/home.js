@@ -16,22 +16,13 @@ import Header from '../common/header'
 const { width, height } = Dimensions.get('window')
 
 function tabBarIcons(focused) {
-  if (focused) {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_home_s.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
-  else {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_home_n.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
+  let icon = focused ? require('../../assets/tabs/icon_home_s.png') : require('../../assets/tabs/icon_home_n.png')
+  return (
+    <Image
+      source={icon}
+      style={[styles.tab_icon]}
+    />
+  );
 }
 
 class HomeScreen extends Component {
