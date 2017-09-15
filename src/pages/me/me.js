@@ -6,6 +6,7 @@ import {
     StyleSheet
 } from 'react-native';
 import Video from 'react-native-video'
+import {pay} from 'react-native-alipay';
 
 function tabBarIcons(focused) {
     if (focused) {
@@ -46,6 +47,12 @@ class MeScreen extends Component {
                     navigate('VideoView')
                 }}
                 title="video"/>
+            <Button
+                style={{top: 20}}
+                onPress={() => {
+                    pay("", true);
+                }}
+                title="alipay"/>
         </View>)
     }
 }

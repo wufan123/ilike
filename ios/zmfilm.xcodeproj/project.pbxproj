@@ -44,6 +44,7 @@
 		56681A84B492464CBF4DF8C1 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE106F672BCB4D13A637ADBE /* libdouble-conversion.a */; };
 		F020E80C46DE4290831F7B82 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBEBB7BF126A4E719FFBD713 /* libRCTCamera.a */; };
 		37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DFC48B84444928BB43C531 /* libRCTVideo.a */; };
+		BAB602E975CF4FA8BF7041A3 /* libRCTAlipay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9F0DB9D4D0E4173B9748243 /* libRCTAlipay.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,6 +283,8 @@
 		FBEBB7BF126A4E719FFBD713 /* libRCTCamera.a */ = {isa = PBXFileReference; name = "libRCTCamera.a"; path = "libRCTCamera.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		05620B1C316A4676BCA3064D /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; name = "RCTVideo.xcodeproj"; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		F4DFC48B84444928BB43C531 /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		47EB9E89F416417B9105C6C1 /* RCTAlipay.xcodeproj */ = {isa = PBXFileReference; name = "RCTAlipay.xcodeproj"; path = "../node_modules/react-native-alipay/ios/RCTAlipay.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		A9F0DB9D4D0E4173B9748243 /* libRCTAlipay.a */ = {isa = PBXFileReference; name = "libRCTAlipay.a"; path = "libRCTAlipay.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +321,7 @@
 				56681A84B492464CBF4DF8C1 /* libdouble-conversion.a in Frameworks */,
 				F020E80C46DE4290831F7B82 /* libRCTCamera.a in Frameworks */,
 				37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */,
+				BAB602E975CF4FA8BF7041A3 /* libRCTAlipay.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +493,7 @@
 				5FBA74E0ACE4456382995281 /* RCTWeChat.xcodeproj */,
 				882F027303DC4478A2029635 /* RCTCamera.xcodeproj */,
 				05620B1C316A4676BCA3064D /* RCTVideo.xcodeproj */,
+				47EB9E89F416417B9105C6C1 /* RCTAlipay.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1044,12 +1049,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-wechat\ios",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios",
+					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
 				);
 			};
 			name = Debug;
@@ -1078,12 +1085,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-wechat\ios",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios",
+					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
 				);
 			};
 			name = Release;
@@ -1108,6 +1117,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-wechat\ios",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios",
+					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
 				);
 			};
 			name = Debug;
@@ -1131,6 +1141,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-wechat\ios",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios",
+					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
 				);
 			};
 			name = Release;
@@ -1168,12 +1179,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-wechat\ios",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios",
+					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
 				);
 			};
 			name = Debug;
@@ -1211,12 +1224,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-wechat\ios",
 					"$(SRCROOT)\..\node_modules\react-native-camera\ios",
 					"$(SRCROOT)\..\node_modules\react-native-video\ios",
+					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
 				);
 			};
 			name = Release;
@@ -1249,6 +1264,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1273,6 +1289,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
