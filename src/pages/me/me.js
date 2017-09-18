@@ -5,7 +5,7 @@ import {
     Image,
     StyleSheet
 } from 'react-native';
-import Video from 'react-native-video'
+import SQLiteStorage from 'react-native-sqlite-storage';
 import {pay} from 'react-native-alipay';
 import JPushModule from 'jpush-react-native'
 
@@ -52,6 +52,22 @@ class MeScreen extends Component {
                     pay("", true);
                 }}
                 title="alipay"/>
+            <Button
+                style={{top: 20}}
+                onPress={() => {
+                    SQLiteStorage.openDatabase(
+                        "test.db",
+                        "1.0",
+                        "MySQLite",
+                        -1,
+                        ()=>{
+                            console.log("sql open")
+                        },
+                        (err)=>{
+                            console.log("sql err")
+                        });
+                }}
+                title="open sql"/>
         </View>)
     }
 }

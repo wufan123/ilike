@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   adImage: {
     flex: 1,
-    width
+    width,
   },
   pagination: {
     bottom: 8

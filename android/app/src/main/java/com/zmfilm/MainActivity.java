@@ -1,9 +1,6 @@
 package com.zmfilm;
 
 import com.facebook.react.ReactActivity;
-import cn.reactnative.alipay.AlipayPackage;
-import cn.jpush.reactnativejpush.JPushPackage;
-import cn.reactnative.alipay.AlipayPackage;
 
 public class MainActivity extends ReactActivity {
 
