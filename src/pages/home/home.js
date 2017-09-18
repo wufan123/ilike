@@ -4,33 +4,25 @@ import {
   Text,
   Button,
   ScrollView,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Image,
   Dimensions,
-  StyleSheet
+  StyleSheet,
+  FlatList
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SeatSelectView from '../common/SeatSelectView'
 import * as WeChat from 'react-native-wechat';
 import Header from '../common/header'
+import Swiper from 'react-native-swiper';
+
 const { width, height } = Dimensions.get('window')
 
 function tabBarIcons(focused) {
   if (focused) {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_home_s.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
-  else {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_home_n.png')}
-        style={[styles.tab_icon]}
-      />
-    );
+    return (<Image source={require('../../assets/tabs/icon_home_s.png')} style={[styles.tab_icon]} />);
+  } else {
+    return (<Image source={require('../../assets/tabs/icon_home_n.png')} style={[styles.tab_icon]} />);
   }
 }
 
@@ -43,30 +35,103 @@ class HomeScreen extends Component {
     super(props)
     this.state = {
       title: '首页',
-      tab: ['热映', '待映']
+      tab: [
+        '热映', '待映'
+      ],
+      movies: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
     }
   }
-  changeSelect(selectItem) {
+  changeSelect(selectItem) { }
+
+  _header = () => {
+    return (
+      <View style={styles.swiperContainer}>
+        <Swiper autoplay={true} paginationStyle={styles.pagination} activeDotColor="#fff">
+          <View style={styles.slide}>
+            <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
+          </View>
+          <View style={styles.slide}>
+            <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
+          </View>
+        </Swiper>
+      </View>
+    );
   }
+
+  _footer = () => {
+    return (
+      <View>
+        <Text>at the end</Text>
+      </View>
+    )
+  }
+
+  _separator = () => {
+    return <View style={{
+      height: 1,
+      backgroundColor: 'rgb(244,244,244)',
+      marginHorizontal: 15
+    }} />;
+  }
+
+  _reanderItem = ({ item, index }) => {
+    return (
+      <View style={styles.row}>
+        <View style={styles.movieThumbContainer}>
+          <Image resizeMode="stretch" style={styles.movieThumb} source={{
+            uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'
+          }} />
+        </View>
+        <View style={styles.movieDetailContainer}>
+          <View style={styles.titleScoreContainer}>
+            <Text style={styles.movieTitle}>异形：契约</Text>
+            <Text style={styles.scoreNum}>7.5<Text style={styles.scoreUnit}>分</Text>
+            </Text>
+          </View>
+          <View style={{
+            flex: 1,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginTop: 15
+          }}>
+            <View>
+              <Text style={styles.movieSlogan}>天堂实假象，险象险中还</Text>
+              <Text style={styles.movieActress}>迈克尔格林／约翰·洛根／杰</Text>
+            </View>
+            <View>
+              <TouchableOpacity style={styles.buyButton} onPress={() => { }}>
+                <Text style={{
+                  color: '#dc3c38'
+                }}>购票</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </View>
+    )
+  }
+
+  _keyExtractor = (item, index) => item;
+
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={this.changeSelect}></Header>
-        <Button
-          onPress={() => {
-              WeChat.shareToTimeline({
-                  type: 'imageUrl',
-                  title: 'web image',
-                  description: 'share web image to time line',
-                  mediaTagName: 'email signature',
-                  messageAction: undefined,
-                  messageExt: undefined,
-                  imageUrl: 'http://www.ncloud.hk/email-signature-262x100.png'
-              })
-          }}
-          title="Chat with Lucy"
-        />
+        <View style={{
+          flex: 1
+        }}>
+          <FlatList ListHeaderComponent={this._header} ListFooterComponent={this._footer} ItemSeparatorComponent={this._separator} data={this.state.movies} renderItem={this._reanderItem} keyExtractor={this._keyExtractor} />
+        </View>
       </View>
     )
   };
@@ -76,13 +141,87 @@ class HomeScreen extends Component {
 const styles = StyleSheet.create({
   tab_icon: {
     width: 26,
-    height: 26,
+    height: 26
   },
   homeContainer: {
     flex: 1,
+    backgroundColor: '#fff'
+  },
+  swiperContainer: {
+    height: (0.5 * width)>190?190:(0.5 * width),
+    overflow: 'hidden'
+  },
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  adImage: {
+    flex: 1,
+    width
+  },
+  pagination: {
+    bottom: 8
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 100,
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    position: 'relative'
+  },
+  movieThumbContainer: {
+    height: 80,
+    width: 60
+  },
+  movieThumb: {
+    flex: 1
+  },
+  movieDetailContainer: {
+    flex: 1,
+    paddingVertical: 7,
+    alignSelf: 'stretch',
+    marginLeft: 12
+  },
+  titleScoreContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  movieTitle: {
+    fontSize: 16,
+    color: '#3f3f3f'
+  },
+  scoreNum: {
+    fontSize: 14,
+    color: '#fc9d40'
+  },
+  scoreUnit: {
+    fontSize: 11,
+    color: '#fc9d40'
+  },
+  movieSlogan: {
+    fontSize: 12,
+    color: '#3f3f3f'
+  },
+  movieActress: {
+    fontSize: 12,
+    color: '#808080',
+    marginTop: 10
+  },
+  buyButton: {
+    width: 46,
+    height: 27,
+    borderWidth: 1,
+    borderColor: '#dc3c38',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+    bottom: 0,
+    position: 'absolute',
+    right: 0
   }
 });
-
-
 
 module.exports = HomeScreen;
