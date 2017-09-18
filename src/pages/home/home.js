@@ -71,8 +71,8 @@ class HomeScreen extends Component {
 
   _footer = () => {
     return (
-      <View>
-        <Text>at the end</Text>
+      <View style={styles.footer}>
+        <Text style={{color: '#808080', fontSize: 12}}>已经到底啦～</Text>
       </View>
     )
   }
@@ -103,9 +103,12 @@ class HomeScreen extends Component {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginTop: 15
+            marginTop: 15,
           }}>
-            <View>
+            <View style={{
+              justifyContent: 'space-between',
+              alignSelf: 'stretch'
+            }}>
               <Text style={styles.movieSlogan}>天堂实假象，险象险中还</Text>
               <Text style={styles.movieActress}>迈克尔格林／约翰·洛根／杰</Text>
             </View>
@@ -130,7 +133,7 @@ class HomeScreen extends Component {
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
         <View style={{
-          flex: 1
+          flex: 1,
         }}>
           <FlatList ListHeaderComponent={this._header} ListFooterComponent={this._footer} ItemSeparatorComponent={this._separator} data={this.state.movies} renderItem={this._reanderItem} keyExtractor={this._keyExtractor} />
         </View>
@@ -147,7 +150,7 @@ const styles = StyleSheet.create({
   },
   homeContainer: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#f6f6f6'
   },
   swiperContainer: {
     height: (0.5 * width) > 190 ? 190 : (0.5 * width),
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
   },
   adImage: {
     flex: 1,
-    width
+    width,
   },
   pagination: {
     bottom: 8
@@ -172,7 +175,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    position: 'relative'
+    position: 'relative',
+    backgroundColor: '#fff'
   },
   movieThumbContainer: {
     height: 80,
@@ -209,8 +213,7 @@ const styles = StyleSheet.create({
   },
   movieActress: {
     fontSize: 12,
-    color: '#808080',
-    marginTop: 10
+    color: '#808080'
   },
   buyButton: {
     width: 46,
@@ -223,6 +226,11 @@ const styles = StyleSheet.create({
     bottom: 0,
     position: 'absolute',
     right: 0
+  },
+  footer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 44
   }
 });
 
