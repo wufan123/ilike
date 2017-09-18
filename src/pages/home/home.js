@@ -128,7 +128,7 @@ class HomeScreen extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.homeContainer}>
-        <Header tab={this.state.tab} changeSelect={this.changeSelect}></Header>
+        <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
         <View style={{
           flex: 1,
         }}>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f6f6f6'
   },
   swiperContainer: {
-    height: (0.5 * width)>190?190:(0.5 * width),
+    height: (0.5 * width) > 190 ? 190 : (0.5 * width),
     overflow: 'hidden'
   },
   slide: {
