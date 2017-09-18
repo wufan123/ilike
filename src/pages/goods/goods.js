@@ -7,22 +7,13 @@ import {
 } from 'react-native';
 
 function tabBarIcons(focused) {
-  if (focused) {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_goods_s.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
-  else {
-    return (
-      <Image
-        source={require('../../assets/tabs/icon_goods_n.png')}
-        style={[styles.tab_icon]}
-      />
-    );
-  }
+  let icon = focused ?require('../../assets/tabs/icon_goods_s.png') :require( '../../assets/tabs/icon_goods_n.png')
+  return (
+    <Image
+      source={icon}
+      style={[styles.tab_icon]}
+    />
+  );
 }
 
 class GoodsScreen extends Component {
