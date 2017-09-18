@@ -102,6 +102,10 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [
+                JPUSH_APPKEY: "yourAppKey", //在此替换你的APPKey
+                APP_CHANNEL: "developer-default"    //应用渠道号
+        ]
     }
     splits {
         abi {
@@ -138,6 +142,8 @@ dependencies {
     compile project(':react-native-video')
     compile project(':react-native-camera')
     compile project(':react-native-alipay')
+    compile project(':jpush-react-native')
+    compile project(':jcore-react-native')
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
 }

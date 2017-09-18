@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Video from 'react-native-video'
 import {pay} from 'react-native-alipay';
+import JPushModule from 'jpush-react-native'
 
 function tabBarIcons(focused) {
     let icon = focused ? require('../../assets/tabs/icon_me_s.png') : require('../../assets/tabs/icon_me_n.png')
@@ -24,7 +25,14 @@ class MeScreen extends Component {
         tabBarIcon: ({focused}) => tabBarIcons(focused)
     }
 
+
     render() {
+        JPushModule.addReceiveNotificationListener((map) => {
+            console.log("alertContent: " + map.alertContent);
+            console.log("extras: " + map.extras);
+            // var extra = JSON.parse(map.extras);
+            // console.log(extra.key + ": " + extra.value);
+        });
         const {navigate} = this.props.navigation;
         return (<View >
             <Button

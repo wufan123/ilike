@@ -2252,6 +2252,10 @@ istanbul-reports@^1.1.2:
   dependencies:
     handlebars "^4.0.3"
 
+jcore-react-native@^1.1.8-beta2:
+  version "1.1.8-beta2"
+  resolved "https://registry.yarnpkg.com/jcore-react-native/-/jcore-react-native-1.1.8-beta2.tgz#0259da890649580f363c53e67832636d99506b02"
+
 jest-changed-files@^21.0.2:
   version "21.0.2"
   resolved "http://registry.npm.taobao.org/jest-changed-files/download/jest-changed-files-21.0.2.tgz#0a74f35cf2d3b7c8ef9ab4fac0a75409f81ec1b0"
