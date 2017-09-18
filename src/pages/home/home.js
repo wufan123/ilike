@@ -103,9 +103,12 @@ class HomeScreen extends Component {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginTop: 15
+            marginTop: 15,
           }}>
-            <View>
+            <View style={{
+              justifyContent: 'space-between',
+              alignSelf: 'stretch'
+            }}>
               <Text style={styles.movieSlogan}>天堂实假象，险象险中还</Text>
               <Text style={styles.movieActress}>迈克尔格林／约翰·洛根／杰</Text>
             </View>
@@ -210,8 +213,7 @@ const styles = StyleSheet.create({
   },
   movieActress: {
     fontSize: 12,
-    color: '#808080',
-    marginTop: 10
+    color: '#808080'
   },
   buyButton: {
     width: 46,
