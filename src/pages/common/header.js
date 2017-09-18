@@ -10,23 +10,23 @@ class Header extends Component {
     }
     changeSelect(item) {
         if (this.props && this.props.changeSelect) {
-            this.props.changeSelect(selectItem)
+            this.props.changeSelect(item)
         }
     }
 
     render() {
 
         return (
-            <View > 
+            <View >
                 <StatusBar
-                    backgroundColor={theme.colorPrimary} 
+                    backgroundColor={theme.colorPrimary}
                 />
-                <View style={styles.headerContainer} > 
-                    <Image style={styles.backImg} source={require('../../assets/common/back.png')}></Image>
+                <View style={styles.headerContainer} >
+                    <View style={styles.backImg}>{!this.props.disableBack ? (<Image style={styles.backImg} source={require('../../assets/common/back.png')} />) : null}
+                    </View>
                     <View style={styles.centerBox}>
                         {this.props.title ? (<Text style={styles.title}>{this.props.title}</Text>) : null}
-
-                        <Tab tab={this.props.tab} changeSelect={this.changeSelect}></Tab>
+                        {this.props.tab ? (<Tab tab={this.props.tab} changeSelect={(item) => this.changeSelect(item)}></Tab>) : null}
                     </View>
                     <Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text>
                 </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
                 height: 44
             }
         }),
-        backgroundColor: theme.colorPrimary, 
+        backgroundColor: theme.colorPrimary,
         alignItems: 'center',
         paddingLeft: 5,
         paddingRight: 5,

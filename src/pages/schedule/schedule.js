@@ -5,9 +5,10 @@ import {
   Image,
   StyleSheet
 } from 'react-native';
+import Header from '../common/header'
 
 function tabBarIcons(focused) {
-  let icon = focused ?require('../../assets/tabs/icon_schedule_s.png') :require( '../../assets/tabs/icon_schedule_n.png')
+  let icon = focused ? require('../../assets/tabs/icon_schedule_s.png') : require('../../assets/tabs/icon_schedule_n.png')
   return (
     <Image
       source={icon}
@@ -19,12 +20,20 @@ function tabBarIcons(focused) {
 class ScheduleScreen extends Component {
   static navigationOptions = {
     tabBarLabel: '排期',
-    tabBarIcon: ({focused}) => tabBarIcons(focused)
+    tabBarIcon: ({ focused }) => tabBarIcons(focused)
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '排期'
+    }
   }
 
   render() {
     return (
       <View>
+        <Header title={this.state.title} disableBack={true}></Header>
         <Text>
           schedule
         </Text>
