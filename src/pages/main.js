@@ -1,7 +1,7 @@
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import HomeScreen from './home/home'
 import ScheduleScreen from './schedule/schedule'
-import GoodsScreen from './goods/goods'
+import StoreScreen from './store'
 import MeScreen from './me/me'
 
 const HomeStack = StackNavigator(
@@ -32,7 +32,7 @@ const ScheduleStack = StackNavigator(
 
 const GoodsStack = StackNavigator(
   {
-    Goods: { screen: GoodsScreen }
+    Goods: { screen: StoreScreen }
   },
   {
     navigationOptions: {
