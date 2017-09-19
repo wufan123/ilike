@@ -1,8 +1,8 @@
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import HomeScreen from './home/home'
-import ScheduleScreen from './schedule/schedule'
+import ScheduleScreen from './schedule'
 import StoreScreen from './store'
-import MeScreen from './me/me'
+import MeScreen from './me'
 
 const HomeStack = StackNavigator(
   {
