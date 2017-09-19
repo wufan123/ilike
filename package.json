@@ -8,6 +8,8 @@
 	},
 	"dependencies": {
 		"ac-qrcode": "^1.0.1",
+		"install": "^0.10.1",
+		"npm": "^5.4.2",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.3",
 		"react-native-camera": "^0.10.0",

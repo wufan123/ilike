@@ -15,6 +15,7 @@ import SeatSelectView from '../common/SeatSelectView'
 import * as WeChat from 'react-native-wechat';
 import Header from '../common/header'
 import Swiper from 'react-native-swiper';
+import RefreshList from '../common/pull'
 
 const { width, height } = Dimensions.get('window')
 
@@ -72,7 +73,7 @@ class HomeScreen extends Component {
   _footer = () => {
     return (
       <View style={styles.footer}>
-        <Text style={{color: '#808080', fontSize: 12}}>已经到底啦～</Text>
+        <Text style={{ color: '#808080', fontSize: 12 }}>已经到底啦～</Text>
       </View>
     )
   }
@@ -127,6 +128,25 @@ class HomeScreen extends Component {
 
   _keyExtractor = (item, index) => item;
 
+  /**
+   * 下拉刷新
+   * @private
+   */
+  _onPullRelease(resolve) {
+    setTimeout(() => {
+      resolve();
+      this.moreTime = 0;
+      this._listRef.setData(this.state.movies);
+    }, 3000);
+  }
+
+  /**
+  * 加载更多  数据加载
+  * @private
+  */
+  _loadMore() {
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -135,9 +155,17 @@ class HomeScreen extends Component {
         <View style={{
           flex: 1,
         }}>
-          <FlatList ListHeaderComponent={this._header} ListFooterComponent={this._footer} ItemSeparatorComponent={this._separator} data={this.state.movies} renderItem={this._reanderItem} keyExtractor={this._keyExtractor} />
-        </View>
-      </View>
+          <RefreshList
+            ref={(list) => this._listRef = list}
+            onPullRelease={(resolve) => this._onPullRelease(resolve)}
+            ListHeaderComponent={this._header}
+            ListFooterComponent={this._footer}
+            ItemSeparatorComponent={this._separator}
+            data={this.state.movies}
+            renderItem={this._reanderItem} 
+            keyExtractor={this._keyExtractor} /> 
+        </View>  
+      </View> 
     )
   };
 
