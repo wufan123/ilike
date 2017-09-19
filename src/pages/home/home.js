@@ -8,7 +8,8 @@ import {
   Image,
   Dimensions,
   StyleSheet,
-  FlatList
+  FlatList,
+  Platform,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SeatSelectView from '../common/SeatSelectView'
@@ -49,24 +50,45 @@ class HomeScreen extends Component {
         6,
         7,
         8
-      ]
+      ],
+      swiperShow: false,
     }
   }
   changeSelect(selectItem) { }
 
+  componentDidMount() {
+    setTimeout(()=>{
+      console.log('hello.....')
+      this.setState({
+        swiperShow: true
+      })
+    }, 0)
+  }
+
   _header = () => {
-    return (
-      <View style={styles.swiperContainer}>
-        <Swiper autoplay={true} paginationStyle={styles.pagination} activeDotColor="#fff">
+    console.log('swipershow ' + this.state.swiperShow)
+    if(this.state.swiperShow) {
+      return (
+        <View style={styles.swiperContainer}>
+          <Swiper autoplay={true} paginationStyle={styles.pagination} activeDotColor="#fff">
+            <View style={styles.slide}>
+              <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
+            </View>
+            <View style={styles.slide}>
+              <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
+            </View>
+          </Swiper>
+        </View>
+      );
+    } else {
+      return (
+        <ScrollView style={styles.swiperContainer}>
           <View style={styles.slide}>
             <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
           </View>
-          <View style={styles.slide}>
-            <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
-          </View>
-        </Swiper>
-      </View>
-    );
+        </ScrollView>
+      )
+    }
   }
 
   _footer = () => {
@@ -103,7 +125,14 @@ class HomeScreen extends Component {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginTop: 15,
+            ...Platform.select({
+              ios: {
+                marginTop: 15
+              },
+              android: {
+                marginTop: 8
+              }
+            })
           }}>
             <View style={{
               justifyContent: 'space-between',
@@ -132,11 +161,12 @@ class HomeScreen extends Component {
     return (
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-        <View style={{
+        <ScrollView style={{
           flex: 1,
         }}>
-          <FlatList ListHeaderComponent={this._header} ListFooterComponent={this._footer} ItemSeparatorComponent={this._separator} data={this.state.movies} renderItem={this._reanderItem} keyExtractor={this._keyExtractor} />
-        </View>
+          {this._header()}
+          <FlatList ListFooterComponent={this._footer} ItemSeparatorComponent={this._separator} data={this.state.movies} renderItem={this._reanderItem} keyExtractor={this._keyExtractor} />
+        </ScrollView>
       </View>
     )
   };
@@ -154,16 +184,17 @@ const styles = StyleSheet.create({
   },
   swiperContainer: {
     height: (0.5 * width) > 190 ? 190 : (0.5 * width),
-    overflow: 'hidden'
   },
   slide: {
     flex: 1,
+    width: width,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#999'
   },
   adImage: {
     flex: 1,
-    width,
+    width: width,
   },
   pagination: {
     bottom: 8
