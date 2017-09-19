@@ -10,6 +10,7 @@ import {
   StyleSheet,
   FlatList,
   Platform,
+  SectionList
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import * as WeChat from 'react-native-wechat';
@@ -52,7 +53,9 @@ class HomeScreen extends Component {
         7,
         8
       ],
+      commingMovies: [1, 2, 3, 4, 5],
       swiperShow: false,
+      curTab: 0
     }
   }
   changeSelect(selectItem) { }
@@ -136,13 +139,14 @@ class HomeScreen extends Component {
             })
           }}>
             <View style={{
+              flex: 1,
               justifyContent: 'space-between',
               alignSelf: 'stretch'
             }}>
               <Text style={styles.movieSlogan}>天堂实假象，险象险中还</Text>
-              <Text style={styles.movieActress}>迈克尔格林／约翰·洛根／杰</Text>
+              <Text style={styles.movieActress} numberOfLines={1}>迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰</Text>
             </View>
-            <View>
+            <View style={{width: 46,}}>
               <TouchableOpacity style={styles.buyButton} onPress={() => { }}>
                 <Text style={{
                   color: globalStyle.colorPrimary
@@ -165,7 +169,9 @@ class HomeScreen extends Component {
     setTimeout(() => {
       resolve();
       this.moreTime = 0;
-      this._listRef.setData(this.state.movies);
+      this.setState({
+        movies: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      })
     }, 3000);
   }
 
@@ -176,22 +182,43 @@ class HomeScreen extends Component {
   _loadMore() {
   }
 
+  renderHotTabList() {
+    return (
+        <FlatList
+          ref={(list) => this._listRef = list}
+          ListFooterComponent={this._footer}
+          ItemSeparatorComponent={this._separator}
+          data={this.state.movies}
+          renderItem={this._reanderItem}
+          keyExtractor={this._keyExtractor}
+          scrollEnabled={false} />
+    );
+  }
+
+  renderCommingTabList() {
+    return (
+      <SectionList
+
+      />
+    )
+  }
+
+  renderListWithTab() {
+    if (this.state.curTab == 0) return this.renderHotTabList();
+    else if(this.state.curTab == 1) return this.renderCommingTabList();
+  }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-        <RefreshScrollView>
-          <FlatList
-            ref={(list) => this._listRef = list}
-            onPullRelease={(resolve) => this._onPullRelease(resolve)}
-            ListHeaderComponent={this._header}
-            ListFooterComponent={this._footer}
-            ItemSeparatorComponent={this._separator}
-            data={this.state.movies}
-            renderItem={this._reanderItem}
-            keyExtractor={this._keyExtractor} />
-        </RefreshScrollView>   
+        <RefreshScrollView
+          onPullRelease={(resolve) => this._onPullRelease(resolve)}
+        >
+          {this._header()}
+          {this.renderListWithTab()}
+        </RefreshScrollView>
       </View>
     )
   };
