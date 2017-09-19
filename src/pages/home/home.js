@@ -12,10 +12,11 @@ import {
   Platform,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import SeatSelectView from '../common/SeatSelectView'
+import SeatSelectView from '../common/SeatSelectView';
 import * as WeChat from 'react-native-wechat';
-import Header from '../common/header'
+import Header from '../common/header';
 import Swiper from 'react-native-swiper';
+import globalStyle from '../../style/index'
 
 const { width, height } = Dimensions.get('window')
 
@@ -94,7 +95,7 @@ class HomeScreen extends Component {
   _footer = () => {
     return (
       <View style={styles.footer}>
-        <Text style={{color: '#808080', fontSize: 12}}>已经到底啦～</Text>
+        <Text style={{color: globalStyle.fontColorGray, fontSize: 12}}>已经到底啦～</Text>
       </View>
     )
   }
@@ -144,7 +145,7 @@ class HomeScreen extends Component {
             <View>
               <TouchableOpacity style={styles.buyButton} onPress={() => { }}>
                 <Text style={{
-                  color: '#dc3c38'
+                  color: globalStyle.colorPrimary
                 }}>购票</Text>
               </TouchableOpacity>
             </View>
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
   },
   homeContainer: {
     flex: 1,
-    backgroundColor: '#f6f6f6'
+    backgroundColor: globalStyle.pageBackground
   },
   swiperContainer: {
     height: (0.5 * width) > 190 ? 190 : (0.5 * width),
@@ -190,7 +191,6 @@ const styles = StyleSheet.create({
     width: width,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#999'
   },
   adImage: {
     flex: 1,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10,
     position: 'relative',
-    backgroundColor: '#fff'
+    backgroundColor: globalStyle.backgroundColor
   },
   movieThumbContainer: {
     height: 80,
@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     fontSize: 16,
-    color: '#3f3f3f'
+    color: globalStyle.fontColorBlack
   },
   scoreNum: {
     fontSize: 14,
@@ -240,17 +240,17 @@ const styles = StyleSheet.create({
   },
   movieSlogan: {
     fontSize: 12,
-    color: '#3f3f3f'
+    color: globalStyle.fontColorBlack
   },
   movieActress: {
     fontSize: 12,
-    color: '#808080'
+    color: globalStyle.fontColorGray
   },
   buyButton: {
     width: 46,
     height: 27,
     borderWidth: 1,
-    borderColor: '#dc3c38',
+    borderColor: globalStyle.colorPrimary,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
