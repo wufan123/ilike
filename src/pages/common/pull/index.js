@@ -2,4 +2,6 @@
 
 import RefreshList from './RefreshList';
 
-module.exports = RefreshList;
+import RefreshScrollView from './RefreshScrollView';
+
+module.exports = {RefreshList,RefreshScrollView};

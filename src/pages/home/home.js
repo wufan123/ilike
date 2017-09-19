@@ -13,11 +13,10 @@ import {
   SectionList
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import SeatSelectView from '../common/SeatSelectView';
 import * as WeChat from 'react-native-wechat';
 import Header from '../common/header';
 import Swiper from 'react-native-swiper';
-import RefreshList from '../common/pull'
+import { RefreshScrollView } from '../common/pull'
 import globalStyle from '../../style/index'
 
 const { width, height } = Dimensions.get('window')
@@ -170,7 +169,9 @@ class HomeScreen extends Component {
     setTimeout(() => {
       resolve();
       this.moreTime = 0;
-      this._listRef.setData(this.state.movies);
+      this.setState({
+        movies: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+      })
     }, 3000);
   }
 
@@ -183,15 +184,14 @@ class HomeScreen extends Component {
 
   renderHotTabList() {
     return (
-      <RefreshList
-      ref={(list) => this._listRef = list}
-      onPullRelease={(resolve) => this._onPullRelease(resolve)}
-      ListHeaderComponent={this._header}
-      ListFooterComponent={this._footer}
-      ItemSeparatorComponent={this._separator}
-      data={this.state.movies}
-      renderItem={this._reanderItem}
-      keyExtractor={this._keyExtractor} />
+        <FlatList
+          ref={(list) => this._listRef = list}
+          ListFooterComponent={this._footer}
+          ItemSeparatorComponent={this._separator}
+          data={this.state.movies}
+          renderItem={this._reanderItem}
+          keyExtractor={this._keyExtractor}
+          scrollEnabled={false} />
     );
   }
 
@@ -213,7 +213,12 @@ class HomeScreen extends Component {
     return (
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-        {this.renderListWithTab()}
+        <RefreshScrollView
+          onPullRelease={(resolve) => this._onPullRelease(resolve)}
+        >
+          {this._header()}
+          {this.renderListWithTab()}
+        </RefreshScrollView>
       </View>
     )
   };
