@@ -8,8 +8,9 @@ import {
   FlatList
 } from 'react-native';
 import Header from '../common/header'
+import {ImageButton} from '../common/component'
 var theme = require('../../style')
-
+ 
 function tabBarIcons(focused) {
   let icon = focused ? require('../../assets/tabs/icon_goods_s.png') : require('../../assets/tabs/icon_goods_n.png')
   return (
@@ -47,7 +48,7 @@ class GoodsScreen extends Component {
     return (
       <View style={[styles.itemContainer, theme.flex]}>
         <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
-        </Image>
+        </Image> 
         <View style={[theme.flex, styles.rigth]}>
           <Text style={[theme.fontBalck, theme.font16]}>双人套餐</Text>
           <Text style={[theme.fontGray, theme.font12]}>一份爆米花+一份可乐</Text>
@@ -55,9 +56,13 @@ class GoodsScreen extends Component {
           <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]} >￥35</Text>
           </Text>
           <View style={styles.operation}>
-            <Image style={styles.operationItem} source={require('../../assets/store/subtract.png')} />
+            <ImageButton style={styles.operationItem}
+              source={require('../../assets/store/subtract.png')}
+              activeSource={require('../../assets/store/subtract_on.png')} />
             <Text style={styles.operationNum}>1</Text>
-            <Image style={styles.operationItem} source={require('../../assets/store/add.png')} />
+            <ImageButton style={styles.operationItem}
+              source={require('../../assets/store/add.png')} 
+              activeSource={require('../../assets/store/add_on.png')} /> 
           </View>
         </View>
       </View>
@@ -78,8 +83,8 @@ class GoodsScreen extends Component {
                   <View style={styles.comboGoodsItem} key={goodsItemIndex}>
                     <Image style={styles.image} source={require('../../assets/common/default_goods.png')} />
                     <View style={[theme.flex, styles.rigth]}>
-                      <Text style={[theme.fontBalck, theme.font16,theme.flex]}>双人套餐</Text>
-                      <Text style={[theme.fontGray, theme.font12,theme.flex]}>数量：x2</Text>
+                      <Text style={[theme.fontBalck, theme.font16, theme.flex]}>双人套餐</Text>
+                      <Text style={[theme.fontGray, theme.font12, theme.flex]}>数量：x2</Text>
                     </View>
                   </View>
                 )
