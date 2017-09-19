@@ -12,11 +12,10 @@ import {
   Platform,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import SeatSelectView from '../common/SeatSelectView';
 import * as WeChat from 'react-native-wechat';
 import Header from '../common/header';
 import Swiper from 'react-native-swiper';
-import RefreshList from '../common/pull'
+import { RefreshScrollView } from '../common/pull'
 import globalStyle from '../../style/index'
 
 const { width, height } = Dimensions.get('window')
@@ -182,15 +181,17 @@ class HomeScreen extends Component {
     return (
       <View style={styles.homeContainer}>
         <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-        <RefreshList
-          ref={(list) => this._listRef = list}
-          onPullRelease={(resolve) => this._onPullRelease(resolve)}
-          ListHeaderComponent={this._header}
-          ListFooterComponent={this._footer}
-          ItemSeparatorComponent={this._separator}
-          data={this.state.movies}
-          renderItem={this._reanderItem}
-          keyExtractor={this._keyExtractor} />
+        <RefreshScrollView>
+          <FlatList
+            ref={(list) => this._listRef = list}
+            onPullRelease={(resolve) => this._onPullRelease(resolve)}
+            ListHeaderComponent={this._header}
+            ListFooterComponent={this._footer}
+            ItemSeparatorComponent={this._separator}
+            data={this.state.movies}
+            renderItem={this._reanderItem}
+            keyExtractor={this._keyExtractor} />
+        </RefreshScrollView>   
       </View>
     )
   };
