@@ -1,4 +1,5 @@
 'use strict';
 import ImageButton from './imagebutton';
-module.exports = {ImageButton};
+import Button from './button';
+module.exports = {ImageButton,Button};
  

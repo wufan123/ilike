@@ -9,14 +9,12 @@ class ImageButton extends Component {
     }
 
     _onPressIn() {
-        console.log("tttttt  in ")
         this.setState({
             pressState: true
         })
     }
 
     _onPressOut() {
-        console.log("out llllllllll in ")
         this.setState({
             pressState: false
         })

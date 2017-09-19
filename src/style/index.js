@@ -36,7 +36,13 @@ module.exports = {
         fontSize: 20
     },
     textLineThrough: {
-        textDecorationLine:'line-through'
+        textDecorationLine: 'line-through'
+    },
+    buttonOrange: {
+        backgroundColor: '#fc9d40',
+        height: 40,
+        alignItems: 'center',
+        justifyContent: 'center',
     }
 
 };

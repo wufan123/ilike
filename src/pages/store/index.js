@@ -3,14 +3,16 @@ import {
   View,
   Text,
   Image,
-  Button,
   StyleSheet,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from 'react-native';
 import Header from '../common/header'
-import {ImageButton} from '../common/component'
+import {
+  ImageButton,Button
+} from '../common/component'
 var theme = require('../../style')
- 
+
 function tabBarIcons(focused) {
   let icon = focused ? require('../../assets/tabs/icon_goods_s.png') : require('../../assets/tabs/icon_goods_n.png')
   return (
@@ -32,7 +34,9 @@ class GoodsScreen extends Component {
     this.state = {
       tab: ['小吃', '套票'],
       curTab: '小吃',
-      goodsList: [1, 2, 3, 4, 5, 6, 7, 8],
+      goodsCount: 0,
+      comboCount: 0,
+      goodsList: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }],
       comboList: [{ goodsList: [1, 2] }, { goodsList: [1, 2] }, { goodsList: [1, 2] }, { goodsList: [1, 2] }, { goodsList: [1, 2] }]
     }
   }
@@ -42,13 +46,47 @@ class GoodsScreen extends Component {
     this.setState(this.state)
   }
 
-  _keyExtractor = (item, index) => item
+  _keyExtractor = (item, index) => index
+
+  _onSubPress(item, index) {
+    if (this.state.curTab == this.state.tab[0]) {
+      if (!this.state.goodsList[index].num)
+        return
+      this.state.goodsList[index].num--
+      this.state.goodsCount--
+      this.setState(this.state)
+    }
+    if (this.state.curTab == this.state.tab[1]) {
+      if (!this.state.comboList[index].num)
+        return
+      this.state.comboList[index].num--
+      this.state.comboCount--
+      this.setState(this.state)
+    }
+  }
+  _onAddPress(item, index) {
+
+    if (this.state.curTab == this.state.tab[0]) {
+      if (!this.state.goodsList[index].num)
+        this.state.goodsList[index].num = 0
+      this.state.goodsList[index].num++
+      this.state.goodsCount++
+      this.setState(this.state)
+    }
+    if (this.state.curTab == this.state.tab[1]) {
+      if (!this.state.comboList[index].num)
+        this.state.comboList[index].num = 0
+      this.state.comboList[index].num++
+      this.state.comboCount++
+      this.setState(this.state)
+    }
+  }
 
   getGoodsListItem = ({ item, index }) => {
     return (
       <View style={[styles.itemContainer, theme.flex]}>
         <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
-        </Image> 
+        </Image>
         <View style={[theme.flex, styles.rigth]}>
           <Text style={[theme.fontBalck, theme.font16]}>双人套餐</Text>
           <Text style={[theme.fontGray, theme.font12]}>一份爆米花+一份可乐</Text>
@@ -56,13 +94,15 @@ class GoodsScreen extends Component {
           <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]} >￥35</Text>
           </Text>
           <View style={styles.operation}>
-            <ImageButton style={styles.operationItem}
+            {item.num && item.num > 0 ? (<ImageButton style={styles.operationItem}
               source={require('../../assets/store/subtract.png')}
-              activeSource={require('../../assets/store/subtract_on.png')} />
-            <Text style={styles.operationNum}>1</Text>
+              activeSource={require('../../assets/store/subtract_on.png')}
+              onPress={() => this._onSubPress(item, index)} />) : null}
+            {item.num && item.num > 0 ? (<Text style={styles.operationNum}>{item.num ? item.num : 0}</Text>) : null}
             <ImageButton style={styles.operationItem}
-              source={require('../../assets/store/add.png')} 
-              activeSource={require('../../assets/store/add_on.png')} /> 
+              source={require('../../assets/store/add.png')}
+              activeSource={require('../../assets/store/add_on.png')}
+              onPress={() => this._onAddPress(item, index)} />
           </View>
         </View>
       </View>
@@ -92,9 +132,15 @@ class GoodsScreen extends Component {
             )
           }
           <View style={styles.operation}>
-            <Image style={styles.operationItem} source={require('../../assets/store/subtract.png')} />
-            <Text style={styles.operationNum}>1</Text>
-            <Image style={styles.operationItem} source={require('../../assets/store/add.png')} />
+            {item.num && item.num > 0 ? (<ImageButton style={styles.operationItem}
+              source={require('../../assets/store/subtract.png')}
+              activeSource={require('../../assets/store/subtract_on.png')}
+              onPress={() => this._onSubPress(item, index)} />) : null}
+            {item.num && item.num > 0 ? (<Text style={styles.operationNum}>1</Text>) : null}
+            <ImageButton style={styles.operationItem}
+              source={require('../../assets/store/add.png')}
+              activeSource={require('../../assets/store/add_on.png')}
+              onPress={() => this._onAddPress(item, index)} />
           </View>
         </View>
 
@@ -103,16 +149,29 @@ class GoodsScreen extends Component {
     )
   }
 
+  getSubmitButton() {
+    console.log("tttttttt", this.state.goodsCount)
+    if (this.state.curTab == this.state.tab[0] && this.state.goodsCount > 0) {
+      return (<Button text={'去支付(' + this.state.goodsCount + ')'}/>)
+    }
+    if (this.state.curTab == this.state.tab[1] && this.state.comboCount > 0) {
+      return (<Button text={'去支付(' + this.state.comboCount + ')'}/>)
+    } 
+    return null
+  }
+
 
   render() {
 
-    return (<View >
+    return (<View style={theme.flex}  >
       <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-      <FlatList
+      <FlatList style={theme.flex}
+        extraData={this.state}
         data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}
         keyExtractor={this._keyExtractor}
         renderItem={this.state.curTab == this.state.tab[0] ? this.getGoodsListItem : this.getComboListItem}
       />
+      {this.getSubmitButton()}
     </View>
     )
 
@@ -144,6 +203,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   operationItem: {
     width: 26,
@@ -155,7 +216,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    marginTop: 3
+    paddingTop: 2
   },
 
   comboContainer: {
@@ -172,6 +233,10 @@ const styles = StyleSheet.create({
   comboGoodsItem: {
     marginTop: theme.itemMargin,
     flexDirection: 'row'
+  },
+  submitButton: {
+    backgroundColor: '#fc9d40',
+    ...theme.buttonOrange
   }
 
 
