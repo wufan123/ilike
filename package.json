@@ -3,18 +3,16 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-    "configureJPush": "node node_modules/jpush-react-native/JPushConfiguration.js",
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
 	"dependencies": {
 		"ac-qrcode": "^1.0.1",
-		"jcore-react-native": "^1.1.8-beta2",
-		"jpush-react-native": "^2.0.7",
+		"install": "^0.10.1",
+		"npm": "^5.4.2",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.3",
-		"react-native-alipay": "^0.1.5",
-		"react-native-sqlite-storage": "^3.3.3",
+		"react-native-camera": "^0.10.0",
 		"react-native-storage": "^0.2.2",
 		"react-native-swiper": "^1.5.12",
 		"react-native-video": "^2.0.0",
