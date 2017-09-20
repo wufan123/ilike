@@ -10,6 +10,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.theweflex.react.WeChatPackage;
+import com.zmax.ZmaxReactPackage;
 
 import org.pgsqlite.SQLitePluginPackage;
 
@@ -36,7 +37,8 @@ public class MainApplication extends Application implements ReactApplication {
                     new ReactVideoPackage(),
                     new RCTCameraPackage(),
                     new WeChatPackage(),
-                    new SQLitePluginPackage()
+                    new SQLitePluginPackage(),
+                    new ZmaxReactPackage()
             );
         }
     };

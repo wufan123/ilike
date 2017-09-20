@@ -8,6 +8,7 @@ import {
 import SQLiteStorage from 'react-native-sqlite-storage';
 import {pay} from 'react-native-alipay';
 import JPushModule from 'jpush-react-native'
+import SeatTable from '../../zmaxlib/seatTable'
 
 function tabBarIcons(focused) {
     let icon = focused ? require('../../assets/tabs/icon_me_s.png') : require('../../assets/tabs/icon_me_n.png')
@@ -34,40 +35,43 @@ class MeScreen extends Component {
             // console.log(extra.key + ": " + extra.value);
         });
         const {navigate} = this.props.navigation;
-        return (<View >
-            <Button
-                onPress={() => {
-                    navigate('QrCodeScan')
-                }}
-                title="qrCode"/>
-            <Button
-                style={{top: 20}}
-                onPress={() => {
-                    navigate('VideoView')
-                }}
-                title="video"/>
-            <Button
-                style={{top: 20}}
-                onPress={() => {
-                    pay("", true);
-                }}
-                title="alipay"/>
-            <Button
-                style={{top: 20}}
-                onPress={() => {
-                    SQLiteStorage.openDatabase(
-                        "test.db",
-                        "1.0",
-                        "MySQLite",
-                        -1,
-                        ()=>{
-                            console.log("sql open")
-                        },
-                        (err)=>{
-                            console.log("sql err")
-                        });
-                }}
-                title="open sql"/>
+        return (<View style={{flex: 1}}>
+            {/*<Button
+             onPress={() => {
+             navigate('QrCodeScan')
+             }}
+             title="qrCode"/>
+             <Button
+             style={{top: 20}}
+             onPress={() => {
+             navigate('VideoView')
+             }}
+             title="video"/>
+             <Button
+             style={{top: 20}}
+             onPress={() => {
+             pay("", true);
+             }}
+             title="alipay"/>
+             <Button
+             style={{top: 20}}
+             onPress={() => {
+             SQLiteStorage.openDatabase(
+             "test.db",
+             "1.0",
+             "MySQLite",
+             -1,
+             ()=>{
+             console.log("sql open")
+             },
+             (err)=>{
+             console.log("sql err")
+             });
+             }}
+             title="open sql"/>*/}
+            <View style={{flex: 1}}>
+                <SeatTable style={{flex: 1}}/>
+            </View>
         </View>)
     }
 }

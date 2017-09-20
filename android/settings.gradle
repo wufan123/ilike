@@ -1,5 +1,5 @@
 rootProject.name = 'zmfilm'
-include ':react-native-sqlite-storage'
+include ':react-native-sqlite-storage', ':react-native-zmax-lib'
 project(':react-native-sqlite-storage').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sqlite-storage/src/android')
 include ':jpush-react-native'
 project(':jpush-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/jpush-react-native/android')
