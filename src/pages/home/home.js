@@ -61,7 +61,9 @@ class HomeScreen extends Component {
       ],
       swiperShow: false,
       curTab: 0
-    }
+    },
+    this.hotList = null,
+    this.commingList = null
   }
   changeSelect(selectItem) { 
     let curTab = 0;
@@ -251,7 +253,8 @@ class HomeScreen extends Component {
   }
 
   renderHotTabList() {
-    return (
+    if (this.hotList == null) {
+      this.hotList = (
         <FlatList
           ref={(list) => this._listRef = list}
           ListFooterComponent={this._footer}
@@ -260,7 +263,9 @@ class HomeScreen extends Component {
           renderItem={this._reanderItem}
           keyExtractor={this._keyExtractor}
           scrollEnabled={false} />
-    );
+      )
+    }
+    return this.hotList;
   }
 
   _commingSectionHeader({section}) {
@@ -274,16 +279,20 @@ class HomeScreen extends Component {
   }
 
   renderCommingTabList() {
-    return (
-      <SectionList
-        ListFooterComponent={this._footer}
-        ItemSeparatorComponent={this._separator}
-        renderSectionHeader={this._commingSectionHeader}
-        sections={this.state.commingMovies}
-        renderItem={this._renderCommingMovieItem}
-        keyExtractor={(item, index)=>index}
-      />
-    )
+    if(this.commingList == null) {
+      this.commingList = (
+        <SectionList
+          ListFooterComponent={this._footer}
+          ItemSeparatorComponent={this._separator}
+          renderSectionHeader={this._commingSectionHeader}
+          sections={this.state.commingMovies}
+          renderItem={this._renderCommingMovieItem}
+          keyExtractor={(item, index)=>index}
+          scrollEnabled={false}
+        />
+      );
+    }
+    return this.commingList;
   }
 
   renderListWithTab() {

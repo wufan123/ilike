@@ -17,7 +17,7 @@ class Header extends Component {
     render() {
 
         return (
-            <View >
+            <View style={{zIndex: 10}}>
                 <StatusBar
                     backgroundColor={theme.colorPrimary}
                 />
