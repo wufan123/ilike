@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Image, Text, View, StyleSheet, Dimensions, Platform, StatusBar } from 'react-native';
+import {
+    ImageButton
+} from '../common/component'
 import Tab from './tab'
 
 var theme = require('../../style')
@@ -13,16 +16,19 @@ class Header extends Component {
             this.props.changeSelect(item)
         }
     }
+    backClick() {
+        console.log("navigationttttttttttttttt",global.navigation)
+        global.navigation.goBack(null);
+    }
 
     render() {
-
         return (
             <View >
-                <StatusBar
+                <StatusBar 
                     backgroundColor={theme.colorPrimary}
                 />
                 <View style={styles.headerContainer} >
-                    <View style={styles.backImg}>{!this.props.disableBack ? (<Image style={styles.backImg} source={require('../../assets/common/back.png')} />) : null}
+                    <View style={styles.backImg}>{!this.props.disableBack ? (<ImageButton style={styles.backImg} source={require('../../assets/common/back.png')} onPress={() => this.backClick()} />) : null}
                     </View>
                     <View style={styles.centerBox}>
                         {this.props.title ? (<Text style={styles.title}>{this.props.title}</Text>) : null}

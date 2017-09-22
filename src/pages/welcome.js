@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import { Text, Button } from 'react-native';
 
 class Welcome extends Component {
+    constructor(props) {
+        super(props)
+    }
+    componentDidMount() {
+        // 处理数据源
+        global.navigation = this.props.navigation;
+        global.navigation.navigate('MainPage')
+
+    }
 
     render() {
-        let { navigate } = this.props.navigation
         return (
             <Button title="click"
                 onPress={
-                    () => navigate('MainPage')
+                    () => global.navigate('MainPage')
                 }
             />
         );

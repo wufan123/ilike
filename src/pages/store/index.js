@@ -5,11 +5,12 @@ import {
   Image,
   StyleSheet,
   FlatList,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
 import Header from '../common/header'
 import {
-  ImageButton,Button
+  ImageButton, Button
 } from '../common/component'
 var theme = require('../../style')
 
@@ -82,30 +83,36 @@ class GoodsScreen extends Component {
     }
   }
 
+  gotoDetail() {
+    global.navigation.navigate('GoodsDetail');  
+  }
+
   getGoodsListItem = ({ item, index }) => {
     return (
-      <View style={[styles.itemContainer, theme.flex]}>
-        <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
-        </Image>
-        <View style={[theme.flex, styles.rigth]}>
-          <Text style={[theme.fontBalck, theme.font16]}>双人套餐</Text>
-          <Text style={[theme.fontGray, theme.font12]}>一份爆米花+一份可乐</Text>
-          <Text style={[theme.fontOrange, theme.font16]}>￥30
+      <TouchableHighlight onPress={()=>this.gotoDetail()}> 
+        <View style={[styles.itemContainer, theme.flex]} >
+          <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
+          </Image>
+          <View style={[theme.flex, styles.rigth]}>
+            <Text style={[theme.fontBalck, theme.font16]}>双人套餐</Text>
+            <Text style={[theme.fontGray, theme.font12]}>一份爆米花+一份可乐</Text>
+            <Text style={[theme.fontOrange, theme.font16]}>￥30
           <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]} >￥35</Text>
-          </Text>
-          <View style={styles.operation}>
-            {item.num && item.num > 0 ? (<ImageButton style={styles.operationItem}
-              source={require('../../assets/store/subtract.png')}
-              activeSource={require('../../assets/store/subtract_on.png')}
-              onPress={() => this._onSubPress(item, index)} />) : null}
-            {item.num && item.num > 0 ? (<Text style={styles.operationNum}>{item.num ? item.num : 0}</Text>) : null}
-            <ImageButton style={styles.operationItem}
-              source={require('../../assets/store/add.png')}
-              activeSource={require('../../assets/store/add_on.png')}
-              onPress={() => this._onAddPress(item, index)} />
+            </Text>
+            <View style={styles.operation}>
+              {item.num && item.num > 0 ? (<ImageButton style={styles.operationItem}
+                source={require('../../assets/store/subtract.png')}
+                activeSource={require('../../assets/store/subtract_on.png')}
+                onPress={() => this._onSubPress(item, index)} />) : null}
+              {item.num && item.num > 0 ? (<Text style={styles.operationNum}>{item.num ? item.num : 0}</Text>) : null}
+              <ImageButton style={styles.operationItem}
+                source={require('../../assets/store/add.png')}
+                activeSource={require('../../assets/store/add_on.png')}
+                onPress={() => this._onAddPress(item, index)} />
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableHighlight> 
     )
   }
   getComboListItem = ({ item, index }) => {
@@ -152,11 +159,11 @@ class GoodsScreen extends Component {
   getSubmitButton() {
     console.log("tttttttt", this.state.goodsCount)
     if (this.state.curTab == this.state.tab[0] && this.state.goodsCount > 0) {
-      return (<Button text={'去支付(' + this.state.goodsCount + ')'}/>)
+      return (<Button text={'去支付(' + this.state.goodsCount + ')'} />)
     }
     if (this.state.curTab == this.state.tab[1] && this.state.comboCount > 0) {
-      return (<Button text={'去支付(' + this.state.comboCount + ')'}/>)
-    } 
+      return (<Button text={'去支付(' + this.state.comboCount + ')'} />)
+    }
     return null
   }
 

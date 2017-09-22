@@ -32,8 +32,15 @@ module.exports = {
     },
     font18: {
         fontSize: 18
-    }, font20: {
+    }, 
+    font20: {
         fontSize: 20
+    },
+    font22:{
+        fontSize:22
+    },
+    font24:{
+        fontSize:24
     },
     textLineThrough: {
         textDecorationLine: 'line-through'
@@ -43,6 +50,14 @@ module.exports = {
         height: 40,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    whiteBlockWithPadding:{
+        backgroundColor:'#ffffff',
+        paddingLeft:15,
+        paddingRight:15
+    },
+    row:{
+        flexDirection:'row'
     }
 
 };
