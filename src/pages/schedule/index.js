@@ -3,9 +3,13 @@ import {
   View,
   Text,
   Image,
-  StyleSheet
+  StyleSheet,
+  Dimensions,
 } from 'react-native';
-import Header from '../common/header'
+import Header from '../common/header';
+import MovieSeats from 'react-native-movie-seats';
+
+const { width, height } = Dimensions.get('window');
 
 function tabBarIcons(focused) {
   let icon = focused ? require('../../assets/tabs/icon_schedule_s.png') : require('../../assets/tabs/icon_schedule_n.png')
@@ -37,6 +41,7 @@ class ScheduleScreen extends Component {
         <Text>
           schedule
         </Text>
+        <MovieSeats width={width} height={400} />
       </View>
     )
   }
