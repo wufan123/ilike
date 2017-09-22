@@ -23,8 +23,8 @@ class Header extends Component {
 
     render() {
         return (
-            <View >
-                <StatusBar 
+            <View style={{zIndex: 10}}>
+                <StatusBar
                     backgroundColor={theme.colorPrimary}
                 />
                 <View style={styles.headerContainer} >
@@ -35,8 +35,8 @@ class Header extends Component {
                         {this.props.tab ? (<Tab tab={this.props.tab} changeSelect={(item) => this.changeSelect(item)}></Tab>) : null}
                     </View>
                     <Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text>
-                </View>
-            </View>
+                </View>  
+            </View> 
         );
     }
 }
