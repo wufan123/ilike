@@ -12,7 +12,7 @@ module.exports = {
     flex: {
         flex: 1,
     },
-    fontBalck: {
+    fontBlack: {
         color: '#3f3f3f'
     },
     fontGray: {
@@ -20,6 +20,9 @@ module.exports = {
     },
     fontOrange: {
         color: '#fc9d40'
+    },
+    fontWhite: {
+        color: '#ffffff'
     },
     font12: {
         fontSize: 12
@@ -32,27 +35,30 @@ module.exports = {
     },
     font18: {
         fontSize: 18
-    }, 
+    },
     font20: {
         fontSize: 20
     },
-    font22:{
-        fontSize:22
+    font22: {
+        fontSize: 22
     },
-    font24:{
-        fontSize:24
+    font24: {
+        fontSize: 24
     },
-    pl10:{
-        paddingLeft:10
+    pl10: {
+        paddingLeft: 10
     },
-    ml10:{
-        marginLeft:10
+    ml10: {
+        marginLeft: 10
     },
-    mt10:{
-        marginTop:10
+    mt10: {
+        marginTop: 10
     },
-    itemInterval:{
-        marginTop:10
+    mt5: {
+        marginTop: 5
+    },
+    itemInterval: {
+        marginTop: 10
     },
     textLineThrough: {
         textDecorationLine: 'line-through'
@@ -63,17 +69,17 @@ module.exports = {
         alignItems: 'center',
         justifyContent: 'center',
     },
-    whiteBlockWithPadding:{
-        backgroundColor:'#ffffff',
-        paddingLeft:15,
-        paddingRight:15
+    whiteBlockWithPadding: {
+        backgroundColor: '#ffffff',
+        paddingLeft: 15,
+        paddingRight: 15
     },
-    row:{
-        flexDirection:'row'
+    row: {
+        flexDirection: 'row'
     },
-    bottomBorder:{
-        borderBottomWidth:1,
-        borderColor:'#e8e8e8'
+    bottomBorder: {
+        borderBottomWidth: 1,
+        borderColor: '#e8e8e8'
     }
 
 };

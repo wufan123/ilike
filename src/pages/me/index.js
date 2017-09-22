@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     View,
-    Button,
     Image,
-    StyleSheet
+    Text,
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native';
-import Video from 'react-native-video'
-import {pay} from 'react-native-alipay';
+import Header from '../common/header'
+var theme = require('../../style')
+
 
 function tabBarIcons(focused) {
     let icon = focused ? require('../../assets/tabs/icon_me_s.png') : require('../../assets/tabs/icon_me_n.png')
@@ -18,32 +20,138 @@ function tabBarIcons(focused) {
     );
 }
 
+class ItemComponet extends Component {
+    static defaultProps = {
+        onPress: null,
+        source: null,
+        title: '',
+        subTitle: '',
+        marginTop: false,
+        borderBottom: false,
+    };
+
+    render() {
+        return (
+            <TouchableOpacity activeOpacity={0.8} onPress={() => this.props.onPress} style={[this.props.marginTop ? theme.mt10 : null, this.props.borderBottom ? theme.bottomBorder : null]}>
+                <View style={[styles.item, theme.whiteBlockWithPadding, theme.row]}>
+                    <Image style={styles.itemImg} source={this.props.source} />
+                    <Text style={[theme.fontBlack, theme.font16]}>{this.props.title}</Text>
+                    <Text style={[theme.fontGray, theme.font14, theme.flex]}>{this.props.subTitle}</Text>
+                    <Image style={styles.itemImg} source={require('../../assets/common/right_btn.png')} />
+                </View>
+            </TouchableOpacity>
+        )
+    }
+
+}
+
 class MeScreen extends Component {
     static navigationOptions = {
         tabBarLabel: '我的',
-        tabBarIcon: ({focused}) => tabBarIcons(focused)
+        tabBarIcon: ({ focused }) => tabBarIcons(focused)
+    }
+
+    constructor(props) {
+        super(props)
+        let items = this.getItems()
+        this.state = {
+            items: items
+        }
+    }
+
+    getItems() {
+        return [
+            {
+                id: 'unCheckedTicket',
+                title: '待取票',
+                marginTop: true,
+                borderBottom: true
+            },
+            {
+                id: 'memberSignIn',
+                title: '会员签到',
+                marginTop: false,
+                borderBottom: false
+            },
+            {
+                id: 'account',
+                title: '我的账户',
+                marginTop: true,
+                borderBottom: true
+            },
+            {
+                id: 'recharge',
+                title: '账户充值',
+                marginTop: false,
+                borderBottom: true
+            },
+            {
+                id: 'refund',
+                title: '退票中心',
+                marginTop: false,
+                borderBottom: true
+            },
+            {
+                id: 'card',
+                title: '影城会员卡',
+                marginTop: false,
+                borderBottom: true
+            },
+            {
+                id: 'coupon',
+                title: '优惠券',
+                marginTop: false,
+                borderBottom: false
+            },
+            {
+                id: 'expenseRecord',
+                title: '消费记录',
+                marginTop: true,
+                borderBottom: true
+            },
+            {
+                id: 'integralRecord',
+                title: '积分记录',
+                marginTop: false,
+                borderBottom: false
+            },
+            {
+                id: 'feedback',
+                title: '意见反馈',
+                marginTop: true,
+                borderBottom: true
+            },
+            {
+                id: 'customerService',
+                title: '联系客服',
+                marginTop: false,
+                borderBottom: true
+            },
+            {
+                id: 'setting',
+                title: '设置',
+                marginTop: false,
+                borderBottom: false
+            },
+        ]
     }
 
     render() {
-        const {navigate} = this.props.navigation;
-        return (<View >
-            <Button
-                onPress={() => {
-                    navigate('QrCodeScan')
-                }}
-                title="qrCode"/>
-            <Button
-                style={{top: 20}}
-                onPress={() => {
-                    navigate('VideoView')
-                }}
-                title="video"/>
-            <Button
-                style={{top: 20}}
-                onPress={() => {
-                    pay("", true);
-                }}
-                title="alipay"/>
+        return (<View>
+            <Header disableBack={true}></Header>
+            <View style={styles.top}>
+                <View style={styles.avatarbox}>
+                    <Image style={[styles.avatarImg]} source={require('../../assets/me/default_portrait.png')}></Image>
+                </View>
+                <Text style={[theme.fontWhite, theme.font16, theme.mt10]}>用户名</Text>
+                <View style={[theme.row, theme.mt5]}>
+                    <Text style={[theme.fontWhite, theme.font14]}>余额：￥0.00 | 积分：100</Text>
+                </View>
+            </View>
+            {
+                this.state.items.map((item, index) =>
+                    (<ItemComponet key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
+            }
         </View>)
     }
 }
@@ -52,6 +160,36 @@ const styles = StyleSheet.create({
     tab_icon: {
         width: 26,
         height: 26,
+    },
+    top: {
+        backgroundColor: theme.colorPrimary,
+        height: 180,
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    avatarbox: {
+        width: 80,
+        height: 80,
+        borderWidth: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: theme.borderColor,
+        borderRadius: 40,
+    },
+    avatarImg: {
+        width: 70,
+        height: 70,
+        borderRadius: 35,
+    },
+    item: {
+        minHeight: 48,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    itemImg: {
+        width: 17,
+        height: 17,
     },
 });
 
