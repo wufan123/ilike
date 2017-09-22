@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions, TouchableHighlight } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 class TopTab extends Component {
     constructor(props) {
         super(props)
@@ -54,16 +54,16 @@ class TopTab extends Component {
             <View style={styles.tab}>
                 {this.props.tab.map(
                     (item, index) => {
-                        return (<TouchableHighlight key={index} style={this.getItemBoxStyle(index, item == this.state.tabSelcted)} onPress={() => this.changeSelect(item)}><Text
-                            style={this.getItemStyle(index, item == this.state.tabSelcted)}>{item}</Text></TouchableHighlight>)
+                        return (<TouchableOpacity activeOpacity={1} key={index} style={this.getItemBoxStyle(index, item == this.state.tabSelcted)} onPress={() => this.changeSelect(item)}><Text
+                            style={this.getItemStyle(index, item == this.state.tabSelcted)}>{item}</Text></TouchableOpacity>)
                     })
                 }
-            </View> 
+            </View>
         );
     }
 }
 
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
     tab: {
         flex: 1,
         height: 30,
@@ -71,11 +71,15 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ffffff',
         flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     tabItemBox: {
         flex: 1,
+        height: 28,
         alignItems: 'center',
         flexDirection: 'row',
+        justifyContent: 'center',
         backgroundColor: '#dc3c38',
     },
     tabItemBoxSelect: {

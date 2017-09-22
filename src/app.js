@@ -21,6 +21,7 @@ const App = StackNavigator(
     {
         navigationOptions: {
             header: null,
+            gesturesEnabled:true, 
         }
     });
 export default App 

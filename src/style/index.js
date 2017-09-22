@@ -42,6 +42,18 @@ module.exports = {
     font24:{
         fontSize:24
     },
+    pl10:{
+        paddingLeft:10
+    },
+    ml10:{
+        marginLeft:10
+    },
+    mt10:{
+        marginTop:10
+    },
+    itemInterval:{
+        marginTop:10
+    },
     textLineThrough: {
         textDecorationLine: 'line-through'
     },
@@ -58,6 +70,10 @@ module.exports = {
     },
     row:{
         flexDirection:'row'
+    },
+    bottomBorder:{
+        borderBottomWidth:1,
+        borderColor:'#e8e8e8'
     }
 
 };

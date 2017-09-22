@@ -5,8 +5,7 @@ import {
   Image,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
-  TouchableHighlight
+  TouchableOpacity
 } from 'react-native';
 import Header from '../common/header'
 import {
@@ -89,7 +88,7 @@ class GoodsScreen extends Component {
 
   getGoodsListItem = ({ item, index }) => {
     return (
-      <TouchableHighlight onPress={()=>this.gotoDetail()}> 
+      <TouchableOpacity onPress={()=>this.gotoDetail()}> 
         <View style={[styles.itemContainer, theme.flex]} >
           <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
           </Image>
@@ -111,8 +110,8 @@ class GoodsScreen extends Component {
                 onPress={() => this._onAddPress(item, index)} />
             </View>
           </View>
-        </View>
-      </TouchableHighlight> 
+        </View> 
+      </TouchableOpacity>  
     )
   }
   getComboListItem = ({ item, index }) => {
