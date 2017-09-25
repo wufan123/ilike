@@ -34,9 +34,6 @@ class ScheduleScreen extends Component {
     return (
       <View>
         <Header title={this.state.title} disableBack={true}></Header>
-        <Text>
-          schedule
-        </Text>
       </View>
     )
   }

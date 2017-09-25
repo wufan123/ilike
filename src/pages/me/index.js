@@ -7,6 +7,8 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Header from '../common/header'
+import { RefreshScrollView } from '../common/pull'
+import { Button } from '../common/component'
 var theme = require('../../style')
 
 
@@ -135,23 +137,42 @@ class MeScreen extends Component {
             },
         ]
     }
+    /**
+     * 下拉刷新
+     * @private
+     */
+    _onPullRelease(resolve) {
+        setTimeout(() => {
+            resolve();
+            this.moreTime = 0;
+        }, 3000);
+    }
 
+    /**
+    * 加载更多  数据加载
+    * @private
+    */
+    _loadMore() {
+    }
     render() {
-        return (<View>
+        return (<View style={theme.flex}>
             <Header disableBack={true}></Header>
-            <View style={styles.top}>
-                <View style={styles.avatarbox}>
-                    <Image style={[styles.avatarImg]} source={require('../../assets/me/default_portrait.png')}></Image>
+            <RefreshScrollView style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
+                <View style={styles.top}>
+                    <View style={styles.avatarbox}>
+                        <Image style={[styles.avatarImg]} source={require('../../assets/me/default_portrait.png')}></Image>
+                    </View>
+                    <Text style={[theme.fontWhite, theme.font16, theme.mt10]}>用户名</Text>
+                    <View style={[theme.row, theme.mt5]}>
+                        <Text style={[theme.fontWhite, theme.font14]}>余额：￥0.00 | 积分：100</Text>
+                    </View>
                 </View>
-                <Text style={[theme.fontWhite, theme.font16, theme.mt10]}>用户名</Text>
-                <View style={[theme.row, theme.mt5]}>
-                    <Text style={[theme.fontWhite, theme.font14]}>余额：￥0.00 | 积分：100</Text>
-                </View>
-            </View>
-            {
-                this.state.items.map((item, index) =>
-                    (<ItemComponet key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
-            }
+                {
+                    this.state.items.map((item, index) =>
+                        (<ItemComponet key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
+                }
+                <Button buttonStyle={styles.button} text={'退出登陆'} />
+            </RefreshScrollView>
         </View>)
     }
 }
@@ -163,10 +184,9 @@ const styles = StyleSheet.create({
     },
     top: {
         backgroundColor: theme.colorPrimary,
-        height: 180,
+        height: 160,
         width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
     },
     avatarbox: {
         width: 80,
@@ -191,6 +211,12 @@ const styles = StyleSheet.create({
         width: 17,
         height: 17,
     },
+    button: {
+        margin:theme.pagePadding,
+        marginRight:theme.pagePadding,
+        backgroundColor: theme.colorPrimary,
+        borderRadius: theme.borderRadius, 
+    }
 });
 
 module.exports = MeScreen;
