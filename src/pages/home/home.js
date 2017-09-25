@@ -54,20 +54,20 @@ class HomeScreen extends Component {
         8
       ],
       commingMovies: [
-        {data:[1, 2, 3,4,5], title: 'section 0'},
-        {data:[1, 2, 3], title: 'section 1'},
-        {data:[1, 2, 3,4], title: 'section 2'},
-        {data:[1, 2,], title: 'section 3'},
+        { data: [1, 2, 3, 4, 5], title: 'section 0' },
+        { data: [1, 2, 3], title: 'section 1' },
+        { data: [1, 2, 3, 4], title: 'section 2' },
+        { data: [1, 2,], title: 'section 3' },
       ],
       swiperShow: false,
       curTab: 0
     },
-    this.hotList = null,
-    this.commingList = null
+      this.hotList = null,
+      this.commingList = null
   }
-  changeSelect(selectItem) { 
+  changeSelect(selectItem) {
     let curTab = 0;
-    switch(selectItem) {
+    switch (selectItem) {
       case '热映':
         curTab = 0;
         break;
@@ -164,7 +164,7 @@ class HomeScreen extends Component {
               <Text style={styles.movieSlogan}><Text>导演： </Text>天堂实假象，险象险中还</Text>
               <Text style={styles.movieActress} numberOfLines={1}><Text style={globalStyle.fontBalck}>主演： </Text>迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰</Text>
             </View>
-            <View style={{width: 46,}}>
+            <View style={{ width: 46, }}>
               <TouchableOpacity style={styles.buyButton} onPress={() => { }}>
                 <Text style={{
                   color: globalStyle.colorPrimary
@@ -177,7 +177,7 @@ class HomeScreen extends Component {
     )
   }
 
-  _renderCommingMovieItem = ({item}) => {
+  _renderCommingMovieItem = ({ item }) => {
     let collectIcon = false ? require('../../assets/home/icon_collect.png') : require('../../assets/home/icon_uncollect.png')
     return (
       <View style={styles.row}>
@@ -210,17 +210,17 @@ class HomeScreen extends Component {
               alignSelf: 'stretch'
             }}>
               <Text style={styles.movieSlogan}><Text>主演： </Text>迈克尔格林／约翰·洛根／杰</Text>
-              <View style={{flexDirection:'row', alignItems:'center'}}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                 <Image
                   source={require('../../assets/home/icon_like.png')}
-                  style={{width: 8, height: 12}}
+                  style={{ width: 8, height: 12 }}
                 />
                 <Text style={[globalStyle.fontOrange, globalStyle.font12]} numberOfLines={1}>166影迷关注</Text>
               </View>
             </View>
-            <View style={{width: 46,}}>
+            <View style={{ width: 46, }}>
               <TouchableOpacity style={styles.buyButton} onPress={() => { }}>
-                <Image source={collectIcon} style={{width:12 ,height: 12}} />
+                <Image source={collectIcon} style={{ width: 12, height: 12 }} />
                 <Text style={{
                   color: globalStyle.colorPrimary
                 }}>关注</Text>
@@ -268,10 +268,10 @@ class HomeScreen extends Component {
     return this.hotList;
   }
 
-  _commingSectionHeader({section}) {
-    return(
+  _commingSectionHeader({ section }) {
+    return (
       <View style={styles.commingSectionHeader}>
-        <Text style={{fontSize: 15, color: globalStyle.fontColorGray,}}>
+        <Text style={{ fontSize: 15, color: globalStyle.fontColorGray, }}>
           {section.title}
         </Text>
       </View>
@@ -279,7 +279,7 @@ class HomeScreen extends Component {
   }
 
   renderCommingTabList() {
-    if(this.commingList == null) {
+    if (this.commingList == null) {
       this.commingList = (
         <SectionList
           ListFooterComponent={this._footer}
@@ -287,7 +287,7 @@ class HomeScreen extends Component {
           renderSectionHeader={this._commingSectionHeader}
           sections={this.state.commingMovies}
           renderItem={this._renderCommingMovieItem}
-          keyExtractor={(item, index)=>index}
+          keyExtractor={(item, index) => index}
           scrollEnabled={false}
         />
       );
@@ -297,14 +297,14 @@ class HomeScreen extends Component {
 
   renderListWithTab() {
     if (this.state.curTab == 0) return this.renderHotTabList();
-    else if(this.state.curTab == 1) return this.renderCommingTabList();
+    else if (this.state.curTab == 1) return this.renderCommingTabList();
   }
 
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.homeContainer}>
-        <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
+        <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
         <RefreshScrollView
           onPullRelease={(resolve) => this._onPullRelease(resolve)}
         >

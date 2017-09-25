@@ -170,7 +170,7 @@ class GoodsScreen extends Component {
   render() {
 
     return (<View style={theme.flex}  >
-      <Header tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
+      <Header  showCinema={true}  tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
       <FlatList style={theme.flex}
         extraData={this.state}
         data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}

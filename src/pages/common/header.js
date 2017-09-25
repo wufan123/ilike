@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Text, View, StyleSheet, Dimensions, Platform, StatusBar } from 'react-native';
+import { Image, Text, View, StyleSheet, Dimensions, Platform, StatusBar, TouchableOpacity } from 'react-native';
 import {
     ImageButton
 } from '../common/component'
@@ -17,13 +17,18 @@ class Header extends Component {
         }
     }
     backClick() {
-        console.log("navigationttttttttttttttt",global.navigation)
+        console.log("navigationttttttttttttttt", global.navigation)
         global.navigation.goBack(null);
+    }
+
+    selectCinema() {
+        console.log("tttttttttttttt")
+        global.navigation.navigate('Cinema');
     }
 
     render() {
         return (
-            <View style={{zIndex: 10}}>
+            <View style={{ zIndex: 10 }}>
                 <StatusBar
                     backgroundColor={theme.colorPrimary}
                 />
@@ -34,9 +39,11 @@ class Header extends Component {
                         {this.props.title ? (<Text style={styles.title}>{this.props.title}</Text>) : null}
                         {this.props.tab ? (<Tab tab={this.props.tab} changeSelect={(item) => this.changeSelect(item)}></Tab>) : null}
                     </View>
-                    <Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text>
-                </View>  
-            </View> 
+                    <View style={styles.rightBox}>
+                        {this.props.showCinema ? (<TouchableOpacity onPress={this.selectCinema} style={theme.flex}><Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text></TouchableOpacity>) : null}
+                    </View>
+                </View> 
+            </View>
         );
     }
 }
@@ -75,6 +82,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         color: '#ffffff',
         textAlign: 'center',
+    },
+    rightBox: {
+        width: 100,
+        height:'100%',
+        flexDirection:'row',
+        alignItems:'center', 
+        justifyContent:'center'
     },
     cinemaName: {
         color: '#ffffff',

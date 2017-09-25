@@ -33,7 +33,7 @@ class ScheduleScreen extends Component {
   render() {
     return (
       <View>
-        <Header title={this.state.title} disableBack={true}></Header>
+        <Header showCinema={true}  title={this.state.title} disableBack={true}></Header>
       </View>
     )
   }
