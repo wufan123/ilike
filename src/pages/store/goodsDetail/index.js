@@ -7,11 +7,11 @@ import {
     FlatList,
     TouchableOpacity
 } from 'react-native';
-import Header from '../common/header'
+import Header from '../../common/header'
 import {
     ImageButton, Button
-} from '../common/component'
-var theme = require('../../style')
+} from '../../common/component'
+var theme = require('../../../style')
 
 export default class extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ export default class extends Component {
     render() {
         return (<View style={theme.flex}>
             <Header title={this.state.title} />
-            <Image style={styles.image} source={require('../../assets/common/default_goods.png')} />
+            <Image style={styles.image} source={require('../../../assets/common/default_goods.png')} />
             <View style={theme.flex}>
                 <View style={[styles.item, theme.whiteBlockWithPadding, theme.row]}>
                     <Text style={[theme.fontBalck, theme.font16, theme.flex]}>100套票</Text>
@@ -58,13 +58,13 @@ export default class extends Component {
                     <Text style={[theme.fontBalck, theme.font16, theme.flex]}>数量：</Text>
                     <View style={styles.operation}>
                         {this.state.info.num && this.state.info.num > 0 ? (<ImageButton style={styles.operationItem}
-                            source={require('../../assets/store/subtract.png')}
-                            activeSource={require('../../assets/store/subtract_on.png')}
+                            source={require('../../../assets/store/subtract.png')}
+                            activeSource={require('../../../assets/store/subtract_on.png')}
                             onPress={() => this._onSubPress()} />) : null}
                         {this.state.info.num && this.state.info.num > 0 ? (<Text style={styles.operationNum}>1</Text>) : null}
                         <ImageButton style={styles.operationItem}
-                            source={require('../../assets/store/add.png')}
-                            activeSource={require('../../assets/store/add_on.png')}
+                            source={require('../../../assets/store/add.png')}
+                            activeSource={require('../../../assets/store/add_on.png')}
                             onPress={() => this._onAddPress()} />
                     </View>
                 </View>
