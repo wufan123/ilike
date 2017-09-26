@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 var theme = require('../../style')
+const { width, height } = Dimensions.get('window')
 export default class Tab extends Component {
     constructor(props) {
         super(props)
@@ -21,6 +22,14 @@ export default class Tab extends Component {
         }
     }
 
+    getWidth(){
+        if(!this.props.tab||this.props.tab.length ==0)
+            return width
+        if(this.props.tab.length>4)
+            return 80
+        return width/this.props.tab.length 
+    }
+
 
 
     render() {
@@ -29,13 +38,13 @@ export default class Tab extends Component {
 
         return (
             <View style={[styles.tab]}>
-                <ScrollView style={[theme.flex, { height: '100%' }]} horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView style={[theme.flex, theme.row, { height: '100%' }]} horizontal={true} showsHorizontalScrollIndicator={false}>
                     {this.props.tab.map(
                         (item, index) => {
-                            return (<TouchableOpacity
+                            return (<TouchableOpacity 
                                 activeOpacity={1}
-                                key={index}
-                                style={[styles.tabItemBox, this.state.tabSelcted == item ? styles.tabItemBoxSelect : null]}
+                                key={index} 
+                                style={[styles.tabItemBox, {width:this.getWidth()},this.state.tabSelcted == item ? styles.tabItemBoxSelect : null]}
                                 onPress={() => this.changeSelect(item)}>
                                 <Text
                                     style={[styles.tabItem, this.state.tabSelcted == item ? styles.tabItemSelected : null]}>{item}</Text></TouchableOpacity>)
@@ -49,14 +58,18 @@ export default class Tab extends Component {
 
 const styles = StyleSheet.create({
     tab: {
+        width: '100%',
         height: 45,
         borderColor: '#ffffff',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-    }, 
-    tabItemBox: { 
-        flex: 1, 
+        backgroundColor: '#ffffff',
+
+    },
+    tabItemBox: {
+        flex: 1,
+        width: '100%',
         minWidth: 80,
         alignItems: 'center',
         justifyContent: 'center',
@@ -72,7 +85,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         color: theme.fontColorGray,
         justifyContent: 'center',
-        textAlign: 'center', 
+        textAlign: 'center',
         fontSize: 14
     },
     tabItemSelected: {

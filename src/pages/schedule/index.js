@@ -3,7 +3,9 @@ import {
   View,
   Text,
   Image,
-  StyleSheet
+  StyleSheet,
+  Dimensions,
+  Button
 } from 'react-native';
 import Header from '../common/header'
 import Tab from '../common/tab'
@@ -24,9 +26,31 @@ class ScheduleScreen extends Component {
     tabBarIcon: ({ focused }) => tabBarIcons(focused)
   }
 
+  fakeSeatsInfo() {
+    var seatsInfos = {};
+    var rowIndex = [];
+    var seats = [];
+    for (var row = 1; row <= 15; row++) {
+      rowIndex.push(''+row);
+      rowSeats = [];
+      for (var col = 1; col <= 30; col++) {
+        seat = {row:''+row, column:''+col, seatType:['N', 'Lk', 'E'][Math.floor(Math.random()*3)]};
+        rowSeats.push(seat);
+      }
+      seats.push(rowSeats);
+    }
+    seatsInfos = {
+      row: rowIndex,
+      seat: seats
+    }
+    return seatsInfos;
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
+    console.log('seatinfos:')
+    console.log(this.fakeSeatsInfo());
+    this.state = { 
       title: '排期',
       plan: ['星期一', '星期三', '星期二', '星期四', '星期五', '星期六', '星期日'],
       list: [
@@ -35,12 +59,12 @@ class ScheduleScreen extends Component {
         { data: [1, 2, 3, 4], title: 'section 2' },
         { data: [1, 2,], title: 'section 3' },
       ],
-    }
+    }  
   }
 
   getList() {
 
-  }
+  } 
 
   render() {
     return (
@@ -58,6 +82,8 @@ const styles = StyleSheet.create({
     width: 26,
     height: 26,
   },
+  moviesSeats: {
+  }
 });
 
 module.exports = ScheduleScreen;
