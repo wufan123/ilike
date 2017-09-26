@@ -4261,6 +4261,10 @@ react-native-linear-gradient@^2.3.0:
   dependencies:
     prop-types "^15.5.10"
 
+"react-native-movie-seats@git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#develop":
+  version "1.0.0"
+  resolved "git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#eb54360cacc1bc95edd41d95c47bac3427e70500"
+
 react-native-storage@^0.2.2:
   version "0.2.2"
   resolved "http://registry.npm.taobao.org/react-native-storage/download/react-native-storage-0.2.2.tgz#4449197f122b2da0650e3704e1f050260ed58d9f"
