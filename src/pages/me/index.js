@@ -208,8 +208,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     itemImg: {
-        width: 17,
-        height: 17,
+        width: 9,
+        height: 17, 
     },
     button: {
         margin:theme.pagePadding,

@@ -9,9 +9,6 @@ const HomeStack = StackNavigator(
     Home: {
       screen: HomeScreen
     },
-    Schedule: {
-      screen: ScheduleScreen
-    },
   },
   {
     navigationOptions: {
@@ -65,7 +62,7 @@ const Zmfilm = TabNavigator({
   }
 }, {
     tabBarPosition: 'bottom',
-    animationEnabled: true,
+    animationEnabled: false,
     tabBarOptions: {
       activeTintColor: '#dc3c38',
       inactiveTintColor: '#999', // 文字和图片未选中颜色

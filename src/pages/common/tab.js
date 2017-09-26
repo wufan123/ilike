@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-class TopTab extends Component {
+import { Text, View, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
+var theme = require('../../style')
+export default class Tab extends Component {
     constructor(props) {
         super(props)
         if (this.props.tab && this.props.tab.length > 0) {
@@ -20,44 +21,27 @@ class TopTab extends Component {
         }
     }
 
-    getItemStyle(index, selected) {
-        var tabItemStyle = [styles.tabItem]
-        if (selected)
-            tabItemStyle.push(styles.tabItemSelected)
-        if (index == 0) {
-            tabItemStyle.push(styles.tabItemFirst)
-        }
-        if (index == this.state.tab.length - 1) {
-            tabItemStyle.push(styles.tabItemLast)
-        }
-        return tabItemStyle
-    }
 
-    getItemBoxStyle(index, selected) {
-        var tabItemStyle = [styles.tabItemBox]
-        if (selected)
-            tabItemStyle.push(styles.tabItemBoxSelect)
-        if (index == 0) {
-            tabItemStyle.push(styles.tabItemFirst)
-        }
-        if (index == this.state.tab.length - 1) {
-            tabItemStyle.push(styles.tabItemLast)
-        }
-        return tabItemStyle
-    }
 
     render() {
         if (this.state && !this.state.tab)
             return null
 
         return (
-            <View style={styles.tab}>
-                {this.props.tab.map(
-                    (item, index) => {
-                        return (<TouchableOpacity activeOpacity={1} key={index} style={this.getItemBoxStyle(index, item == this.state.tabSelcted)} onPress={() => this.changeSelect(item)}><Text
-                            style={this.getItemStyle(index, item == this.state.tabSelcted)}>{item}</Text></TouchableOpacity>)
-                    })
-                }
+            <View style={[styles.tab]}>
+                <ScrollView style={[theme.flex, { height: '100%' }]} horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {this.props.tab.map(
+                        (item, index) => {
+                            return (<TouchableOpacity
+                                activeOpacity={1}
+                                key={index}
+                                style={[styles.tabItemBox, this.state.tabSelcted == item ? styles.tabItemBoxSelect : null]}
+                                onPress={() => this.changeSelect(item)}>
+                                <Text
+                                    style={[styles.tabItem, this.state.tabSelcted == item ? styles.tabItemSelected : null]}>{item}</Text></TouchableOpacity>)
+                        })
+                    }
+                </ScrollView>
             </View>
         );
     }
@@ -65,48 +49,35 @@ class TopTab extends Component {
 
 const styles = StyleSheet.create({
     tab: {
-        flex: 1,
-        height: 30,
-        borderRadius: 2,
-        borderWidth: 1,
+        height: 45,
         borderColor: '#ffffff',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    tabItemBox: {
-        flex: 1,
-        height: 28,
+    }, 
+    tabItemBox: { 
+        flex: 1, 
+        minWidth: 80,
         alignItems: 'center',
-        flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#dc3c38',
+        backgroundColor: '#ffffff',
+        borderBottomWidth: 2,
+        borderColor: '#ffffff'
     },
     tabItemBoxSelect: {
-        backgroundColor: '#ffffff',
+        borderColor: '#dc3c38',
     },
     tabItem: {
-        flex: 1,
         alignItems: 'center',
         flexDirection: 'row',
-        backgroundColor: '#dc3c38',
-        color: '#ffffff',
-        textAlign: 'center',
+        color: theme.fontColorGray,
+        justifyContent: 'center',
+        textAlign: 'center', 
         fontSize: 14
     },
     tabItemSelected: {
-        backgroundColor: '#ffffff',
         color: '#dc3c38',
     },
-    tabItemFirst: {
-        borderBottomLeftRadius: 2,
-        borderTopLeftRadius: 2,
-    },
-    tabItemLast: {
-        borderBottomRightRadius: 2,
-        borderTopRightRadius: 2,
-    },
+
 
 });
-
-export default TopTab

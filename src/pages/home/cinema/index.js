@@ -86,11 +86,11 @@ export default class Cinema extends Component {
     _renderItem = ({ item }) => {
 
         return (
-            <View style={[theme.row, theme.whiteBlockWithPadding, styles.item]}>
+            <View style={[theme.row, theme.whiteBlockWithPadding, styles.item]}> 
                 <View style={[theme.flex]}>
-                    <Text style={[theme.flex, theme.fontBlack, theme.font16]}>中瑞国际影城红星店</Text>
+                    <Text style={[theme.flex, theme.fontBlack, theme.font16,theme.mt15]}>中瑞国际影城红星店</Text>
                     <Text style={[theme.flex, theme.fontGray, theme.font12]}>台江区工业路红星美凯龙（宝龙城市广场旁）7楼</Text>
-                </View>
+                </View> 
                 <Image style={styles.itemImg} source={require('../../../assets/common/right_btn.png')} />
             </View>
         );
@@ -105,8 +105,8 @@ export default class Cinema extends Component {
                     renderSectionHeader={this._sectionHeader}
                     sections={this.state.cinemaList}
                     renderItem={this._renderItem}
-                    keyExtractor={(item, index) => index}
-                    scrollEnabled={false}
+                    keyExtractor={(item, index) => index} 
+                    scrollEnabled={false} 
                 />
             );
         }
@@ -117,7 +117,7 @@ export default class Cinema extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={theme.flex}>
-                <Header title={this.state.title} disableBack={true}></Header>
+                <Header title={this.state.title} ></Header>
                 <RefreshScrollView
                     onPullRelease={(resolve) => this._onPullRelease(resolve)}
                 >
@@ -139,11 +139,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         height: 82,
-        paddingTop: theme.pagePadding,
     },
     itemImg: {
-        width: 10,
-        height: 10,
+        width: 9,
+        height: 17,
     },
     footer: {
         alignItems: 'center',

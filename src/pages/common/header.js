@@ -3,7 +3,7 @@ import { Image, Text, View, StyleSheet, Dimensions, Platform, StatusBar, Touchab
 import {
     ImageButton
 } from '../common/component'
-import Tab from './tab'
+import Tab from './topTab'
 
 var theme = require('../../style')
 

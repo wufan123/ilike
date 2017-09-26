@@ -54,6 +54,9 @@ module.exports = {
     mt10: {
         marginTop: 10
     },
+    mt15: {
+        marginTop: 15
+    },
     mt5: {
         marginTop: 5
     },

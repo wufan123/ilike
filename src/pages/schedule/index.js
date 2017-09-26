@@ -6,7 +6,8 @@ import {
   StyleSheet
 } from 'react-native';
 import Header from '../common/header'
-
+import Tab from '../common/tab'
+var theme = require('../../style')
 function tabBarIcons(focused) {
   let icon = focused ? require('../../assets/tabs/icon_schedule_s.png') : require('../../assets/tabs/icon_schedule_n.png')
   return (
@@ -26,14 +27,27 @@ class ScheduleScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '排期'
+      title: '排期',
+      plan: ['星期一', '星期三', '星期二', '星期四', '星期五', '星期六', '星期日'],
+      list: [
+        { data: [1, 2, 3, 4, 5], title: 'section 0' },
+        { data: [1, 2, 3], title: 'section 1' },
+        { data: [1, 2, 3, 4], title: 'section 2' },
+        { data: [1, 2,], title: 'section 3' },
+      ],
     }
+  }
+
+  getList() {
+
   }
 
   render() {
     return (
-      <View>
-        <Header showCinema={true}  title={this.state.title} disableBack={true}></Header>
+      <View style={theme.flex}>
+        <Header showCinema={true} title={this.state.title} disableBack={true}></Header>
+        <Tab tab={this.state.plan} />
+        {this.getList()}
       </View>
     )
   }
