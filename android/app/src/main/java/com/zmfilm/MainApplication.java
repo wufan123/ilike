@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.zmax.seat.RNMovieSeatsPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import cn.reactnative.alipay.AlipayPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -29,6 +30,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNMovieSeatsPackage(),
+            new LinearGradientPackage(),
             new AlipayPackage(),
             new ReactVideoPackage(),
             new RCTCameraPackage(),

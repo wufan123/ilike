@@ -5,6 +5,7 @@ import {
   Button,
   ScrollView,
   TouchableOpacity,
+  TouchableHighlight,
   Image,
   Dimensions,
   StyleSheet,
@@ -63,7 +64,7 @@ class HomeScreen extends Component {
       curTab: 0
     },
       this.hotList = null,
-      this.commingList = null
+      this.commingList = null  
   }
   changeSelect(selectItem) {
     let curTab = 0;
@@ -129,8 +130,15 @@ class HomeScreen extends Component {
     }} />;
   }
 
+  _navigateToMovieDetail() {
+    this.props.navigation.navigate('MovieDetail');
+  }
+
   _reanderItem = ({ item, index }) => {
     return (
+      <TouchableHighlight
+        onPress={()=>{this._navigateToMovieDetail()}}
+      >
       <View style={styles.row}>
         <View style={styles.movieThumbContainer}>
           <Image resizeMode="stretch" style={styles.movieThumb} source={{
@@ -174,6 +182,7 @@ class HomeScreen extends Component {
           </View>
         </View>
       </View>
+      </TouchableHighlight>
     )
   }
 

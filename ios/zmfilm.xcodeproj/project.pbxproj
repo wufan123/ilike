@@ -39,14 +39,15 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* zmfilmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* zmfilmTests.m */; };
 		37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DFC48B84444928BB43C531 /* libRCTVideo.a */; };
+		47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C73036BE7A8843468501CEDF /* libRNMovieSeats.a */; };
 		56681A84B492464CBF4DF8C1 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE106F672BCB4D13A637ADBE /* libdouble-conversion.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6369BD8DFA5E4DECBBE9EB2B /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F61C73166342C3A145E3EE /* libyoga.a */; };
+		74B5BB404C4F4339AFF72EF7 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B76AD064607A411B8B69FCAF /* libBVLinearGradient.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		F020E80C46DE4290831F7B82 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBEBB7BF126A4E719FFBD713 /* libRCTCamera.a */; };
 		F918F4DD1F739892006C9AE8 /* movie-seats.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F918F4DC1F739892006C9AE8 /* movie-seats.bundle */; };
-		F918F4DE1F739AD9006C9AE8 /* libRNMovieSeats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F918F4DB1F738D0C006C9AE8 /* libRNMovieSeats.a */; };
 		F99F063E1F6BB6AB006E4055 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */; };
 		F99F06401F6BB6BD006E4055 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */; };
 		F99F06421F6BB6CA006E4055 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06411F6BB6CA006E4055 /* libsqlite3.0.tbd */; };
@@ -280,9 +281,23 @@
 			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
 			remoteInfo = "double-conversion-tvOS";
 		};
-		F918F4DA1F738D0C006C9AE8 /* PBXContainerItemProxy */ = {
+		F918F55D1F7A01F8006C9AE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = F918F4AA1F738D0C006C9AE8 /* RNMovieSeats.xcodeproj */;
+			containerPortal = 48E91E4AB17A41EAAFDD4706 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = BVLinearGradient;
+		};
+		F918F55F1F7A01F8006C9AE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48E91E4AB17A41EAAFDD4706 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64AA15081EF7F30100718508;
+			remoteInfo = "BVLinearGradient-tvOS";
+		};
+		F918F6091F7A28C9006C9AE8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNMovieSeats;
@@ -356,6 +371,7 @@
 		2D02E47B1E0B4A5D006451C7 /* zmfilm-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "zmfilm-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* zmfilm-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "zmfilm-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41F61C73166342C3A145E3EE /* libyoga.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libyoga.a; sourceTree = "<group>"; };
+		48E91E4AB17A41EAAFDD4706 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5FBA74E0ACE4456382995281 /* RCTWeChat.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTWeChat.xcodeproj; path = "../node_modules/react-native-wechat/ios/RCTWeChat.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -364,9 +380,11 @@
 		A503A984245243F2956DC99B /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AFF6EFB6CE744A60964DB55B /* libcxxreact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libcxxreact.a; sourceTree = "<group>"; };
+		B76AD064607A411B8B69FCAF /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
+		C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNMovieSeats.xcodeproj; path = "../node_modules/react-native-movie-seats/ios/RNMovieSeats.xcodeproj"; sourceTree = "<group>"; };
+		C73036BE7A8843468501CEDF /* libRNMovieSeats.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNMovieSeats.a; sourceTree = "<group>"; };
 		F1AED4AEC20E4A13A1BE3285 /* libthird-party.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libthird-party.a"; sourceTree = "<group>"; };
 		F4DFC48B84444928BB43C531 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
-		F918F4AA1F738D0C006C9AE8 /* RNMovieSeats.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMovieSeats.xcodeproj; path = "../node_modules/react-native-movie-seats/ios/RNMovieSeats.xcodeproj"; sourceTree = "<group>"; };
 		F918F4DC1F739892006C9AE8 /* movie-seats.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "movie-seats.bundle"; path = "../node_modules/react-native-movie-seats/ios/movie-seats.bundle"; sourceTree = "<group>"; };
 		F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -409,7 +427,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				F918F4DE1F739AD9006C9AE8 /* libRNMovieSeats.a in Frameworks */,
 				1711DC14FC4E45AEA88EB7E6 /* libReact.a in Frameworks */,
 				6369BD8DFA5E4DECBBE9EB2B /* libyoga.a in Frameworks */,
 				1851FB8D9EAF4FCD994A9A30 /* libcxxreact.a in Frameworks */,
@@ -418,7 +435,8 @@
 				56681A84B492464CBF4DF8C1 /* libdouble-conversion.a in Frameworks */,
 				F020E80C46DE4290831F7B82 /* libRCTCamera.a in Frameworks */,
 				37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */,
-				BAB602E975CF4FA8BF7041A3 /* libRCTAlipay.a in Frameworks */,
+				74B5BB404C4F4339AFF72EF7 /* libBVLinearGradient.a in Frameworks */,
+				47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,7 +597,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				F918F4AA1F738D0C006C9AE8 /* RNMovieSeats.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -595,7 +612,8 @@
 				5FBA74E0ACE4456382995281 /* RCTWeChat.xcodeproj */,
 				882F027303DC4478A2029635 /* RCTCamera.xcodeproj */,
 				05620B1C316A4676BCA3064D /* RCTVideo.xcodeproj */,
-				47EB9E89F416417B9105C6C1 /* RCTAlipay.xcodeproj */,
+				48E91E4AB17A41EAAFDD4706 /* BVLinearGradient.xcodeproj */,
+				C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -643,10 +661,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F918F4AB1F738D0C006C9AE8 /* Products */ = {
+		F918F5591F7A01F8006C9AE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F918F4DB1F738D0C006C9AE8 /* libRNMovieSeats.a */,
+				F918F55E1F7A01F8006C9AE8 /* libBVLinearGradient.a */,
+				F918F5601F7A01F8006C9AE8 /* libBVLinearGradient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F918F5E01F7A28C9006C9AE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F918F60A1F7A28C9006C9AE8 /* libRNMovieSeats.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -801,6 +828,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = F918F5591F7A01F8006C9AE8 /* Products */;
+					ProjectRef = 48E91E4AB17A41EAAFDD4706 /* BVLinearGradient.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
@@ -861,8 +892,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = F918F4AB1F738D0C006C9AE8 /* Products */;
-					ProjectRef = F918F4AA1F738D0C006C9AE8 /* RNMovieSeats.xcodeproj */;
+					ProductGroup = F918F5E01F7A28C9006C9AE8 /* Products */;
+					ProjectRef = C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1086,11 +1117,25 @@
 			remoteRef = F918F4D71F738D0C006C9AE8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		F918F4DB1F738D0C006C9AE8 /* libRNMovieSeats.a */ = {
+		F918F55E1F7A01F8006C9AE8 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = F918F55D1F7A01F8006C9AE8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F918F5601F7A01F8006C9AE8 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = F918F55F1F7A01F8006C9AE8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F918F60A1F7A28C9006C9AE8 /* libRNMovieSeats.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNMovieSeats.a;
-			remoteRef = F918F4DA1F738D0C006C9AE8 /* PBXContainerItemProxy */;
+			remoteRef = F918F6091F7A28C9006C9AE8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F99F06221F6BB696006E4055 /* libRCTBlob-tvOS.a */ = {
@@ -1279,20 +1324,14 @@
 					"$(SRCROOT)..\node_modules\neact-native-wechatios",
 					"$(SRCROOT)..\node_modules\neact-native-cameraios",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 				);
 				INFOPLIST_FILE = zmfilmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1314,20 +1353,14 @@
 					"$(SRCROOT)..\node_modules\neact-native-wechatios",
 					"$(SRCROOT)..\node_modules\neact-native-cameraios",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 				);
 				INFOPLIST_FILE = zmfilmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1347,9 +1380,17 @@
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-wechatios",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios",
-					"$(SRCROOT)..\node_modules\neact-native-videoios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-wechatios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-cameraios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-videoios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 				);
 				INFOPLIST_FILE = zmfilm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1370,9 +1411,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-wechatios",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios",
-					"$(SRCROOT)..\node_modules\neact-native-videoios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-wechatios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-cameraios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-videoios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 				);
 				INFOPLIST_FILE = zmfilm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1403,19 +1452,13 @@
 					"$(SRCROOT)..\node_modules\neact-native-wechatios",
 					"$(SRCROOT)..\node_modules\neact-native-cameraios",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 				);
 				INFOPLIST_FILE = "zmfilm-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1447,19 +1490,13 @@
 					"$(SRCROOT)..\node_modules\neact-native-wechatios",
 					"$(SRCROOT)..\node_modules\neact-native-cameraios",
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
+					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
+					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 				);
 				INFOPLIST_FILE = "zmfilm-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1490,14 +1527,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.zmfilm-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1522,14 +1551,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.zmfilm-tvOSTests";
