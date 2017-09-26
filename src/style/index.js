@@ -24,6 +24,9 @@ module.exports = {
     fontWhite: {
         color: '#ffffff'
     },
+    font10: {
+        fontSize: 10
+    },
     font12: {
         fontSize: 12
     },
@@ -53,6 +56,9 @@ module.exports = {
     },
     mt10: {
         marginTop: 10
+    },
+    mb10: {
+        marginBottom: 10
     },
     mt15: {
         marginTop: 15
