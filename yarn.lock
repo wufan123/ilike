@@ -4255,12 +4255,6 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
-react-native-linear-gradient@^2.3.0:
-  version "2.3.0"
-  resolved "http://registry.npm.taobao.org/react-native-linear-gradient/download/react-native-linear-gradient-2.3.0.tgz#757997197e35edf52e290891a11566e462845da1"
-  dependencies:
-    prop-types "^15.5.10"
-
 "react-native-movie-seats@git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#develop":
   version "1.0.0"
   resolved "git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#eb54360cacc1bc95edd41d95c47bac3427e70500"
