@@ -57,6 +57,8 @@ class ScheduleScreen extends Component {
       selectedSeats: [
         {row:'3', column:'2'},
         {row:'2', column:'5'},
+        {row:'4', column:'8'},
+        {row:'7', column:'5'},
       ],
       seatInfos: this.fakeSeatsInfo()
       // {
@@ -106,7 +108,12 @@ class ScheduleScreen extends Component {
           onPress={() => {
               this.setState({
                 seatInfos: this.fakeSeatsInfo(),
-                selectedSeats: [{row:'3', column:'2'},]
+                selectedSeats: [
+                  {row:'3', column:'2'},
+                  {row:'4', column:'8'},
+                  {row:'7', column:'5'},
+                  {row:'9', column:'20'},
+                  ]
               })
             }} />
       </View>
