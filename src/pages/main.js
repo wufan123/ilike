@@ -3,11 +3,18 @@ import HomeScreen from './home/home'
 import ScheduleScreen from './schedule'
 import StoreScreen from './store'
 import MeScreen from './me'
+import MovieDetailScreen from './movieDetail/movieDetail'
 
 const HomeStack = StackNavigator(
   {
     Home: {
       screen: HomeScreen
+    },
+    MovieDetail: {
+      screen: MovieDetailScreen,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
   },
   {
@@ -63,6 +70,7 @@ const Zmfilm = TabNavigator({
 }, {
     tabBarPosition: 'bottom',
     animationEnabled: false,
+    swipeEnabled: false,
     tabBarOptions: {
       activeTintColor: '#dc3c38',
       inactiveTintColor: '#999', // 文字和图片未选中颜色
