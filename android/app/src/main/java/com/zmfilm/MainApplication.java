@@ -3,6 +3,7 @@ package com.zmfilm;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.zmax.seat.RNMovieSeatsPackage;
 import cn.reactnative.alipay.AlipayPackage;
 import com.brentvatne.react.ReactVideoPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new LinearGradientPackage(),
             new RNMovieSeatsPackage(),
             new AlipayPackage(),
             new ReactVideoPackage(),
