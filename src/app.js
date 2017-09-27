@@ -7,6 +7,7 @@ import QrCodeScan from './pages/common/qrCodeScan'
 import VideoView from './pages/common/videoView'
 import GoodsDetail from './pages/store/goodsDetail'
 import Cinema from './pages/home/cinema'
+import ScheduleList from './pages/schedule/scheduleList'
 import * as WeChat from 'react-native-wechat';
 import './business/storage'
 import './style/index'
@@ -18,12 +19,13 @@ const App = StackNavigator(
         QrCodeScan: { screen: QrCodeScan },
         VideoView: { screen: VideoView },
         GoodsDetail: { screen: GoodsDetail },
-        Cinema:{screen:Cinema}
+        Cinema: { screen: Cinema }, 
+        ScheduleList: { screen: ScheduleList }
     },
     {
         navigationOptions: {
             header: null,
-            gesturesEnabled:true, 
+            gesturesEnabled: true,
         }
     });
 export default App 

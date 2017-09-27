@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Dimensions,
   Button,
-  FlatList
+  FlatList,
+  TouchableOpacity
 } from 'react-native';
 import Header from '../common/header'
 import Tab from '../common/tab'
@@ -75,9 +76,9 @@ class ScheduleScreen extends Component {
         <View style={[theme.flex, theme.row]}>
           <Text style={[theme.flex, theme.fontBlack, theme.font24]}>9:30 </Text>
           <Text style={[theme.fontOrange, theme.font16]}>￥100.0</Text>
-          <Text style={[theme.fontOrange, theme.font10]}>起</Text> 
+          <Text style={[theme.fontOrange, theme.font10]}>起</Text>
         </View>
-        <Text style={[theme.flex, theme.fontGray, theme.font14]}>国语ZMX 3D 
+        <Text style={[theme.flex, theme.fontGray, theme.font14]}>国语ZMX 3D
           <Text style={[theme.flex, theme.fontGray, theme.font14, theme.textLineThrough]}>100.0
           </Text>
         </Text>
@@ -99,22 +100,28 @@ class ScheduleScreen extends Component {
     />)
   }
 
+  _filmOnPress(item, index) {
+    global.navigation.navigate('ScheduleList');
+  }
 
   getListItem = ({ item, index }) => {
     return (
       <View style={[theme.whiteBlockWithPadding]}>
-        <View style={[styles.filmDetial, theme.bottomBorder]}>
-          <Image style={styles.cover} source={require('../../assets/common/default_movie_bg.png')} />
-          <View style={theme.flex}>
-            <Text style={[theme.font18, theme.fontBlack, theme.flex]}>九层妖塔
+        <TouchableOpacity onPress={() => this._filmOnPress(item, index)}>
+          <View style={[styles.filmDetial, theme.bottomBorder]}>
+            <Image style={styles.cover} source={require('../../assets/common/default_movie_bg.png')} />
+            <View style={theme.flex}>
+              <Text style={[theme.font18, theme.fontBlack, theme.flex]}>九层妖塔
              <Text style={[theme.font16, theme.fontOrange]}>9.5</Text>
-            </Text>
-            <Text style={[theme.font14, theme.fontGray, theme.flex]}>片长：120min</Text>
+              </Text>
+              <Text style={[theme.font14, theme.fontGray, theme.flex]}>片长：120min</Text>
+            </View>
+            <Image style={styles.moreImg} source={require('../../assets/common/right_btn.png')} />
           </View>
-          <Image style={styles.moreImg} source={require('../../assets/common/right_btn.png')} />
-        </View>
+        </TouchableOpacity>
         {this._getFilmPlanList(item)}
-      </View>)
+      </View>
+    )
   }
 
 

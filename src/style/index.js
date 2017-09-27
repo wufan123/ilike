@@ -89,6 +89,15 @@ module.exports = {
     bottomBorder: {
         borderBottomWidth: 1,
         borderColor: '#e8e8e8'
+    },
+    alignItemsCenter:{
+        alignItems:'center'
+    },
+    justifyContentCenter:{
+        justifyContent:'center'
+    },
+    textAlignCenter:{
+        textAlignCenter:'center'
     }
 
 };

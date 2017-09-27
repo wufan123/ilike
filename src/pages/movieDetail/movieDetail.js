@@ -64,7 +64,7 @@ class MovieDetailScreen extends Component {
                         </View>
                         <View>
                             <Text>1.6</Text>
-                            <RatingView style={{height: 18, backgroundColor: '#333'}} rating={9.6} />
+                            <RatingView style={{height: 18, backgroundColor: '#333'}} rating={9.0} />
                         </View>
                     </View>
                 </View>
