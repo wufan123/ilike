@@ -49,6 +49,14 @@ class MovieDetailScreen extends Component {
         )
     }
 
+    _renderMovieTag(tag) {
+        return (
+            <View style={styles.movieTagView}>
+                <Text style={styles.movieTagText}>{tag}</Text>
+            </View>
+        )
+    }
+
     _renderMovieItem() {
         return(
             <View style={styles.movieSocialContainer}>
@@ -57,14 +65,20 @@ class MovieDetailScreen extends Component {
                         <Image style={styles.movieThumb} source={{uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'}}/>
                     </View>
                     <View style={styles.movieRightContainer}>
-                        <Text>异形</Text>
-                        <View>
-                            <Text>主演:</Text>
-                            <Text>汤姆·斯凯里特，西格妮·韦弗，维罗尼卡·卡维特，哈利·戴恩·斯坦通，约翰·赫特，伊安·霍姆</Text>
+                        <Text style={[globalStyle.fontBlack, globalStyle.font20]}>异形</Text>
+                        <View style={[globalStyle.row]}>
+                            <Text numberOfLines={2} style={[globalStyle.fontBlack, globalStyle.font14]}>主演: <Text style={[globalStyle.fontGray]}>汤姆·斯凯里特，西格妮·韦弗，维罗尼卡·卡维特，哈利·戴恩·斯坦通，约翰·赫特，伊安·霍姆汤姆·斯凯里特，西格妮·韦弗，维罗尼卡·卡维特，哈利·戴恩·斯坦通，约翰·赫特，伊安·霍姆</Text></Text>
                         </View>
-                        <View>
-                            <Text>1.6</Text>
-                            <RatingView style={{height: 18, backgroundColor: '#333'}} rating={9.0} />
+                        <View style={[globalStyle.row, globalStyle.alignItemsCenter]}>
+                            <Text style={[globalStyle.fontOrange, globalStyle.font18]}>7.6</Text>
+                            <RatingView style={{flex:1, marginLeft: 6}} rating={7.6} />
+                        </View>
+                        <View style={[globalStyle.row, globalStyle.alignItemsCenter]}>
+                            {this._renderMovieTag('223人想看')}
+                            <View style={styles.movieTagSpace} />
+                            {this._renderMovieTag('120分钟')}
+                            <View style={styles.movieTagSpace} />
+                            {this._renderMovieTag('美国')}
                         </View>
                     </View>
                 </View>
@@ -134,12 +148,36 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     movieThumbContainer: {
-        height: 80,
-        width: 60
+        height: 100,
+        width: 75
     },
     movieThumb: {
         flex: 1
     },
+    movieRightContainer: {
+        flex: 1,
+        marginLeft: 10,
+        justifyContent: 'space-between'
+    },
+    actressContainer: {
+        flexDirection: 'row'
+    },
+    movieTagView: {
+        ...globalStyle.alignItemsCenter,
+        ...globalStyle.justifyContentCenter,
+        borderWidth: 1,
+        borderColor: globalStyle.colorPrimary,
+        paddingHorizontal: 6,
+        borderRadius: 3
+    },
+    movieTagText: {
+        ...globalStyle.font14,
+        ...globalStyle.fontColorPrimary,
+        lineHeight: 20
+    },
+    movieTagSpace: {
+        width: 10,
+    }
 })
 
 module.exports = MovieDetailScreen;

@@ -16,21 +16,10 @@ class RatingView extends Component {
             starWidth: 18,
             starSpace: 4,
             totalStar: 5,
+            minWidth: 106,
+            minheight: 18,
         };
-        this._measureView = this._measureView.bind(this);
         this._stars = this._stars.bind(this);
-    }
-
-    _measureView(event) {
-        var width = event.nativeEvent.layout.width;
-        var imageHeight = event.nativeEvent.layout.height;
-        var starWidth = (width - 4 * this.state.starSpace) / this.state.totalStar;
-        starWidth = starWidth>imageHeight?imageHeight:starWidth;
-        if (starWidth != this.state.starWidth) {
-            this.setState({
-                starWidth: starWidth
-            });
-        }
     }
 
     _stars(rating) {
@@ -58,10 +47,17 @@ class RatingView extends Component {
     }
 
     render() {
+        var width = this.props.style.width;
+        if (width===undefined) width=this.state.minWidth;
+        var imageHeight = this.props.style.height;
+        if (imageHeight===undefined) imageHeight=this.state.minheight;
+        var starWidth = (width - (this.state.totalStar-1) * this.state.starSpace) / this.state.totalStar;
+        starWidth = starWidth>0?starWidth:18;
+        starWidth = starWidth>imageHeight?imageHeight:starWidth;
+        this.state.starWidth = starWidth;
         return (
             <View
-                onLayout={(event)=>this._measureView(event)}
-                style={[this.props.style, styles.container, {maxWidth: 120}]}>
+                style={[this.props.style, styles.container]}>
                 {this._stars(this.props.rating)}
             </View>
         )
@@ -72,7 +68,6 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
     },
     ratingImageStyle: {
         width: 18,

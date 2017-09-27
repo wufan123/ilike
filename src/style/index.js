@@ -24,6 +24,9 @@ module.exports = {
     fontWhite: {
         color: '#ffffff'
     },
+    fontColorPrimary: {
+        color: '#dc3c38',
+    },
     font10: {
         fontSize: 10
     },
