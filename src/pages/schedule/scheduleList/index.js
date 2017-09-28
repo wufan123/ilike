@@ -10,7 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Header from '../../common/header'
-import Tab from '../../common/tab'
+import {Tab} from '../../common/component'
 var theme = require('../../../style')
 const { width, height } = Dimensions.get('window')
 
