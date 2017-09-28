@@ -47,7 +47,7 @@ class ItemComponet extends Component {
 
 }
 
-class MeScreen extends Component {
+export default class MeScreen extends Component {
     static navigationOptions = {
         tabBarLabel: '我的',
         tabBarIcon: ({ focused }) => tabBarIcons(focused)
@@ -68,84 +68,84 @@ class MeScreen extends Component {
                 title: '待取票',
                 marginTop: true,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'memberSignIn',
                 title: '会员签到',
                 marginTop: false,
                 borderBottom: false,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'account',
                 title: '我的账户',
                 marginTop: true,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'recharge',
                 title: '账户充值',
                 marginTop: false,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'refund',
                 title: '退票中心',
                 marginTop: false,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'card',
                 title: '影城会员卡',
                 marginTop: false,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'coupon',
                 title: '优惠券',
                 marginTop: false,
                 borderBottom: false,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'expenseRecord',
                 title: '消费记录',
                 marginTop: true,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'integralRecord',
                 title: '积分记录',
                 marginTop: false,
                 borderBottom: false,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'feedback',
                 title: '意见反馈',
                 marginTop: true,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'customerService',
                 title: '联系客服',
                 marginTop: false,
                 borderBottom: true,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
             {
                 id: 'setting',
                 title: '设置',
-                marginTop: false,
+                marginTop: false, 
                 borderBottom: false,
-                image: require('')
+                image: require('../../assets/common/right_btn.png')
             },
         ]
     }
@@ -213,9 +213,9 @@ class MeScreen extends Component {
                 </View>
                 {
                     this.state.items.map((item, index) =>
-                        (<ItemComponet onPress={() => this.itemClick(item)} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
+                        (<ItemComponet onPress={() => this._itemClick(item)} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
                 }
-                <Button buttonStyle={styles.button} text={'退出登陆'} />
+                <Button buttonStyle={styles.button} text={'退出登陆'} /> 
             </RefreshScrollView>
         </View>)
     }
@@ -267,4 +267,3 @@ const styles = StyleSheet.create({
     }
 });
 
-module.exports = MeScreen;
