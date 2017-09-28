@@ -6,7 +6,8 @@ import {
     StyleSheet,
     Dimensions,
     Button,
-    FlatList
+    FlatList,
+    TouchableOpacity
 } from 'react-native';
 import Header from '../../common/header'
 import Tab from '../../common/tab'
@@ -55,21 +56,26 @@ export default class ScheduleList extends Component {
         return this.state.list
     }
 
+    _gotoChooseSeat(item) {
+        global.navigation.navigate('ChooseSeat');
+    }
 
     _getListItem = ({ item, index }) => {
         return (
-            <View style={[theme.whiteBlockWithPadding, styles.planItem]}>
-                <View style={[theme.flex, theme.row]}>
-                    <Text style={[theme.fontBlack, theme.font24]}>9:30 </Text>
-                    <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}><Text style={[theme.fontGray, theme.font16]}>国语ZMX 3D</Text></View>
-                    <Text style={[theme.fontOrange, theme.font14]}>￥100.0起</Text>
+            <TouchableOpacity onPress={() => this._gotoChooseSeat(item)}> 
+                <View style={[theme.whiteBlockWithPadding, styles.planItem]}>
+                    <View style={[theme.flex, theme.row]}>
+                        <Text style={[theme.fontBlack, theme.font24]}>9:30 </Text>
+                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}><Text style={[theme.fontGray, theme.font16]}>国语ZMX 3D</Text></View>
+                        <Text style={[theme.fontOrange, theme.font14]}>￥100.0起</Text>
+                    </View>
+                    <View style={[theme.flex, theme.row]}>
+                        <Text style={[theme.fontGray, theme.font12]}>20:00结束</Text>
+                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}><Text style={[theme.fontGray, theme.font12]}>余座：50</Text></View>
+                        <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]}>￥100.0</Text>
+                    </View>
                 </View>
-                <View style={[theme.flex, theme.row]}>
-                    <Text style={[theme.fontGray, theme.font12]}>20:00结束</Text>
-                    <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}><Text style={[theme.fontGray, theme.font12]}>余座：50</Text></View>
-                    <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]}>￥100.0</Text>
-                </View>
-            </View>
+            </TouchableOpacity>
         )
     }
     _getFilmPlanListSeparator() {
@@ -91,7 +97,7 @@ export default class ScheduleList extends Component {
     render() {
         return (
             <View style={theme.flex}>
-                <Header showCinema={true} title={this.state.title} disableBack={true}></Header>
+                <Header  title={this.state.title}></Header>
                 <Tab tab={this.state.plan} />
                 {this._getFilmPlanList()}
             </View>

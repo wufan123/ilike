@@ -55,87 +55,111 @@ class MeScreen extends Component {
 
     constructor(props) {
         super(props)
-        let items = this.getItems()
+        let items = this._getItemsData()
         this.state = {
             items: items
         }
     }
 
-    getItems() {
+    _getItemsData() {
         return [
             {
                 id: 'unCheckedTicket',
                 title: '待取票',
                 marginTop: true,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'memberSignIn',
                 title: '会员签到',
                 marginTop: false,
-                borderBottom: false
+                borderBottom: false,
+                image: require('')
             },
             {
                 id: 'account',
                 title: '我的账户',
                 marginTop: true,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'recharge',
                 title: '账户充值',
                 marginTop: false,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'refund',
                 title: '退票中心',
                 marginTop: false,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'card',
                 title: '影城会员卡',
                 marginTop: false,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'coupon',
                 title: '优惠券',
                 marginTop: false,
-                borderBottom: false
+                borderBottom: false,
+                image: require('')
             },
             {
                 id: 'expenseRecord',
                 title: '消费记录',
                 marginTop: true,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'integralRecord',
                 title: '积分记录',
                 marginTop: false,
-                borderBottom: false
+                borderBottom: false,
+                image: require('')
             },
             {
                 id: 'feedback',
                 title: '意见反馈',
                 marginTop: true,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'customerService',
                 title: '联系客服',
                 marginTop: false,
-                borderBottom: true
+                borderBottom: true,
+                image: require('')
             },
             {
                 id: 'setting',
                 title: '设置',
                 marginTop: false,
-                borderBottom: false
+                borderBottom: false,
+                image: require('')
             },
         ]
+    }
+    _gotoFilmOrder() {
+
+    }
+    _gotoGoodsOrder() {
+
+    }
+    _gotoComboOrder() {
+
+    }
+    _itemClick(item) {
+
     }
     /**
      * 下拉刷新
@@ -167,9 +191,29 @@ class MeScreen extends Component {
                         <Text style={[theme.fontWhite, theme.font14]}>余额：￥0.00 | 积分：100</Text>
                     </View>
                 </View>
+                <View style={[theme.row, theme.whiteBlockWithPadding]}>
+                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoFilmOrder}>
+                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                            <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-movie-order.png')} />
+                            <Text style={[theme.font12, theme.fontBlack]}>影票订单</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoGoodsOrder}>
+                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                            <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-goods-order.png')} />
+                            <Text style={[theme.font12, theme.fontBlack]}>卖品订单</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoComboOrder}>
+                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                            <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-packages-order.png')} />
+                            <Text style={[theme.font12, theme.fontBlack]}>套票订单</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
                 {
                     this.state.items.map((item, index) =>
-                        (<ItemComponet key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
+                        (<ItemComponet onPress={() => this.itemClick(item)} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
                 }
                 <Button buttonStyle={styles.button} text={'退出登陆'} />
             </RefreshScrollView>
@@ -209,13 +253,17 @@ const styles = StyleSheet.create({
     },
     itemImg: {
         width: 9,
-        height: 17, 
+        height: 17,
     },
     button: {
-        margin:theme.pagePadding,
-        marginRight:theme.pagePadding,
+        margin: theme.pagePadding,
+        marginRight: theme.pagePadding,
         backgroundColor: theme.colorPrimary,
-        borderRadius: theme.borderRadius, 
+        borderRadius: theme.borderRadius,
+    },
+    topItemImg: {
+        height: 23,
+        width: 22
     }
 });
 
