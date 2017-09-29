@@ -148,6 +148,10 @@ class MeScreen extends Component {
         }, 3000);
     }
 
+    _navigateToLogin(){
+        this.props.navigation.navigate('Login');
+    }
+
     /**
     * 加载更多  数据加载
     * @private
@@ -171,7 +175,7 @@ class MeScreen extends Component {
                     this.state.items.map((item, index) =>
                         (<ItemComponet key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
                 }
-                <Button buttonStyle={styles.button} text={'退出登陆'} />
+                <Button buttonStyle={styles.button} text={'退出登陆'} onPress={()=> this._navigateToLogin()} />
             </RefreshScrollView>
         </View>)
     }
