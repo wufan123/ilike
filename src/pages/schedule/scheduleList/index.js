@@ -50,6 +50,7 @@ export default class ScheduleList extends Component {
                 { data: [1, 2,] },
             ],
         }
+
     }
 
     getPlanListData() {
@@ -57,7 +58,12 @@ export default class ScheduleList extends Component {
     }
 
     _gotoChooseSeat(item) {
-        global.navigation.navigate('ChooseSeat');
+        if(this.props.choose){
+            this.props.choose(item)
+        }else
+        {
+            global.navigation.navigate('ChooseSeat');
+        }
     }
 
     _getListItem = ({ item, index }) => {
@@ -95,9 +101,10 @@ export default class ScheduleList extends Component {
     _keyExtractor = (item, index) => index
 
     render() {
+        let headStyle = this.props.hideHeader?{display:'none'}:{}
         return (
             <View style={theme.flex}>
-                <Header  title={this.state.title}></Header>
+                <Header  title={this.state.title} style={headStyle}/>
                 <Tab tab={this.state.plan} />
                 {this._getFilmPlanList()}
             </View>

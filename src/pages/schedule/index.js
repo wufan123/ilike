@@ -151,7 +151,7 @@ class ScheduleScreen extends Component {
     render() {
         return (
             <View style={theme.flex}>
-                <Header showCinema={true} title={this.state.title} disableBack={true}></Header>
+                <Header showCinema={true} title={this.state.title} disableBack={true}/>
                 <Tab tab={this.state.plan}/>
                 {this._getFilmList()}
             </View>
