@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import VideoPlayer from 'react-native-video-controls';
 export default class VideoView extends Component {
     render() {
+        let videoUrl = this.props.navigation.state.params.videoUrl;
         return (
             <View style={{flex: 1}}>
                 {/*<VideoPlayer
@@ -15,8 +16,8 @@ export default class VideoView extends Component {
                     style={{flex: 1}}
                 />*/}
                 <VideoPlayer
-                    source={{ uri: 'http://7xk8vp.com1.z0.glb.clouddn.com/WhatsNewFeature_03.mp4' }}
-                    // navigator={ this.props.navigator }
+                    source={{ uri: videoUrl }}
+                    onBack={()=>this.props.navigation.goBack()}
                 />
             </View>
         )
