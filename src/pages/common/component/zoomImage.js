@@ -133,7 +133,7 @@ export default class ZoomImage extends Component {
                     <ScrollView style={{ width: '100%' }} horizontal={true} >
                         <Image 
                             style={{ width: this.state.width * this.state.scaleNumber, height: this.state.height * this.state.scaleNumber }}
-                            source={require('../../assets/tabs/icon_me_s.png')}
+                            source={require('../../../assets/tabs/icon_me_s.png')}
                         />
                     </ScrollView>
                 </ScrollView > 

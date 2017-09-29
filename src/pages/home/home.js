@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     View,
     Text,
@@ -13,14 +13,14 @@ import {
     Platform,
     SectionList
 } from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import * as WeChat from 'react-native-wechat';
 import Header from '../common/header';
 import Swiper from 'react-native-swiper';
-import {RefreshScrollView} from '../common/pull'
+import { RefreshScrollView } from '../common/pull'
 import globalStyle from '../../style/index'
 
-const {width, height} = Dimensions.get('window')
+const { width, height } = Dimensions.get('window')
 
 function tabBarIcons(focused) {
     let icon = focused ? require('../../assets/tabs/icon_home_s.png') : require('../../assets/tabs/icon_home_n.png')
@@ -35,7 +35,7 @@ function tabBarIcons(focused) {
 class HomeScreen extends Component {
     static navigationOptions = {
         tabBarLabel: '首页',
-        tabBarIcon: ({focused}) => tabBarIcons(focused)
+        tabBarIcon: ({ focused }) => tabBarIcons(focused)
     }
 
     constructor(props) {
@@ -56,10 +56,10 @@ class HomeScreen extends Component {
                 8
             ],
             commingMovies: [
-                {data: [1, 2, 3, 4, 5], title: 'section 0'},
-                {data: [1, 2, 3], title: 'section 1'},
-                {data: [1, 2, 3, 4], title: 'section 2'},
-                {data: [1, 2,], title: 'section 3'},
+                { data: [1, 2, 3, 4, 5], title: 'section 0' },
+                { data: [1, 2, 3], title: 'section 1' },
+                { data: [1, 2, 3, 4], title: 'section 2' },
+                { data: [1, 2,], title: 'section 3' },
             ],
             swiperShow: false,
             curTab: 0
@@ -98,11 +98,11 @@ class HomeScreen extends Component {
                     <Swiper autoplay={true} paginationStyle={styles.pagination} activeDotColor="#fff">
                         <View style={styles.slide}>
                             <Image resizeMode="stretch" style={styles.adImage}
-                                   source={require('../../assets/lake.png')}/>
+                                source={require('../../assets/lake.png')} />
                         </View>
                         <View style={styles.slide}>
                             <Image resizeMode="stretch" style={styles.adImage}
-                                   source={require('../../assets/lake.png')}/>
+                                source={require('../../assets/lake.png')} />
                         </View>
                     </Swiper>
                 </View>
@@ -111,7 +111,7 @@ class HomeScreen extends Component {
             return (
                 <View style={styles.swiperContainer}>
                     <View style={styles.slide}>
-                        <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')}/>
+                        <Image resizeMode="stretch" style={styles.adImage} source={require('../../assets/lake.png')} />
                     </View>
                 </View>
             )
@@ -121,7 +121,7 @@ class HomeScreen extends Component {
     _footer = () => {
         return (
             <View style={styles.footer}>
-                <Text style={{color: globalStyle.fontColorGray, fontSize: 12}}>已经到底啦～</Text>
+                <Text style={{ color: globalStyle.fontColorGray, fontSize: 12 }}>已经到底啦～</Text>
             </View>
         )
     }
@@ -131,14 +131,17 @@ class HomeScreen extends Component {
             height: 1,
             backgroundColor: 'rgb(244,244,244)',
             marginHorizontal: 15
-        }}/>;
+        }} />;
     }
 
     _navigateToMovieDetail() {
         this.props.navigation.navigate('MovieDetail');
     }
+    _gotoSchedule() {
+        global.navigation.navigate('ScheduleList');
+    }
 
-    _reanderItem = ({item, index}) => {
+    _reanderItem = ({ item, index }) => {
         return (
             <TouchableHighlight
                 onPress={() => {
@@ -149,7 +152,7 @@ class HomeScreen extends Component {
                     <View style={styles.movieThumbContainer}>
                         <Image resizeMode="stretch" style={styles.movieThumb} source={{
                             uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'
-                        }}/>
+                        }} />
                     </View>
                     <View style={styles.movieDetailContainer}>
                         <View style={styles.titleScoreContainer}>
@@ -178,9 +181,8 @@ class HomeScreen extends Component {
                                 <Text style={styles.movieSlogan}><Text>导演： </Text>天堂实假象，险象险中还</Text>
                                 <Text style={styles.movieActress} numberOfLines={1}><Text style={globalStyle.fontBalck}>主演： </Text>迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰</Text>
                             </View>
-                            <View style={{width: 46,}}>
-                                <TouchableOpacity style={styles.buyButton} onPress={() => {
-                                }}>
+                            <View style={{ width: 46, }}>
+                                <TouchableOpacity style={styles.buyButton} onPress={() => this._gotoSchedule(item)}>
                                     <Text style={{
                                         color: globalStyle.colorPrimary
                                     }}>购票</Text>
@@ -193,14 +195,14 @@ class HomeScreen extends Component {
         )
     }
 
-    _renderCommingMovieItem = ({item}) => {
+    _renderCommingMovieItem = ({ item }) => {
         let collectIcon = false ? require('../../assets/home/icon_collect.png') : require('../../assets/home/icon_uncollect.png')
         return (
             <View style={styles.row}>
                 <View style={styles.movieThumbContainer}>
                     <Image resizeMode="stretch" style={styles.movieThumb} source={{
                         uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'
-                    }}/>
+                    }} />
                 </View>
                 <View style={styles.movieDetailContainer}>
                     <View style={styles.titleScoreContainer}>
@@ -226,19 +228,19 @@ class HomeScreen extends Component {
                             alignSelf: 'stretch'
                         }}>
                             <Text style={styles.movieSlogan}><Text>主演： </Text>迈克尔格林／约翰·洛根／杰</Text>
-                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Image
                                     source={require('../../assets/home/icon_like.png')}
-                                    style={{width: 8, height: 12}}
+                                    style={{ width: 8, height: 12 }}
                                 />
                                 <Text style={[globalStyle.fontOrange, globalStyle.font12]}
-                                      numberOfLines={1}>166影迷关注</Text>
+                                    numberOfLines={1}>166影迷关注</Text>
                             </View>
                         </View>
-                        <View style={{width: 46,}}>
+                        <View style={{ width: 46, }}>
                             <TouchableOpacity style={styles.buyButton} onPress={() => {
                             }}>
-                                <Image source={collectIcon} style={{width: 12, height: 12}}/>
+                                <Image source={collectIcon} style={{ width: 12, height: 12 }} />
                                 <Text style={{
                                     color: globalStyle.colorPrimary
                                 }}>关注</Text>
@@ -280,16 +282,16 @@ class HomeScreen extends Component {
                     data={this.state.movies}
                     renderItem={this._reanderItem}
                     keyExtractor={this._keyExtractor}
-                    scrollEnabled={false}/>
+                    scrollEnabled={false} />
             )
         }
         return this.hotList;
     }
 
-    _commingSectionHeader({section}) {
+    _commingSectionHeader({ section }) {
         return (
             <View style={styles.commingSectionHeader}>
-                <Text style={{fontSize: 15, color: globalStyle.fontColorGray,}}>
+                <Text style={{ fontSize: 15, color: globalStyle.fontColorGray, }}>
                     {section.title}
                 </Text>
             </View>
@@ -319,11 +321,11 @@ class HomeScreen extends Component {
     }
 
     render() {
-        const {navigate} = this.props.navigation;
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.homeContainer}>
                 <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)}
-                        disableBack={true}></Header>
+                    disableBack={true}></Header>
                 <RefreshScrollView
                     onPullRelease={(resolve) => this._onPullRelease(resolve)}
                 >

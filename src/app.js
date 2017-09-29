@@ -9,6 +9,9 @@ import VideoView from './pages/common/videoView'
 import GoodsDetail from './pages/store/goodsDetail'
 import ChooseSeat from './pages/schedule/chooseSeat'
 import Cinema from './pages/home/cinema'
+import Login from './pages/login'
+import ForgetPw from './pages/login/forgetPw'
+import Register from './pages/login/register'
 import ScheduleList from './pages/schedule/scheduleList'
 
 import './business/storage'
@@ -21,9 +24,12 @@ const App = StackNavigator(
         QrCodeScan: { screen: QrCodeScan },
         VideoView: { screen: VideoView },
         GoodsDetail: { screen: GoodsDetail },
-        Cinema: { screen: Cinema },
-        ScheduleList: { screen: ScheduleList },
+        Login: { screen: Login },
+        ForgetPw: { screen: ForgetPw },
+        Register: { screen: Register },
+        Cinema: { screen: Cinema }, 
         ChooseSeat:{screen:ChooseSeat},
+        ScheduleList: { screen: ScheduleList }
     },
     {
         navigationOptions: {

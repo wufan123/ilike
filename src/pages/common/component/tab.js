@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-var theme = require('../../style')
+var theme = require('../../../style')
 const { width, height } = Dimensions.get('window')
 export default class Tab extends Component {
     constructor(props) {

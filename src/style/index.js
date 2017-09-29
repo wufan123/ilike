@@ -24,6 +24,9 @@ module.exports = {
     fontWhite: {
         color: '#ffffff'
     },
+    fontColorPrimary: {
+        color: '#dc3c38',
+    },
     font10: {
         fontSize: 10
     },
@@ -98,6 +101,10 @@ module.exports = {
     },
     textAlignCenter:{
         textAlignCenter:'center'
+    },
+    lineSeperator: {
+        height: 1,
+        backgroundColor: 'rgb(244,244,244)'
     }
 
 };
