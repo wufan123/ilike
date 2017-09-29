@@ -9,8 +9,10 @@ import {
 } from 'react-native';
 import Header from '../common/header'
 import {
-  ImageButton, Button
+  ImageButton, Button,CFlatList
 } from '../common/component'
+import { RefreshScrollView } from '../common/pull'
+
 var theme = require('../../style')
 
 function tabBarIcons(focused) {
@@ -83,12 +85,12 @@ class GoodsScreen extends Component {
   }
 
   gotoDetail() {
-    global.navigation.navigate('GoodsDetail');  
+    global.navigation.navigate('GoodsDetail');
   }
 
   getGoodsListItem = ({ item, index }) => {
     return (
-      <TouchableOpacity onPress={()=>this.gotoDetail()}> 
+      <TouchableOpacity onPress={() => this.gotoDetail()}>
         <View style={[styles.itemContainer, theme.flex]} >
           <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
           </Image>
@@ -110,8 +112,8 @@ class GoodsScreen extends Component {
                 onPress={() => this._onAddPress(item, index)} />
             </View>
           </View>
-        </View> 
-      </TouchableOpacity>  
+        </View>
+      </TouchableOpacity>
     )
   }
   getComboListItem = ({ item, index }) => {
@@ -170,15 +172,18 @@ class GoodsScreen extends Component {
   render() {
 
     return (<View style={theme.flex}  >
-      <Header  showCinema={true}  tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-      <FlatList style={theme.flex}
-        extraData={this.state}
-        data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}
-        keyExtractor={this._keyExtractor}
-        renderItem={this.state.curTab == this.state.tab[0] ? this.getGoodsListItem : this.getComboListItem}
-      />
+      <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
+      <RefreshScrollView style={theme.flex}>
+        <CFlatList style={theme.flex}
+          extraData={this.state}
+          data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}
+          keyExtractor={this._keyExtractor}
+          renderItem={this.state.curTab == this.state.tab[0] ? this.getGoodsListItem : this.getComboListItem}
+        />
+      </RefreshScrollView>
       {this.getSubmitButton()}
-    </View>
+
+    </View >
     )
 
   }

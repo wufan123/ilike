@@ -23,6 +23,7 @@ const ListState = 4;    //正常加载
 const MoreState = 5;    //正在加载更多
 const NoMoreState = 6;    //没有更多了
 const NoMoreErrorState = 7;    //加载更多出错
+const NOState=8;//正常状态
 
 export default class RefreshScrollView extends Pullable {
 
@@ -31,7 +32,7 @@ export default class RefreshScrollView extends Pullable {
         this.getMetrics = this.getMetrics.bind(this);
         // this.scrollToOffset = this.scrollToOffset.bind(this);
         this.scrollToEnd = this.scrollToEnd.bind(this);
-        this.currentState = ListState;
+        this.currentState = NoMoreState; 
     }
 
     getMetrics(args) {
@@ -163,7 +164,7 @@ export default class RefreshScrollView extends Pullable {
                 onEndThreshold={0}
                 {...this.props} >
                 {/*{this._renderFoot()}*/}
-            </ScrollView>
+            </ScrollView> 
         );
     }
 
@@ -192,12 +193,8 @@ export default class RefreshScrollView extends Pullable {
         } else if (this.currentState >= ListState) {
             return this.props.renderMore || (
                 <View
-                    style={{
-                        paddingVertical: 10,
-                        borderTopWidth: 1,
-                        borderColor: "#CED0CE"
-                    }}>
-                    <ActivityIndicator animating size="large" />
+                    style={styles.footer}>
+                    <Text>正在加载</Text>
                 </View>
             );
         } else {
@@ -233,7 +230,6 @@ const styles = StyleSheet.create({
     },
     footer: {
         height: 50,
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         borderTopWidth: 1,
