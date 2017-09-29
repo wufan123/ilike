@@ -2951,7 +2951,7 @@ jest@21.0.2:
   dependencies:
     jest-cli "^21.0.2"
 
-jpush-react-native@^2.0.9:
+jpush-react-native@^2.0.7:
   version "2.0.9"
   resolved "http://registry.npm.taobao.org/jpush-react-native/download/jpush-react-native-2.0.9.tgz#7b73a436b408a2e66f7a78a265f149536fb9176d"
 
@@ -4369,6 +4369,12 @@ react-native-drawer-layout@1.3.2:
   resolved "http://registry.npm.taobao.org/react-native-drawer-layout/download/react-native-drawer-layout-1.3.2.tgz#b9740d7663a1dc4f88a61b9c6d93d2d948ea426e"
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
+
+react-native-linear-gradient@^2.3.0:
+  version "2.3.0"
+  resolved "http://registry.npm.taobao.org/react-native-linear-gradient/download/react-native-linear-gradient-2.3.0.tgz#757997197e35edf52e290891a11566e462845da1"
+  dependencies:
+    prop-types "^15.5.10"
 
 "react-native-movie-seats@git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#develop":
   version "1.0.0"
