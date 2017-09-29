@@ -7,15 +7,38 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    StatusBar
+    StatusBar,
+    ScrollView,
+    FlatList
 } from 'react-native';
 import globalStyle from '../../style/index';
 import LinearGradient from 'react-native-linear-gradient';
 import RatingView from '../common/component/ratingView'
 
-const { screenWidth, screenHeight } = Dimensions.get('window')
+const { width, height } = Dimensions.get('window')
 
 class MovieDetailScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        this._renderMovieItem = this._renderMovieItem.bind(this);
+        this.state = {
+            movieThumbs: [
+                    'http://new.huansixi.com/data/upload/ueditor/20170222/58ad7352007ba.jpg',
+                    'http://dingyue.nosdn.127.net/6SJLUojjBd10Hk7kayfVvv5UFdBdga=q9i650jPTcm=Pp1475810505915.jpg',
+                    'https://www.zhaiiker.com/wp-content/uploads/2017/04/34017629012_226f996dca_b.jpg',
+                    'https://www.zhaiiker.com/wp-content/uploads/2017/05/p619787.jpg'
+                ],
+            commentList: [
+                {nickname:'zmax', comment: 'I ran the code but there\'s an error ',},
+                {nickname:'zmax', comment: 'and whats the error?',},
+                {nickname:'zmax', comment: 'Oh sorry. I just clicked the "Run code snippet" button above and the result showed an error. But I think it\'s nothing to do with your code. Sorry.'},
+            ],
+            movieBriefToggle: false,
+        };
+        this._rendMovieBrief = this._rendMovieBrief.bind(this);
+        this._rendScrollThumbItem = this._rendScrollThumbItem.bind(this);
+    }
 
     _renderBackButton() {
         return (
@@ -57,6 +80,23 @@ class MovieDetailScreen extends Component {
         )
     }
 
+    _renderSocialItem(img, title, action) {
+        return (
+            <TouchableOpacity
+                onPress={()=>action()}
+            >
+                <View style={styles.socialItem}>
+                    <Image style={styles.socialImg} source={img} />
+                    <Text style={styles.socialTitle}>{title}</Text>
+                </View>
+            </TouchableOpacity>
+        );
+    }
+
+    _likeAction() {
+
+    }
+
     _renderMovieItem() {
         return(
             <View style={styles.movieSocialContainer}>
@@ -82,19 +122,156 @@ class MovieDetailScreen extends Component {
                         </View>
                     </View>
                 </View>
+                <View style={[globalStyle.lineSeperator, {marginTop: 8}]} />
+                <View style={styles.socialContainer}>
+                    {this._renderSocialItem(require('../../assets/home/icon_uncollect.png'), '关注', this._likeAction)}
+                    {this._renderSocialItem(require('../../assets/common/share.png'), '分享', this._likeAction)}
+                    {this._renderSocialItem(require('../../assets/common/write_comment.png'), '写短评', this._likeAction)}
+                </View>
             </View>
+        )
+    }
+
+    _rendScrollThumbItem({item, index}) {
+        let imgWidth = width / 2 - 23;
+        return(
+            <View style={globalStyle.row}>
+            <TouchableOpacity
+                onPress={()=>{}}
+            >
+                <Image resizeMode={'cover'} style={{width: imgWidth, height: imgWidth*0.75, overflow: 'hidden'}} source={{uri: item}} />
+            </TouchableOpacity>
+            {index!==(this.state.movieThumbs.length-1)?this._rendThumbSpace():null}
+            </View>
+        );
+    }
+
+    _rendThumbSpace = () => {
+        return (
+            <View style={{width: 15}} />
+        )
+    }
+
+    _rendSectionSeparate() {
+        return (
+            <View style={styles.sectionSeparate} />
+        )
+    }
+
+    toggleMovieBrief() {
+        this.setState({
+            movieBriefToggle: !this.state.movieBriefToggle
+        });
+    }
+
+    _rendMovieBrief() {
+        return(
+            <View style={styles.movieBriefScrollThumbsContainer}>
+                <View style={styles.movieBreifContainer}>
+                    <Text style={[globalStyle.fontBlack, globalStyle.font20]}>剧情简介</Text>
+                    <Text 
+                        numberOfLines={this.state.movieBriefToggle?0:3}
+                        style={[globalStyle.fontGray, globalStyle.font16, {marginTop: 15, lineHeight: 20}]}>
+                        星际航船 “诺史莫”号是一艘载有7名船员的大型商业运输船。它正带着大量的矿石返回地球。中途时处在休眠状态的船员被主电脑唤醒,原来飞船接收到一组信号,根据接到的指令,他们必须改变航行,追查事情原由,适当采取援救活动。信号是由一个原始星球上发出的,那里的大气无法供生物生存。派到地面的分队成员发现了一艘航船残骸,船员早已死亡,成为化石。但在底舱却发现了许多类似虫卵的大圆球,它们被一层射线保护住,似乎还有生命活动。
+而此时在母船上的第三指挥官蕾普莉中尉却已破译出信号,那并不是求救而表示一种警告,但已来不及了。卵中的生物袭击了一名队员,破坏了他的防护服,并停留在人的脸上,船上的科学家阿休试图切开它,不料它流出的血竟是一种可怕的强腐蚀酸液。正在人们一筹莫展时,一天后,它却突然死了,体内的酸液被中和，而外壳却逐渐硅化成一个坚不可破的装甲。好景不长,更糟的事发生了。原来这种外星异形生物死了根本不是什么意外，而是因为它把卵注入到了这名队员的食道内，异形卵在里面长成后杀死寄主破体而出。面对这种可怕的生物,船员开始分散去找它并消灭它,不料它却已长成一个巨大的异形怪物。船员一个个地被它吞吃掉,而蕾普莉却发现主电脑有问题,它被输入了一些奇怪的指令。
+原来这次航行是公司预谋的,目的是带回外星生物作研究,并以牺牲全体船员的代价。艾什正是派来执行任务的人造人。蕾普莉设法杀死了艾什,并决定弃船以毁灭异形。就在穿梭机离开母船后, 自毁程序启动, 然而异形却已经在穿梭机上,蕾普莉用排物管道,将异形放逐到太空,然后进入了休眠。
+                    </Text>
+                    <TouchableOpacity
+                        style={[globalStyle.alignItemsCenter, {height: 20, marginTop: 10}]}
+                        onPress={this.toggleMovieBrief.bind(this)}
+                    >
+                        <Image resizeMode={'stretch'} style={styles.extendImg} source={this.state.movieBriefToggle?require('../../assets/common/icon_movie_unexp.png'):require('../../assets/common/icon_movie_exp.png')} />
+                    </TouchableOpacity>
+                </View>
+                <View style={[globalStyle.lineSeperator, {marginVertical: 15}]} />
+                <FlatList
+                    style={styles.scrollThumbContainer}
+                    data={this.state.movieThumbs}
+                    renderItem={this._rendScrollThumbItem}
+                    horizontal={true}
+                    keyExtractor={(item, index)=>(''+index)}
+                />
+            </View>
+        )
+    }
+
+    _renderCommentCell({item, index}) {
+        return (
+            <TouchableOpacity
+                onPress={()=>{}}
+            >
+                <View
+                    style={[styles.commentCell]}
+                >
+                    <View style={styles.commentCellUpContainer}>
+                        <View style={[globalStyle.row, {alignItems:'center'}]}>
+                            <Image style={styles.avatar} source={require('../../assets/common/default_avatar.png')} />
+                            <View style={{'width':6}} />
+                            <Text style={[globalStyle.fontGray, globalStyle.font14]}>zmax</Text>
+                            <View style={{'width':6}} />
+                            <Image style={styles.genderImg} source={require('../../assets/common/girl.png')} />
+                        </View>
+                        <Text style={[globalStyle.fontGray, globalStyle.font14]}>30min ago</Text>
+                    </View>
+                    <View
+                        style={styles.commentCellMiddleContainer}
+                    >
+                        <Text
+                            numberOfLines={3}
+                            style={[globalStyle.fontBlack, globalStyle.font16]}
+                        >
+                            {item.comment}
+                        </Text>
+                    </View>
+                    <View
+                        style={styles.commentCellBottomContainer}
+                    >
+                        <Image
+                            style={{width: 16, height: 14}}
+                            source={require('../../assets/common/movie_comments.png')}
+                            resizeMode={"cover"}
+                        />
+                        <View style={{width:6}} />
+                        <Text style={[globalStyle.fontGray, globalStyle.font12]} >20</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    }    
+
+    _renderCommentList() {
+        return (
+            <FlatList 
+                data={this.state.commentList}
+                renderItem={this._renderCommentCell}
+                ItemSeparatorComponent={()=><View style={[globalStyle.lineSeperator]} />}
+                keyExtractor={(item, index)=>(''+index)}
+            />
         )
     }
 
     render() {
         return (
             <View style={styles.screenContainer}>
+            <ScrollView style={styles.screenContainer}>
                 <StatusBar
                     hidden={true}
                 />
                 {this._renderBackButton()}
                 {this._renderVideoView()}
                 {this._renderMovieItem()}
+                {this._rendSectionSeparate()}
+                {this._rendMovieBrief()}
+                {this._rendSectionSeparate()}
+                {this._renderCommentList()}
+                <View style={{height: 8}} />
+            </ScrollView>
+            <TouchableOpacity
+                onPress={()=>{}}
+                style={styles.buyButton}
+            >
+                <Text style={[globalStyle.fontWhite, globalStyle.font18]}>选座购票</Text>
+            </TouchableOpacity>
             </View>
         )
     }
@@ -103,7 +280,7 @@ class MovieDetailScreen extends Component {
 const styles = StyleSheet.create({
     screenContainer: {
         flex: 1,
-        backgroundColor: globalStyle.backgroundColor,
+        backgroundColor: globalStyle.pageBackground,
     },
     videoContainer: {
         aspectRatio: 16/9,
@@ -142,13 +319,14 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 15,
         paddingTop: 8,
-        paddingBottom: 15
+        paddingBottom: 15,
+        backgroundColor: globalStyle.backgroundColor
     },
     movieContainer: {
         flexDirection: 'row',
     },
     movieThumbContainer: {
-        height: 100,
+        height: 103,
         width: 75
     },
     movieThumb: {
@@ -173,10 +351,77 @@ const styles = StyleSheet.create({
     movieTagText: {
         ...globalStyle.font14,
         ...globalStyle.fontColorPrimary,
-        lineHeight: 20
+        lineHeight: 24,
+        textAlign: 'center'
     },
     movieTagSpace: {
         width: 10,
+    },
+    socialContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 15,
+        paddingHorizontal: 20,
+        alignItems: 'center'
+    },
+    socialItem: {
+        alignItems: 'center',
+        height: 46,
+        justifyContent: 'space-between'
+    },
+    socialImg: {
+        width: 24,
+        height: 24,
+        resizeMode: 'contain'
+    },
+    socialTitle: {
+        ...globalStyle.font16,
+        ...globalStyle.fontBlack
+    },
+    movieBriefScrollThumbsContainer: {
+        backgroundColor: globalStyle.backgroundColor,
+        paddingHorizontal: 15,
+        paddingVertical: 15,
+    },
+    sectionSeparate: {
+        height: 10,
+    },
+    extendImg: {
+        width: 32,
+        height: 16
+    },
+    commentCell: {
+        padding: 15,
+        backgroundColor: 'white',
+    },
+    commentCellUpContainer: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    avatar: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+    },
+    genderImg: {
+        width: 14,
+        height: 14,
+        resizeMode: 'cover'
+    },
+    commentCellMiddleContainer: {
+        marginTop: 8,
+        marginLeft: 38,
+    },
+    commentCellBottomContainer: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        marginTop: 8
+    },
+    buyButton: {
+        ...globalStyle.buttonOrange,
+        height: 44,
     }
 })
 
