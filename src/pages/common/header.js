@@ -26,21 +26,25 @@ class Header extends Component {
         global.navigation.navigate('Cinema');
     }
 
+    _goToForgetPw(){
+        global.navigation.navigate('ForgetPw');   
+    }
+
     render() {
         return (
             <View style={{ zIndex: 10 }}>
-                <StatusBar
-                    backgroundColor={theme.colorPrimary}
+                <StatusBar backgroundColor={theme.colorPrimary}
                 />
-                <View style={styles.headerContainer} >
-                    <View style={styles.backImg}>{!this.props.disableBack ? (<ImageButton style={styles.backImg} source={require('../../assets/common/back.png')} onPress={() => this.backClick()} />) : null}
+                <View style={[styles.headerContainer,this.props.bgColor]} >
+                    <View style={styles.backImg}>{!this.props.disableBack ? (this.props.theme=='white'? <ImageButton style={styles.backImg} source={require('../../assets/common/back_red.png')} onPress={() => this.backClick()} />: <ImageButton style={styles.backImg} source={require('../../assets/common/back.png')} onPress={() => this.backClick()} />) : null}
                     </View>
                     <View style={styles.centerBox}>
-                        {this.props.title ? (<Text style={styles.title}>{this.props.title}</Text>) : null}
+                        {this.props.title ? (<Text style={[styles.title,this.props.textColor]}>{this.props.title}</Text>) : null}
                         {this.props.tab ? (<Tab tab={this.props.tab} changeSelect={(item) => this.changeSelect(item)}></Tab>) : null}
                     </View>
                     <View style={styles.rightBox}>
                         {this.props.showCinema ? (<TouchableOpacity onPress={this.selectCinema} style={theme.flex}><Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text></TouchableOpacity>) : null}
+                        {this.props.RText ? (<TouchableOpacity onPress={this._goToForgetPw} ><Text style={this.props.textColor} numberOfLines={1}>{this.props.RText}</Text></TouchableOpacity>) : null}
                     </View>
                 </View> 
             </View>
@@ -61,6 +65,24 @@ const styles = StyleSheet.create({
             }
         }),
         backgroundColor: theme.colorPrimary,
+        alignItems: 'center',
+        paddingLeft: 5,
+        paddingRight: 5,
+        position: 'relative'
+    },
+    whiteContainer: {
+        flexDirection: 'row',
+        ...Platform.select({
+            ios: {
+                height: 64,
+                paddingTop: 20
+            },
+            android: {
+                height: 44
+            }
+        }),
+        backgroundColor: '#ffffff',
+        color:theme.colorPrimary,
         alignItems: 'center',
         paddingLeft: 5,
         paddingRight: 5,
