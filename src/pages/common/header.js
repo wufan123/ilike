@@ -17,12 +17,10 @@ class Header extends Component {
         }
     }
     backClick() {
-        console.log("navigationttttttttttttttt", global.navigation)
         global.navigation.goBack(null);
     }
 
     selectCinema() {
-        console.log("tttttttttttttt")
         global.navigation.navigate('Cinema');
     }
 
@@ -32,7 +30,7 @@ class Header extends Component {
 
     render() {
         return (
-            <View style={{ zIndex: 10 }}>
+            <View style={[{ zIndex: 10 },this.props.style]}>
                 <StatusBar backgroundColor={theme.colorPrimary}
                 />
                 <View style={[styles.headerContainer,this.props.bgColor]} >
@@ -45,6 +43,7 @@ class Header extends Component {
                     <View style={styles.rightBox}>
                         {this.props.showCinema ? (<TouchableOpacity onPress={this.selectCinema} style={theme.flex}><Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text></TouchableOpacity>) : null}
                         {this.props.RText ? (<TouchableOpacity onPress={this._goToForgetPw} ><Text style={this.props.textColor} numberOfLines={1}>{this.props.RText}</Text></TouchableOpacity>) : null}
+                        {this.props.rightTxt? <TouchableOpacity onPress={this.props.rightClick} style={theme.flex}><Text  style={styles.cinemaName} numberOfLines={1}>{this.props.rightTxt }</Text><Image style={{display:this.props.rightImg?'flex':'none'}} source={{uri:this.props.rightImg}}/></TouchableOpacity>:null}
                     </View>
                 </View> 
             </View>

@@ -4,7 +4,8 @@ import {
     Text,
     Image,
     StyleSheet,
-    TouchableOpacity
+    TouchableOpacity,
+    Modal
 } from 'react-native';
 import Header from '../common/header'
 import {
@@ -12,6 +13,7 @@ import {
 } from '../common/component'
 import MovieSeat from 'react-native-movie-seats'
 import globalStyle from '../../style/index'
+import ScheduleList from './scheduleList'
 let theme = require('../../style')
 
 export default class extends Component {
@@ -22,7 +24,7 @@ export default class extends Component {
             title: '西游记之大闹天空',
             info: {},
             selectedSeats: [],
-            selectedSeats:[]
+            modalVisible:true
         }
     }
 
@@ -45,116 +47,130 @@ export default class extends Component {
             row: row
         }
         return (<View style={theme.flex}>
-            <Header title={this.state.title}/>
-            <View style={styles.planBar}>
-                <View style={[styles.planBarItem, {justifyContent: 'flex-start', marginLeft: 16}]}>
-                    <Text style={{marginRight: 16}}>&lt;</Text>
-                    <View>
-                        <Text>
-                            无场次
-                        </Text>
-                        <Text>
-                            上一场
-                        </Text>
-                    </View>
-                </View>
-                <View style={[styles.planBarItem, {justifyContent: 'center'}]}>
-                    <View>
-                        <Text>
-                            无场次
-                        </Text>
-                        <Text>
-                            上一场
-                        </Text>
-                    </View>
-                </View>
-                <View style={[styles.planBarItem, {justifyContent: 'flex-end', marginRight: 16}]}>
-                    <View>
-                        <Text>
-                            无场次
-                        </Text>
-                        <Text>
-                            上一场
-                        </Text>
-                    </View>
-                    <Text style={{marginLeft: 16}}>&gt;</Text>
-                </View>
-            </View>
+            <Header title={this.state.title} rightTxt={'换一场'} rightClick={()=>this.showModal()}/>
             <View style={theme.flex}>
-                <View style={{height: 110, alignItems: 'center'}}>
-                    <View style={styles.seatInfo}>
-                        <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon}
-                                   resizeMode="contain"
-                                   source={require('../../assets/shedule/seat_checked.png')}/>
+                <View style={styles.planBar}>
+                    <View style={[styles.planBarItem, {justifyContent: 'flex-start', marginLeft: 16}]}>
+                        <Text style={{marginRight: 16}}>&lt;</Text>
+                        <View>
                             <Text>
-                                已选
+                                无场次
                             </Text>
-                        </View>
-                        <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon} resizeMode="contain"
-                                   source={require('../../assets/shedule/seat_lock.png')}/>
                             <Text>
-                                已售
-                            </Text>
-                        </View>
-                        <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon}
-                                   resizeMode="contain"
-                                   source={require('../../assets/shedule/seat_normal.png')}/>
-                            <Text>
-                                已选
+                                上一场
                             </Text>
                         </View>
                     </View>
-                    <View style={{alignItems: 'center', marginTop: 8}}>
-                        <Image style={{width: 270, height: 16}} source={require('../../assets/shedule/screen.png')}/>
-                        <Text>
-                            中瑞国际影城(红星店)ZMAX巨幕厅
-                        </Text>
-                    </View>
-                </View>
-                <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                    <MovieSeat selectedSeats={this.state.selectedSeats}  style={{flex: 1}} seatInfos={data} maxSelectedSeatsCount={4} select={(seat) => {
-                        this.select(seat)
-                    }} unselect={(seat) => {
-                        this.unSelect(seat)
-                    }}/>
-                </View>
-                <View style={{alignItems: 'center', height: 120}}>
-                    <View style={styles.seatInfo}>
-                        <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon}
-                                   resizeMode="contain"
-                                   source={require('../../assets/shedule/seat_gold.png')}/>
+                    <View style={[styles.planBarItem, {justifyContent: 'center'}]}>
+                        <View>
                             <Text>
-                                会员黄金座
+                                无场次
                             </Text>
-                        </View>
-                        <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon} resizeMode="contain"
-                                   source={require('../../assets/shedule/seat_lover.png')}/>
-                            <Text >
-                                情侣座
-                            </Text>
-                        </View>
-                        <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon}
-                                   resizeMode="contain"
-                                   source={require('../../assets/shedule/seat_vip.png')}/>
                             <Text>
-                                VIP
+                                上一场
                             </Text>
                         </View>
                     </View>
-                    <View style={styles.chooseInfo}>
-                        {this.getChooseInfo()}
+                    <View style={[styles.planBarItem, {justifyContent: 'flex-end', marginRight: 16}]}>
+                        <View>
+                            <Text>
+                                无场次
+                            </Text>
+                            <Text>
+                                上一场
+                            </Text>
+                        </View>
+                        <Text style={{marginLeft: 16}}>&gt;</Text>
                     </View>
                 </View>
+                <View style={theme.flex}>
+                    <View style={{height: 110, alignItems: 'center'}}>
+                        <View style={styles.seatInfo}>
+                            <View style={styles.seatItem}>
+                                <Image style={styles.seatItemIcon}
+                                       resizeMode="contain"
+                                       source={require('../../assets/shedule/seat_checked.png')}/>
+                                <Text>
+                                    已选
+                                </Text>
+                            </View>
+                            <View style={styles.seatItem}>
+                                <Image style={styles.seatItemIcon} resizeMode="contain"
+                                       source={require('../../assets/shedule/seat_lock.png')}/>
+                                <Text>
+                                    已售
+                                </Text>
+                            </View>
+                            <View style={styles.seatItem}>
+                                <Image style={styles.seatItemIcon}
+                                       resizeMode="contain"
+                                       source={require('../../assets/shedule/seat_normal.png')}/>
+                                <Text>
+                                    已选
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={{alignItems: 'center', marginTop: 8}}>
+                            <Image style={{width: 270, height: 16}} source={require('../../assets/shedule/screen.png')}/>
+                            <Text>
+                                中瑞国际影城(红星店)ZMAX巨幕厅
+                            </Text>
+                        </View>
+                    </View>
+                    <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
+                        <MovieSeat selectedSeats={this.state.selectedSeats}  style={{flex: 1}} seatInfos={data} maxSelectedSeatsCount={4} select={(seat) => {
+                            this.select(seat)
+                        }} unselect={(seat) => {
+                            this.unSelect(seat)
+                        }}/>
+                    </View>
+                    <View style={{alignItems: 'center', height: 120}}>
+                        <View style={styles.seatInfo}>
+                            <View style={styles.seatItem}>
+                                <Image style={styles.seatItemIcon}
+                                       resizeMode="contain"
+                                       source={require('../../assets/shedule/seat_gold.png')}/>
+                                <Text>
+                                    会员黄金座
+                                </Text>
+                            </View>
+                            <View style={styles.seatItem}>
+                                <Image style={styles.seatItemIcon} resizeMode="contain"
+                                       source={require('../../assets/shedule/seat_lover.png')}/>
+                                <Text >
+                                    情侣座
+                                </Text>
+                            </View>
+                            <View style={styles.seatItem}>
+                                <Image style={styles.seatItemIcon}
+                                       resizeMode="contain"
+                                       source={require('../../assets/shedule/seat_vip.png')}/>
+                                <Text>
+                                    VIP
+                                </Text>
+                            </View>
+                        </View>
+                        <View style={styles.chooseInfo}>
+                            {this.getChooseInfo()}
+                        </View>
+                    </View>
+                </View>
+                <Button onPress={() => {
+                    this.select({row: this.state.selectedSeats.length + 1, col: 4})
+                }} text={'确定(' + this.state.info.num + ')'}/>
+                <Modal
+                    animationType={"slide"}
+                    transparent={true}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {}}>
+                    <View style ={styles.modalStyle}>
+                        <View style={{flex:1,marginTop:170,backgroundColor:'#fff'}}>
+                            <ScheduleList hideHeader={true} choose={(item)=>{this.chooseRonda(item)}}/>
+                        </View>
+                    </View>
+                </Modal>
             </View>
-            <Button onPress={() => {
-                this.select({row: this.state.selectedSeats.length + 1, col: 4})
-            }} text={'确定(' + this.state.info.num + ')'}/>
+
         </View>)
     }
 
@@ -206,11 +222,20 @@ export default class extends Component {
             }
         });
     }
-
+    chooseRonda(item){
+       this.showModal()
+    }
+    showModal(){
+        this.setState((preState)=>{
+            preState.modalVisible =!preState.modalVisible
+            return preState;
+        })
+    }
 
 }
 
 const styles = StyleSheet.create({
+    modalStyle:{backgroundColor:'rgba(0, 0, 0, 0.5)',flex:1},
     subFont: {
         color: '#cbcbcb',
         fontSize: 12

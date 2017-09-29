@@ -38,13 +38,13 @@ class LoginScreen extends Component {
         return (
             <View style={{width:'100%'}}>
                 <View style={{marginLeft:globalStyle.pagePadding,marginRight:globalStyle.pagePadding}}>
-                    <View style={{ position: 'relative',flexDirection:'row' }}>
-                        <Image source={require('../../assets/login/phone.png')} style={{ height: 15, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
+                    <View style={styles.inputView}>
+                        <Image source={require('../../assets/login/phone.png')} style={styles.inputIcon} resizeMode='contain' />
                         <TextInput underlineColorAndroid="transparent" keyboardType='numeric' placeholder='请输入手机号' style={[styles.inputStyle]} >
                         </TextInput>
                     </View>
-                    <View style={{ position: 'relative',flexDirection:'row', marginBottom: globalStyle.itemMargin }}>
-                        <Image source={require('../../assets/login/lock.png')} style={{ height: 15, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
+                    <View  style={styles.inputView}>
+                        <Image source={require('../../assets/login/lock.png')} style={styles.inputIcon} resizeMode='contain' />
                         <TextInput underlineColorAndroid="transparent" placeholder='请输入密码' style={styles.inputStyle}  >
                         </TextInput>
                     </View>
@@ -60,16 +60,18 @@ class LoginScreen extends Component {
         return (
             <View style={{width:'100%'}}>
                <View style={{marginLeft:globalStyle.pagePadding,marginRight:globalStyle.pagePadding}}>
-                    <View style={{ position: 'relative',flexDirection:'row'  }}>
-                        <Image source={require('../../assets/login/phone.png')} style={{ height: 15, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
-                        <TextInput underlineColorAndroid="transparent" keyboardType='numeric' placeholder='请输入手机号' style={[styles.inputStyle]} >
+                    <View  style={styles.inputView}>
+                        <Image source={require('../../assets/login/phone.png')} style={styles.inputIcon} resizeMode='contain' />
+                        <TextInput underlineColorAndroid="transparent" keyboardType='numeric' placeholder='请输入手机号' style={styles.inputStyle} >
                         </TextInput>
                     </View>
-                    <View style={{ position: 'relative', marginBottom:globalStyle.itemMargin, flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Image source={require('../../assets/login/link.png')} style={{ height: 15, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
-                        <TextInput underlineColorAndroid="transparent" placeholder='请输入验证码' style={[styles.inputStyle, { width: 250 }]}  >
-                        </TextInput>
-                        <Button text={'获取验证码'} buttonStyle={{ backgroundColor: globalStyle.colorPrimary, width: 100,marginLeft:15 }}></Button>
+                    <View style={{flexDirection:'row'}}>
+                        <View  style={[{justifyContent: 'space-between',flex:1,marginRight:10 },styles.inputView]}>
+                            <Image source={require('../../assets/login/link.png')} style={styles.inputIcon} resizeMode='contain' />
+                            <TextInput underlineColorAndroid="transparent" placeholder='请输入验证码' style={styles.inputStyle}  >
+                            </TextInput>
+                        </View>
+                        <Button text={'获取验证码'} buttonStyle={{ backgroundColor: globalStyle.colorPrimary, width: 100 }}></Button>
                     </View>
                     <Button buttonStyle={{ height: 40, backgroundColor: globalStyle.colorPrimary }} text={'验证并登录'} />
                </View>
@@ -123,12 +125,22 @@ const styles = StyleSheet.create({
     tab:{
         flex: 1
     },
+    inputView:{
+        position: 'relative',
+        flexDirection:'row',
+        borderColor:'red',
+        borderWidth:1,
+        marginBottom:globalStyle.itemMargin
+    },
+    inputIcon:{
+        height: 15, 
+        marginRight: 10, 
+        top: 12, 
+        position: 'absolute'
+    },
     inputStyle:{
         flex: 1,
-        height: 40, 
-        borderColor: globalStyle.colorPrimary, 
-        borderWidth: 0.5,
-        marginBottom:globalStyle.itemMargin,
+        height: 38, 
         paddingLeft:35
     }
 })
