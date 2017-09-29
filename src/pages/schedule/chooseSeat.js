@@ -15,14 +15,16 @@ import globalStyle from '../../style/index'
 let theme = require('../../style')
 
 export default class extends Component {
+
     constructor(props) {
         super(props)
         this.state = {
             title: '西游记之大闹天空',
-            info: {}
+            info: {},
+            selectedSeats: [],
+            selectedSeats:[]
         }
     }
-
 
     render() {
         let seat = []
@@ -32,8 +34,8 @@ export default class extends Component {
             for (let j = 0; j < 11; j++) {
                 seat[i][j] = {
                     type: 3,
-                    row: i + 1,
-                    col: j + 1
+                    row: i ,
+                    col: j
                 }
             }
             row.push(i + 1)
@@ -90,7 +92,8 @@ export default class extends Component {
                             </Text>
                         </View>
                         <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon} resizeMode="contain" source={require('../../assets/shedule/seat_lock.png')}/>
+                            <Image style={styles.seatItemIcon} resizeMode="contain"
+                                   source={require('../../assets/shedule/seat_lock.png')}/>
                             <Text>
                                 已售
                             </Text>
@@ -112,7 +115,11 @@ export default class extends Component {
                     </View>
                 </View>
                 <View style={{flex: 1, marginLeft: 10, marginRight: 10}}>
-                    <MovieSeat style={{flex: 1}} seatInfos={data}/>
+                    <MovieSeat selectedSeats={this.state.selectedSeats}  style={{flex: 1}} seatInfos={data} maxSelectedSeatsCount={4} select={(seat) => {
+                        this.select(seat)
+                    }} unselect={(seat) => {
+                        this.unSelect(seat)
+                    }}/>
                 </View>
                 <View style={{alignItems: 'center', height: 120}}>
                     <View style={styles.seatInfo}>
@@ -125,7 +132,8 @@ export default class extends Component {
                             </Text>
                         </View>
                         <View style={styles.seatItem}>
-                            <Image style={styles.seatItemIcon} resizeMode="contain" source={require('../../assets/shedule/seat_lover.png')}/>
+                            <Image style={styles.seatItemIcon} resizeMode="contain"
+                                   source={require('../../assets/shedule/seat_lover.png')}/>
                             <Text >
                                 情侣座
                             </Text>
@@ -140,50 +148,86 @@ export default class extends Component {
                         </View>
                     </View>
                     <View style={styles.chooseInfo}>
-                        <TouchableOpacity style={styles.chooseSeatButton} onPress={() => {
-                        }}>
-                            <Text style={{
-                                color: globalStyle.fontColorGray
-                            }}>一人</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.chooseSeatButton} onPress={() => {
-                        }}>
-                            <Text style={{
-                                color: globalStyle.fontColorGray
-                            }}>两人</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.chooseSeatButton} onPress={() => {
-                        }}>
-                            <Text style={{
-                                color: globalStyle.fontColorGray
-                            }}>三人</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.chooseSeatButton} onPress={() => {
-                        }}>
-                            <Text style={{
-                                color: globalStyle.fontColorGray
-                            }}>四人</Text>
-                        </TouchableOpacity>
-
+                        {this.getChooseInfo()}
                     </View>
                 </View>
             </View>
-            <Button text={'确定(' + this.state.info.num + ')'}/>
+            <Button onPress={() => {
+                this.select({row: this.state.selectedSeats.length + 1, col: 4})
+            }} text={'确定(' + this.state.info.num + ')'}/>
         </View>)
     }
+
+    select(seat) {
+        this.setState((prevState) => {
+            if (prevState.selectedSeats.length < 4)
+            {
+                let array = prevState.selectedSeats.concat([seat])
+                prevState.selectedSeats = array
+            }
+            return prevState
+        });
+    }
+
+    unSelect(seat) {
+        this.setState((prevState) => {
+            /*let index = prevState.selectedSeats.indexOf(seat)
+             if(index>=0) {
+             prevState.selectedSeats.splice(index, 1)
+             }*/
+            let sSeats = prevState.selectedSeats.concat([]);
+            for (let i = 0; i < sSeats.length; i++) {
+                if (seat.row == sSeats[i].row && seat.col == sSeats[i].col) {
+                    sSeats.splice(i, 1)
+                    break;
+                }
+            }
+            prevState.selectedSeats =sSeats;
+            return prevState;
+        })
+    }
+    getChooseInfo() {
+        let num = [0, 1, 2, 3]
+        return num.map(item => {
+            let seats = this.state.selectedSeats
+            if (seats[item]) {
+                return (
+                    <TouchableOpacity onPress={() => {
+                        this.unSelect(seats[item])
+                    }} key={item} style={[styles.chooseTip, {borderColor: "#fc9d40"}]}>
+                        <Text
+                            style={[styles.subFont, globalStyle.fontOrange]}>{`${seats[item].row}排${seats[item].col}座 ×`}</Text>
+                    </TouchableOpacity>
+                )
+            } else {
+                return (<View key={item} style={styles.chooseTip}>
+                    <Text style={styles.subFont}>{item + 1}人</Text>
+                </View>)
+            }
+        });
+    }
+
+
 }
 
 const styles = StyleSheet.create({
+    subFont: {
+        color: '#cbcbcb',
+        fontSize: 12
+    },
+    prmaryFont: {
+        color: "#3f3f3f"
+    },
     chooseInfo: {
-        paddingLeft:10,
-        paddingRight:10,
+        paddingLeft: 10,
+        paddingRight: 10,
         marginTop: 21,
         backgroundColor: '#fff',
         flex: 1,
         width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent:'space-between'
+        justifyContent: 'space-between'
     },
     planBar: {
         height: 48,
@@ -200,7 +244,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 20,
-        height:20
+        height: 20
     },
     seatItem: {
         flexDirection: 'row',
@@ -208,12 +252,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     seatItemIcon: {height: 16, marginRight: 5},
-    chooseSeatButton: {
+    chooseTip: {
         flexDirection: 'row',
         width: 70,
         height: 30,
-        borderWidth: 1,
-        borderColor: globalStyle.fontColorGray,
+        borderWidth: 0.5,
+        borderColor: "#cbcbcb",
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
