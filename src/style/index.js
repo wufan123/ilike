@@ -6,6 +6,7 @@ module.exports = {
     fontColorGray: '#808080',
     borderColor: '#e8e8e8',
     pageBackground: '#f6f6f6',
+    orangeColor:'#fc9d40',
     pagePadding: 15,
     borderRadius: 2,
     itemMargin: 10,
