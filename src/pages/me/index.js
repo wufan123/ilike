@@ -149,8 +149,8 @@ export default class MeScreen extends Component {
             },
         ]
     }
-    _gotoFilmOrder() {
-
+    _gotoTicketOrder() {
+        this.props.navigation.navigate('TicketOrder');
     }
     _gotoGoodsOrder() {
 
@@ -196,7 +196,7 @@ export default class MeScreen extends Component {
                     </View>
                 </View>
                 <View style={[theme.row, theme.whiteBlockWithPadding]}>
-                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoFilmOrder}>
+                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoTicketOrder()}>
                         <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
                             <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-movie-order.png')} />
                             <Text style={[theme.font12, theme.fontBlack]}>影票订单</Text>

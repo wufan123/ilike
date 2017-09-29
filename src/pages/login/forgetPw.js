@@ -28,7 +28,7 @@ class ForgetPwScreen extends Component {
                 <Image source={require('../../assets/login/link.png')} style={{ height: 20, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
                 <TextInput underlineColorAndroid="transparent" placeholder='请输入验证码' style={[styles.inputStyle, { width: 250 }]}  >
                 </TextInput>
-                <Button text={'获取验证码'} buttonStyle={{ backgroundColor: globalStyle.colorPrimary, width: 100 }}></Button>
+                <Button text={'获取验证码'} buttonStyle={{ backgroundColor: globalStyle.colorPrimary, width: 100, marginLeft:15 }}></Button>
             </View>
             <View style={{ position: 'relative' }}>
                 <Image source={require('../../assets/login/unlock.png')} style={{ height: 20, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     backgroundColor:'#ffffff'
   },
   inputStyle:{
-    width:360,
     height: 43, 
     borderColor: globalStyle.colorPrimary, 
     borderWidth: 1,
