@@ -37,19 +37,19 @@ class LoginScreen extends Component {
     _accountView() {
         return (
             <View style={{width:'100%'}}>
-                <View style={{marginLeft:20,marginRight:20}}>
-                    <View style={{ position: 'relative',flexDirection:'row' }}>
-                        <Image source={require('../../assets/login/phone.png')} style={{ height: 20, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
+                <View style={{marginLeft:globalStyle.pagePadding,marginRight:globalStyle.pagePadding}}>
+                    <View style={styles.inputView}>
+                        <Image source={require('../../assets/login/phone.png')} style={styles.inputIcon} resizeMode='contain' />
                         <TextInput underlineColorAndroid="transparent" keyboardType='numeric' placeholder='请输入手机号' style={[styles.inputStyle]} >
                         </TextInput>
                     </View>
-                    <View style={{ position: 'relative',flexDirection:'row', marginBottom: 30 }}>
-                        <Image source={require('../../assets/login/lock.png')} style={{ height: 20, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
+                    <View  style={styles.inputView}>
+                        <Image source={require('../../assets/login/lock.png')} style={styles.inputIcon} resizeMode='contain' />
                         <TextInput underlineColorAndroid="transparent" placeholder='请输入密码' style={styles.inputStyle}  >
                         </TextInput>
                     </View>
-                    <Button buttonStyle={{ height: 43, backgroundColor: globalStyle.colorPrimary }} text={'登录'} />
-                    <TouchableOpacity onPress={()=> this._goToRegister()} style={{ alignItems: 'center', marginTop: 50 }}>
+                    <Button buttonStyle={{ height: 40, backgroundColor: globalStyle.colorPrimary }} text={'登录'} />
+                    <TouchableOpacity onPress={()=> this._goToRegister()} style={{ alignItems: 'center', marginTop: 30 }}>
                         <Text style={{ color: globalStyle.colorPrimary }}>没有账号？立即点击此注册> </Text>
                     </TouchableOpacity>
                 </View>
@@ -59,19 +59,21 @@ class LoginScreen extends Component {
     _codeView() {    
         return (
             <View style={{width:'100%'}}>
-               <View style={{marginLeft:20,marginRight:20}}>
-                    <View style={{ position: 'relative',flexDirection:'row'  }}>
-                        <Image source={require('../../assets/login/phone.png')} style={{ height: 20, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
-                        <TextInput underlineColorAndroid="transparent" keyboardType='numeric' placeholder='请输入手机号' style={[styles.inputStyle]} >
+               <View style={{marginLeft:globalStyle.pagePadding,marginRight:globalStyle.pagePadding}}>
+                    <View  style={styles.inputView}>
+                        <Image source={require('../../assets/login/phone.png')} style={styles.inputIcon} resizeMode='contain' />
+                        <TextInput underlineColorAndroid="transparent" keyboardType='numeric' placeholder='请输入手机号' style={styles.inputStyle} >
                         </TextInput>
                     </View>
-                    <View style={{ position: 'relative', marginBottom: 30, flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <Image source={require('../../assets/login/link.png')} style={{ height: 20, marginRight: 10, top: 12, position: 'absolute' }} resizeMode='contain' />
-                        <TextInput underlineColorAndroid="transparent" placeholder='请输入验证码' style={[styles.inputStyle, { width: 250 }]}  >
-                        </TextInput>
-                        <Button text={'获取验证码'} buttonStyle={{ backgroundColor: globalStyle.colorPrimary, width: 100,marginLeft:15 }}></Button>
+                    <View style={{flexDirection:'row'}}>
+                        <View  style={[{justifyContent: 'space-between',flex:1,marginRight:10 },styles.inputView]}>
+                            <Image source={require('../../assets/login/link.png')} style={styles.inputIcon} resizeMode='contain' />
+                            <TextInput underlineColorAndroid="transparent" placeholder='请输入验证码' style={styles.inputStyle}  >
+                            </TextInput>
+                        </View>
+                        <Button text={'获取验证码'} buttonStyle={{ backgroundColor: globalStyle.colorPrimary, width: 100 }}></Button>
                     </View>
-                    <Button buttonStyle={{ height: 43, backgroundColor: globalStyle.colorPrimary }} text={'验证并登录'} />
+                    <Button buttonStyle={{ height: 40, backgroundColor: globalStyle.colorPrimary }} text={'验证并登录'} />
                </View>
             </View>
         )
@@ -82,7 +84,7 @@ class LoginScreen extends Component {
             <View style={{ flex: 1, flexDirection: 'column' }}>
                 <Header title={'登录'} bgColor={{ backgroundColor: '#ffffff' }} textColor={{ color: globalStyle.colorPrimary }} theme={'white'} RText={'忘记密码'} ></Header>
                 <View style={[styles.login]}>
-                    <Image source={require('../../assets/logo.png')} style={{ width: 80 }} resizeMode='contain' />
+                    <Image source={require('../../assets/logo.png')} style={{ width: 60 }} resizeMode='contain' />
                     <View style={styles.title}>
                         <TouchableOpacity onPress={() => this._tabChange(true)} style={[styles.tab, styles.firstTab]} >
                             <Text style={[this.state.tabState ? styles.titleActive : '', { textAlign: 'center' }]}>账号登录</Text>
@@ -104,14 +106,14 @@ const styles = StyleSheet.create({
       flex: 1, 
       flexDirection: 'column' , 
       alignItems:'center' ,
-      paddingTop:60 ,
+      paddingTop:globalStyle.itemMargin ,
       backgroundColor:'#ffffff'
     },
     title:{ 
         flexDirection: 'row' , 
-        marginTop:20,
+        marginTop:0,
         justifyContent:'space-around',
-        marginBottom:40
+        marginBottom:30
     },
     titleActive:{
         color:globalStyle.colorPrimary
@@ -123,12 +125,22 @@ const styles = StyleSheet.create({
     tab:{
         flex: 1
     },
+    inputView:{
+        position: 'relative',
+        flexDirection:'row',
+        borderColor:'red',
+        borderWidth:1,
+        marginBottom:globalStyle.itemMargin
+    },
+    inputIcon:{
+        height: 15, 
+        marginRight: 10, 
+        top: 12, 
+        position: 'absolute'
+    },
     inputStyle:{
         flex: 1,
-        height: 43, 
-        borderColor: globalStyle.colorPrimary, 
-        borderWidth: 1,
-        marginBottom:20,
+        height: 38, 
         paddingLeft:35
     }
 })

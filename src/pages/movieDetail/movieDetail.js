@@ -35,6 +35,8 @@ class MovieDetailScreen extends Component {
                 {nickname:'zmax', comment: 'Oh sorry. I just clicked the "Run code snippet" button above and the result showed an error. But I think it\'s nothing to do with your code. Sorry.'},
             ],
             movieBriefToggle: false,
+            movieLiked: false,
+            videoUrl: 'https://r8---sn-oguesnse.googlevideo.com/videoplayback?requiressl=yes&lmt=1506650784967090&sparams=dur,ei,expire,id,initcwndbps,ip,ipbits,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&dur=61.486&key=cms1&source=youtube&ei=EMTNWZZShfxat4OJkAc&ratebypass=yes&id=o-AFA1yOz02W73c89ZghBwbEzeFtq3-lnmRWEKHdRsLUGS&itag=22&pl=27&mime=video%2Fmp4&ip=2a01%3A4f8%3A191%3A1ac%3A%3A2&expire=1506678896&signature=8214F01A1AD3C15761D9E9ADE55D6A0FAC96D6F1.0BF879060A78259EE13C92C8612E8037E5D9ABBE&ipbits=0&title=GoPro:%20This%20Is%20Fusion&cms_redirect=yes&mip=45.77.12.181&mm=31&mn=sn-oguesnse&ms=au&mt=1506657190&mv=m'
         };
         this._rendMovieBrief = this._rendMovieBrief.bind(this);
         this._rendScrollThumbItem = this._rendScrollThumbItem.bind(this);
@@ -51,9 +53,17 @@ class MovieDetailScreen extends Component {
         )
     }
 
+    playVideo = () => {
+        global.navigation.navigate('VideoView', {
+            videoUrl: this.state.videoUrl,
+        });
+    }
+
     _renderVideoView() {
         return (
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={this.playVideo}
+            >
                 <View style={styles.videoContainer}>
                     <ImageBackground
                     style={styles.videoImage}
@@ -94,7 +104,9 @@ class MovieDetailScreen extends Component {
     }
 
     _likeAction() {
-
+        this.setState({
+            movieLiked: !this.state.movieLiked
+        });
     }
 
     _renderMovieItem() {
@@ -124,9 +136,9 @@ class MovieDetailScreen extends Component {
                 </View>
                 <View style={[globalStyle.lineSeperator, {marginTop: 8}]} />
                 <View style={styles.socialContainer}>
-                    {this._renderSocialItem(require('../../assets/home/icon_uncollect.png'), '关注', this._likeAction)}
-                    {this._renderSocialItem(require('../../assets/common/share.png'), '分享', this._likeAction)}
-                    {this._renderSocialItem(require('../../assets/common/write_comment.png'), '写短评', this._likeAction)}
+                    {this._renderSocialItem(this.state.movieLiked?require('../../assets/home/icon_collect.png'):require('../../assets/home/icon_uncollect.png'), this.state.movieLiked?'已关注':'关注', this._likeAction.bind(this))}
+                    {this._renderSocialItem(require('../../assets/common/share.png'), '分享', this._likeAction.bind(this))}
+                    {this._renderSocialItem(require('../../assets/common/write_comment.png'), '写短评', this._likeAction.bind(this))}
                 </View>
             </View>
         )
@@ -258,7 +270,7 @@ class MovieDetailScreen extends Component {
                     hidden={true}
                 />
                 {this._renderBackButton()}
-                {this._renderVideoView()}
+                {this._renderVideoView.bind(this)()}
                 {this._renderMovieItem()}
                 {this._rendSectionSeparate()}
                 {this._rendMovieBrief()}
@@ -387,8 +399,8 @@ const styles = StyleSheet.create({
         height: 10,
     },
     extendImg: {
-        width: 32,
-        height: 16
+        width: 24,
+        height: 12
     },
     commentCell: {
         padding: 15,

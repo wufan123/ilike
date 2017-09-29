@@ -48,7 +48,6 @@ _filmOnPress(item, index) {
 }
 
 getListItem = ({item, index}) => {
-  let collectIcon = false ? require('../../assets/home/icon_collect.png') : require('../../assets/home/icon_uncollect.png')
     return (
       <View style={styles.row}>
                 <View style={styles.movieThumbContainer}>
@@ -84,13 +83,9 @@ getListItem = ({item, index}) => {
                             <Text style={[styles.movieSlogan,{color:theme.colorPrimary}]}><Text>状态： </Text>支付完成</Text>
                         </View>
                         <View style={{ width: 46, }}>
-                            <TouchableOpacity style={styles.buyButton} onPress={() => {
-                            }}>
-                                <Image source={collectIcon} style={{ width: 12, height: 12 }} />
                                 <Text style={{
                                     color: theme.colorPrimary
                                 }}>关注</Text>
-                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
