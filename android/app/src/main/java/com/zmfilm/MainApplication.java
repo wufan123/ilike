@@ -2,20 +2,21 @@ package com.zmfilm;
 
 import android.app.Application;
 
-import com.facebook.react.ReactApplication;
 import com.BV.LinearGradient.LinearGradientPackage;
-import com.zmax.seat.RNMovieSeatsPackage;
-import cn.reactnative.alipay.AlipayPackage;
 import com.brentvatne.react.ReactVideoPackage;
-import com.lwansbrough.RCTCamera.RCTCameraPackage;
-import com.theweflex.react.WeChatPackage;
+import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.lwansbrough.RCTCamera.RCTCameraPackage;
+import com.theweflex.react.WeChatPackage;
+import com.zmax.seat.RNMovieSeatsPackage;
 
 import java.util.Arrays;
 import java.util.List;
+
+import cn.reactnative.alipay.AlipayPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
