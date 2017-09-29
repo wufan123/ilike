@@ -14,6 +14,7 @@ import ForgetPw from './pages/login/forgetPw'
 import Register from './pages/login/register'
 import ScheduleList from './pages/schedule/scheduleList'
 import TicketOrder from './pages/me/ticketOrder'
+import WriteComment from './pages/movieDetail/writeComment'
 
 import './business/storage'
 import './style/index'
@@ -31,7 +32,8 @@ const App = StackNavigator(
         Cinema: { screen: Cinema }, 
         ChooseSeat:{screen:ChooseSeat},
         ScheduleList: { screen: ScheduleList },
-        TicketOrder: { screen: TicketOrder }
+        TicketOrder: { screen: TicketOrder },
+        WriteComment: { screen: WriteComment }
     },
     {
         navigationOptions: {
