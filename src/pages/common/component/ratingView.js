@@ -62,7 +62,12 @@ class RatingView extends Component {
     }
 
     render() {
-        var width = this.props.style.width;
+        var width = undefined;
+        try {
+            width = this.props.style.width;
+        } catch (error) {
+            
+        }
         if (width===undefined) width=this.state.minWidth;
         var imageHeight = this.props.style.height;
         if (imageHeight===undefined) imageHeight=this.state.minheight;
