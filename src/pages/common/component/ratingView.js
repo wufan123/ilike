@@ -5,14 +5,16 @@ import {
     ImageBackground,
     StyleSheet,
     ImageResizeMode,
+    TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 class RatingView extends Component {
     constructor(props) {
         super(props);
         this.state= {
             rating: this.props.rating,
-            maxRating: 10,
+            maxRating: this.props.maxRating?this.props.maxRating:10,
             starWidth: 18,
             starSpace: 4,
             totalStar: 5,
@@ -39,8 +41,19 @@ class RatingView extends Component {
             } else {
                 starImg = require('../../../assets/common/star_empty.png');
             }
+            let c = i;
             stars.push(
-                <Image key={''+i} source={starImg} style={{width: this.state.starWidth, height: this.state.starWidth}}/>
+                <TouchableOpacity
+                    key={''+i}
+                    disabled={this.props.disabled}
+                    onPress={()=>{
+                        this.setState({
+                            rating: c*(this.state.maxRating*1.0/this.state.totalStar)
+                        });
+                    }}
+                >
+                    <Image source={starImg} style={{width: this.state.starWidth, height: this.state.starWidth}}/>
+                </TouchableOpacity>
             )
         }
         return stars;
@@ -58,7 +71,7 @@ class RatingView extends Component {
         return (
             <View
                 style={[this.props.style, styles.container]}>
-                {this._stars(this.props.rating)}
+                {this._stars(this.state.rating)}
             </View>
         )
     }
@@ -74,5 +87,12 @@ const styles = StyleSheet.create({
         height: 18
     }
 })
+
+RatingView.propTypes = {
+    ...View.propTypes,
+    rating: PropTypes.number,
+    maxRating: PropTypes.number,
+    disabled: PropTypes.bool
+}
 
 module.exports = RatingView;

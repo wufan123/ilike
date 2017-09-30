@@ -140,7 +140,7 @@ class MovieDetailScreen extends Component {
                         </View>
                         <View style={[globalStyle.row, globalStyle.alignItemsCenter]}>
                             <Text style={[globalStyle.fontOrange, globalStyle.font18]}>7.6</Text>
-                            <RatingView style={{flex:1, marginLeft: 6}} rating={7.6} />
+                            <RatingView style={{flex:1, marginLeft: 6}} rating={7.6} disabled={true}/>
                         </View>
                         <View style={[globalStyle.row, globalStyle.alignItemsCenter]}>
                             {this._renderMovieTag('223人想看')}
