@@ -41,10 +41,14 @@ class TicketDetailScreen extends Component {
     });
   }
 
+  rightClick(){
+    global.navigation.navigate('Appraise');
+  }
+
   render() {
     return (
       <View style={[styles.homeContainer, theme.flex]}>
-        <Header title={'影票详情'}></Header>
+        <Header title={'影票详情'} rightTxt={'评价'} rightClick={this.rightClick}></Header>
         <ScrollView>
           <View style={styles.view}>
             <View style={styles.viewBody}>

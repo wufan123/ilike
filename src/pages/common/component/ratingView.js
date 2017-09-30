@@ -47,10 +47,11 @@ class RatingView extends Component {
                     key={''+i}
                     disabled={this.props.disabled}
                     onPress={()=>{
+                        let newRating = c*(this.state.maxRating*1.0/this.state.totalStar);
                         this.setState({
-                            rating: c*(this.state.maxRating*1.0/this.state.totalStar)
+                            rating: newRating
                         });
-                        if(this.props.onRatingChange) this.props.onRatingChange(this.state.rating);
+                        if(this.props.onRatingChange) this.props.onRatingChange(newRating);
                     }}
                 >
                     <Image source={starImg} style={{width: this.state.starWidth, height: this.state.starWidth}}/>

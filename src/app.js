@@ -16,6 +16,7 @@ import ScheduleList from './pages/schedule/scheduleList'
 import ConfrimOrder from './pages/order/comfirmOrder'
 import TicketOrder from './pages/me/ticketOrder'
 import TicketDetail from './pages/me/ticketDetail'
+import Appraise from './pages/me/appraise'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 
@@ -37,6 +38,7 @@ const App = StackNavigator(
         ScheduleList: { screen: ScheduleList },
         TicketOrder: { screen: TicketOrder },
         TicketDetail: { screen: TicketDetail },
+        Appraise:{ screen: Appraise },
         ConfrimOrder: { screen: ConfrimOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList}
