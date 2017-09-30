@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    StatusBar,
     View,
     Text,
     Button,
@@ -135,7 +136,7 @@ class HomeScreen extends Component {
     }
 
     _navigateToMovieDetail() {
-        this.props.navigation.navigate('MovieDetail');
+        global.navigation.navigate('MovieDetail');
     }
     _gotoSchedule() {
         global.navigation.navigate('ScheduleList');
@@ -324,6 +325,10 @@ class HomeScreen extends Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={styles.homeContainer}>
+                <StatusBar
+                    hidden={false}
+                    barStyle={'light-content'}
+                />
                 <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)}
                     disableBack={true}></Header>
                 <RefreshScrollView

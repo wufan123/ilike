@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     View,
     Text,
@@ -10,9 +10,10 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Header from '../common/header'
-import {Tab} from '../common/component'
+import { Tab } from '../common/component'
+import { RefreshScrollView } from '../common/pull'
 var theme = require('../../style')
-const {width, height} = Dimensions.get('window')
+const { width, height } = Dimensions.get('window')
 function tabBarIcons(focused) {
     let icon = focused ? require('../../assets/tabs/icon_schedule_s.png') : require('../../assets/tabs/icon_schedule_n.png')
     return (
@@ -26,41 +27,18 @@ function tabBarIcons(focused) {
 class ScheduleScreen extends Component {
     static navigationOptions = {
         tabBarLabel: '排期',
-        tabBarIcon: ({focused}) => tabBarIcons(focused)
+        tabBarIcon: ({ focused }) => tabBarIcons(focused)
     }
-
-    fakeSeatsInfo() {
-        var seatsInfos = {};
-        var rowIndex = [];
-        var seats = [];
-        for (var row = 1; row <= 15; row++) {
-            rowIndex.push('' + row);
-            rowSeats = [];
-            for (var col = 1; col <= 30; col++) {
-                seat = {row: '' + row, column: '' + col, seatType: ['N', 'Lk', 'E'][Math.floor(Math.random() * 3)]};
-                rowSeats.push(seat);
-            }
-            seats.push(rowSeats);
-        }
-        seatsInfos = {
-            row: rowIndex,
-            seat: seats
-        }
-        return seatsInfos;
-    }
-
     constructor(props) {
         super(props)
-        console.log('seatinfos:')
-        console.log(this.fakeSeatsInfo());
         this.state = {
             title: '排期',
             plan: ['星期一', '星期三', '星期二', '星期四', '星期五', '星期六', '星期日'],
             list: [
-                {data: [1, 2, 3, 4, 5], title: 'section 0'},
-                {data: [1, 2, 3], title: 'section 1'},
-                {data: [1, 2, 3, 4], title: 'section 2'},
-                {data: [1, 2,], title: 'section 3'},
+                { data: [1, 2, 3, 4, 5], title: 'section 0' },
+                { data: [1, 2, 3], title: 'section 1' },
+                { data: [1, 2, 3, 4], title: 'section 2' },
+                { data: [1, 2,], title: 'section 3' },
             ],
         }
     }
@@ -70,7 +48,7 @@ class ScheduleScreen extends Component {
     }
 
 
-    _getFilmPlanListItem = ({item, index}) => {
+    _getFilmPlanListItem = ({ item, index }) => {
         return (
             <TouchableOpacity onPress={() => this._gotoChooseSeat(item)}>
                 <View style={[theme.whiteBlockWithPadding, styles.planItem, {
@@ -98,12 +76,12 @@ class ScheduleScreen extends Component {
 
     _getFilmPlanList(item) {
         return (<FlatList style={[styles.planListBox, theme.mb10, theme.mt10]}
-                          extraData={this.state}
-                          data={item.data}
-                          keyExtractor={this._keyExtractor}
-                          ItemSeparatorComponent={this._getFilmPlanListSeparator}
-                          renderItem={this._getFilmPlanListItem}
-                          numColumns={2}
+            extraData={this.state}
+            data={item.data}
+            keyExtractor={this._keyExtractor}
+            ItemSeparatorComponent={this._getFilmPlanListSeparator}
+            renderItem={this._getFilmPlanListItem}
+            numColumns={2}
         />)
     }
 
@@ -111,19 +89,19 @@ class ScheduleScreen extends Component {
         global.navigation.navigate('ScheduleList');
     }
 
-    getListItem = ({item, index}) => {
+    getListItem = ({ item, index }) => {
         return (
             <View style={[theme.whiteBlockWithPadding]}>
                 <TouchableOpacity onPress={() => this._filmOnPress(item, index)}>
                     <View style={[styles.filmDetial, theme.bottomBorder]}>
-                        <Image style={styles.cover} source={require('../../assets/common/default_movie_bg.png')}/>
+                        <Image style={styles.cover} source={require('../../assets/common/default_movie_bg.png')} />
                         <View style={theme.flex}>
                             <Text style={[theme.font18, theme.fontBlack, theme.flex]}>九层妖塔
                                 <Text style={[theme.font16, theme.fontOrange]}>9.5</Text>
                             </Text>
                             <Text style={[theme.font14, theme.fontGray, theme.flex]}>片长：120min</Text>
                         </View>
-                        <Image style={styles.moreImg} source={require('../../assets/common/right_btn.png')}/>
+                        <Image style={styles.moreImg} source={require('../../assets/common/right_btn.png')} />
                     </View>
                 </TouchableOpacity>
                 {this._getFilmPlanList(item)}
@@ -140,20 +118,33 @@ class ScheduleScreen extends Component {
 
     _getFilmList() {
         return (<FlatList style={[theme.flex, theme.mt10]}
-                          extraData={this.state}
-                          data={this.getPlanListData()}
-                          keyExtractor={this._keyExtractor}
-                          renderItem={this.getListItem}
-                          ItemSeparatorComponent={this._FilmPlanItemSeparator}
+            extraData={this.state}
+            data={this.getPlanListData()}
+            keyExtractor={this._keyExtractor}
+            renderItem={this.getListItem}
+            ItemSeparatorComponent={this._FilmPlanItemSeparator}
         />)
+    }
+    /**
+       * 下拉刷新
+       * @private
+       */
+    _onPullRelease(resolve) {
+        setTimeout(() => {
+            resolve();
+            this.moreTime = 0;
+        }, 3000);
     }
 
     render() {
         return (
             <View style={theme.flex}>
-                <Header showCinema={true} title={this.state.title} disableBack={true}/>
-                <Tab tab={this.state.plan}/>
-                {this._getFilmList()}
+                <Header showCinema={true} title={this.state.title} disableBack={true}></Header>
+                <Tab tab={this.state.plan} />
+                <RefreshScrollView style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
+                    {this._getFilmList()}
+                    {this._getFilmList()}
+                </RefreshScrollView>
             </View>
         )
     }
