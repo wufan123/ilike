@@ -4,6 +4,7 @@ import {
     ImageButton
 } from '../common/component'
 import Tab from './topTab'
+import globalStyle from '../../style/index'
 
 var theme = require('../../style')
 
@@ -29,21 +30,23 @@ class Header extends Component {
     }
 
     render() {
+        let txtColor = this.props.theme==='white'?globalStyle.colorPrimary:'#fff';
+        let bgColor = this.props.theme==='white'?'#fff':theme.colorPrimary;
         return (
             <View style={[{ zIndex: 10 },this.props.style]}>
                 <StatusBar backgroundColor={theme.colorPrimary}
                 />
-                <View style={[styles.headerContainer,this.props.bgColor]} >
+                <View style={[styles.headerContainer,{backgroundColor:bgColor},this.props.backgroundColor]} >
                     <View style={styles.backImg}>{!this.props.disableBack ? (this.props.theme=='white'? <ImageButton style={styles.backImg} source={require('../../assets/common/back_red.png')} onPress={() => this.backClick()} />: <ImageButton style={styles.backImg} source={require('../../assets/common/back.png')} onPress={() => this.backClick()} />) : null}
                     </View>
                     <View style={styles.centerBox}>
-                        {this.props.title ? (<Text style={[styles.title,this.props.textColor]}>{this.props.title}</Text>) : null}
+                        {this.props.title ? (<Text style={[styles.title,{color:txtColor},this.props.textColor]}>{this.props.title}</Text>) : null}
                         {this.props.tab ? (<Tab tab={this.props.tab} changeSelect={(item) => this.changeSelect(item)}></Tab>) : null}
                     </View>
                     <View style={styles.rightBox}>
                         {this.props.showCinema ? (<TouchableOpacity onPress={this.selectCinema} style={theme.flex}><Text style={styles.cinemaName} numberOfLines={1}>中瑞影城 > </Text></TouchableOpacity>) : null}
                         {this.props.RText ? (<TouchableOpacity onPress={this._goToForgetPw} ><Text style={this.props.textColor} numberOfLines={1}>{this.props.RText}</Text></TouchableOpacity>) : null}
-                        {this.props.rightTxt? <TouchableOpacity onPress={this.props.rightClick} style={theme.flex}><Text  style={styles.cinemaName} numberOfLines={1}>{this.props.rightTxt }</Text><Image style={{display:this.props.rightImg?'flex':'none'}} source={{uri:this.props.rightImg}}/></TouchableOpacity>:null}
+                        {this.props.rightTxt? <TouchableOpacity onPress={this.props.rightClick} style={theme.flex}><Text  style={[styles.cinemaName,{color:txtColor}]} numberOfLines={1}>{this.props.rightTxt }</Text><Image style={{display:this.props.rightImg?'flex':'none'}} source={{uri:this.props.rightImg}}/></TouchableOpacity>:null}
                     </View>
                 </View> 
             </View>

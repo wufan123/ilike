@@ -24,7 +24,7 @@ export default class extends Component {
             title: '西游记之大闹天空',
             info: {},
             selectedSeats: [],
-            modalVisible:true
+            modalVisible:false
         }
     }
 
@@ -156,7 +156,7 @@ export default class extends Component {
                     </View>
                 </View>
                 <Button onPress={() => {
-                    this.select({row: this.state.selectedSeats.length + 1, col: 4})
+                    global.navigation.navigate('ConfrimOrder');
                 }} text={'确定(' + this.state.info.num + ')'}/>
                 <Modal
                     animationType={"slide"}
