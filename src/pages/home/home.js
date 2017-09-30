@@ -101,10 +101,6 @@ class HomeScreen extends Component {
                             <Image resizeMode="stretch" style={styles.adImage}
                                 source={require('../../assets/lake.png')} />
                         </View>
-                        <View style={styles.slide}>
-                            <Image resizeMode="stretch" style={styles.adImage}
-                                source={require('../../assets/lake.png')} />
-                        </View>
                     </Swiper>
                 </View>
             );
