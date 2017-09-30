@@ -80,7 +80,14 @@ class CommentReplyListScreen extends Component {
         let paddingLeft = 38+15;
         return(
             <View style={{paddingLeft: paddingLeft, paddingTop: 15, paddingBottom: 17, paddingRight: 15, backgroundColor: 'white'}}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={()=>{
+                        global.navigation.navigate('WriteComment', {
+                            title: '回复',
+                            commentPlaceholder: '回复：138****4573'
+                        });
+                    }}
+                >
                     {this.renderComment()}
                 </TouchableOpacity>
                 <View style={[{position: 'absolute', bottom: 0, left: paddingLeft, right: 0}]}>

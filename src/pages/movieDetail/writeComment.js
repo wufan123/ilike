@@ -10,9 +10,16 @@ import {
 } from 'react-native';
 
 import globalStyle from '../../style/index';
-import Header from '../common/header'
+import Header from '../common/header';
+import BaseView from '../common/baseView';
 
 class WriteCommentScreen extends Component {
+
+    static defaultProps = {
+        ...Component.defaultProps,
+        commentPlaceholder: '我是剧透，我想说～～',
+        title: '写短评'
+    }
 
     constructor(props) {
         super(props);
@@ -29,15 +36,18 @@ class WriteCommentScreen extends Component {
     }
 
     render() {
+        let navigation = this.props.navigation;
+        let title = this.props.title;
+        let commentPlaceholder = this.props.commentPlaceholder;
+        if(params = navigation.state.params)
+        {
+            if (params.title)
+                title = params.title;
+            if (params.commentPlaceholder)
+                commentPlaceholder = params.commentPlaceholder;
+        }
         return(
-            <View style={{backgroundColor:globalStyle.pageBackground}}>
-                <StatusBar
-                    hidden={false}
-                />
-                <Header
-                    title={'写短评'}
-                    backImg={require('../../assets/common/back.png')}
-                />
+            <BaseView title={title}>
                 <View style={styles.textInputContainer}>
                     <TextInput
                         style={styles.textInput}
@@ -45,16 +55,16 @@ class WriteCommentScreen extends Component {
                         maxLength = {this.state.maxLength}
                         multiline = {true}
                         onChange = {this.onChangeCallback}
-                        placeholder = {'我是剧透，我想说～～'}
+                        placeholder = {commentPlaceholder}
                     />
                     <Text style={styles.countNum}>{''+this.state.commentContent.length+'/'+this.state.maxLength}</Text>
                 </View>
                 <TouchableOpacity
-                    style={[globalStyle.buttonOrange]}
+                    style={[globalStyle.buttonOrange, {height: 48}]}
                 >
                     <Text style={globalStyle.fontWhite}>提交</Text>
                 </TouchableOpacity>
-            </View>
+            </BaseView>
         );
     }
 }
