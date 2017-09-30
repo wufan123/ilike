@@ -13,7 +13,7 @@ class RatingView extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            rating: this.props.rating,
+            rating: this.props.rating?this.props.rating:0,
             maxRating: this.props.maxRating?this.props.maxRating:10,
             starWidth: 18,
             starSpace: 4,
@@ -50,6 +50,7 @@ class RatingView extends Component {
                         this.setState({
                             rating: c*(this.state.maxRating*1.0/this.state.totalStar)
                         });
+                        if(this.props.onRatingChange) this.props.onRatingChange(this.state.rating);
                     }}
                 >
                     <Image source={starImg} style={{width: this.state.starWidth, height: this.state.starWidth}}/>
@@ -92,7 +93,8 @@ RatingView.propTypes = {
     ...View.propTypes,
     rating: PropTypes.number,
     maxRating: PropTypes.number,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    onRatingChange: PropTypes.func
 }
 
 module.exports = RatingView;
