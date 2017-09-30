@@ -25,13 +25,25 @@ class UselessTextInput extends Component {
   }
 }
 
-
-
 class AppraiseScreen extends Component {
-  test(num) {
-    console.log('啦啦啦啦啦啦啦', num)
+  constructor(props) {
+    super(props)
+    this.state = {
+      filmNum:0,
+      cinemaNum:0
+    }
   }
+
+  filmNumFn(num) {
+    this.setState({filmNum: num });
+  }
+
+  cinemaNumFn(num) {
+    this.setState({cinemaNum: num });
+  }
+
   render() {
+    let appraiseText = ['','很差','不大好','一般般','还不错','很好']
     return (
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Header title={'观影评价'} ></Header>
@@ -39,21 +51,16 @@ class AppraiseScreen extends Component {
           <Text style={{ paddingVertical: theme.pagePadding }}>服务态度</Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={{ flexDirection: 'row' }}>
-              <RatingView style={{ width: 200,height:25 }} rating={0} maxRating={5} onRatingChange={(num) => this.test(num)} />
-              {/* <Image source={require('../../assets/common/star_full.png')} />
-              <Image source={require('../../assets/common/star_full.png')} />
-              <Image source={require('../../assets/common/star_full.png')} />
-              <Image source={require('../../assets/common/star_full.png')} />
-              <Image source={require('../../assets/common/star_full.png')} /> */}
+              <RatingView style={{ width: 200, height: 25 }} rating={0} maxRating={5} onRatingChange={(num) => this.filmNumFn(num)} />
             </View>
-            <Text style={theme.fontColorPrimary}>很好</Text>
+            <Text style={theme.fontColorPrimary}>{appraiseText[this.state.filmNum]}</Text>
           </View>
           <Text style={{ paddingVertical: theme.pagePadding, marginTop: 10 }}>影城环境</Text>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={{ flexDirection: 'row' }}>
-            <RatingView style={{ width: 200,height:25 }} rating={0} maxRating={5} onRatingChange={(num) => this.test(num)} />
+              <RatingView style={{ width: 200, height: 25 }} rating={0} maxRating={5} onRatingChange={(num) => this.cinemaNumFn(num)} />
             </View>
-            <Text style={theme.fontColorPrimary}>很好</Text>
+            <Text style={theme.fontColorPrimary}>{appraiseText[this.state.cinemaNum]}</Text>
           </View>
         </View>
         <View style={styles.view}>
