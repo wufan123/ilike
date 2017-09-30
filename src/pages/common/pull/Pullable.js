@@ -301,6 +301,7 @@ const dateFormat = function (dateTime, fmt) {
 const styles = StyleSheet.create({
     wrap: {
         flex: 1,
+        zIndex: -1
     },
     headWrap: {
         height: defaultTopIndicatorHeight,

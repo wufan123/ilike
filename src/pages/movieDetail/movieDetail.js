@@ -9,7 +9,8 @@ import {
     TouchableOpacity,
     StatusBar,
     ScrollView,
-    FlatList
+    FlatList,
+    Share
 } from 'react-native';
 import globalStyle from '../../style/index';
 import LinearGradient from 'react-native-linear-gradient';
@@ -44,7 +45,10 @@ class MovieDetailScreen extends Component {
 
     _renderBackButton() {
         return (
-            <TouchableOpacity style={styles.backButton}>
+            <TouchableOpacity
+                style={styles.backButton}
+                onPress={()=>this.props.navigation.goBack()}
+            >
                 <Image
                     style={{width: 18, height: 18}}
                     source={require('../../assets/common/back.png')}
@@ -109,6 +113,18 @@ class MovieDetailScreen extends Component {
         });
     }
 
+    shareMovieAction = () => {
+        Share.share({title: 'hello', message: 'go to watch movie'}, {
+            dialogTitle: 'test',
+            excludedActivityTypes: ['1', '2', '3'],
+            tintColor: 'red'
+        });
+    }
+
+    writeCommentAction = () => {
+        global.navigation.navigate('WriteComment');
+    }
+
     _renderMovieItem() {
         return(
             <View style={styles.movieSocialContainer}>
@@ -137,8 +153,8 @@ class MovieDetailScreen extends Component {
                 <View style={[globalStyle.lineSeperator, {marginTop: 8}]} />
                 <View style={styles.socialContainer}>
                     {this._renderSocialItem(this.state.movieLiked?require('../../assets/home/icon_collect.png'):require('../../assets/home/icon_uncollect.png'), this.state.movieLiked?'已关注':'关注', this._likeAction.bind(this))}
-                    {this._renderSocialItem(require('../../assets/common/share.png'), '分享', this._likeAction.bind(this))}
-                    {this._renderSocialItem(require('../../assets/common/write_comment.png'), '写短评', this._likeAction.bind(this))}
+                    {this._renderSocialItem(require('../../assets/common/share.png'), '分享', this.shareMovieAction)}
+                    {this._renderSocialItem(require('../../assets/common/write_comment.png'), '写短评', this.writeCommentAction)}
                 </View>
             </View>
         )
