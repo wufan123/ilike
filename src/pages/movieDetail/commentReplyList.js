@@ -21,27 +21,27 @@ class CommentReplyListScreen extends Component {
         super(props);
         this.state = {
             comment: {},
-            replyList: ['1','2','3'],
+            replyList: ['1', '2', '3'],
         };
     }
 
     renderSeparator = () => {
-        return(
+        return (
             <View style={globalStyle.lineSeperator} />
         );
     }
 
     renderComment = (comment) => {
-        return(
+        return (
             <View
                 style={[styles.commentItem]}
             >
                 <View style={styles.commentItemUpContainer}>
-                    <View style={[globalStyle.row, {alignItems:'center'}]}>
+                    <View style={[globalStyle.row, { alignItems: 'center' }]}>
                         <Image style={styles.avatar} source={require('../../assets/common/default_avatar.png')} />
-                        <View style={{'width':6}} />
+                        <View style={{ 'width': 6 }} />
                         <Text style={[globalStyle.fontGray, globalStyle.font14]}>zmax</Text>
-                        <View style={{'width':6}} />
+                        <View style={{ 'width': 6 }} />
                         <Image style={styles.genderImg} source={require('../../assets/common/girl.png')} />
                     </View>
                     <TouchableOpacity>
@@ -63,13 +63,13 @@ class CommentReplyListScreen extends Component {
                 >
                     <Text style={[globalStyle.fontGray, globalStyle.font11]}>30min ago</Text>
                     <View style={globalStyle.row}>
-                    <Image
-                        style={{width: 18, height: 16}}
-                        source={require('../../assets/common/movie_comments.png')}
-                        resizeMode={"cover"}
-                    />
-                    <View style={{width:6}} />
-                    <Text style={[globalStyle.fontGray, globalStyle.font12]} >20</Text>
+                        <Image
+                            style={{ width: 18, height: 16 }}
+                            source={require('../../assets/common/movie_comments.png')}
+                            resizeMode={"cover"}
+                        />
+                        <View style={{ width: 6 }} />
+                        <Text style={[globalStyle.fontGray, globalStyle.font12]} >20</Text>
                     </View>
                 </View>
             </View>
@@ -77,11 +77,11 @@ class CommentReplyListScreen extends Component {
     };
 
     renderReplyComment = () => {
-        let paddingLeft = 38+15;
-        return(
-            <View style={{paddingLeft: paddingLeft, paddingTop: 15, paddingBottom: 17, paddingRight: 15, backgroundColor: 'white'}}>
+        let paddingLeft = 38 + 15;
+        return (
+            <View style={{ paddingLeft: paddingLeft, paddingTop: 15, paddingBottom: 17, paddingRight: 15, backgroundColor: 'white' }}>
                 <TouchableOpacity
-                    onPress={()=>{
+                    onPress={() => {
                         global.navigation.navigate('WriteComment', {
                             title: '回复',
                             commentPlaceholder: '回复：138****4573'
@@ -90,7 +90,7 @@ class CommentReplyListScreen extends Component {
                 >
                     {this.renderComment()}
                 </TouchableOpacity>
-                <View style={[{position: 'absolute', bottom: 0, left: paddingLeft, right: 0}]}>
+                <View style={[{ position: 'absolute', bottom: 0, left: paddingLeft, right: 0 }]}>
                     {this.renderSeparator()}
                 </View>
             </View>
@@ -98,11 +98,11 @@ class CommentReplyListScreen extends Component {
     }
 
     renderReplyList = () => {
-        return(
-            <FlatList 
+        return (
+            <FlatList
                 data={this.state.replyList}
                 renderItem={this.renderReplyComment}
-                keyExtractor={(item, index)=>(''+index)}
+                keyExtractor={(item, index) => ('' + index)}
             />
         );
     }
@@ -111,14 +111,14 @@ class CommentReplyListScreen extends Component {
         return (
             <BaseView title={"回复"}>
                 <RefreshScrollView>
-                    <View style={{paddingTop: 15, paddingHorizontal: 15, paddingBottom: 17, backgroundColor: 'white'}}>
+                    <View style={{ paddingTop: 15, paddingHorizontal: 15, paddingBottom: 17, backgroundColor: 'white' }}>
                         {this.renderComment()}
                     </View>
                     {this.renderSeparator()}
                     {this.renderReplyList()}
                 </RefreshScrollView>
                 <TouchableOpacity
-                    style={[globalStyle.buttonOrange, {height: 48}]}>
+                    style={[globalStyle.buttonOrange, { height: 48 }]}>
                     <Text style={globalStyle.fontWhite}>回复</Text>
                 </TouchableOpacity>
             </BaseView>
