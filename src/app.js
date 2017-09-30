@@ -15,7 +15,9 @@ import Register from './pages/login/register'
 import ScheduleList from './pages/schedule/scheduleList'
 import ConfrimOrder from './pages/order/comfirmOrder'
 import TicketOrder from './pages/me/ticketOrder'
+import TicketDetail from './pages/me/ticketDetail'
 import WriteComment from './pages/movieDetail/writeComment'
+import CommentReplyList from './pages/movieDetail/commentReplyList'
 
 import './business/storage'
 import './style/index'
@@ -34,8 +36,10 @@ const App = StackNavigator(
         ChooseSeat:{screen:ChooseSeat},
         ScheduleList: { screen: ScheduleList },
         TicketOrder: { screen: TicketOrder },
+        TicketDetail: { screen: TicketDetail },
         ConfrimOrder: { screen: ConfrimOrder },
-        WriteComment: { screen: WriteComment }
+        WriteComment: { screen: WriteComment },
+        CommentReplyList: { screen: CommentReplyList}
     },
     {
         navigationOptions: {

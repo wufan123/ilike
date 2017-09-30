@@ -14,7 +14,8 @@ import {
 } from 'react-native';
 import globalStyle from '../../style/index';
 import LinearGradient from 'react-native-linear-gradient';
-import RatingView from '../common/component/ratingView'
+import RatingView from '../common/component/ratingView';
+import RefreshScrollView from '../common/pull/RefreshScrollView';
 
 const { width, height } = Dimensions.get('window')
 
@@ -223,10 +224,14 @@ class MovieDetailScreen extends Component {
         )
     }
 
+    goToReplyList = () => {
+        global.navigation.navigate('CommentReplyList');
+    }
+
     _renderCommentCell({item, index}) {
         return (
             <TouchableOpacity
-                onPress={()=>{}}
+                onPress={this.goToReplyList}
             >
                 <View
                     style={[styles.commentCell]}
@@ -239,14 +244,14 @@ class MovieDetailScreen extends Component {
                             <View style={{'width':6}} />
                             <Image style={styles.genderImg} source={require('../../assets/common/girl.png')} />
                         </View>
-                        <Text style={[globalStyle.fontGray, globalStyle.font14]}>30min ago</Text>
+                        <Text style={[globalStyle.fontGray, globalStyle.font11]}>30min ago</Text>
                     </View>
                     <View
                         style={styles.commentCellMiddleContainer}
                     >
                         <Text
                             numberOfLines={3}
-                            style={[globalStyle.fontBlack, globalStyle.font16]}
+                            style={[globalStyle.fontBlack, globalStyle.font14]}
                         >
                             {item.comment}
                         </Text>
@@ -255,7 +260,7 @@ class MovieDetailScreen extends Component {
                         style={styles.commentCellBottomContainer}
                     >
                         <Image
-                            style={{width: 16, height: 14}}
+                            style={{width: 18, height: 16}}
                             source={require('../../assets/common/movie_comments.png')}
                             resizeMode={"cover"}
                         />
@@ -271,7 +276,7 @@ class MovieDetailScreen extends Component {
         return (
             <FlatList 
                 data={this.state.commentList}
-                renderItem={this._renderCommentCell}
+                renderItem={this._renderCommentCell.bind(this)}
                 ItemSeparatorComponent={()=><View style={[globalStyle.lineSeperator]} />}
                 keyExtractor={(item, index)=>(''+index)}
             />
@@ -281,7 +286,7 @@ class MovieDetailScreen extends Component {
     render() {
         return (
             <View style={styles.screenContainer}>
-            <ScrollView style={styles.screenContainer}>
+            <RefreshScrollView style={styles.screenContainer}>
                 <StatusBar
                     hidden={true}
                 />
@@ -293,7 +298,7 @@ class MovieDetailScreen extends Component {
                 {this._rendSectionSeparate()}
                 {this._renderCommentList()}
                 <View style={{height: 8}} />
-            </ScrollView>
+            </RefreshScrollView>
             <TouchableOpacity
                 onPress={()=>{}}
                 style={styles.buyButton}

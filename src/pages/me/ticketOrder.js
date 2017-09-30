@@ -20,12 +20,7 @@ class TicketOrderScreen extends Component {
         super(props)
         this.state = {
             tabs: ['完成订单', '退票订单', '异常订单'],
-            list: [
-                { data: [1, 2, 3, 4, 5], title: 'section 0' },
-                { data: [1, 2, 3], title: 'section 1' },
-                { data: [1, 2, 3, 4], title: 'section 2' },
-                { data: [1, 2,], title: 'section 3' },
-            ]
+            list: [{}, {}, {}]
         }
     }
 
@@ -47,10 +42,14 @@ class TicketOrderScreen extends Component {
         global.navigation.navigate('ScheduleList');
     }
 
+    _goToTicketDetail(){
+        global.navigation.navigate('TicketDetail');
+    }
+
     getListItem = ({ item, index }) => {
         return (
             <View style={styles.column}>
-                <View style={styles.row}>
+                <TouchableOpacity style={styles.row} onPress={()=> this._goToTicketDetail()}>
                     <View style={styles.movieThumbContainer}>
                         <Image resizeMode="stretch" style={styles.movieThumb} source={{
                             uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'
@@ -88,7 +87,7 @@ class TicketOrderScreen extends Component {
                             </View>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.seatsShow}>
                     <Text style={[styles.seat,styles.hasSeat]}>8排14座</Text>
                     <Text style={[styles.seat,styles.hasSeat]}>8排14座</Text>

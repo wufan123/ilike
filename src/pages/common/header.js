@@ -34,7 +34,8 @@ class Header extends Component {
         let bgColor = this.props.theme==='white'?'#fff':theme.colorPrimary;
         return (
             <View style={[{ zIndex: 10 },this.props.style]}>
-                <StatusBar backgroundColor={theme.colorPrimary}
+                <StatusBar backgroundColor={this.props.theme?this.props.theme:theme.colorPrimary}
+                barStyle={this.props.theme?'dark-content':theme.colorPrimary}
                 />
                 <View style={[styles.headerContainer,{backgroundColor:bgColor},this.props.backgroundColor]} >
                     <View style={styles.backImg}>{!this.props.disableBack ? (this.props.theme=='white'? <ImageButton style={styles.backImg} source={require('../../assets/common/back_red.png')} onPress={() => this.backClick()} />: <ImageButton style={styles.backImg} source={require('../../assets/common/back.png')} onPress={() => this.backClick()} />) : null}

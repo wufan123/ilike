@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
     View,
+    StatusBar,
 } from 'react-native';
 import Header from '../common/header'
 import PropTypes from 'prop-types';
@@ -13,7 +14,11 @@ export default class BaseView extends Component {
     }
 
     render() {
-        return (<View style={theme.flex}>
+        return (
+        <View style={theme.flex}>
+            <StatusBar
+                hidden={false}
+            />
             <Header title={this.props.title}  theme={this.props.theme} rightTxt={this.props.rightTxt} rightClick={this.props.rightClick}/>
                 {this.props.children}
         </View>)
