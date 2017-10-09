@@ -23,7 +23,9 @@ export default class Tab extends Component {
             if (index >= 2) { 
                 // scrollTo({x: 0, y: 0, animated: true})无效，原因未知
                 this.refs.srollView.scrollTo(0,80 * (index - 2),true)
-            } 
+            }else{
+                  this.refs.srollView.scrollTo(0,0,true)
+            }
         }
         this.setState({
             tabSelcted: selectItem

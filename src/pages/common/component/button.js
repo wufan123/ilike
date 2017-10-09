@@ -1,7 +1,6 @@
-import React, { Component,PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import PropTypes from 'prop-types';
- export default class ImageButton extends Component {
+export default class ImageButton extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -18,7 +17,7 @@ import PropTypes from 'prop-types';
                 activeOpacity={0.8}
             >
                 <Text style={[styles.defaultTextStyle, this.props.textStyle]} {...this.props}>{this.props.text}</Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>
         );
     }
 }
@@ -39,8 +38,8 @@ const styles = StyleSheet.create({
 ImageButton.propTypes = {
     // buttonStyle:PropTypes.object,
     // textStyle: PropTypes.object,
-    text:PropTypes.string, 
-    onPress:PropTypes.func
+    text: PropTypes.string,
+    onPress: PropTypes.func
 }
 
 
