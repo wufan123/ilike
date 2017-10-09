@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import { Image, TouchableWithoutFeedback } from 'react-native';
-class ImageButton extends Component {
+export default class ImageButton extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -33,5 +33,11 @@ class ImageButton extends Component {
     }
 }
 
+ 
+ 
 
-export default ImageButton
+ImageButton.propTypes = {
+    onPress: PropTypes.func, 
+    // activeSource: PropTypes.object,
+    // source: PropTypes.object
+}

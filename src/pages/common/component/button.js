@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
  export default class ImageButton extends Component {
     constructor(props) {
@@ -34,5 +34,12 @@ const styles = StyleSheet.create({
         fontSize: 14
     }
 })
+
+ImageButton.propTypes = {
+    // buttonStyle:PropTypes.object,
+    // textStyle: PropTypes.object,
+    text:PropTypes.string, 
+    onPress:PropTypes.func
+}
 
 

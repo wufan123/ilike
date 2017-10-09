@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component,PropTypes } from 'react';
 import { Text, View, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 var theme = require('../../../style')
 const { width, height } = Dimensions.get('window')
+
+
 export default class Tab extends Component {
     constructor(props) {
         super(props)
@@ -13,21 +15,30 @@ export default class Tab extends Component {
         }
     }
 
-    changeSelect(selectItem) {
+    changeSelect(selectItem, index) {
+        if (!this.state.tab)
+            return
+   
+        if (this.state.tab.length > 4) {
+            if (index >= 2) { 
+                // scrollTo({x: 0, y: 0, animated: true})无效，原因未知
+                this.refs.srollView.scrollTo(0,80 * (index - 2),true)
+            } 
+        }
         this.setState({
             tabSelcted: selectItem
         })
         if (this.props && this.props.changeSelect) {
-            this.props.changeSelect(selectItem)
+            this.props.changeSelect(selectItem,index)
         }
     }
 
-    getWidth(){
-        if(!this.props.tab||this.props.tab.length ==0)
+    getWidth() {
+        if (!this.props.tab || this.props.tab.length == 0)
             return width
-        if(this.props.tab.length>4)
+        if (this.props.tab.length > 4)
             return 80
-        return width/this.props.tab.length 
+        return width / this.props.tab.length
     }
 
 
@@ -38,14 +49,14 @@ export default class Tab extends Component {
 
         return (
             <View style={[styles.tab]}>
-                <ScrollView style={[theme.flex, theme.row, { height: '100%' }]} horizontal={true} showsHorizontalScrollIndicator={false}>
+                <ScrollView ref='srollView' style={[theme.flex, theme.row, { height: '100%' }]} horizontal={true} showsHorizontalScrollIndicator={false}>
                     {this.props.tab.map(
                         (item, index) => {
-                            return (<TouchableOpacity 
+                            return (<TouchableOpacity
                                 activeOpacity={1}
-                                key={index} 
-                                style={[styles.tabItemBox, {width:this.getWidth()},this.state.tabSelcted == item ? styles.tabItemBoxSelect : null]}
-                                onPress={() => this.changeSelect(item)}>
+                                key={index}
+                                style={[styles.tabItemBox, { width: this.getWidth() }, this.state.tabSelcted == item ? styles.tabItemBoxSelect : null]}
+                                onPress={() => this.changeSelect(item, index)}>
                                 <Text
                                     style={[styles.tabItem, this.state.tabSelcted == item ? styles.tabItemSelected : null]}>{item}</Text></TouchableOpacity>)
                         })
@@ -94,3 +105,8 @@ const styles = StyleSheet.create({
 
 
 });
+
+Tab.propTypes = {
+    tab:PropTypes.array, 
+    changeSelect:PropTypes.func
+}
