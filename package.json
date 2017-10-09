@@ -15,6 +15,7 @@
     "react-native": "0.48.3",
     "react-native-alipay": "^0.1.5",
     "react-native-camera": "^0.10.0",
+    "react-native-image-zoom-viewer": "^2.0.10",
     "react-native-linear-gradient": "^2.3.0",
     "react-native-movie-seats": "git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#develop",
     "react-native-sqlite-storage": "^3.3.3",

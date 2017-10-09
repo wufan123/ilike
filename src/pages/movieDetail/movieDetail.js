@@ -10,12 +10,14 @@ import {
     StatusBar,
     ScrollView,
     FlatList,
-    Share
+    Share,
+    Modal
 } from 'react-native';
 import globalStyle from '../../style/index';
 import LinearGradient from 'react-native-linear-gradient';
 import RatingView from '../common/component/ratingView';
 import RefreshScrollView from '../common/pull/RefreshScrollView';
+import ImageViewer from 'react-native-image-zoom-viewer';
 
 const { width, height } = Dimensions.get('window')
 
@@ -38,6 +40,7 @@ class MovieDetailScreen extends Component {
             ],
             movieBriefToggle: false,
             movieLiked: false,
+            presentMovieThumbs: false,
             videoUrl: 'https://r8---sn-oguesnse.googlevideo.com/videoplayback?requiressl=yes&lmt=1506650784967090&sparams=dur,ei,expire,id,initcwndbps,ip,ipbits,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&dur=61.486&key=cms1&source=youtube&ei=EMTNWZZShfxat4OJkAc&ratebypass=yes&id=o-AFA1yOz02W73c89ZghBwbEzeFtq3-lnmRWEKHdRsLUGS&itag=22&pl=27&mime=video%2Fmp4&ip=2a01%3A4f8%3A191%3A1ac%3A%3A2&expire=1506678896&signature=8214F01A1AD3C15761D9E9ADE55D6A0FAC96D6F1.0BF879060A78259EE13C92C8612E8037E5D9ABBE&ipbits=0&title=GoPro:%20This%20Is%20Fusion&cms_redirect=yes&mip=45.77.12.181&mm=31&mn=sn-oguesnse&ms=au&mt=1506657190&mv=m'
         };
         this._rendMovieBrief = this._rendMovieBrief.bind(this);
@@ -166,7 +169,12 @@ class MovieDetailScreen extends Component {
         return (
             <View style={globalStyle.row}>
                 <TouchableOpacity
-                    onPress={() => { }}
+                    onPress={() => {
+                        global.navigation.navigate('ImageViewer', {
+                            images: this.state.movieThumbs,
+                            index: index
+                        })
+                     }}
                 >
                     <Image resizeMode={'cover'} style={{ width: imgWidth, height: imgWidth * 0.75, overflow: 'hidden' }} source={{ uri: item }} />
                 </TouchableOpacity>
@@ -305,6 +313,12 @@ class MovieDetailScreen extends Component {
                 >
                     <Text style={[globalStyle.fontWhite, globalStyle.font18]}>选座购票</Text>
                 </TouchableOpacity>
+                <Modal 
+                visible={this.state.presentMovieThumbs}
+                animationType={'fade'}
+                >
+                    <ImageViewer imageUrls={this.state.movieThumbs.map((url)=>{return {url: url};})}/>
+                </Modal>
             </View>
         )
     }
