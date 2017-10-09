@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -23,16 +24,28 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1702ADDBBB9640F8A3892C38 /* libjschelpers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A503A984245243F2956DC99B /* libjschelpers.a */; };
 		1711DC14FC4E45AEA88EB7E6 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B37954E94764CC88DCEC8A6 /* libReact.a */; };
+		182BFB8A83A349EEB46884B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BEE7BB48B14EB58AB93B43 /* Foundation.framework */; };
 		1851FB8D9EAF4FCD994A9A30 /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF6EFB6CE744A60964DB55B /* libcxxreact.a */; };
+		1B3197050CA34FC08112068E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9E17AB5B8C424EA0B92D86 /* UserNotifications.framework */; };
+		22FC065BE09E4456ADF99325 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E1C5E3DC3B4D34A563D4EC /* UIKit.framework */; };
 		2355722A0A41401BB249EF56 /* libthird-party.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AED4AEC20E4A13A1BE3285 /* libthird-party.a */; };
 		37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DFC48B84444928BB43C531 /* libRCTVideo.a */; };
+		4222568AC5DF460B96276EB9 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B446CD37304356932830EF /* libRCTJCoreModule.a */; };
+		44AE2E09BE764597A1BD3D8C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465674A9EB034238BC1A732A /* CFNetwork.framework */; };
 		47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C73036BE7A8843468501CEDF /* libRNMovieSeats.a */; };
 		56681A84B492464CBF4DF8C1 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE106F672BCB4D13A637ADBE /* libdouble-conversion.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6369BD8DFA5E4DECBBE9EB2B /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F61C73166342C3A145E3EE /* libyoga.a */; };
+		6CD7980996AF43DFA890833E /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C3ED86446647BAA19BAB79 /* libresolv.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8575AC48832D4FD682C3496F /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC990F2DA4D543D58F0E4A09 /* libBVLinearGradient.a */; };
+		9DB20333883D466B88DE6D76 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0B4AEED79F402B9F1B9BA5 /* libSQLite.a */; };
+		A707EBA522ED41AFB057FCB1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79A266C47594A7F84AF3217 /* Security.framework */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D20AEEC98A074AD0A7DB4EEC /* libRCTAlipay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ECB19B72C6D4B0187D15BD4 /* libRCTAlipay.a */; };
+		D512121D484C4D08A4501BC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9609984D98F43F1976B5DAD /* CoreGraphics.framework */; };
+		D716643117734CF096EE7528 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C411DE44A8D84E9AA9471F49 /* CoreFoundation.framework */; };
+		D7FE9CE45A7242419774704C /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D38BD44ABE8146EC9EFD7C1F /* libRCTJPushModule.a */; };
 		F020E80C46DE4290831F7B82 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBEBB7BF126A4E719FFBD713 /* libRCTCamera.a */; };
 		F918F4DD1F739892006C9AE8 /* movie-seats.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F918F4DC1F739892006C9AE8 /* movie-seats.bundle */; };
 		F99F063E1F6BB6AB006E4055 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */; };
@@ -41,22 +54,8 @@
 		F99F06441F6BB6D3006E4055 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06431F6BB6D3006E4055 /* libc++.tbd */; };
 		F99F06461F6BB6DC006E4055 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06451F6BB6DC006E4055 /* libz.tbd */; };
 		F99F064F1F6BB7AF006E4055 /* libRCTWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06391F6BB696006E4055 /* libRCTWeChat.a */; };
-<<<<<<< HEAD
-		CC468A28177D46B68FFD2178 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14668BB4B01E45909D9AE604 /* libRCTJCoreModule.a */; };
-		C4A3F15C86C044DCBD832770 /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD9D51548A84FEEAE2B96B4 /* libRCTJPushModule.a */; };
-		B8EEB79C1E034FBAB8F74262 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FEF718F63049B692B19807 /* UserNotifications.framework */; };
-		F8CCE23BD22F49479ABC4EA9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AE7974AF5A406EAED84C8F /* Security.framework */; };
-		31D1FD54AD574116967B9B9A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC78546DBCB4DEA80233288 /* CFNetwork.framework */; };
-		B5F68CF446C846839A0B6699 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173A36E0879146C693FCC429 /* CoreFoundation.framework */; };
-		6F3D1E37BE9644E6A0860411 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B5CB907B1E47EE9D22B2AA /* Foundation.framework */; };
-		7E9C860741A94325A25A32CE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FA90988696C4FE1857C9109 /* UIKit.framework */; };
-		FF212959E2104767B03AA54B /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 070E2CCD44F94362A780F117 /* libresolv.tbd */; };
-		72F79BBC08674E7FB141543E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302C5C549F114535801CAD4B /* CoreGraphics.framework */; };
-		FFA920710B8C48E28740914A /* libRCTAlipay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB869A37F9C4E10BCA8951C /* libRCTAlipay.a */; };
-		04F5A1179663424D99CB37DB /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ECE3969A80754866AA3425DF /* libSQLite.a */; };
-=======
 		F9B619511F8B0F760052469A /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B619311F8B0F2D0052469A /* libRCTCameraRoll.a */; };
->>>>>>> b197fd7d37854dd19479db12b4ebeb3c1b3c690f
+		F9B619D51F8B74E70052469A /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B619D41F8B74DD0052469A /* AlipaySDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -347,6 +346,34 @@
 			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
 			remoteInfo = RCTCameraRoll;
 		};
+		F9B6199D1F8B6D120052469A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 91A77697E99342099C03397C /* RCTAlipay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 094B6CF81CC88F670025C6FB;
+			remoteInfo = RCTAlipay;
+		};
+		F9B619A91F8B6D120052469A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C52E1306DB714B218F4EDC02 /* RCTJCoreModule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6212E9B41F3990DC00BDF51A;
+			remoteInfo = RCTJCoreModule;
+		};
+		F9B619AC1F8B6D120052469A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D05318082A1C43A295EC9319 /* RCTJPushModule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6280980A1CEDC407000D3A81;
+			remoteInfo = RCTJPushModule;
+		};
+		F9B619CD1F8B6D120052469A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6E511A96BCF4A5785A6AB2F /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
+			remoteInfo = SQLite;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -371,21 +398,37 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = zmfilm/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = zmfilm/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1ECB19B72C6D4B0187D15BD4 /* libRCTAlipay.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTAlipay.a; sourceTree = "<group>"; };
 		41F61C73166342C3A145E3EE /* libyoga.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libyoga.a; sourceTree = "<group>"; };
+		465674A9EB034238BC1A732A /* CFNetwork.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4C9E17AB5B8C424EA0B92D86 /* UserNotifications.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5FBA74E0ACE4456382995281 /* RCTWeChat.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTWeChat.xcodeproj; path = "../node_modules/react-native-wechat/ios/RCTWeChat.xcodeproj"; sourceTree = "<group>"; };
+		68BEE7BB48B14EB58AB93B43 /* Foundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		75B446CD37304356932830EF /* libRCTJCoreModule.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJCoreModule.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		882F027303DC4478A2029635 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
+		91A77697E99342099C03397C /* RCTAlipay.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTAlipay.xcodeproj; path = "../node_modules/react-native-alipay/ios/RCTAlipay.xcodeproj"; sourceTree = "<group>"; };
+		9D0B4AEED79F402B9F1B9BA5 /* libSQLite.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSQLite.a; sourceTree = "<group>"; };
 		A503A984245243F2956DC99B /* libjschelpers.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libjschelpers.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AFF6EFB6CE744A60964DB55B /* libcxxreact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libcxxreact.a; sourceTree = "<group>"; };
+		B9609984D98F43F1976B5DAD /* CoreGraphics.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C1E1C5E3DC3B4D34A563D4EC /* UIKit.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C411DE44A8D84E9AA9471F49 /* CoreFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNMovieSeats.xcodeproj; path = "../node_modules/react-native-movie-seats/ios/RNMovieSeats.xcodeproj"; sourceTree = "<group>"; };
+		C52E1306DB714B218F4EDC02 /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJCoreModule.xcodeproj; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; };
+		C6E511A96BCF4A5785A6AB2F /* SQLite.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		C73036BE7A8843468501CEDF /* libRNMovieSeats.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNMovieSeats.a; sourceTree = "<group>"; };
+		D05318082A1C43A295EC9319 /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJPushModule.xcodeproj; path = "../node_modules/jpush-react-native/ios/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; };
+		D38BD44ABE8146EC9EFD7C1F /* libRCTJPushModule.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJPushModule.a; sourceTree = "<group>"; };
+		D6C3ED86446647BAA19BAB79 /* libresolv.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		D84FEAF51FC5442C95E5F5A1 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
 		EC990F2DA4D543D58F0E4A09 /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
 		F1AED4AEC20E4A13A1BE3285 /* libthird-party.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libthird-party.a"; sourceTree = "<group>"; };
 		F4DFC48B84444928BB43C531 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
+		F79A266C47594A7F84AF3217 /* Security.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F918F4DC1F739892006C9AE8 /* movie-seats.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "movie-seats.bundle"; path = "../node_modules/react-native-movie-seats/ios/movie-seats.bundle"; sourceTree = "<group>"; };
 		F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -393,24 +436,10 @@
 		F99F06431F6BB6D3006E4055 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		F99F06451F6BB6DC006E4055 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		F9B619241F8B0F2C0052469A /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
+		F9B619D41F8B74DD0052469A /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "../../node_modules/react-native-alipay/ios/SDK/AlipaySDK.framework"; sourceTree = "<group>"; };
+		F9B619D61F8B75080052469A /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		FBEBB7BF126A4E719FFBD713 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTCamera.a; sourceTree = "<group>"; };
 		FE106F672BCB4D13A637ADBE /* libdouble-conversion.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libdouble-conversion.a"; sourceTree = "<group>"; };
-		9B01DDEB96B54F2FB38814EB /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; name = "RCTJCoreModule.xcodeproj"; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		14668BB4B01E45909D9AE604 /* libRCTJCoreModule.a */ = {isa = PBXFileReference; name = "libRCTJCoreModule.a"; path = "libRCTJCoreModule.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		5DCB30A9AB5D467280D76117 /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; name = "RCTJPushModule.xcodeproj"; path = "../node_modules/jpush-react-native/ios/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		BFD9D51548A84FEEAE2B96B4 /* libRCTJPushModule.a */ = {isa = PBXFileReference; name = "libRCTJPushModule.a"; path = "libRCTJPushModule.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		75FEF718F63049B692B19807 /* UserNotifications.framework */ = {isa = PBXFileReference; name = "UserNotifications.framework"; path = "System/Library/Frameworks/UserNotifications.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		46AE7974AF5A406EAED84C8F /* Security.framework */ = {isa = PBXFileReference; name = "Security.framework"; path = "System/Library/Frameworks/Security.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		9FC78546DBCB4DEA80233288 /* CFNetwork.framework */ = {isa = PBXFileReference; name = "CFNetwork.framework"; path = "System/Library/Frameworks/CFNetwork.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		173A36E0879146C693FCC429 /* CoreFoundation.framework */ = {isa = PBXFileReference; name = "CoreFoundation.framework"; path = "System/Library/Frameworks/CoreFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		25B5CB907B1E47EE9D22B2AA /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		4FA90988696C4FE1857C9109 /* UIKit.framework */ = {isa = PBXFileReference; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		070E2CCD44F94362A780F117 /* libresolv.tbd */ = {isa = PBXFileReference; name = "libresolv.tbd"; path = "usr/lib/libresolv.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
-		302C5C549F114535801CAD4B /* CoreGraphics.framework */ = {isa = PBXFileReference; name = "CoreGraphics.framework"; path = "System/Library/Frameworks/CoreGraphics.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		C027AB7689BE4635BA323A64 /* RCTAlipay.xcodeproj */ = {isa = PBXFileReference; name = "RCTAlipay.xcodeproj"; path = "../node_modules/react-native-alipay/ios/RCTAlipay.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		6EB869A37F9C4E10BCA8951C /* libRCTAlipay.a */ = {isa = PBXFileReference; name = "libRCTAlipay.a"; path = "libRCTAlipay.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		6F4EA47A278E4DEFB596C53F /* SQLite.xcodeproj */ = {isa = PBXFileReference; name = "SQLite.xcodeproj"; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		ECE3969A80754866AA3425DF /* libSQLite.a */ = {isa = PBXFileReference; name = "libSQLite.a"; path = "libSQLite.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -456,18 +485,19 @@
 				37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */,
 				47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */,
 				8575AC48832D4FD682C3496F /* libBVLinearGradient.a in Frameworks */,
-				CC468A28177D46B68FFD2178 /* libRCTJCoreModule.a in Frameworks */,
-				C4A3F15C86C044DCBD832770 /* libRCTJPushModule.a in Frameworks */,
-				B8EEB79C1E034FBAB8F74262 /* UserNotifications.framework in Frameworks */,
-				F8CCE23BD22F49479ABC4EA9 /* Security.framework in Frameworks */,
-				31D1FD54AD574116967B9B9A /* CFNetwork.framework in Frameworks */,
-				B5F68CF446C846839A0B6699 /* CoreFoundation.framework in Frameworks */,
-				6F3D1E37BE9644E6A0860411 /* Foundation.framework in Frameworks */,
-				7E9C860741A94325A25A32CE /* UIKit.framework in Frameworks */,
-				FF212959E2104767B03AA54B /* libresolv.tbd in Frameworks */,
-				72F79BBC08674E7FB141543E /* CoreGraphics.framework in Frameworks */,
-				FFA920710B8C48E28740914A /* libRCTAlipay.a in Frameworks */,
-				04F5A1179663424D99CB37DB /* libSQLite.a in Frameworks */,
+				4222568AC5DF460B96276EB9 /* libRCTJCoreModule.a in Frameworks */,
+				D7FE9CE45A7242419774704C /* libRCTJPushModule.a in Frameworks */,
+				1B3197050CA34FC08112068E /* UserNotifications.framework in Frameworks */,
+				A707EBA522ED41AFB057FCB1 /* Security.framework in Frameworks */,
+				44AE2E09BE764597A1BD3D8C /* CFNetwork.framework in Frameworks */,
+				D716643117734CF096EE7528 /* CoreFoundation.framework in Frameworks */,
+				182BFB8A83A349EEB46884B3 /* Foundation.framework in Frameworks */,
+				22FC065BE09E4456ADF99325 /* UIKit.framework in Frameworks */,
+				6CD7980996AF43DFA890833E /* libresolv.tbd in Frameworks */,
+				D512121D484C4D08A4501BC8 /* CoreGraphics.framework in Frameworks */,
+				D20AEEC98A074AD0A7DB4EEC /* libRCTAlipay.a in Frameworks */,
+				9DB20333883D466B88DE6D76 /* libSQLite.a in Frameworks */,
+				F9B619D51F8B74E70052469A /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,6 +584,7 @@
 		13B07FAE1A68108700A75B9A /* zmfilm */ = {
 			isa = PBXGroup;
 			children = (
+				F9B619D01F8B70DE0052469A /* Supports */,
 				F918F4DC1F739892006C9AE8 /* movie-seats.bundle */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -624,10 +655,10 @@
 				05620B1C316A4676BCA3064D /* RCTVideo.xcodeproj */,
 				C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */,
 				D84FEAF51FC5442C95E5F5A1 /* BVLinearGradient.xcodeproj */,
-				9B01DDEB96B54F2FB38814EB /* RCTJCoreModule.xcodeproj */,
-				5DCB30A9AB5D467280D76117 /* RCTJPushModule.xcodeproj */,
-				C027AB7689BE4635BA323A64 /* RCTAlipay.xcodeproj */,
-				6F4EA47A278E4DEFB596C53F /* SQLite.xcodeproj */,
+				C52E1306DB714B218F4EDC02 /* RCTJCoreModule.xcodeproj */,
+				D05318082A1C43A295EC9319 /* RCTJPushModule.xcodeproj */,
+				91A77697E99342099C03397C /* RCTAlipay.xcodeproj */,
+				C6E511A96BCF4A5785A6AB2F /* SQLite.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -687,6 +718,10 @@
 				F4DFC48B84444928BB43C531 /* libRCTVideo.a */,
 				C73036BE7A8843468501CEDF /* libRNMovieSeats.a */,
 				EC990F2DA4D543D58F0E4A09 /* libBVLinearGradient.a */,
+				75B446CD37304356932830EF /* libRCTJCoreModule.a */,
+				D38BD44ABE8146EC9EFD7C1F /* libRCTJPushModule.a */,
+				1ECB19B72C6D4B0187D15BD4 /* libRCTAlipay.a */,
+				9D0B4AEED79F402B9F1B9BA5 /* libSQLite.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -733,14 +768,14 @@
 				F99F06411F6BB6CA006E4055 /* libsqlite3.0.tbd */,
 				F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */,
 				F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */,
-				75FEF718F63049B692B19807 /* UserNotifications.framework */,
-				46AE7974AF5A406EAED84C8F /* Security.framework */,
-				9FC78546DBCB4DEA80233288 /* CFNetwork.framework */,
-				173A36E0879146C693FCC429 /* CoreFoundation.framework */,
-				25B5CB907B1E47EE9D22B2AA /* Foundation.framework */,
-				4FA90988696C4FE1857C9109 /* UIKit.framework */,
-				070E2CCD44F94362A780F117 /* libresolv.tbd */,
-				302C5C549F114535801CAD4B /* CoreGraphics.framework */,
+				4C9E17AB5B8C424EA0B92D86 /* UserNotifications.framework */,
+				F79A266C47594A7F84AF3217 /* Security.framework */,
+				465674A9EB034238BC1A732A /* CFNetwork.framework */,
+				C411DE44A8D84E9AA9471F49 /* CoreFoundation.framework */,
+				68BEE7BB48B14EB58AB93B43 /* Foundation.framework */,
+				C1E1C5E3DC3B4D34A563D4EC /* UIKit.framework */,
+				D6C3ED86446647BAA19BAB79 /* libresolv.tbd */,
+				B9609984D98F43F1976B5DAD /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -760,6 +795,47 @@
 				F9B619311F8B0F2D0052469A /* libRCTCameraRoll.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F9B619931F8B6D120052469A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9B6199E1F8B6D120052469A /* libRCTAlipay.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9B619951F8B6D120052469A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9B619AA1F8B6D120052469A /* libRCTJCoreModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9B619971F8B6D120052469A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9B619AD1F8B6D120052469A /* libRCTJPushModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9B619CA1F8B6D120052469A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9B619CE1F8B6D120052469A /* libSQLite.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9B619D01F8B70DE0052469A /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				F9B619D61F8B75080052469A /* AlipaySDK.bundle */,
+				F9B619D41F8B74DD0052469A /* AlipaySDK.framework */,
+			);
+			path = Supports;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -841,6 +917,10 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
+					ProductGroup = F9B619931F8B6D120052469A /* Products */;
+					ProjectRef = 91A77697E99342099C03397C /* RCTAlipay.xcodeproj */;
+				},
+				{
 					ProductGroup = 5E91572E1DD0AC6500FF2AA8 /* Products */;
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
 				},
@@ -863,6 +943,14 @@
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
 					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+				},
+				{
+					ProductGroup = F9B619951F8B6D120052469A /* Products */;
+					ProjectRef = C52E1306DB714B218F4EDC02 /* RCTJCoreModule.xcodeproj */;
+				},
+				{
+					ProductGroup = F9B619971F8B6D120052469A /* Products */;
+					ProjectRef = D05318082A1C43A295EC9319 /* RCTJPushModule.xcodeproj */;
 				},
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
@@ -903,6 +991,10 @@
 				{
 					ProductGroup = F918F5E01F7A28C9006C9AE8 /* Products */;
 					ProjectRef = C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */;
+				},
+				{
+					ProductGroup = F9B619CA1F8B6D120052469A /* Products */;
+					ProjectRef = C6E511A96BCF4A5785A6AB2F /* SQLite.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1194,6 +1286,34 @@
 			remoteRef = F9B619301F8B0F2D0052469A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F9B6199E1F8B6D120052469A /* libRCTAlipay.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTAlipay.a;
+			remoteRef = F9B6199D1F8B6D120052469A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F9B619AA1F8B6D120052469A /* libRCTJCoreModule.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTJCoreModule.a;
+			remoteRef = F9B619A91F8B6D120052469A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F9B619AD1F8B6D120052469A /* libRCTJPushModule.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTJPushModule.a;
+			remoteRef = F9B619AC1F8B6D120052469A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F9B619CE1F8B6D120052469A /* libSQLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSQLite.a;
+			remoteRef = F9B619CD1F8B6D120052469A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1290,10 +1410,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
-					"$(SRCROOT)\..\node_modules\jcore-react-native\ios\RCTJCoreModule",
-					"$(SRCROOT)\..\node_modules\jpush-react-native\ios\RCTJPushModule",
-					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
-					"$(SRCROOT)\..\node_modules\react-native-sqlite-storage\src\ios",
+					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-alipay/ios/RCTAlipay/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = zmfilmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1328,10 +1448,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
-					"$(SRCROOT)\..\node_modules\jcore-react-native\ios\RCTJCoreModule",
-					"$(SRCROOT)\..\node_modules\jpush-react-native\ios\RCTJPushModule",
-					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
-					"$(SRCROOT)\..\node_modules\react-native-sqlite-storage\src\ios",
+					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-alipay/ios/RCTAlipay/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = zmfilmTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1360,6 +1480,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 5ZDZ2RA37W;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-alipay/ios/SDK/**";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..",
@@ -1373,10 +1494,10 @@
 					"eact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
-					"$(SRCROOT)\..\node_modules\jcore-react-native\ios\RCTJCoreModule",
-					"$(SRCROOT)\..\node_modules\jpush-react-native\ios\RCTJPushModule",
-					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
-					"$(SRCROOT)\..\node_modules\react-native-sqlite-storage\src\ios",
+					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-alipay/ios/RCTAlipay/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = zmfilm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1397,6 +1518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5ZDZ2RA37W;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/react-native-alipay/ios/SDK/**";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..",
@@ -1410,10 +1532,10 @@
 					"eact-native-videoios",
 					"$(SRCROOT)/../node_modules/react-native-movie-seats/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-linear-gradient/BVLinearGradient",
-					"$(SRCROOT)\..\node_modules\jcore-react-native\ios\RCTJCoreModule",
-					"$(SRCROOT)\..\node_modules\jpush-react-native\ios\RCTJPushModule",
-					"$(SRCROOT)\..\node_modules\react-native-alipay\ios\RCTAlipay/**",
-					"$(SRCROOT)\..\node_modules\react-native-sqlite-storage\src\ios",
+					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule",
+					"$(SRCROOT)/../node_modules/react-native-alipay/ios/RCTAlipay/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = zmfilm/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
