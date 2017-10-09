@@ -76,17 +76,19 @@ class CommentReplyListScreen extends Component {
         );
     };
 
+    goToWriteComment = () => {
+        global.navigation.navigate('WriteComment', {
+            title: '回复',
+            commentPlaceholder: '回复：138****4573'
+        });
+    }
+
     renderReplyComment = () => {
         let paddingLeft = 38 + 15;
         return (
             <View style={{ paddingLeft: paddingLeft, paddingTop: 15, paddingBottom: 17, paddingRight: 15, backgroundColor: 'white' }}>
                 <TouchableOpacity
-                    onPress={() => {
-                        global.navigation.navigate('WriteComment', {
-                            title: '回复',
-                            commentPlaceholder: '回复：138****4573'
-                        });
-                    }}
+                    onPress={this.goToWriteComment}
                 >
                     {this.renderComment()}
                 </TouchableOpacity>
@@ -118,6 +120,7 @@ class CommentReplyListScreen extends Component {
                     {this.renderReplyList()}
                 </RefreshScrollView>
                 <TouchableOpacity
+                    onPress={this.goToWriteComment}
                     style={[globalStyle.buttonOrange, { height: 48 }]}>
                     <Text style={globalStyle.fontWhite}>回复</Text>
                 </TouchableOpacity>

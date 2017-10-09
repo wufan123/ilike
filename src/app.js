@@ -20,6 +20,7 @@ import Appraise from './pages/me/appraise'
 import FoodOrder from './pages/me/foodOrder'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
+import ImageViewer from './pages/common/imageViewer'
 
 import './business/storage'
 import './style/index'
@@ -43,7 +44,8 @@ const App = StackNavigator(
         FoodOrder:{ screen: FoodOrder },
         ConfrimOrder: { screen: ConfrimOrder },
         WriteComment: { screen: WriteComment },
-        CommentReplyList: { screen: CommentReplyList}
+        CommentReplyList: { screen: CommentReplyList},
+        ImageViewer: {screen: ImageViewer}
     },
     {
         navigationOptions: {
