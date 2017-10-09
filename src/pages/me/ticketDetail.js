@@ -80,6 +80,17 @@ class TicketDetailScreen extends Component {
                 <Image source={require('../../assets/ewm.png')}  style={{position:'relative', width: 100}} resizeMode='contain'/>
               </View>
           </View>
+          <View style={styles.view}>
+              <View style={{flexDirection: 'row',justifyContent:'space-between'}}>
+                  <View>
+                    <Text>中瑞南华影城(三坊七巷店)</Text>
+                    <Text>三坊七巷南后街75号（博览苑对面）</Text>
+                  </View>
+                  <View style={styles.addressImage}>
+                    <Image source={require('../../assets/me/phone.png')} style={{width:25}} resizeMode='contain'></Image>
+                  </View>
+              </View>
+          </View>
         </ScrollView>
       </View>
     )
@@ -104,6 +115,14 @@ const styles = StyleSheet.create({
     color: '#3f3f3f',
     position:'relative',
     marginBottom: theme.itemMargin
+  },
+  addressImage:{
+    justifyContent:'center',
+    alignItems:'center',
+    width:50,
+    borderLeftWidth:1,
+    borderLeftColor:'#e8e8e8',
+    paddingLeft:10
   }
 })
 
