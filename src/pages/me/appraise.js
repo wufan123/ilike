@@ -64,7 +64,7 @@ class AppraiseScreen extends Component {
           </View>
         </View>
         <View style={styles.view}>
-          <UselessTextInput style={{ textAlignVertical: 'top' }} placeholder='您的建议，是我们改进的动力!' multiline={true} numberOfLines={6} ></UselessTextInput>
+          <UselessTextInput  keyboardType='default'  style={{ textAlignVertical: 'top' }} placeholder='您的建议，是我们改进的动力!' multiline={true} numberOfLines={6} ></UselessTextInput>
         </View>
         <Button buttonStyle={styles.button} text={'提交'} />
       </View>
