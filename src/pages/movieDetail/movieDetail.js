@@ -41,7 +41,7 @@ class MovieDetailScreen extends Component {
             movieBriefToggle: false,
             movieLiked: false,
             presentMovieThumbs: false,
-            videoUrl: 'https://r8---sn-oguesnse.googlevideo.com/videoplayback?requiressl=yes&lmt=1506650784967090&sparams=dur,ei,expire,id,initcwndbps,ip,ipbits,itag,lmt,mime,mip,mm,mn,ms,mv,pl,ratebypass,requiressl,source&dur=61.486&key=cms1&source=youtube&ei=EMTNWZZShfxat4OJkAc&ratebypass=yes&id=o-AFA1yOz02W73c89ZghBwbEzeFtq3-lnmRWEKHdRsLUGS&itag=22&pl=27&mime=video%2Fmp4&ip=2a01%3A4f8%3A191%3A1ac%3A%3A2&expire=1506678896&signature=8214F01A1AD3C15761D9E9ADE55D6A0FAC96D6F1.0BF879060A78259EE13C92C8612E8037E5D9ABBE&ipbits=0&title=GoPro:%20This%20Is%20Fusion&cms_redirect=yes&mip=45.77.12.181&mm=31&mn=sn-oguesnse&ms=au&mt=1506657190&mv=m'
+            videoUrl: 'http://hd.yinyuetai.com/uploads/videos/common/C9330152A4DFC7FB2FBC3B6070E67899.flv?sc\u003dbac17f82edd35935\u0026br\u003d1105\u0026vid\u003d2491056\u0026aid\u003d201\u0026area\u003dHT\u0026vst\u003d4'
         };
         this._rendMovieBrief = this._rendMovieBrief.bind(this);
         this._rendScrollThumbItem = this._rendScrollThumbItem.bind(this);
@@ -118,11 +118,7 @@ class MovieDetailScreen extends Component {
     }
 
     shareMovieAction = () => {
-        Share.share({ title: 'hello', message: 'go to watch movie' }, {
-            dialogTitle: 'test',
-            excludedActivityTypes: ['1', '2', '3'],
-            tintColor: 'red'
-        });
+        Share.share({ title: 'hello', url: 'https://www.zhaiiker.com/wp-content/uploads/2017/04/33332515934_608bd7585d_b.jpg', message: 'go to watch movie' });
     }
 
     writeCommentAction = () => {
@@ -174,7 +170,7 @@ class MovieDetailScreen extends Component {
                             images: this.state.movieThumbs,
                             index: index
                         })
-                     }}
+                    }}
                 >
                     <Image resizeMode={'cover'} style={{ width: imgWidth, height: imgWidth * 0.75, overflow: 'hidden' }} source={{ uri: item }} />
                 </TouchableOpacity>
@@ -291,6 +287,10 @@ class MovieDetailScreen extends Component {
         )
     }
 
+    _gotoChooseSeat(item) {
+        global.navigation.navigate('ChooseSeat');
+    }
+
     render() {
         return (
             <View style={styles.screenContainer}>
@@ -308,17 +308,11 @@ class MovieDetailScreen extends Component {
                     <View style={{ height: 8 }} />
                 </RefreshScrollView>
                 <TouchableOpacity
-                    onPress={() => { }}
+                    onPress={() => { this._gotoChooseSeat.bind()() }}
                     style={styles.buyButton}
                 >
                     <Text style={[globalStyle.fontWhite, globalStyle.font18]}>选座购票</Text>
                 </TouchableOpacity>
-                <Modal 
-                visible={this.state.presentMovieThumbs}
-                animationType={'fade'}
-                >
-                    <ImageViewer imageUrls={this.state.movieThumbs.map((url)=>{return {url: url};})}/>
-                </Modal>
             </View>
         )
     }
