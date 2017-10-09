@@ -17,6 +17,7 @@ import ConfrimOrder from './pages/order/comfirmOrder'
 import TicketOrder from './pages/me/ticketOrder'
 import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
+import FoodOrder from './pages/me/foodOrder'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 
@@ -39,6 +40,7 @@ const App = StackNavigator(
         TicketOrder: { screen: TicketOrder },
         TicketDetail: { screen: TicketDetail },
         Appraise:{ screen: Appraise },
+        FoodOrder:{ screen: FoodOrder },
         ConfrimOrder: { screen: ConfrimOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList}

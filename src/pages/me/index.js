@@ -153,7 +153,7 @@ export default class MeScreen extends Component {
         this.props.navigation.navigate('TicketOrder');
     }
     _gotoGoodsOrder() {
-
+        this.props.navigation.navigate('FoodOrder');
     }
     _gotoComboOrder() {
 
@@ -202,7 +202,7 @@ export default class MeScreen extends Component {
                             <Text style={[theme.font12, theme.fontBlack]}>影票订单</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoGoodsOrder}>
+                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoGoodsOrder()}>
                         <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
                             <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-goods-order.png')} />
                             <Text style={[theme.font12, theme.fontBlack]}>卖品订单</Text>
