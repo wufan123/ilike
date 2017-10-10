@@ -48,13 +48,13 @@ const App = StackNavigator(
         FoodOrder:{ screen: FoodOrder },
         Sign:{ screen: Sign },
         Helpback:{ screen: Helpback },
-        ConfrimOrder: { screen: ConfrimOrder },
+        ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
         ImageViewer: {screen: ImageViewer},
         UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
-        PayDetail: {screen: PayDetail},
+        PayDetail: {screen: PayDetail}, 
     },
     {
         navigationOptions: {

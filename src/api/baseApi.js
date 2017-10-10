@@ -9,7 +9,7 @@ let headers = {
 let TIMEOUT = 10000
 
 const BaseApi = {
-    getToken:function(){
+    getToken:async function(){
          return BaseApi.request('GET','',{tokenId:token})
     },
     request: function (method, url, params) {
@@ -31,7 +31,7 @@ const BaseApi = {
                 }
             }
         } else {
-            if (params)
+            if (params) 
                 formData = JSON.stringify(params)
         }
         fetchPromise = new Promise(function (resolve, reject) {
