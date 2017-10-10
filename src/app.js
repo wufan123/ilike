@@ -23,6 +23,7 @@ import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
 import UseTicket from './pages/ticket/useTicket'
+import Setting from './pages/me/setting'
 import './business/storage'
 import './style/index'
 
@@ -49,6 +50,7 @@ const App = StackNavigator(
         CommentReplyList: { screen: CommentReplyList},
         ImageViewer: {screen: ImageViewer},
         UseTicket: { screen: UseTicket},
+        Setting: {screen: Setting},
     },
     {
         navigationOptions: {
