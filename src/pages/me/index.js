@@ -132,7 +132,8 @@ export default class MeScreen extends Component {
                 title: '意见反馈',
                 marginTop: true,
                 borderBottom: true,
-                image: require('../../assets/common/right_btn.png')
+                image: require('../../assets/common/right_btn.png'),
+                goToUrl:'Helpback'
             },
             {
                 id: 'customerService',

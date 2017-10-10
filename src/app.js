@@ -19,6 +19,7 @@ import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
 import FoodOrder from './pages/me/foodOrder'
 import Sign from './pages/me/sign'
+import Helpback from './pages/me/helpback'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
@@ -46,6 +47,7 @@ const App = StackNavigator(
         Appraise:{ screen: Appraise },
         FoodOrder:{ screen: FoodOrder },
         Sign:{ screen: Sign },
+        Helpback:{ screen: Helpback },
         ConfrimOrder: { screen: ConfrimOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
