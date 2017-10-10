@@ -17,7 +17,7 @@ let grayBg = require('../../assets/ticket/ticket_bg_gray.png')
 let yellowBg = require('../../assets/ticket/ticket_bg_yellow.png')
 let greenBg = require('../../assets/ticket/ticket_bg_green.png')
 let checkColor = "#999999"
-export default class extends Component {
+export default class UseCoupon extends Component {
 
     constructor(props) {
         super(props)
@@ -27,50 +27,50 @@ export default class extends Component {
 
     }
 
-    getItem(item, index) {
-        return (<View key={index} style={styles.ticketItem}>
-            <Image style={styles.ticketBg} source={greenBg}
-                   resizeMode={'stretch'}>
-                <View style={styles.ticketItemTop}>
-                    <View style={{flexDirection:'row',alignItems:'center'}}>
-                        <Text style={[styles.itemTopTxt,{marginTop:15}]}>
-                            ￥
-                        </Text>
-                        <Text style={[styles.itemTopTxt,{fontSize:40}]}>
-                            15
-                        </Text>
+    getItem({ item, index }) {
+            return (<View key={index} style={styles.ticketItem}>
+                <Image style={styles.ticketBg} source={greenBg}
+                       resizeMode={'stretch'}>
+                    <View style={styles.ticketItemTop}>
+                        <View style={{flexDirection:'row',alignItems:'center'}}>
+                            <Text style={[styles.itemTopTxt,{marginTop:15}]}>
+                                ￥
+                            </Text>
+                            <Text style={[styles.itemTopTxt,{fontSize:40}]}>
+                                15
+                            </Text>
+                        </View>
+                        <View style={{marginLeft:10}}>
+                            <Text style={[styles.itemTopTxt]}>
+                                卖品券
+                            </Text>
+                            <Text style={[styles.itemTopTxt]}>
+                                SDJDJKLD13
+                            </Text>
+                        </View>
+                        <View style={{flex:1}}/>
+                        <Text style={[styles.itemTopTxt,{fontSize:11}]}>使用规则</Text>
                     </View>
-                    <View style={{marginLeft:10}}>
-                        <Text style={[styles.itemTopTxt]}>
-                            卖品券
-                        </Text>
-                        <Text style={[styles.itemTopTxt]}>
-                            SDJDJKLD13
-                        </Text>
-                    </View>
-                    <View style={{flex:1}}/>
-                    <Text style={[styles.itemTopTxt,{fontSize:11}]}>使用规则</Text>
-                </View>
-            </Image>
-            <Image style={styles.ticketBg} source={require('../../assets/ticket/voucher_bg.png')}
-                   resizeMode={'stretch'}>
-                <View style={styles.ticketItemBottom}>
-                    <View>
-                        <Text style={styles.itemBottomTxt}>
-                            有效日期截止:2016年12月13日
-                        </Text>
-                        <Text style={styles.itemBottomTxt}>
-                            按券面值抵扣影票金额,特别场次需要补差
-                        </Text>
-                    </View>
-                    <View style={{flex:1}}/>
-                    <View style={styles.itemCheckBox}>
-                        <View style={styles.itemCheck}/>
+                </Image>
+                <Image style={styles.ticketBg} source={require('../../assets/ticket/voucher_bg.png')}
+                       resizeMode={'stretch'}>
+                    <View style={styles.ticketItemBottom}>
+                        <View>
+                            <Text style={styles.itemBottomTxt}>
+                                有效日期截止:2016年12月13日
+                            </Text>
+                            <Text style={styles.itemBottomTxt}>
+                                按券面值抵扣影票金额,特别场次需要补差
+                            </Text>
+                        </View>
+                        <View style={{flex:1}}/>
+                        <View style={styles.itemCheckBox}>
+                            <View style={styles.itemCheck}/>
 
+                        </View>
                     </View>
-                </View>
-            </Image>
-        </View>)
+                </Image>
+            </View>)
     }
 
     render() {
@@ -95,15 +95,27 @@ export default class extends Component {
                 <CFlatList style={theme.flex}
                            extraData={this.state}
                            data={[1,2, 3, 4, 5]}
-                           keyExtractor={(item, index) => index}
+                           keyExtractor={(item, index) =>index}
                            renderItem={this.getItem}
                 />
             </RefreshScrollView>
+            <View style={styles.lastTip}>
+                <Text style={styles.tipTxt}>每周可以领取两次哦</Text>
+            </View>
         </BaseBottomButtonView>)
     }
 }
 
 const styles = StyleSheet.create({
+    tipTxt:{
+      fontSize:12
+    },
+    lastTip:{
+        backgroundColor:'#fff',
+        paddingVertical:15,
+      justifyContent:'center',
+        alignItems:'center'
+    },
     itemCheck:{
         flex:1,
         backgroundColor:checkColor

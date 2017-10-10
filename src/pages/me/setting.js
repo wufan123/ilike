@@ -9,7 +9,7 @@ import {
     Platform,
     TouchableOpacity
 } from 'react-native';
-import BaseView from '../common/baseView';
+import BaseView from '../common/basePage';
 
 class SettingScreen extends Component {
 
