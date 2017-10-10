@@ -127,14 +127,16 @@ export default class MeScreen extends Component {
                 title: '消费记录',
                 marginTop: true,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'Consumerec'
             },
             {
                 id: 'integralRecord',
                 title: '积分记录',
                 marginTop: false,
                 borderBottom: false,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'Scorerec'
             },
             {
                 id: 'feedback',
