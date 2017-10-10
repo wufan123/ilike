@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import RefreshScrollView from '../common/pull/RefreshScrollView';
 import globalStyle from '../../style/index';
-import BaseView from '../common/baseView'
+import BaseView from '../common/basePage'
 
 class CommentReplyListScreen extends Component {
     constructor(props) {

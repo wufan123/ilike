@@ -13,7 +13,7 @@ import Login from './pages/login'
 import ForgetPw from './pages/login/forgetPw'
 import Register from './pages/login/register'
 import ScheduleList from './pages/schedule/scheduleList'
-import ConfrimOrder from './pages/order/comfirmOrder'
+import ConfirmOrder from './pages/order/comfirmOrder'
 import TicketOrder from './pages/me/ticketOrder'
 import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
@@ -22,8 +22,7 @@ import Sign from './pages/me/sign'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
-
-
+import UseTicket from './pages/ticket/useTicket'
 import './business/storage'
 import './style/index'
 
@@ -45,10 +44,11 @@ const App = StackNavigator(
         Appraise:{ screen: Appraise },
         FoodOrder:{ screen: FoodOrder },
         Sign:{ screen: Sign },
-        ConfrimOrder: { screen: ConfrimOrder },
+        ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
-        ImageViewer: {screen: ImageViewer}
+        ImageViewer: {screen: ImageViewer},
+        UseTicket: { screen: UseTicket},
     },
     {
         navigationOptions: {

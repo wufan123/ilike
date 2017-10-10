@@ -156,7 +156,7 @@ export default class extends Component {
                     </View>
                 </View>
                 <Button onPress={() => {
-                    global.navigation.navigate('ConfrimOrder');
+                    global.navigation.navigate('ConfirmOrder');
                 }} text={'确定(' + this.state.info.num + ')'}/>
                 <Modal
                     animationType={"slide"}

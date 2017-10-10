@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseView from './baseView'
+import BaseView from './basePage'
 import globalStyle from '../../style/index'
 import {
     View
@@ -25,7 +25,6 @@ export default class BaseBottomButtonView extends BaseView {
 }
 BaseBottomButtonView.propTypes = {
     ...BaseView.propTypes,
-    onPullRelease:PropTypes.func,
     onBottomClick:PropTypes.func,
     bottomTxt:PropTypes.string.isRequired
 }

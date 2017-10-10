@@ -23,13 +23,12 @@ export default class CardRadioButton extends RadioButton {
             })
         }else{
             return (
-                <View>
-                    <View>
-                        {children}
-                    </View>
-                    <View style={{flex:1}}/>
+                <View style={styles.itemContainer}>
                     <View style={[styles.radio, this.getRadioStyle()]}>
                         {this.isSelected()}
+                    </View>
+                    <View>
+                        {children}
                     </View>
                 </View>
             )
