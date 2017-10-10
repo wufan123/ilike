@@ -9,9 +9,9 @@ import {
     Platform,
     TouchableOpacity
 } from 'react-native';
-import BaseView from '../common/baseView';
+import BaseView from '../common/basePage';
 
-class SettingScreen extends Component {
+export default class Setting extends Component {
 
     render() {
         return (
@@ -21,5 +21,3 @@ class SettingScreen extends Component {
         );
     }
 }
-
-module.exports = SettingScreen;

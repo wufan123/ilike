@@ -19,7 +19,7 @@ let greenBg = require('../../assets/ticket/ticket_bg_green.png')
 let checkColor = "#999999"
 export default class extends Component {
 
-    constructor(props) {
+    constructor(props) { 
         super(props)
     }
 
