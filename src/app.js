@@ -19,11 +19,13 @@ import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
 import FoodOrder from './pages/me/foodOrder'
 import Sign from './pages/me/sign'
+import Helpback from './pages/me/helpback'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
-import UseTicket from './pages/ticket/useTicket'
+import UseCoupon from './pages/coupon/useCoupon'
 import Setting from './pages/me/setting'
+import PayDetail from './pages/order/payDetail'
 import './business/storage'
 import './style/index'
 
@@ -45,12 +47,14 @@ const App = StackNavigator(
         Appraise:{ screen: Appraise },
         FoodOrder:{ screen: FoodOrder },
         Sign:{ screen: Sign },
-        ConfirmOrder: { screen: ConfirmOrder },
+        Helpback:{ screen: Helpback },
+        ConfrimOrder: { screen: ConfrimOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
         ImageViewer: {screen: ImageViewer},
-        UseTicket: { screen: UseTicket},
+        UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
+        PayDetail: {screen: PayDetail},
     },
     {
         navigationOptions: {
