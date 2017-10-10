@@ -17,32 +17,32 @@ MESSAGE_PUSH = "message_push";
 CLEAR_CACHE = "clear_cache";
 CURRENT_VERSION = "current_version";
 
-class SettingScreen extends Component {
+export default class  extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            items : [MESSAGE_PUSH, CLEAR_CACHE, CURRENT_VERSION,],
+            items: [MESSAGE_PUSH, CLEAR_CACHE, CURRENT_VERSION,],
             messagePushOn: false,
         };
     }
 
     renderCellLeftComponent = (leftImg, title) => {
-        return(
+        return (
             <View style={[globalStyle.row, globalStyle.alignItemsCenter]}>
-                <Image style={{width: 18, height: 18, resizeMode:'contain'}} source={leftImg} />
-                <Text style={[globalStyle.fontBlack, globalStyle.font18, {marginLeft: 15}]}>{title}</Text>
+                <Image style={{ width: 18, height: 18, resizeMode: 'contain' }} source={leftImg} />
+                <Text style={[globalStyle.fontBlack, globalStyle.font18, { marginLeft: 15 }]}>{title}</Text>
             </View>
         )
     }
 
-    renderMessagePushCell = ()=>{
-        return(
+    renderMessagePushCell = () => {
+        return (
             <View style={[globalStyle.row, styles.cell]}>
                 {this.renderCellLeftComponent(require('../../assets/me/icon_message_push.png'), '消息推送')}
                 <Switch
                     onValueChange={
-                        (on)=>{
+                        (on) => {
                             this.setState({
                                 messagePushOn: on
                             })
@@ -55,7 +55,7 @@ class SettingScreen extends Component {
     }
 
     renderClearCacheCell = () => {
-        return(
+        return (
             <View style={[globalStyle.row, styles.cell]}>
                 {this.renderCellLeftComponent(require('../../assets/me/icon_clear_cache.png'), '清除缓存')}
             </View>
@@ -63,14 +63,14 @@ class SettingScreen extends Component {
     }
 
     renderCurrentVersionCell = () => {
-        return(
+        return (
             <View style={[globalStyle.row, styles.cell]}>
                 {this.renderCellLeftComponent(require('../../assets/me/icon_current_version.png'), '当前版本')}
             </View>
         )
     }
 
-    _renderItem = ({item, index}) => {
+    _renderItem = ({ item, index }) => {
         if (item === MESSAGE_PUSH)
             return this.renderMessagePushCell();
         if (item === CLEAR_CACHE)
@@ -81,17 +81,17 @@ class SettingScreen extends Component {
     }
 
     _separator = () => {
-        return(
+        return (
             <View style={globalStyle.lineSeperator} />
         )
     }
-    
+
     render() {
         return (
             <BaseView title={"设置"}>
                 <FlatList
                     data={this.state.items}
-                    keyExtractor={(item, index)=>(item+'_'+index)}
+                    keyExtractor={(item, index) => (item + '_' + index)}
                     renderItem={this._renderItem}
                     ItemSeparatorComponent={this._separator}
                 />
@@ -99,6 +99,7 @@ class SettingScreen extends Component {
         );
     }
 }
+
 
 styles = StyleSheet.create({
     cell: {
@@ -110,4 +111,3 @@ styles = StyleSheet.create({
     }
 })
 
-module.exports = SettingScreen;
