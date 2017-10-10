@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, Button } from 'react-native';
+import { NavigationActions } from 'react-navigation'
 
 class Welcome extends Component {
     constructor(props) {
@@ -8,8 +9,13 @@ class Welcome extends Component {
     componentDidMount() {
         // 处理数据源
         global.navigation = this.props.navigation;
-        global.navigation.navigate('MainPage')
-
+        let resetAction = NavigationActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'MainPage' })
+            ]
+        })
+        global.navigation.dispatch(resetAction)
     }
 
     render() {

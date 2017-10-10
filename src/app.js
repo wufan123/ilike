@@ -58,7 +58,7 @@ const App = StackNavigator(
         ImageViewer: {screen: ImageViewer},
         UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
-        PayDetail: {screen: PayDetail},
+        PayDetail: {screen: PayDetail}, 
     },
     {
         navigationOptions: {
