@@ -34,7 +34,7 @@ class ItemComponet extends Component {
 
     render() {
         return (
-            <TouchableOpacity activeOpacity={0.8} onPress={() => this.props.onPress} style={[this.props.marginTop ? theme.mt10 : null, this.props.borderBottom ? theme.bottomBorder : null]}>
+            <TouchableOpacity activeOpacity={0.8} onPress={this.props.onPress} style={[this.props.marginTop ? theme.mt10 : null, this.props.borderBottom ? theme.bottomBorder : null]}>
                 <View style={[styles.item, theme.whiteBlockWithPadding, theme.row]}>
                     <Image style={styles.itemImg} source={this.props.source} />
                     <Text style={[theme.fontBlack, theme.font16]}>{this.props.title}</Text>
@@ -77,7 +77,8 @@ export default class MeScreen extends Component {
                 title: '会员签到',
                 marginTop: false,
                 borderBottom: false,
-                image: require('../../assets/common/right_btn.png')
+                image: require('../../assets/common/right_btn.png'),
+                goToUrl:'Sign'
             },
             {
                 id: 'account',
@@ -147,7 +148,8 @@ export default class MeScreen extends Component {
                 title: '设置',
                 marginTop: false,
                 borderBottom: false,
-                image: require('../../assets/common/right_btn.png')
+                image: require('../../assets/common/right_btn.png'),
+                goToUrl: 'Setting',
             },
         ]
     }
@@ -160,8 +162,8 @@ export default class MeScreen extends Component {
     _gotoComboOrder() {
 
     }
-    _itemClick(item) {
-
+    _itemClick(name) {
+        global.navigation.navigate(name);
     }
     /**
      * 下拉刷新
@@ -219,7 +221,7 @@ export default class MeScreen extends Component {
                 </View>
                 {
                     this.state.items.map((item, index) =>
-                        (<ItemComponet onPress={() => this._itemClick(item)} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
+                        (<ItemComponet onPress={()=>this._itemClick(item.goToUrl)} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
                 }
                 <Button buttonStyle={styles.button} text={'退出登陆'} onPress={() => this._navigateToLogin()} />
             </RefreshScrollView>

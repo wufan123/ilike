@@ -18,9 +18,12 @@ import TicketOrder from './pages/me/ticketOrder'
 import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
 import FoodOrder from './pages/me/foodOrder'
+import Sign from './pages/me/sign'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
+import Setting from './pages/me/setting'
+
 
 import './business/storage'
 import './style/index'
@@ -42,10 +45,12 @@ const App = StackNavigator(
         TicketDetail: { screen: TicketDetail },
         Appraise:{ screen: Appraise },
         FoodOrder:{ screen: FoodOrder },
+        Sign:{ screen: Sign },
         ConfrimOrder: { screen: ConfrimOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
-        ImageViewer: {screen: ImageViewer}
+        ImageViewer: {screen: ImageViewer},
+        Setting: {screen: Setting},
     },
     {
         navigationOptions: {
