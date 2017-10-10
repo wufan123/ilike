@@ -24,6 +24,7 @@ import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
 import UseCoupon from './pages/coupon/useCoupon'
 import Setting from './pages/me/setting'
+import PayDetail from './pages/order/payDetail'
 import './business/storage'
 import './style/index'
 
@@ -51,6 +52,7 @@ const App = StackNavigator(
         ImageViewer: {screen: ImageViewer},
         UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
+        PayDetail: {screen: PayDetail},
     },
     {
         navigationOptions: {

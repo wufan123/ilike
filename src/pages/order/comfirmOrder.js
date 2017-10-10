@@ -32,7 +32,9 @@ export default class extends Component {
         this.setState({useCard:value})
     }
     render() {
-        return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'}>
+        return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'} onBottomClick={()=>{
+            global.navigation.navigate('PayDetail');
+        }}>
             <ScrollView>
                 <View>
                     <View style={styles.tipInfo}>
