@@ -22,7 +22,7 @@ import Sign from './pages/me/sign'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
-import UseTicket from './pages/ticket/useTicket'
+import UseCoupon from './pages/coupon/useCoupon'
 import Setting from './pages/me/setting'
 import './business/storage'
 import './style/index'
@@ -49,7 +49,7 @@ const App = StackNavigator(
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
         ImageViewer: {screen: ImageViewer},
-        UseTicket: { screen: UseTicket},
+        UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
     },
     {
