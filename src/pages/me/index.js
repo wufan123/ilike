@@ -60,7 +60,9 @@ export default class MeScreen extends Component {
             items: items
         }
     }
-
+    componentDidMount() {
+     
+    }
     _getItemsData() {
         return [
             {
@@ -143,7 +145,7 @@ export default class MeScreen extends Component {
             {
                 id: 'setting',
                 title: '设置',
-                marginTop: false, 
+                marginTop: false,
                 borderBottom: false,
                 image: require('../../assets/common/right_btn.png')
             },
@@ -172,7 +174,7 @@ export default class MeScreen extends Component {
         }, 3000);
     }
 
-    _navigateToLogin(){
+    _navigateToLogin() {
         this.props.navigation.navigate('Login');
     }
 
@@ -219,7 +221,7 @@ export default class MeScreen extends Component {
                     this.state.items.map((item, index) =>
                         (<ItemComponet onPress={() => this._itemClick(item)} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
                 }
-                <Button buttonStyle={styles.button} text={'退出登陆'} onPress={()=> this._navigateToLogin()} />
+                <Button buttonStyle={styles.button} text={'退出登陆'} onPress={() => this._navigateToLogin()} />
             </RefreshScrollView>
         </View>)
     }
