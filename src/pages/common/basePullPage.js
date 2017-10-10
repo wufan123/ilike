@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseView from './baseView'
+import BaseView from './basePage'
 import globalStyle from '../../style/index'
 import { RefreshScrollView } from '../common/pull'
 import PropTypes from 'prop-types';

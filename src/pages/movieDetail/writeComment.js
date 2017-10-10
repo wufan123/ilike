@@ -11,7 +11,7 @@ import {
 
 import globalStyle from '../../style/index';
 import Header from '../common/header';
-import BaseView from '../common/baseView';
+import BaseView from '../common/basePage';
 
 class WriteCommentScreen extends Component {
 

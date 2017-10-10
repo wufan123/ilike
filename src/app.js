@@ -13,7 +13,7 @@ import Login from './pages/login'
 import ForgetPw from './pages/login/forgetPw'
 import Register from './pages/login/register'
 import ScheduleList from './pages/schedule/scheduleList'
-import ConfrimOrder from './pages/order/comfirmOrder'
+import ConfirmOrder from './pages/order/comfirmOrder'
 import TicketOrder from './pages/me/ticketOrder'
 import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
@@ -23,9 +23,9 @@ import Helpback from './pages/me/helpback'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
+import UseCoupon from './pages/coupon/useCoupon'
 import Setting from './pages/me/setting'
-
-
+import PayDetail from './pages/order/payDetail'
 import './business/storage'
 import './style/index'
 
@@ -52,7 +52,9 @@ const App = StackNavigator(
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
         ImageViewer: {screen: ImageViewer},
+        UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
+        PayDetail: {screen: PayDetail},
     },
     {
         navigationOptions: {

@@ -3,11 +3,10 @@ import {
     View,
     StyleSheet,
     ScrollView,
-    Text, Image, Switch, TextInput
+    Text, Image, Switch, TextInput, TouchableOpacity
 } from 'react-native';
-import BaseBottomButtonView from '../common/baseBottomButtonView'
+import BaseBottomButtonView from '../common/baseBottomButtonPage'
 import {RadioGroup} from '../common/cardRadio'
-
 let theme = require('../../style')
 
 export default class extends Component {
@@ -15,7 +14,7 @@ export default class extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            useCard:true
+            useCard:false
         }
         this.useCardChange =this.useCardChange.bind(this)
     }
@@ -33,7 +32,9 @@ export default class extends Component {
         this.setState({useCard:value})
     }
     render() {
-        return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'}>
+        return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'} onBottomClick={()=>{
+            global.navigation.navigate('PayDetail');
+        }}>
             <ScrollView>
                 <View>
                     <View style={styles.tipInfo}>
@@ -102,18 +103,26 @@ export default class extends Component {
                         </View>
                     </View>
                     <View style={[styles.cinemaInfo,{marginTop:12}]}>
-                        <View style={styles.ticketItem}>
-                            <Image source={require('../../assets/order/check_movie.png')} style={styles.ticketItemIcon} />
-                            <Text style={styles.infoTitle}>电影优惠券</Text>
-                            <View style={{flex:1}}/>
-                            <Text>0张可用 ></Text>
-                        </View>
-                        <View style={[styles.ticketItem,{marginTop:10}]}>
-                            <Image source={require('../../assets/order/check_sale.png')} style={styles.ticketItemIcon} />
-                            <Text style={styles.infoTitle}>卖品优惠券</Text>
-                            <View style={{flex:1}}/>
-                            <Text>0张可用 ></Text>
-                        </View>
+                        <TouchableOpacity onPress={()=>{
+                            global.navigation.navigate('UseTicket');
+                        }}>
+                            <View style={styles.ticketItem}>
+                                <Image source={require('../../assets/order/check_movie.png')} style={styles.ticketItemIcon} />
+                                <Text style={styles.infoTitle}>电影优惠券</Text>
+                                <View style={{flex:1}}/>
+                                <Text>0张可用 ></Text>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity  onPress={()=>{
+                            global.navigation.navigate('UseTicket');
+                        }}>
+                            <View style={[styles.ticketItem,{marginTop:10}]}>
+                                <Image source={require('../../assets/order/check_sale.png')} style={styles.ticketItemIcon} />
+                                <Text style={styles.infoTitle}>卖品优惠券</Text>
+                                <View style={{flex:1}}/>
+                                <Text>0张可用 ></Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                     <View style={[styles.cinemaInfo,{marginTop:12}]}>
                         <View style={styles.singleItem}>
@@ -127,6 +136,7 @@ export default class extends Component {
                             onSelect = {this.onCardSelect}
                             color={theme.colorPrimary}
                             highlightColor='#fff'
+                            selectedIndex={0}
                         >
                         {this.getCardItem([1,2,3,4])}
                         </RadioGroup>
