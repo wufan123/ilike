@@ -31,7 +31,7 @@ const BaseApi = {
                 }
             }
         } else {
-            if (params) 
+            if (params)
                 formData = JSON.stringify(params)
         }
         fetchPromise = new Promise(function (resolve, reject) {
