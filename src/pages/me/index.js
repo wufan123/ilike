@@ -146,7 +146,8 @@ export default class MeScreen extends Component {
                 title: '设置',
                 marginTop: false, 
                 borderBottom: false,
-                image: require('../../assets/common/right_btn.png')
+                image: require('../../assets/common/right_btn.png'),
+                goToUrl: 'Setting',
             },
         ]
     }
@@ -160,7 +161,7 @@ export default class MeScreen extends Component {
 
     }
     _itemClick(name) {
-        this.props.navigation.navigate(name);
+        global.navigation.navigate(name);
     }
     /**
      * 下拉刷新
