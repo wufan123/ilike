@@ -130,7 +130,7 @@ export default class extends Component {
                         </View>
                     </View>
                     {this.state.useCard ? (
-                        <View style={{ display: this.state.useCard ? 'flex' : 'none' }}>
+                        <View>
                             <RadioGroup
                                 onSelect={this.onCardSelect}
                                 color={theme.colorPrimary}
