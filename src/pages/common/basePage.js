@@ -7,7 +7,7 @@ import Header from '../common/header'
 import PropTypes from 'prop-types';
 let theme = require('../../style')
 
-export default class BaseView extends Component {
+export default class BasePage extends Component {
 
     constructor(props) {
         super(props)
@@ -18,13 +18,14 @@ export default class BaseView extends Component {
         <View style={theme.flex}>
             <StatusBar
                 hidden={false}
+                barStyle={'light-content'}
             />
             <Header title={this.props.title}  theme={this.props.theme} rightTxt={this.props.rightTxt} rightClick={this.props.rightClick} rightImg={this.props.rightImg}/>
                 {this.props.children}
         </View>)
     }
 }
-BaseView.propTypes = {
+BasePage.propTypes = {
     ...View.propTypes,
     title:PropTypes.string,
     rightTxt:PropTypes.string,

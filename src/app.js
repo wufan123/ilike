@@ -36,6 +36,7 @@ import PayResult from './pages/order/payResult'
 import Pay from './pages/order/pay'
 import './business/storage'
 import './style/index'
+import Coupon from "./pages/coupon/coupon";
 
 const App = StackNavigator(
     {
@@ -67,10 +68,11 @@ const App = StackNavigator(
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
         ImageViewer: {screen: ImageViewer},
-        UseTicket: { screen: UseCoupon},
+        UseCoupon: { screen: UseCoupon},
         Setting: {screen: Setting},
         PayResult: {screen: PayResult},
-        Pay: {screen: Pay}
+        Pay: {screen: Pay},
+        Coupon: { screen: Coupon},
     },
     {
         navigationOptions: {

@@ -326,7 +326,7 @@ class HomeScreen extends Component {
                     barStyle={'light-content'}
                 />
                 <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)}
-                    disableBack={true}></Header>
+                    disableBack={true}/>
                 <RefreshScrollView
                     onPullRelease={(resolve) => this._onPullRelease(resolve)}
                 >

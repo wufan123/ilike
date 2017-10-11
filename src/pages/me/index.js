@@ -121,7 +121,8 @@ export default class MeScreen extends Component {
                 title: '优惠券',
                 marginTop: false,
                 borderBottom: false,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'Coupon'
             },
             {
                 id: 'expenseRecord',

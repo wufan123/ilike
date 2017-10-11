@@ -100,9 +100,9 @@ export default class extends Component {
                             {this.getPayInfo()}
                         </View>
                     </View>
-                    <View style={[styles.cinemaInfo, { marginTop: 12 }]}>
-                        <TouchableOpacity onPress={() => {
-                            global.navigation.navigate('UseTicket');
+                    <View style={[styles.cinemaInfo,{marginTop:12}]}>
+                        <TouchableOpacity onPress={()=>{
+                            global.navigation.navigate('UseCoupon');
                         }}>
                             <View style={styles.ticketItem}>
                                 <Image source={require('../../assets/order/check_movie.png')} style={styles.ticketItemIcon} />
@@ -111,8 +111,8 @@ export default class extends Component {
                                 <Text>0张可用 ></Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => {
-                            global.navigation.navigate('UseTicket');
+                        <TouchableOpacity  onPress={()=>{
+                            global.navigation.navigate('UseCoupon');
                         }}>
                             <View style={[styles.ticketItem, { marginTop: 10 }]}>
                                 <Image source={require('../../assets/order/check_sale.png')} style={styles.ticketItemIcon} />

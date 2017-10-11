@@ -1,26 +1,26 @@
 import React from 'react';
-import BaseView from './basePage'
+import BasePage from './basePage'
 import globalStyle from '../../style/index'
 import { RefreshScrollView } from '../common/pull'
 import PropTypes from 'prop-types';
 
-export default class BasePullView extends BaseView {
+export default class BasePullPage extends BasePage {
     constructor(props) {
         super(props)
     }
 
     render() {
-        return (<BaseView style={globalStyle.flex} {...this.props}>
+        return (<BasePage style={globalStyle.flex} {...this.props}>
             <RefreshScrollView
                 onPullRelease={this.props.onPullRelease}
                 style={{backgroundColor:globalStyle.pageBackground}}
             >
                 {this.props.children}
             </RefreshScrollView>
-        </BaseView>)
+        </BasePage>)
     }
 }
-BasePullView.propTypes = {
-    ...BaseView.propTypes,
+BasePullPage.propTypes = {
+    ...BasePage.propTypes,
     onPullRelease:PropTypes.func,
 }

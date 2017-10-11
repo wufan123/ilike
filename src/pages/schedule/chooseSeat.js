@@ -5,7 +5,7 @@ import {
     Image,
     StyleSheet,
     TouchableOpacity,
-    Modal
+    Modal, StatusBar
 } from 'react-native';
 import Header from '../common/header'
 import {
@@ -47,6 +47,10 @@ export default class extends Component {
             row: row
         }
         return (<View style={theme.flex}>
+            <StatusBar
+                hidden={false}
+                barStyle={'light-content'}
+            />
             <Header title={this.state.title} rightTxt={'换一场'} rightClick={()=>this.showModal()}/>
             <View style={theme.flex}>
                 <View style={styles.planBar}>
