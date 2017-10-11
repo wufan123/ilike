@@ -29,7 +29,8 @@ import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
 import UseCoupon from './pages/coupon/useCoupon'
 import Setting from './pages/me/setting'
-import PayDetail from './pages/order/payDetail'
+import PayResult from './pages/order/payResult'
+import Pay from './pages/order/pay'
 import './business/storage'
 import './style/index'
 
@@ -62,7 +63,8 @@ const App = StackNavigator(
         ImageViewer: {screen: ImageViewer},
         UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
-        PayDetail: {screen: PayDetail}, 
+        PayResult: {screen: PayResult},
+        Pay: {screen: Pay}
     },
     {
         navigationOptions: {
