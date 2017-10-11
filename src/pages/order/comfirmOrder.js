@@ -7,10 +7,10 @@ import {
 } from 'react-native';
 import BaseBottomButtonView from '../common/baseBottomButtonPage'
 import {RadioGroup} from '../common/cardRadio'
+import CountDown from '../order/countDown'
 let theme = require('../../style')
 
 export default class extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
@@ -31,23 +31,38 @@ export default class extends Component {
     useCardChange(value){
         this.setState({useCard:value})
     }
+    getPayInfo(){
+        let payInfo =[];
+        payInfo.push(<View style={styles.orderItem}>
+            <Text style={styles.orderItemTitle}>影票总额</Text>
+            <View style={styles.orderItemTip}>
+                <Text style={styles.orderItemTipTxt}>会员折扣</Text>
+            </View>
+            <View style={{flex:1}}/>
+            <Text>￥100</Text>
+        </View>)
+        payInfo.push(<View style={styles.orderItem}>
+            <Text style={styles.orderItemTitle}>卖品总额</Text>
+            <View style={{flex:1}}/>
+            <Text>￥100</Text>
+        </View>)
+        payInfo.push(<View style={styles.orderItem}>
+            <Text style={styles.infoTitle}>订单总额</Text>
+            <View style={{flex:1}}/>
+            <Text style={styles.orderTotalPrice}>￥125</Text>
+        </View>)
+        return payInfo
+    }
+    getDashLine(){
+        return ( <Image source={require('../../assets/order/dash_line_r.png')} resizeMode="contain" style={styles.dashLine}/>)
+    }
     render() {
         return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'} onBottomClick={()=>{
-            global.navigation.navigate('PayDetail');
+            global.navigation.navigate('Pay');
         }}>
             <ScrollView>
                 <View>
-                    <View style={styles.tipInfo}>
-                        <Text>
-                            请在
-                        </Text>
-                        <Text style={{color: '#ff5353'}}>
-                            14:30
-                        </Text>
-                        <Text>
-                            内完成支付,慢了就没有座位了哦
-                        </Text>
-                    </View>
+                    <CountDown/>
                     <View style={styles.cinemaInfo}>
                         <View >
                             <View style={styles.cinemaInfoItem}>
@@ -81,25 +96,8 @@ export default class extends Component {
                             </View>
                         </View>
                         <View >
-                            <Image source={require('../../assets/order/dash_line_r.png')} resizeMode="contain" style={styles.dashLine}/>
-                            <View style={styles.orderItem}>
-                                <Text style={styles.orderItemTitle}>影票总额</Text>
-                                <View style={styles.orderItemTip}>
-                                    <Text style={styles.orderItemTipTxt}>会员折扣</Text>
-                                </View>
-                                <View style={{flex:1}}/>
-                                <Text>￥100</Text>
-                            </View>
-                            <View style={styles.orderItem}>
-                                <Text style={styles.orderItemTitle}>卖品总额</Text>
-                                <View style={{flex:1}}/>
-                                <Text>￥100</Text>
-                            </View>
-                            <View style={styles.orderItem}>
-                                <Text style={styles.infoTitle}>订单总额</Text>
-                                <View style={{flex:1}}/>
-                                <Text style={styles.orderTotalPrice}>￥125</Text>
-                            </View>
+                            {this.getDashLine()}
+                            {this.getPayInfo()}
                         </View>
                     </View>
                     <View style={[styles.cinemaInfo,{marginTop:12}]}>
@@ -156,11 +154,9 @@ export default class extends Component {
             </ScrollView>
         </BaseBottomButtonView>)
     }
-
     onCardSelect(index, value) {
 
     }
-
     getCardItem(items) {
         return items.map(item=>{
             return (
@@ -231,13 +227,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         marginLeft:10,
         paddingHorizontal:5
-    },
-    tipInfo: {
-        backgroundColor: "#fff9c4",
-        height: 40,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
     },
     cinemaInfo: {
         backgroundColor: "#fff",
