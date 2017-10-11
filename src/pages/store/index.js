@@ -12,10 +12,9 @@ import {
   ImageButton, Button,CFlatList
 } from '../common/component'
 import { RefreshScrollView } from '../common/pull'
-
 var theme = require('../../style')
 
-function tabBarIcons(focused) {
+function tabBarIcons(focused) { 
   let icon = focused ? require('../../assets/tabs/icon_goods_s.png') : require('../../assets/tabs/icon_goods_n.png')
   return (
     <Image

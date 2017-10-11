@@ -19,6 +19,9 @@ import TicketDetail from './pages/me/ticketDetail'
 import Appraise from './pages/me/appraise'
 import FoodOrder from './pages/me/foodOrder'
 import Sign from './pages/me/sign'
+import Helpback from './pages/me/helpback'
+import Scorerec from './pages/me/scorerec'
+import Consumerec from './pages/me/consumerec'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
@@ -47,6 +50,9 @@ const App = StackNavigator(
         Appraise:{ screen: Appraise },
         FoodOrder:{ screen: FoodOrder },
         Sign:{ screen: Sign },
+        Helpback:{ screen: Helpback },
+        Scorerec:{ screen: Scorerec },
+        Consumerec:{ screen: Consumerec},
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
@@ -54,7 +60,7 @@ const App = StackNavigator(
         UseTicket: { screen: UseCoupon},
         Setting: {screen: Setting},
         PayResult: {screen: PayResult},
-        Pay: {screen: Pay},
+        Pay: {screen: Pay}
     },
     {
         navigationOptions: {

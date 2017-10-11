@@ -9,6 +9,7 @@ import {
 import Header from '../common/header'
 import { RefreshScrollView } from '../common/pull'
 import { Button } from '../common/component'
+import accountBusiness from '../../business/accountBusiness'
 var theme = require('../../style')
 
 
@@ -61,7 +62,13 @@ export default class MeScreen extends Component {
         }
     }
     componentDidMount() {
-
+        // accountBusiness.login('15396005445','123456')
+        // .then(res=>{
+        //     console.log("============res",res)
+        // })
+        // .catch(reason=>{
+        //     console.log("============reason",reason)
+        // })
     }
     _getItemsData() {
         return [
@@ -120,21 +127,24 @@ export default class MeScreen extends Component {
                 title: '消费记录',
                 marginTop: true,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'Consumerec'
             },
             {
                 id: 'integralRecord',
                 title: '积分记录',
                 marginTop: false,
                 borderBottom: false,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'Scorerec'
             },
             {
                 id: 'feedback',
                 title: '意见反馈',
                 marginTop: true,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl: 'Helpback'
             },
             {
                 id: 'customerService',
@@ -144,8 +154,8 @@ export default class MeScreen extends Component {
                 image: require('../../assets/me/icon_refund.png')
             },
             {
-                id: 'setting',  
-                title: '设置', 
+                id: 'setting',
+                title: '设置',
                 marginTop: false,
                 borderBottom: false,
                 image: require('../../assets/me/icon_refund.png'),
@@ -259,11 +269,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    itemImg:{
-       width:20,
-       height:20, 
-       marginRight:10
-    }, 
+    itemImg: {
+        width: 20,
+        height: 20,
+        marginRight: 10
+    },
     rightImg: {
         width: 9,
         height: 17,
