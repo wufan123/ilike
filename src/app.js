@@ -22,6 +22,8 @@ import Sign from './pages/me/sign'
 import Helpback from './pages/me/helpback'
 import Scorerec from './pages/me/scorerec'
 import Consumerec from './pages/me/consumerec'
+import Alcard from './pages/me/alcard'
+import Upgrade from './pages/me/upgrade'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
 import ImageViewer from './pages/common/imageViewer'
@@ -52,6 +54,8 @@ const App = StackNavigator(
         Helpback:{ screen: Helpback },
         Scorerec:{ screen: Scorerec },
         Consumerec:{ screen: Consumerec},
+        Alcard:{ screen: Alcard },
+        Upgrade:{ screen: Upgrade },
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
         CommentReplyList: { screen: CommentReplyList},
