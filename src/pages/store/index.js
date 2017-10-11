@@ -157,7 +157,6 @@ class GoodsScreen extends Component {
   }
 
   getSubmitButton() {
-    console.log("tttttttt", this.state.goodsCount)
     if (this.state.curTab == this.state.tab[0] && this.state.goodsCount > 0) {
       return (<Button text={'去支付(' + this.state.goodsCount + ')'} />)
     }

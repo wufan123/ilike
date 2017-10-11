@@ -62,13 +62,13 @@ export default class MeScreen extends Component {
         }
     }
     componentDidMount() {
-        // accountBusiness.login('15396005445','123456')
-        // .then(res=>{
-        //     console.log("============res",res)
-        // })
-        // .catch(reason=>{
-        //     console.log("============reason",reason)
-        // })
+        accountBusiness.login('15396005445','123456')
+        .then(res=>{
+            console.log("============res",res) 
+        })
+        .catch(reason=>{
+            console.log("============reason",reason) 
+        })
     }
     _getItemsData() {
         return [
@@ -164,10 +164,10 @@ export default class MeScreen extends Component {
         ]
     }
     _gotoTicketOrder() {
-        this.props.navigation.navigate('TicketOrder');
+        global.navigation.navigate('TicketOrder');
     }
     _gotoGoodsOrder() {
-        this.props.navigation.navigate('FoodOrder');
+        global.navigation.navigate('FoodOrder');
     }
     _gotoComboOrder() {
 
