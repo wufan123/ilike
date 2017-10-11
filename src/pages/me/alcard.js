@@ -45,8 +45,8 @@ class SignScreen extends Component {
         </View>
         <ItemComponet onPress={() => {global.navigation.navigate('Upgrade');}}  title={'账户升级'} borderBottom={true}/>
         <ItemComponet title={'账户续期'} subTitle={'帐户有效期：永久'} />
-        <View style={styles.card}>
-          <Text style={styles.title}>我的特权</Text>
+        <TouchableOpacity style={styles.card}  onPress={() => {global.navigation.navigate('AlcardInfoDt');}}      >
+          <Text style={[theme.fontBlack, theme.font16,styles.title]}>我的特权</Text>
           <View style={styles.cardBody}>
             <Image source={require('../../assets/me/sign06.png')} style={{ height: 30 }} resizeMode='contain' ></Image>
             <View style={{flex:1}}>
@@ -55,8 +55,8 @@ class SignScreen extends Component {
             </View>
             <Image style={styles.rightImg} source={require('../../assets/common/right_btn.png')} />
           </View>
-        </View>
-        <ItemComponet title={'查看全部特权'} />
+        </TouchableOpacity>
+        <ItemComponet title={'查看全部特权'}  onPress={() => {global.navigation.navigate('AllPrivilege');}} />
       </View>
     )
   }
