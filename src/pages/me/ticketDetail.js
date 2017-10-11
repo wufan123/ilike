@@ -20,19 +20,19 @@ class TicketDetailScreen extends Component {
     }
 
     _priceDetail() {
-        return (
-            <View style={this.state.priceDetailToggle ? {display: 'flex'} : {display: 'none'} }>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10}}>
-                    <Text>兑换券支付</Text>
-                    <Text>已兑换2张影票</Text>
+        if (this.state.priceDetailToggle)
+            return (
+                <View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10}}>
+                        <Text>兑换券支付</Text>
+                        <Text>已兑换2张影票</Text>
+                    </View>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10}}>
+                        <Text>兑换券支付</Text>
+                        <Text>已兑换2张影票</Text>
+                    </View>
                 </View>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10}}>
-                    <Text>兑换券支付</Text>
-                    <Text>已兑换2张影票</Text>
-                </View>
-            </View>
-
-        )
+            )
     }
 
     _priceToggleFn() {
