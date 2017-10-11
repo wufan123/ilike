@@ -157,7 +157,7 @@ class SettingScreen extends Component {
     }
 }
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
     cell: {
         backgroundColor: 'white',
         height: 50,

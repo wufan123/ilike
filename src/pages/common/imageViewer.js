@@ -45,7 +45,7 @@ class ImageViewerScreen extends React.Component {
     }
 }
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
     backButton: {
         alignItems: 'center',
         justifyContent: 'center',
