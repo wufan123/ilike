@@ -150,7 +150,6 @@ class ScheduleScreen extends Component {
     }
 
     _gotoChooseSeat(item) {
-        console.log('11111')
         global.navigation.navigate('ChooseSeat');
     }
 }

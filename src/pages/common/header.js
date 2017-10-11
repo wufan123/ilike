@@ -11,7 +11,6 @@ var theme = require('../../style')
 class Header extends Component {
     constructor(props) {
         super(props)
-        console.log("rightImg" + this.props.rightImg)
     }
 
     changeSelect(item) {

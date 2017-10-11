@@ -10,7 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Header from '../../common/header'
-import {Tab} from '../../common/component'
+import { Tab } from '../../common/component'
 var theme = require('../../../style')
 const { width, height } = Dimensions.get('window')
 
@@ -58,17 +58,16 @@ export default class ScheduleList extends Component {
     }
 
     _gotoChooseSeat(item) {
-        if(this.props.choose){
+        if (this.props.choose) {
             this.props.choose(item)
-        }else
-        {
+        } else {
             global.navigation.navigate('ChooseSeat');
         }
     }
 
     _getListItem = ({ item, index }) => {
         return (
-            <TouchableOpacity onPress={() => this._gotoChooseSeat(item)}> 
+            <TouchableOpacity onPress={() => this._gotoChooseSeat(item)}>
                 <View style={[theme.whiteBlockWithPadding, styles.planItem]}>
                     <View style={[theme.flex, theme.row]}>
                         <Text style={[theme.fontBlack, theme.font24]}>9:30 </Text>
@@ -101,10 +100,9 @@ export default class ScheduleList extends Component {
     _keyExtractor = (item, index) => index
 
     render() {
-        let headStyle = this.props.hideHeader?{display:'none'}:{}
         return (
             <View style={theme.flex}>
-                <Header  title={this.state.title} style={headStyle}/>
+                {this.props.hideHeader ? null : (<Header title={this.state.title} />)}
                 <Tab tab={this.state.plan} />
                 {this._getFilmPlanList()}
             </View>
