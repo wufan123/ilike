@@ -44,7 +44,7 @@ class SignScreen extends Component {
           <Text style={{ color: '#ffa303' }}>al_Vip1</Text>
         </View>
         <ItemComponet onPress={() => {global.navigation.navigate('Upgrade');}}  title={'账户升级'} borderBottom={true}/>
-        <ItemComponet title={'账户续期'} subTitle={'帐户有效期：永久'} />
+        <ItemComponet title={'账户续期'} subTitle={'帐户有效期：永久'} onPress={() => {global.navigation.navigate('Renewal');}} />
         <TouchableOpacity style={styles.card}  onPress={() => {global.navigation.navigate('AlcardInfoDt');}}      >
           <Text style={[theme.fontBlack, theme.font16,styles.title]}>我的特权</Text>
           <View style={styles.cardBody}>
