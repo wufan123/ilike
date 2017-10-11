@@ -34,12 +34,10 @@ class ImageViewerScreen extends React.Component {
         }
         return (
             <View style={{flex: 1}}>
-                <Modal visible={true} transparent={true}>
-                    {this._renderBackButton()}
-                    <ImageViewer
-                    imageUrls={images.map((url)=>{return {url: url};})}
-                    index={this.props.navigation.state.params.index}/>
-                </Modal>
+                {this._renderBackButton()}
+                <ImageViewer
+                imageUrls={images.map((url)=>{return {url: url};})}
+                index={this.props.navigation.state.params.index}/>
             </View>
         );
     }
