@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
   title:{paddingHorizontal: theme.pagePadding, paddingVertical: 8, backgroundColor: '#e3e6ec'},
   row: {paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between', borderBottomWidth: 0.5, borderBottomColor: '#f6f6f6'},
-  rowLeft:{width:120,borderWidth:1,borderColor:'#f6f6f6',paddingVertical:8,textAlign:'center',borderBottomWidth:0},
+  rowLeft:{width:100,borderWidth:1,borderColor:'#f6f6f6',paddingVertical:8,textAlign:'center',borderBottomWidth:0},
   rowRight:{flex:1, textAlign:'center',borderWidth:1,paddingVertical:8,borderColor:'#f6f6f6',borderLeftWidth:0,borderBottomWidth:0}
 })
 

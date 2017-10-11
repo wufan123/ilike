@@ -92,7 +92,8 @@ export default class MeScreen extends Component {
                 title: '我的账户',
                 marginTop: true,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl: 'Alcard'
             },
             {
                 id: 'recharge',
