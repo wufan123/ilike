@@ -14,6 +14,7 @@ import {
 import BaseView from '../common/basePage';
 import globalStyle from '../../style/index';
 import QRCode from 'react-native-qrcode';
+import { NavigationActions } from 'react-navigation';
 
 const { width, height } = Dimensions.get('window');
 
@@ -21,7 +22,7 @@ class UnWatchMovieTicketScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tickets: [1, 2, 3, 4]
+            tickets: []//[1, 2, 3, 4]
         };
     }
 
@@ -78,8 +79,8 @@ class UnWatchMovieTicketScreen extends Component {
         )
     }
 
-    goToSchedule = () => {
-        this.props.navigation.goBack();
+    goToSchedule = async () => {
+        await this.props.navigation.goBack();
         global.tabNavigation.navigate(global.scheduleScreen);
     }
 
