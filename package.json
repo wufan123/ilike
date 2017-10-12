@@ -20,6 +20,7 @@
     "react-native-image-zoom-viewer": "^2.0.10",
     "react-native-linear-gradient": "^2.3.0",
     "react-native-movie-seats": "git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#develop",
+    "react-native-qrcode": "^0.2.6",
     "react-native-sqlite-storage": "^3.3.3",
     "react-native-storage": "^0.2.2",
     "react-native-swiper": "^1.5.12",

@@ -37,6 +37,7 @@ import Pay from './pages/order/pay'
 import './business/storage'
 import './style/index'
 import Coupon from "./pages/coupon/coupon";
+import UnWatchMovieTicketScreen from "./pages/me/unwatchMovieTicket"
 
 const App = StackNavigator(
     {
@@ -73,6 +74,7 @@ const App = StackNavigator(
         PayResult: {screen: PayResult},
         Pay: {screen: Pay},
         Coupon: { screen: Coupon},
+        UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen}
     },
     {
         navigationOptions: {
