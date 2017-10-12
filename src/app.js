@@ -27,6 +27,7 @@ import Upgrade from './pages/me/upgrade'
 import AlcardInfoDt from './pages/me/alcardInfoDt'
 import AllPrivilege from './pages/me/allPrivilege'
 import Renewal from './pages/me/renewal'
+import Charge from './pages/me/charge'
 import MovieDetail from './pages/movieDetail/movieDetail'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
@@ -66,6 +67,7 @@ const App = StackNavigator(
         AlcardInfoDt:{ screen: AlcardInfoDt },
         AllPrivilege:{ screen: AllPrivilege },
         Renewal:{ screen: Renewal },
+        Charge:{ screen: Charge },
         MovieDetail: {screen: MovieDetail},
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
