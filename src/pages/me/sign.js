@@ -25,43 +25,43 @@ class SignScreen extends Component {
           </View>
           <ScrollView>
             <View style={styles.bodyContent}>
-              <Image source={require('../../assets/me/qd-title.png')} style={styles.titleImage } resizeMode='contain'></Image>
-              <Image source={require('../../assets/me/qdcon.png')} style={styles.bodyImage  } resizeMode='contain' >
-                <View style={styles.viewContent }>
-                  <View style={styles.box }>
-                    <Text>第一天</Text>
+              <Image source={require('../../assets/me/qd-title.png')} style={styles.titleImage} resizeMode='stretch'></Image>
+              <Image source={require('../../assets/me/qdcon.png')} style={styles.bodyImage} resizeMode='stretch' >
+                <View style={styles.viewContent}>
+                  <Image source={require('../../assets/me/qdcon_x.png')} style={[styles.box, { marginRight: 20 }]} resizeMode='stretch'>
+                    <Text style={theme.fontWhite}>第一天</Text>
                     <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215181.png' }} style={{ width: 50, height: 30, zIndex: 10 }} resizeMode='stretch'></Image>
-                    <Text>积分3分</Text>
-                  </View>
-                  <View style={styles.box }>
-                    <Text>第一天</Text>
+                    <Text style={theme.fontColorPrimary}>积分3分</Text>
+                  </Image>
+                  <Image source={require('../../assets/me/qdcon_x.png')} style={[styles.box, { marginRight: 20 }]} resizeMode='stretch'>
+                    <Text style={theme.fontWhite}>第一天</Text>
                     <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215181.png' }} style={{ width: 50, height: 30, zIndex: 10 }} resizeMode='stretch'></Image>
-                    <Text>积分3分</Text>
-                  </View>
-                  <View style={styles.box }>
-                    <Text>第一天</Text>
+                    <Text style={theme.fontColorPrimary}>积分3分</Text>
+                  </Image>
+                  <Image source={require('../../assets/me/qdcon_x.png')} style={[styles.box]} resizeMode='stretch'>
+                    <Text style={theme.fontWhite}>第一天</Text>
                     <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215181.png' }} style={{ width: 50, height: 30, zIndex: 10 }} resizeMode='stretch'></Image>
-                    <Text>积分3分</Text>
-                  </View>
+                    <Text style={theme.fontColorPrimary}>积分3分</Text>
+                  </Image>
                 </View>
-                <View style={[styles.viewContent,{marginTop:22}] }>
-                <View style={styles.box }>
-                    <Text>第一天</Text>
+                <View style={[styles.viewContent, { marginTop: 13 }]}>
+                  <Image source={require('../../assets/me/qdcon_x.png')} style={[styles.box, { marginRight: 20 }]} resizeMode='stretch'>
+                    <Text style={theme.fontWhite}>第一天</Text>
                     <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215181.png' }} style={{ width: 50, height: 30, zIndex: 10 }} resizeMode='stretch'></Image>
-                    <Text>积分3分</Text>
-                  </View>
-                  <View style={styles.box }>
-                    <Text>第一天</Text>
+                    <Text style={theme.fontColorPrimary}>积分3分</Text>
+                  </Image>
+                  <Image source={require('../../assets/me/qdcon_x.png')} style={[styles.box, { marginRight: 20 }]} resizeMode='stretch'>
+                    <Text style={theme.fontWhite}>第一天</Text>
                     <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215181.png' }} style={{ width: 50, height: 30, zIndex: 10 }} resizeMode='stretch'></Image>
-                    <Text>积分3分</Text>
-                  </View>
-                  <View style={styles.box }>
-                    <Text>第一天</Text>
+                    <Text style={theme.fontColorPrimary}>积分3分</Text>
+                  </Image>
+                  <Image source={require('../../assets/me/qdcon_x.png')} style={[styles.box]} resizeMode='stretch'>
+                    <Text style={theme.fontWhite}>第一天</Text>
                     <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215181.png' }} style={{ width: 50, height: 30, zIndex: 10 }} resizeMode='stretch'></Image>
-                    <Text>积分3分</Text>
-                  </View>
+                    <Text style={theme.fontColorPrimary}>积分3分</Text>
+                  </Image>
                 </View>
-                <Image source={{uri:'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215189.jpeg'}} style={{height:100,marginTop:30 ,marginHorizontal: theme.pagePadding}}></Image>
+                <Image source={{ uri: 'http://images.zmaxfilm.com/test/zmaxyun/Client/Cache/2017-08-01/150153215189.jpeg' }} resizeMode='stretch' style={{ height: 90, marginTop: 30, marginHorizontal: theme.pagePadding }}></Image>
               </Image>
             </View>
           </ScrollView>
@@ -72,14 +72,14 @@ class SignScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  page: { flex: 1, flexDirection: 'column'},
-  bgImage:{ width: '100%', height: '100%', zIndex: 0 },
-  bodyContent:{ paddingHorizontal: theme.pagePadding, paddingTop: 45, height: 520, overflow: 'hidden' },
-  yellowBox: {height: 30, backgroundColor: '#fff9c4', flexDirection: 'row',justifyContent: 'center',alignItems: 'center'},
-  titleImage:{width: '100%', zIndex: 10, height: 50},
-  bodyImage:{width: '100%', height: 380, top: -20},
-  viewContent:{marginHorizontal: theme.pagePadding, marginTop: 40, flexDirection: 'row', justifyContent: 'space-around'},
-  box:{width: 50, height: 80, flexDirection: 'column', justifyContent: 'space-around'}
+  page: { flex: 1, flexDirection: 'column' },
+  bgImage: { width: '100%', height: '100%', zIndex: 0 },
+  bodyContent: { paddingHorizontal: theme.pagePadding,height: '100%', overflow: 'hidden',paddingTop:50 },
+  yellowBox: { height: 30, backgroundColor: '#fff9c4', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
+  titleImage: { width: '100%', zIndex: 10,maxHeight:50  },
+  bodyImage: { width: '100%', height: '100%',paddingTop:40,top:-20, paddingHorizontal: theme.pagePadding,overflow:'hidden' },
+  viewContent: { marginHorizontal: theme.pagePadding, flexDirection: 'row', justifyContent: 'space-around' },
+  box: { width: '33.33%', height: 110, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }
 })
 
 module.exports = SignScreen;
