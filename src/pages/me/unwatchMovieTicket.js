@@ -78,8 +78,22 @@ class UnWatchMovieTicketScreen extends Component {
         )
     }
 
-    renderEmptyView = () => {
+    goToSchedule = () => {
+        this.props.navigation.goBack();
+        global.tabNavigation.navigate(global.scheduleScreen);
+    }
 
+    renderEmptyView = () => {
+        return (
+            <View style={[globalStyle.flex, styles.emptyContainer]}>
+                <TouchableOpacity
+                    activeOpacity={0.6}
+                    onPress={this.goToSchedule}
+                >
+                    <Image style={styles.emptyImage} source={require('../../assets/movie/no_taketicket_icon_text.png')} />
+                </TouchableOpacity>
+            </View>
+        )
     }
 
     render() {
@@ -123,6 +137,15 @@ const styles = StyleSheet.create({
     ticketCodeText: {
         ...globalStyle.fontColorPrimary,
         fontSize: 15
+    },
+    emptyContainer: {
+        paddingTop: 142 * width / 375,
+        alignItems: 'center',
+    },
+    emptyImage: {
+        resizeMode: 'contain',
+        width: width * 0.6,
+        height: 314 / 397 * width * 0.6,
     }
 });
 
