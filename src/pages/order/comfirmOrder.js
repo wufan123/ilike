@@ -19,8 +19,8 @@ export default class extends Component {
         this.useCardChange = this.useCardChange.bind(this)
     }
     getOrderItem(items) {
-        return items.map(item => {
-            return (<View key={item} style={styles.orderItem}>
+        return items.map((item,index) => {
+            return (<View key={index} style={styles.orderItem}>
                 <Text style={styles.orderItemTitle}>爆米花</Text>
                 <View style={{ flex: 1 }} />
                 <Text style={{ minWidth: 40 }}>x 9</Text>
