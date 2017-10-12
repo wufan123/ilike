@@ -40,7 +40,7 @@ class HelpbackScreen extends Component {
   render() {
     return (
       <View style={styles.page}>
-        <Header title={'意见反馈'} rightTxt={'记录'} rightClick={this.rightClick}></Header>
+        <Header title={'意见反馈'} rightTxt={'记录'} rightClick={this.rightClick}/>
         <View style={styles.view}>
           <UselessTextInput keyboardType='default' style={{ textAlignVertical: 'top' }} placeholder='恶心自己成全别人，来吐槽吧~' multiline={true} numberOfLines={8} ></UselessTextInput>
           <ImageButton onPress={() => this._selectImg()} source={require('../../assets/me/ff.png')} style={{ width: 60, height: 60 }} resizeMode='contain' ></ImageButton>

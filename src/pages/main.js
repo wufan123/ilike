@@ -5,67 +5,18 @@ import StoreScreen from './store'
 import MeScreen from './me'
 import MovieDetailScreen from './movieDetail/movieDetail'
 
-const HomeStack = StackNavigator(
-  {
-    Home: {
-      screen: HomeScreen
-    },
-    MovieDetail: {
-      screen: MovieDetailScreen,
-      navigationOptions: {
-        tabBarVisible: false
-      }
-    },
-  },
-  {
-    navigationOptions: {
-      header: null,
-    }
-  });
-
-const ScheduleStack = StackNavigator(
-  {
-    Schedule: { screen: ScheduleScreen }
-  },
-  {
-    navigationOptions: {
-      header: null,
-    }
-  }
-);
-
-const GoodsStack = StackNavigator(
-  {
-    Goods: { screen: StoreScreen }
-  },
-  {
-    navigationOptions: {
-      header: null,
-    }
-  });
-
-const MeStack = StackNavigator(
-  {
-    Me: { screen: MeScreen }
-  },
-  {
-    navigationOptions: {
-      header: null,
-    }
-  })
-
 const Zmfilm = TabNavigator({
-  HomeStatck: {
-    screen: HomeStack,
+  HomeTab: {
+    screen: HomeScreen,
   },
-  ScheduleStack: {
-    screen: ScheduleStack,
+  ScheduleTab: {
+    screen: ScheduleScreen,
   },
-  GoodsStack: {
-    screen: GoodsStack
+  GoodsTab: {
+    screen: StoreScreen
   },
-  MeStack: {
-    screen: MeStack
+  MeTab: {
+    screen: MeScreen
   }
 }, {
     tabBarPosition: 'bottom',

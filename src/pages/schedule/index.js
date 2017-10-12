@@ -137,6 +137,7 @@ class ScheduleScreen extends Component {
     }
 
     render() {
+        global.scheduleScreen = this.props.navigation.state.routeName;
         return (
             <View style={theme.flex}>
                 <Header showCinema={true} title={this.state.title} disableBack={true}></Header>
