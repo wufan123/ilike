@@ -77,7 +77,8 @@ export default class MeScreen extends Component {
                 title: '待取票',
                 marginTop: true,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl: "UnWatchMovieTicket",
             },
             {
                 id: 'memberSignIn',
