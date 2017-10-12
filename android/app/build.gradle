@@ -111,6 +111,9 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    dexOptions{
+        jumboMode true
+    }
     signingConfigs {
         release {
             storeFile file(MYAPP_RELEASE_STORE_FILE)
@@ -152,7 +155,7 @@ dependencies {
     compile project(':react-native-sqlite-storage')
     compile project(':jpush-react-native')
     compile project(':jcore-react-native')
-
+    compile project(':react-native-image-crop-picker')
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
 }

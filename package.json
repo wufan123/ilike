@@ -17,6 +17,7 @@
     "react-native-camera": "^0.10.0",
     "react-native-cli": "^2.0.1",
     "react-native-flexi-radio-button": "^0.2.1",
+    "react-native-image-crop-picker": "^0.17.2",
     "react-native-image-zoom-viewer": "^2.0.10",
     "react-native-linear-gradient": "^2.3.0",
     "react-native-movie-seats": "git+ssh://git@192.168.10.223:react-native-common/react-native-movie-seats.git#develop",

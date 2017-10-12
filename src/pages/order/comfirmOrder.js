@@ -150,7 +150,7 @@ export default class extends Component {
                     <View style={[styles.cinemaInfo, { marginVertical: 12 }]}>
                         <View style={styles.singleItem}>
                             <Text style={[styles.infoTitle, { marginRight: 70 }]}>手机号</Text>
-                            <TextInput style={{ flex: 1 }} placeholder={'用于接受取票码'} />
+                            <TextInput  style={{ flex: 1 }} placeholder={'用于接受取票码'} />
                         </View>
                     </View>
                 </View>
