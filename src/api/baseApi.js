@@ -5,8 +5,7 @@ import signUtil from '../utils/signUtil'
 let base_url = 'https://m.zmaxfilm.com/Api_35/';  //服务器地址
 var token = '26b89ca24914bced1814aa4be216fd63';
 let headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
+
 }
 let TIMEOUT = 10000
 
@@ -52,14 +51,21 @@ function request(method, url, params, tryAgain) {
                 requestUrl += '&' + paramsArray.join('&')
             }
         }
-    } else { 
-        requestUrl += '?tokenId=' + token + '&sign=' + getSign({ tokenId: token })
-        delete params.tokenId 
-        if (params)
-            formData = JSON.stringify(params)
+    } else {
+        requestUrl += '?tokenId=' + token + '&sign=' + getSign(params, token)
+        delete params.tokenId
+        if (params) {
+            formData = new FormData();
+            Object.keys(params).forEach(key=>{
+                formData.append(key,params[key])
+            })
+        }
+
+
 
     }
     console.log("params=============", params)
+    console.log("formData=============", formData)
     console.log("requestUrl=============", requestUrl)
     fetchPromise = new Promise(function (resolve, reject) {
         fetch(requestUrl, { method: method, headers: headers, body: formData })
