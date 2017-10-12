@@ -200,6 +200,7 @@ export default class MeScreen extends Component {
     _loadMore() {
     }
     render() {
+        global.tabNavigation = this.props.navigation;
         return (<View style={theme.flex}>
             <Header disableBack={true}></Header>
             <RefreshScrollView style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
