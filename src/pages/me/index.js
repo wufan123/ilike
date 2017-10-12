@@ -101,7 +101,8 @@ export default class MeScreen extends Component {
                 title: '账户充值',
                 marginTop: false,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl: 'Charge'
             },
             {
                 id: 'refund',
