@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   bodyContent: { paddingHorizontal: theme.pagePadding,height: '100%', overflow: 'hidden',paddingTop:50 },
   yellowBox: { height: 30, backgroundColor: '#fff9c4', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
   titleImage: { width: '100%', zIndex: 10,maxHeight:50  },
-  bodyImage: { width: '100%', height: '100%',paddingTop:40,top:-20, paddingHorizontal: theme.pagePadding,overflow:'hidden' },
+  bodyImage: { width: '100%', height: 430,paddingTop:40,top:-20, paddingHorizontal: theme.pagePadding,overflow:'hidden' },
   viewContent: { marginHorizontal: theme.pagePadding, flexDirection: 'row', justifyContent: 'space-around' },
   box: { width: '33.33%', height: 110, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }
 })
