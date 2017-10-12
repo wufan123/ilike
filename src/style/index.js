@@ -34,8 +34,14 @@ module.exports = {
     font12: {
         fontSize: 12
     },
+    font13: {
+        fontSize: 13
+    },
     font14: {
         fontSize: 14
+    },
+    font15: {
+        fontSize: 15
     },
     font16: {
         fontSize: 16

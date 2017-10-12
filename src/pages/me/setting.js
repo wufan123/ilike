@@ -10,7 +10,6 @@ import {
     TouchableOpacity,
     Switch,
     Alert,
-    AsyncStorage
 } from 'react-native';
 import BaseView from '../common/basePage';
 import globalStyle from '../../style/index';
