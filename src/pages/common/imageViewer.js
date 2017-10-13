@@ -4,7 +4,7 @@ import {
     Modal,
     StyleSheet,
     TouchableOpacity,
-    Image
+    Image, StatusBar
 } from 'react-native';
 import PropTypes from 'prop-types';
 import ImageViewer from 'react-native-image-zoom-viewer';
@@ -34,6 +34,9 @@ class ImageViewerScreen extends React.Component {
         }
         return (
             <View style={{flex: 1}}>
+                <StatusBar
+                    hidden={true}
+                />
                 {this._renderBackButton()}
                 <ImageViewer
                 imageUrls={images.map((url)=>{return {url: url};})}

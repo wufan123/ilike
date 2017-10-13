@@ -73,8 +73,19 @@ class HelpbackScreen extends Component {
     getPhotoItem() {
         return this.state.photoList.map((item, index) => {
             console.log(item)
-            return (<View key={index}>
-                <Image  style={styles.photoItem} source={{uri: item.path}}/>
+            return (
+               <View key={index}>
+                   <TouchableOpacity
+                       onPress={() => {
+                           global.navigation.navigate('ImageViewer', {
+                               images: this.state.photoList.map((item)=>{
+                                   return item.path
+                               }),
+                               index: index
+                           })
+                       }}
+                   >
+                       <Image  style={styles.photoItem} source={{uri: item.path}}/></TouchableOpacity>
                 <TouchableOpacity style={styles.photoCloseIcon} onPress={()=>{
                         this.setState((preState)=>{
                             preState.photoList.splice(index,1)
@@ -83,7 +94,7 @@ class HelpbackScreen extends Component {
                 }}>
                     <Image style={{height:20,width:20}}  resizeMode='stretch' source={require('../../assets/me/fbClose.png')} />
                 </TouchableOpacity>
-            </View>)
+                </View>)
         })
 
     }
