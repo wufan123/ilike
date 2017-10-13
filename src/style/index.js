@@ -17,16 +17,19 @@ module.exports = {
         color: '#3f3f3f'
     },
     fontGray: {
-        color: '#808080'
+        color: '#808080',
+        backgroundColor: 'transparent'
     },
     fontOrange: {
         color: '#fc9d40'
     },
     fontWhite: {
-        color: '#ffffff'
+        color: '#ffffff',
+        backgroundColor: 'transparent'
     },
     fontColorPrimary: {
         color: '#dc3c38',
+        backgroundColor: 'transparent'
     },
     font10: {
         fontSize: 10
