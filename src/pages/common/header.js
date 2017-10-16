@@ -37,7 +37,7 @@ class Header extends Component {
         return (
             <View style={[{zIndex: 10}, this.props.style]}>
                 <StatusBar backgroundColor={this.props.theme ? this.props.theme : theme.colorPrimary}
-                           barStyle={'light-content'}
+                           barStyle={this.props.theme?'dark-content':'light-content'}
                 />
                 <View style={[styles.headerContainer, {backgroundColor: bgColor}, this.props.backgroundColor]}>
                     <View style={styles.backImg}>{!this.props.disableBack ? (this.props.theme == 'white' ?
