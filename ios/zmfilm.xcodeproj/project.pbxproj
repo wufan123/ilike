@@ -49,10 +49,10 @@
 		D7FE9CE45A7242419774704C /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D38BD44ABE8146EC9EFD7C1F /* libRCTJPushModule.a */; };
 		F020E80C46DE4290831F7B82 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBEBB7BF126A4E719FFBD713 /* libRCTCamera.a */; };
 		F918F4DD1F739892006C9AE8 /* movie-seats.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F918F4DC1F739892006C9AE8 /* movie-seats.bundle */; };
-		F95D379D1F8F58EF007553D7 /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379C1F8F58EF007553D7 /* RSKImageCropper.framework */; };
-		F95D379E1F8F58EF007553D7 /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379C1F8F58EF007553D7 /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F95D37A01F8F58EF007553D7 /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */; };
-		F95D37A11F8F58EF007553D7 /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F95D38341F905488007553D7 /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379C1F8F58EF007553D7 /* RSKImageCropper.framework */; };
+		F95D38351F905488007553D7 /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379C1F8F58EF007553D7 /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F95D38361F905488007553D7 /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */; };
+		F95D38371F905488007553D7 /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F99F063E1F6BB6AB006E4055 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */; };
 		F99F06401F6BB6BD006E4055 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */; };
 		F99F06421F6BB6CA006E4055 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06411F6BB6CA006E4055 /* libsqlite3.0.tbd */; };
@@ -389,14 +389,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		F95D37A21F8F58EF007553D7 /* Embed Frameworks */ = {
+		F95D38381F905488007553D7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F95D379E1F8F58EF007553D7 /* RSKImageCropper.framework in Embed Frameworks */,
-				F95D37A11F8F58EF007553D7 /* QBImagePicker.framework in Embed Frameworks */,
+				F95D38351F905488007553D7 /* RSKImageCropper.framework in Embed Frameworks */,
+				F95D38371F905488007553D7 /* QBImagePicker.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,7 +517,7 @@
 				47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */,
 				8575AC48832D4FD682C3496F /* libBVLinearGradient.a in Frameworks */,
 				4222568AC5DF460B96276EB9 /* libRCTJCoreModule.a in Frameworks */,
-				F95D379D1F8F58EF007553D7 /* RSKImageCropper.framework in Frameworks */,
+				F95D38341F905488007553D7 /* RSKImageCropper.framework in Frameworks */,
 				D7FE9CE45A7242419774704C /* libRCTJPushModule.a in Frameworks */,
 				1B3197050CA34FC08112068E /* UserNotifications.framework in Frameworks */,
 				A707EBA522ED41AFB057FCB1 /* Security.framework in Frameworks */,
@@ -525,7 +525,7 @@
 				D716643117734CF096EE7528 /* CoreFoundation.framework in Frameworks */,
 				182BFB8A83A349EEB46884B3 /* Foundation.framework in Frameworks */,
 				22FC065BE09E4456ADF99325 /* UIKit.framework in Frameworks */,
-				F95D37A01F8F58EF007553D7 /* QBImagePicker.framework in Frameworks */,
+				F95D38361F905488007553D7 /* QBImagePicker.framework in Frameworks */,
 				6CD7980996AF43DFA890833E /* libresolv.tbd in Frameworks */,
 				D512121D484C4D08A4501BC8 /* CoreGraphics.framework in Frameworks */,
 				D20AEEC98A074AD0A7DB4EEC /* libRCTAlipay.a in Frameworks */,
@@ -913,7 +913,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				F95D37A21F8F58EF007553D7 /* Embed Frameworks */,
+				F95D38381F905488007553D7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
