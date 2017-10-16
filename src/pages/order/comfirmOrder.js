@@ -29,11 +29,14 @@ export default class extends Component {
         })
     }
     useCardChange(value) {
-        this.setState({ useCard: value })
+        this.setState((preState)=>{
+            preState.useCard=value
+            return preState
+        })
     }
     getPayInfo() {
         let payInfo = [];
-        payInfo.push(<View style={styles.orderItem}>
+        payInfo.push(<View  style={styles.orderItem}>
             <Text style={styles.orderItemTitle}>影票总额</Text>
             <View style={styles.orderItemTip}>
                 <Text style={styles.orderItemTipTxt}>会员折扣</Text>
@@ -41,12 +44,12 @@ export default class extends Component {
             <View style={{ flex: 1 }} />
             <Text>￥100</Text>
         </View>)
-        payInfo.push(<View style={styles.orderItem}>
+        payInfo.push(<View  style={styles.orderItem}>
             <Text style={styles.orderItemTitle}>卖品总额</Text>
             <View style={{ flex: 1 }} />
             <Text>￥100</Text>
         </View>)
-        payInfo.push(<View style={styles.orderItem}>
+        payInfo.push(<View  style={styles.orderItem}>
             <Text style={styles.infoTitle}>订单总额</Text>
             <View style={{ flex: 1 }} />
             <Text style={styles.orderTotalPrice}>￥125</Text>
@@ -60,9 +63,9 @@ export default class extends Component {
         return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'} onBottomClick={() => {
             global.navigation.navigate('Pay');
         }}>
+            <CountDown />
             <ScrollView>
                 <View>
-                    <CountDown />
                     <View style={styles.cinemaInfo}>
                         <View >
                             <View style={styles.cinemaInfoItem}>
@@ -150,7 +153,7 @@ export default class extends Component {
                     <View style={[styles.cinemaInfo, { marginVertical: 12 }]}>
                         <View style={styles.singleItem}>
                             <Text style={[styles.infoTitle, { marginRight: 70 }]}>手机号</Text>
-                            <TextInput  style={{ flex: 1 }} placeholder={'用于接受取票码'} />
+                            <TextInput  style={{ flex: 1 }} placeholder={'用于接受取票码'} underlineColorAndroid="transparent"/>
                         </View>
                     </View>
                 </View>
