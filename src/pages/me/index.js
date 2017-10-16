@@ -191,7 +191,7 @@ export default class MeScreen extends Component {
     }
 
     _navigateToLogin() {
-        this.props.navigation.navigate('Login');
+        global.navigation.navigate('Login');
     }
 
     /**

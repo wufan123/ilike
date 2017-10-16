@@ -28,6 +28,7 @@ import AlcardInfoDt from './pages/me/alcardInfoDt'
 import AllPrivilege from './pages/me/allPrivilege'
 import Renewal from './pages/me/renewal'
 import Charge from './pages/me/charge'
+import Prizerec from './pages/me/prizerec'
 import MovieDetail from './pages/movieDetail/movieDetail'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
@@ -70,6 +71,7 @@ const App = StackNavigator(
         AllPrivilege:{ screen: AllPrivilege },
         Renewal:{ screen: Renewal },
         Charge:{ screen: Charge },
+        Prizerec:{ screen: Prizerec },
         MovieDetail: {screen: MovieDetail},
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
