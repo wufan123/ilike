@@ -7,14 +7,14 @@ import {
   FlatList,
   TouchableOpacity
 } from 'react-native';
-import Header from '../common/header'
+import BasePullPage from '../common/basePullPage'
 import {
-  ImageButton, Button,CFlatList
+  ImageButton, Button, CFlatList
 } from '../common/component'
 import { RefreshScrollView } from '../common/pull'
 var theme = require('../../style')
 
-function tabBarIcons(focused) { 
+function tabBarIcons(focused) {
   let icon = focused ? require('../../assets/tabs/icon_goods_s.png') : require('../../assets/tabs/icon_goods_n.png')
   return (
     <Image
@@ -170,15 +170,14 @@ class GoodsScreen extends Component {
   render() {
 
     return (<View style={theme.flex}  >
-      <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}></Header>
-      <RefreshScrollView style={theme.flex}>
+      <BasePullPage style={theme.flex} showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}>
         <CFlatList style={theme.flex}
           extraData={this.state}
           data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}
           keyExtractor={this._keyExtractor}
           renderItem={this.state.curTab == this.state.tab[0] ? this.getGoodsListItem : this.getComboListItem}
         />
-      </RefreshScrollView>
+      </BasePullPage>
       {this.getSubmitButton()}
 
     </View >
