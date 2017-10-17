@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { Text, Button } from 'react-native';
-import * as WeChat from 'react-native-wechat';
+import React from 'react';
 import { StackNavigator } from 'react-navigation'
 import Welcome from './pages/welcome'
 import MainPage from './pages/main'
@@ -86,7 +84,7 @@ const App = StackNavigator(
         Coupon: { screen: Coupon},
         UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen},
         VipCard: {screen: VipCard},
-        VipAddCard: {screen: VipAddCard}
+        VipAddCard: {screen: VipAddCard},
         ComboOrder: { screen: ComboOrderScreen },
         ComboOrderDetail: { screen: ComboOrderDetailScreen },
     },

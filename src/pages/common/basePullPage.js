@@ -10,7 +10,7 @@ export default class BasePullPage extends BasePage {
     }
 
     render() {
-        return (<BasePage style={globalStyle.flex} {...this.props} ref='mBasePage'>
+        return (<BasePage style={globalStyle.flex} {...this.props} >
             <RefreshScrollView
                 onPullRelease={this.props.onPullRelease}
                 style={{backgroundColor:globalStyle.pageBackground}}

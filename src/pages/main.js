@@ -4,7 +4,6 @@ import HomeScreen from './home/home'
 import ScheduleScreen from './schedule'
 import StoreScreen from './store'
 import MeScreen from './me'
-import MovieDetailScreen from './movieDetail/movieDetail'
 
 const TabNav = TabNavigator({
     HomeTab: {
