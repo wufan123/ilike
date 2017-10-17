@@ -6,8 +6,7 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
-import Header from '../common/header'
-import { RefreshScrollView } from '../common/pull'
+import BasePullPage from '../common/basePullPage'
 import { Button } from '../common/component'
 import accountBusiness from '../../business/accountBusiness'
 var theme = require('../../style')
@@ -62,13 +61,13 @@ export default class MeScreen extends Component {
         }
     }
     componentDidMount() {
-        accountBusiness.login('15396005445','123456')
-        .then(res=>{
-            console.log("============res",res) 
-        })
-        .catch(reason=>{
-            console.log("============reason",reason) 
-        })
+        accountBusiness.login('15396005445', '123456')
+            .then(res => {
+                console.log("============res", res)
+            })
+            .catch(reason => {
+                console.log("============reason", reason)
+            })
     }
     _getItemsData() {
         return [
@@ -125,7 +124,7 @@ export default class MeScreen extends Component {
                 marginTop: false,
                 borderBottom: false,
                 image: require('../../assets/me/icon_refund.png'),
-                goToUrl:'Coupon'
+                goToUrl: 'Coupon'
             },
             {
                 id: 'expenseRecord',
@@ -133,7 +132,7 @@ export default class MeScreen extends Component {
                 marginTop: true,
                 borderBottom: true,
                 image: require('../../assets/me/icon_refund.png'),
-                goToUrl:'Consumerec'
+                goToUrl: 'Consumerec'
             },
             {
                 id: 'integralRecord',
@@ -141,7 +140,7 @@ export default class MeScreen extends Component {
                 marginTop: false,
                 borderBottom: false,
                 image: require('../../assets/me/icon_refund.png'),
-                goToUrl:'Scorerec'
+                goToUrl: 'Scorerec'
             },
             {
                 id: 'feedback',
@@ -175,10 +174,17 @@ export default class MeScreen extends Component {
         global.navigation.navigate('FoodOrder');
     }
     _gotoComboOrder() {
-
+        global.navigation.navigate('ComboOrder');
     }
-    _itemClick(name) {
-        global.navigation.navigate(name);
+    _itemClick(item) {
+        if (item.id == 'customerService') {
+            this.refs.mBasePage.showDialog({
+                title:'温馨提示',
+                msg:'确定呼叫客服？'
+            })
+            return
+        }
+        global.navigation.navigate(item.goToUrl);
     }
     /**
      * 下拉刷新
@@ -192,7 +198,7 @@ export default class MeScreen extends Component {
     }
 
     _navigateToLogin() {
-        this.props.navigation.navigate('Login');
+        global.navigation.navigate('Login');
     }
 
     /**
@@ -203,45 +209,43 @@ export default class MeScreen extends Component {
     }
     render() {
         global.tabNavigation = this.props.navigation;
-        return (<View style={theme.flex}>
-            <Header disableBack={true}></Header>
-            <RefreshScrollView style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
-                <View style={styles.top}>
-                    <View style={styles.avatarbox}>
-                        <Image style={[styles.avatarImg]} source={require('../../assets/me/default_portrait.png')}></Image>
-                    </View>
-                    <Text style={[theme.fontWhite, theme.font16, theme.mt10]}>用户名</Text>
-                    <View style={[theme.row, theme.mt5]}>
-                        <Text style={[theme.fontWhite, theme.font14]}>余额：￥0.00 | 积分：100</Text>
-                    </View>
+        return (<BasePullPage style={theme.flex} disableBack={true} ref='mBasePage' style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
+
+            <View style={styles.top}>
+                <View style={styles.avatarbox}>
+                    <Image style={[styles.avatarImg]} source={require('../../assets/me/default_portrait.png')}></Image>
                 </View>
-                <View style={[theme.row, theme.whiteBlockWithPadding]}>
-                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoTicketOrder()}>
-                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
-                            <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-movie-order.png')} />
-                            <Text style={[theme.font12, theme.fontBlack]}>影票订单</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoGoodsOrder()}>
-                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
-                            <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-goods-order.png')} />
-                            <Text style={[theme.font12, theme.fontBlack]}>卖品订单</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoComboOrder}>
-                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
-                            <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-packages-order.png')} />
-                            <Text style={[theme.font12, theme.fontBlack]}>套票订单</Text>
-                        </View>
-                    </TouchableOpacity>
+                <Text style={[theme.fontWhite, theme.font16, theme.mt10]}>用户名</Text>
+                <View style={[theme.row, theme.mt5]}>
+                    <Text style={[theme.fontWhite, theme.font14]}>余额：￥0.00 | 积分：100</Text>
                 </View>
-                {
-                    this.state.items.map((item, index) =>
-                        (<ItemComponet onPress={() => this._itemClick(item.goToUrl)} source={item.image} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
-                }
-                <Button buttonStyle={styles.button} text={'退出登陆'} onPress={() => this._navigateToLogin()} />
-            </RefreshScrollView>
-        </View>)
+            </View>
+            <View style={[theme.row, theme.whiteBlockWithPadding]}>
+                <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoTicketOrder()}>
+                    <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                        <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-movie-order.png')} />
+                        <Text style={[theme.font12, theme.fontBlack]}>影票订单</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoGoodsOrder()}>
+                    <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                        <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-goods-order.png')} />
+                        <Text style={[theme.font12, theme.fontBlack]}>卖品订单</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter, theme.mt10, theme.mb10]} onPress={() => this._gotoComboOrder()}>
+                    <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                        <Image style={[styles.topItemImg, theme.mb10]} source={require('../../assets/me/icon-packages-order.png')} />
+                        <Text style={[theme.font12, theme.fontBlack]}>套票订单</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            {
+                this.state.items.map((item, index) =>
+                    (<ItemComponet onPress={() => this._itemClick(item)} source={item.image} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
+            }
+            <Button buttonStyle={styles.button} text={'退出登陆'} onPress={() => this._navigateToLogin()} />
+        </BasePullPage>)
     }
 }
 
