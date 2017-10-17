@@ -28,6 +28,7 @@ import AlcardInfoDt from './pages/me/alcardInfoDt'
 import AllPrivilege from './pages/me/allPrivilege'
 import Renewal from './pages/me/renewal'
 import Charge from './pages/me/charge'
+import Prizerec from './pages/me/prizerec'
 import MovieDetail from './pages/movieDetail/movieDetail'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
@@ -40,6 +41,8 @@ import './business/storage'
 import './style/index'
 import Coupon from "./pages/coupon/coupon";
 import UnWatchMovieTicketScreen from "./pages/me/unwatchMovieTicket"
+import ComboOrderScreen from './pages/me/comboOrder/comboOrderList'
+import ComboOrderDetailScreen from './pages/me/comboOrder/comboOrderDetail'
 
 const App = StackNavigator(
     {
@@ -68,6 +71,7 @@ const App = StackNavigator(
         AllPrivilege:{ screen: AllPrivilege },
         Renewal:{ screen: Renewal },
         Charge:{ screen: Charge },
+        Prizerec:{ screen: Prizerec },
         MovieDetail: {screen: MovieDetail},
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
@@ -78,7 +82,9 @@ const App = StackNavigator(
         PayResult: {screen: PayResult},
         Pay: {screen: Pay},
         Coupon: { screen: Coupon},
-        UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen}
+        UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen},
+        ComboOrder: { screen: ComboOrderScreen },
+        ComboOrderDetail: { screen: ComboOrderDetailScreen },
     },
     {
         navigationOptions: {

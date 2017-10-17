@@ -1,3 +1,33 @@
+import React, { Component } from 'react';
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+    FlatList,
+    Dimensions,
+    Platform,
+    TouchableOpacity,
+    Switch,
+    Alert,
+} from 'react-native';
+function vSeparatorWithHeight(h) {
+    return (
+        <View style={{height: h}} />
+    );
+}
+
+function hSeparatorWithWidth(w) {
+    return (
+        <View style={{width: w}} />
+    );
+}
+
+function fontWithSize(size) {
+    return {
+        fontSize: size,
+    };
+}
 
 module.exports = {
     backgroundColor: '#FFFFFF',
@@ -17,16 +47,19 @@ module.exports = {
         color: '#3f3f3f'
     },
     fontGray: {
-        color: '#808080'
+        color: '#808080',
+        backgroundColor: 'transparent'
     },
     fontOrange: {
         color: '#fc9d40'
     },
     fontWhite: {
-        color: '#ffffff'
+        color: '#ffffff',
+        backgroundColor: 'transparent'
     },
     fontColorPrimary: {
         color: '#dc3c38',
+        backgroundColor: 'transparent'
     },
     font10: {
         fontSize: 10
@@ -112,6 +145,8 @@ module.exports = {
     lineSeperator: {
         height: 1,
         backgroundColor: 'rgb(244,244,244)'
-    }
-
+    },
+    vSeparatorWithHeight: vSeparatorWithHeight,
+    hSeparatorWithWidth: hSeparatorWithWidth,
+    fontWithSize,
 };

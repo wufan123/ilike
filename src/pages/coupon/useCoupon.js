@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
     View,
     StyleSheet, Image, TextInput, TouchableOpacity, Text,
+    ImageBackground,
 } from 'react-native';
 import BaseBottomButtonView from '../common/baseBottomButtonPage'
 import {RefreshScrollView} from "../common/pull/index";
@@ -29,7 +30,7 @@ export default class UseCoupon extends Component {
 
     getItem({ item, index }) {
             return (<View key={index} style={styles.ticketItem}>
-                <Image style={styles.ticketBg} source={greenBg}
+                <ImageBackground style={styles.ticketBg} source={greenBg}
                        resizeMode={'stretch'}>
                     <View style={styles.ticketItemTop}>
                         <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -51,8 +52,8 @@ export default class UseCoupon extends Component {
                         <View style={{flex:1}}/>
                         <Text style={[styles.itemTopTxt,{fontSize:11}]}>使用规则</Text>
                     </View>
-                </Image>
-                <Image style={styles.ticketBg} source={require('../../assets/ticket/voucher_bg.png')}
+                </ImageBackground>
+                <ImageBackground style={styles.ticketBg} source={require('../../assets/ticket/voucher_bg.png')}
                        resizeMode={'stretch'}>
                     <View style={styles.ticketItemBottom}>
                         <View>
@@ -69,7 +70,7 @@ export default class UseCoupon extends Component {
 
                         </View>
                     </View>
-                </Image>
+                </ImageBackground>
             </View>)
     }
 
@@ -134,7 +135,8 @@ const styles = StyleSheet.create({
     },
     ticketItemBottom:{alignItems:'center',flexDirection:'row',flex: 1,paddingHorizontal:10},
     itemTopTxt:{
-        color:'#fff'
+        color:'#fff',
+        backgroundColor: 'transparent'
     },
     ticketItemTop: {
         paddingHorizontal:14,
