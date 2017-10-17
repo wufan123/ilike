@@ -8,9 +8,9 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
-import Header from '../common/header';
-import { Button, RatingView } from '../common/component'
-var theme = require('../../style')
+import Header from '../../common/header';
+import { Button, RatingView } from '../../common/component'
+var theme = require('../../../style')
 
 class UselessTextInput extends Component {
   render() {

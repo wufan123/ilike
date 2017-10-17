@@ -7,8 +7,8 @@ import {
     ScrollView,
     TouchableOpacity
 } from 'react-native';
-import Header from '../common/header';
-var theme = require('../../style')
+import Header from '../../common/header';
+var theme = require('../../../style')
 
 class TicketDetailScreen extends Component {
 
@@ -67,7 +67,7 @@ class TicketDetailScreen extends Component {
                 <Text style={styles.textStyle}>总额 <Text style={{color: theme.colorPrimary}}>￥84.00</Text> 实付 <Text
                     style={{color: theme.colorPrimary}}>￥0.00</Text></Text>
                 <Text style={styles.textStyle}>详情 <Image
-                    source={this.state.priceDetailToggle ? require('../../assets/me/top-btn.png') : require('../../assets/me/bottom-btn.png')}
+                    source={this.state.priceDetailToggle ? require('../../../assets/me/top-btn.png') : require('../../../assets/me/bottom-btn.png')}
                     style={{width: 15, position: 'absolute', top: 10}} resizeMode='contain'/></Text>
             </TouchableOpacity>
             {this._priceDetail()}
@@ -82,14 +82,14 @@ class TicketDetailScreen extends Component {
                 borderBottomColor: theme.borderColor,
                 borderBottomWidth: 1
             }}>
-                <Image source={require('../../assets/me/getTicket.png')}
+                <Image source={require('../../../assets/me/getTicket.png')}
                        style={{position: 'relative', width: 13, marginRight: 5, top: -5}} resizeMode='contain'/>
                 <Text style={styles.textStyle}>凭如下信息至影城自助取票机取票</Text>
             </View>
             <View style={{flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
                 <Text style={[styles.textStyle, {color: theme.colorPrimary}]}>订单号:20170819134236898782230170</Text>
                 <Text style={[styles.textStyle, {color: theme.colorPrimary}]}>取票码:WHKK8CP</Text>
-                <Image source={require('../../assets/ewm.png')} style={{position: 'relative', width: 100}}
+                <Image source={require('../../../assets/ewm.png')} style={{position: 'relative', width: 100}}
                        resizeMode='contain'/>
             </View>
         </View>)
@@ -103,7 +103,7 @@ class TicketDetailScreen extends Component {
                     <Text>三坊七巷南后街75号（博览苑对面）</Text>
                 </View>
                 <View style={styles.addressImage}>
-                    <Image source={require('../../assets/me/phone.png')} style={{width: 25}}
+                    <Image source={require('../../../assets/me/phone.png')} style={{width: 25}}
                            resizeMode='contain'></Image>
                 </View>
             </View>

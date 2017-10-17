@@ -9,10 +9,10 @@ import {
     Platform,
     TouchableOpacity
 } from 'react-native';
-import Header from '../common/header';
-import { Tab } from '../common/component'
-import { RefreshScrollView } from '../common/pull'
-var theme = require('../../style')
+import Header from '../../common/header';
+import { Tab } from '../../common/component'
+import { RefreshScrollView } from '../../common/pull'
+var theme = require('../../../style')
 
 class TicketOrderScreen extends Component {
 
@@ -58,7 +58,7 @@ class TicketOrderScreen extends Component {
                     <View style={styles.movieDetailContainer}>
                         <View style={styles.titleScoreContainer}>
                             <Text style={styles.movieTitle}>异形：契约</Text>
-                            <Image source={require('../../assets/me/close.png')} style={{ width: 12 }} resizeMode='contain' />
+                            <Image source={require('../../../assets/me/close.png')} style={{ width: 12 }} resizeMode='contain' />
                         </View>
                         <View style={{
                             flex: 1,
@@ -83,7 +83,7 @@ class TicketOrderScreen extends Component {
                                 <Text style={[styles.movieSlogan, { color: theme.colorPrimary }]}><Text>状态： </Text>支付完成</Text>
                             </View>
                             <View style={{ width: 30, alignItems: 'flex-end' }}>
-                                <Image source={require('../../assets/me/right-btn.png')} style={{ height: 15, marginTop: 15 }} resizeMode='contain' />
+                                <Image source={require('../../../assets/me/right-btn.png')} style={{ height: 15, marginTop: 15 }} resizeMode='contain' />
                             </View>
                         </View>
                     </View>

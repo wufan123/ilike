@@ -7,26 +7,32 @@ import VideoView from './pages/common/videoView'
 import GoodsDetail from './pages/store/goodsDetail'
 import ChooseSeat from './pages/schedule/chooseSeat'
 import Cinema from './pages/home/cinema'
-import Login from './pages/login'
+import Login from './pages/login/index'
 import ForgetPw from './pages/login/forgetPw'
 import Register from './pages/login/register'
 import ScheduleList from './pages/schedule/scheduleList'
 import ConfirmOrder from './pages/order/comfirmOrder'
-import TicketOrder from './pages/me/ticketOrder'
-import TicketDetail from './pages/me/ticketDetail'
-import Appraise from './pages/me/appraise'
+import TicketOrder from './pages/me/ticketOrder/ticketOrder'
+import TicketDetail from './pages/me/ticketOrder/ticketDetail'
+import Appraise from './pages/me/ticketOrder/appraise'
 import FoodOrder from './pages/me/foodOrder'
 import Sign from './pages/me/sign'
 import Helpback from './pages/me/helpback'
 import Scorerec from './pages/me/scorerec'
 import Consumerec from './pages/me/consumerec'
-import Alcard from './pages/me/alcard'
-import Upgrade from './pages/me/upgrade'
-import AlcardInfoDt from './pages/me/alcardInfoDt'
-import AllPrivilege from './pages/me/allPrivilege'
-import Renewal from './pages/me/renewal'
+import Alcard from './pages/me/alcard/alcard'
+import Upgrade from './pages/me/alcard/upgrade'
+import AlcardInfoDt from './pages/me/alcard/alcardInfoDt'
+import AllPrivilege from './pages/me/alcard/allPrivilege'
+import Renewal from './pages/me/alcard/renewal'
 import Charge from './pages/me/charge'
 import Prizerec from './pages/me/prizerec'
+import Ticketoperation from './pages/me/ticketoperation/ticketoperation'
+import RefundRule from './pages/me/ticketoperation/refundRule'
+import ApplyModify from './pages/me/ticketoperation/applyModify'
+import ApplyRefund from './pages/me/ticketoperation/applyRefund'
+import RefundPay from './pages/me/ticketoperation/refundPay'
+import RefundResult from './pages/me/ticketoperation/refundResult'
 import MovieDetail from './pages/movieDetail/movieDetail'
 import WriteComment from './pages/movieDetail/writeComment'
 import CommentReplyList from './pages/movieDetail/commentReplyList'
@@ -72,6 +78,12 @@ const App = StackNavigator(
         Renewal:{ screen: Renewal },
         Charge:{ screen: Charge },
         Prizerec:{ screen: Prizerec },
+        Ticketoperation:{ screen: Ticketoperation },
+        RefundRule:{ screen : RefundRule },
+        ApplyModify:{ screen: ApplyModify },
+        ApplyRefund:{ screen: ApplyRefund },
+        RefundPay:{ screen: RefundPay },
+        RefundResult:{ screen: RefundResult },
         MovieDetail: {screen: MovieDetail},
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },

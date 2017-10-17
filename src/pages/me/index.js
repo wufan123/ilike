@@ -109,7 +109,8 @@ export default class MeScreen extends Component {
                 title: '退票中心',
                 marginTop: false,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'Ticketoperation'
             },
             {
                 id: 'card',

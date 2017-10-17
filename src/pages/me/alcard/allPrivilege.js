@@ -6,9 +6,9 @@ import {
   Image,
   TouchableWithoutFeedback
 } from 'react-native';
-import Header from '../common/header';
-import { Tab } from '../common/component'
-import theme from '../../style/index';
+import Header from '../../common/header';
+import { Tab } from '../../common/component'
+import theme from '../../../style/index';
 
 class AllPrivilegeView extends Component {
   constructor(props) {
@@ -23,12 +23,12 @@ class AllPrivilegeView extends Component {
         <Header title={'全部特权'}  ></Header>
         <Tab tab={this.state.tabs} changeSelect={(a, b) => { console.log('tab的index', a, b) }} />
         <View style={styles.cardBody}>
-          <Image source={require('../../assets/me/sign06.png')} style={{ height: 30 }} resizeMode='contain' ></Image>
+          <Image source={require('../../../assets/me/sign06.png')} style={{ height: 30 }} resizeMode='contain' ></Image>
           <View style={{ flex: 1 }}>
             <Text>消费积分</Text>
             <Text>每次购票可享受1倍积分,购卖品可享受1倍积分;</Text>
           </View>
-          <Image style={styles.rightImg} source={require('../../assets/common/right_btn.png')} />
+          <Image style={styles.rightImg} source={require('../../../assets/common/right_btn.png')} />
         </View>
       </View>
     )

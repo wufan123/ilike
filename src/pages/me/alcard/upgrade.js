@@ -6,9 +6,9 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
-import Header from '../common/header';
-import theme from '../../style/index';
-import {Button,CheckBox} from '../common/component';
+import Header from '../../common/header';
+import theme from '../../../style/index';
+import {Button,CheckBox} from '../../common/component';
 class SignScreen extends Component {
   constructor(props) {
     super(props)
@@ -29,7 +29,7 @@ class SignScreen extends Component {
         <View style={{flex:1}}>
           <View style={styles.top}>
             <View style={styles.avatarbox}>
-              <Image style={[styles.avatarImg]} source={require('../../assets/me/default_portrait.png')}></Image>
+              <Image style={[styles.avatarImg]} source={require('../../../assets/me/default_portrait.png')}></Image>
             </View>
             <Text style={[theme.fontWhite, theme.font16, theme.mt10]}>180****1317</Text>
           </View>

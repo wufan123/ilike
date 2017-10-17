@@ -6,8 +6,8 @@ import {
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
-import Header from '../common/header';
-import theme from '../../style/index';
+import Header from '../../common/header';
+import theme from '../../../style/index';
 
 class ItemComponet extends Component {
   static defaultProps = {
@@ -26,7 +26,7 @@ class ItemComponet extends Component {
           <Image style={styles.itemImg} source={this.props.source} />
           <Text style={[theme.fontBlack, theme.font16]}>{this.props.title}</Text>
           <Text style={[theme.fontGray, theme.font14, theme.flex, { textAlign: 'right' }]}>{this.props.subTitle}  </Text>
-          <Image style={styles.rightImg} source={require('../../assets/common/right_btn.png')} />
+          <Image style={styles.rightImg} source={require('../../../assets/common/right_btn.png')} />
         </View>
       </TouchableOpacity>
     )
@@ -40,7 +40,7 @@ class SignScreen extends Component {
       <View style={styles.page}>
         <Header title={'我的账户'} ></Header>
         <View style={styles.account}>
-          <Image source={require('../../assets/me/user-level.png')} style={{ height: 50 }} resizeMode='contain'></Image>
+          <Image source={require('../../../assets/me/user-level.png')} style={{ height: 50 }} resizeMode='contain'></Image>
           <Text style={{ color: '#ffa303' }}>al_Vip1</Text>
         </View>
         <ItemComponet onPress={() => {global.navigation.navigate('Upgrade');}}  title={'账户升级'} borderBottom={true}/>
@@ -48,12 +48,12 @@ class SignScreen extends Component {
         <TouchableOpacity style={styles.card}  onPress={() => {global.navigation.navigate('AlcardInfoDt');}}      >
           <Text style={[theme.fontBlack, theme.font16,styles.title]}>我的特权</Text>
           <View style={styles.cardBody}>
-            <Image source={require('../../assets/me/sign06.png')} style={{ height: 30 }} resizeMode='contain' ></Image>
+            <Image source={require('../../../assets/me/sign06.png')} style={{ height: 30 }} resizeMode='contain' ></Image>
             <View style={{flex:1}}>
               <Text>消费积分</Text>
               <Text>每次购票可享受1倍积分,购卖品可享受1倍积分;</Text>
             </View>
-            <Image style={styles.rightImg} source={require('../../assets/common/right_btn.png')} />
+            <Image style={styles.rightImg} source={require('../../../assets/common/right_btn.png')} />
           </View>
         </TouchableOpacity>
         <ItemComponet title={'查看全部特权'}  onPress={() => {global.navigation.navigate('AllPrivilege');}} />
