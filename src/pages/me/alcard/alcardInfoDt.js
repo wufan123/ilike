@@ -6,8 +6,8 @@ import {
   Image,
   TouchableWithoutFeedback
 } from 'react-native';
-import Header from '../common/header';
-import theme from '../../style/index';
+import Header from '../../common/header';
+import theme from '../../../style/index';
 
 class AlcardInfoDtView extends Component {
 
@@ -16,7 +16,7 @@ class AlcardInfoDtView extends Component {
       <View style={{ flex: 1, flexDirection: 'column' }}>
         <Header  ></Header>
         <View style={styles.account}>
-          <Image source={require('../../assets/me/user-level.png')} style={{ height: 50 }} resizeMode='contain'></Image>
+          <Image source={require('../../../assets/me/user-level.png')} style={{ height: 50 }} resizeMode='contain'></Image>
           <Text style={{ color: '#ffa303' }}>al_Vip1</Text>
         </View>
         <View style={styles.view}>

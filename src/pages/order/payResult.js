@@ -4,7 +4,7 @@ import {
     StyleSheet, Image, Text,
 } from 'react-native';
 import BasePullPage from '../common/basePullPage'
-import TicketDetail from '../me/ticketDetail'
+import TicketDetail from '../me/ticketOrder/ticketDetail'
 let theme = require('../../style')
 let successBg = '#f9b949'
 let successImg = require('../../assets/order/icon_success.png')
