@@ -15,6 +15,7 @@ import {
 import BaseView from '../../common/basePage';
 import globalStyles from '../../../style/index';
 import QRCode from 'react-native-qrcode';
+import Communications from 'react-native-communications';
 
 const { width, height } = Dimensions.get('window');
 
@@ -98,6 +99,10 @@ class ComboOrderDetailScreen extends Component {
         )
     }
 
+    callCinema = () => {
+        Communications.phonecall('10086', true)
+    }
+
     renderCinemaCell = () => {
         return (
             <View style={[styles.rowSpaceBetween, styles.backgroundWhite, {paddingVertical: 15}]} >
@@ -106,9 +111,9 @@ class ComboOrderDetailScreen extends Component {
                     {globalStyles.vSeparatorWithHeight(8)}
                     <Text style={[globalStyles.font16, globalStyles.fontGray]} >台江区工业路红星美凯龙(宝龙城市广场)</Text>
                 </View>
-                <View style={styles.phoneContainer} >
+                <TouchableOpacity style={styles.phoneContainer} onPress={this.callCinema}>
                     <Image resizeMode="contain" style={{ width: 25, height: 25 }} source={require('../../../assets/me/phone.png')} />
-                </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -147,7 +152,7 @@ class ComboOrderDetailScreen extends Component {
                             <Text style={[globalStyles.font16, globalStyles.fontBlack]}>实付:<Text style={[globalStyles.fontColorPrimary, globalStyles.font16]}>￥80</Text></Text>
                         </View>
                         <View style={[globalStyles.row, globalStyles.alignItemsCenter]} >
-                            <Text>详情</Text>
+                            <Text style={[globalStyles.fontGray, globalStyles.font16]} >详情</Text>
                             <Image resizeMode="contain" style={{ width: 16, height: 8 }} source={expandImage} />
                         </View>
                     </View>
