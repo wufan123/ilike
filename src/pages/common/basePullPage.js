@@ -23,4 +23,9 @@ export default class BasePullPage extends BasePage {
 BasePullPage.propTypes = {
     ...BasePage.propTypes,
     onPullRelease:PropTypes.func,
+    title:PropTypes.string,
+    rightTxt:PropTypes.string,
+    rightClick:PropTypes.func,
+    rightImg:PropTypes.object,
+    theme:PropTypes.oneOf(['white','red'])
 }

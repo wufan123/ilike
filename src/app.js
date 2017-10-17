@@ -40,6 +40,8 @@ import './business/storage'
 import './style/index'
 import Coupon from "./pages/coupon/coupon";
 import UnWatchMovieTicketScreen from "./pages/me/unwatchMovieTicket"
+import VipCard from "./pages/me/vipCard/vipCard"
+import VipAddCard from "./pages/me/vipCard/addCard"
 
 const App = StackNavigator(
     {
@@ -78,7 +80,9 @@ const App = StackNavigator(
         PayResult: {screen: PayResult},
         Pay: {screen: Pay},
         Coupon: { screen: Coupon},
-        UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen}
+        UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen},
+        VipCard: {screen: VipCard},
+        VipAddCard: {screen: VipAddCard}
     },
     {
         navigationOptions: {

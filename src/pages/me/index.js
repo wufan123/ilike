@@ -116,7 +116,8 @@ export default class MeScreen extends Component {
                 title: '影城会员卡',
                 marginTop: false,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'VipCard'
             },
             {
                 id: 'coupon',
