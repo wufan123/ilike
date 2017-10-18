@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { configureStore } from './reduxStore';
@@ -102,14 +102,6 @@ const RootStackNav = StackNavigator(
         UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen},
         VipCard: {screen: VipCard},
         VipAddCard: {screen: VipAddCard},
-        CommentReplyList: { screen: CommentReplyList },
-        ImageViewer: { screen: ImageViewer },
-        UseCoupon: { screen: UseCoupon },
-        Setting: { screen: Setting },
-        PayResult: { screen: PayResult },
-        Pay: { screen: Pay },
-        Coupon: { screen: Coupon },
-        UnWatchMovieTicket: { screen: UnWatchMovieTicketScreen },
         ComboOrder: { screen: ComboOrderScreen },
         ComboOrderDetail: { screen: ComboOrderDetailScreen },
     },
