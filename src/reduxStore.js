@@ -29,7 +29,7 @@ const getEnhancers = () => {
 
 let store;
 
-if (__DEV__ && process.env.TRON_ENABLED) {
+if (__DEV__ /*&& process.env.TRON_ENABLED*/) {
   store = Reactotron.createStore(
     rootReducer,
     compose(getMiddleware(), ...getEnhancers())
