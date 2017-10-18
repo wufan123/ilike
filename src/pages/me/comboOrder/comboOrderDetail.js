@@ -12,6 +12,8 @@ import {
     Alert,
     ScrollView
 } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import BaseView from '../../common/basePage';
 import globalStyles from '../../../style/index';
 import QRCode from 'react-native-qrcode';
@@ -19,7 +21,13 @@ import Communications from 'react-native-communications';
 
 const { width, height } = Dimensions.get('window');
 
-class ComboOrderDetailScreen extends Component {
+const mapStateToProps = state => {
+    return {
+        cinema: state.cinema.currentCinema
+    };
+}
+
+class ComboOrderDetail extends Component {
 
     constructor(props) {
         super(props);
@@ -68,8 +76,8 @@ class ComboOrderDetailScreen extends Component {
     renderExplainCell = () => {
         return (
             <View style={[styles.backgroundWhite, { padding: 15 }]} >
-                <Text style={[globalStyles.font16, globalStyles.fontBlack, {lineHeight: 24}]}>订单中的票券已放入<Text style={[globalStyles.fontColorPrimary, globalStyles.font16]} >“我的-优惠券”</Text></Text>
-                <Text style={[globalStyles.font16, globalStyles.fontBlack, {lineHeight: 24}]}>实物卖品凭票至影城柜台兑换。</Text>
+                <Text style={[globalStyles.font16, globalStyles.fontBlack, { lineHeight: 24 }]}>订单中的票券已放入<Text style={[globalStyles.fontColorPrimary, globalStyles.font16]} >“我的-优惠券”</Text></Text>
+                <Text style={[globalStyles.font16, globalStyles.fontBlack, { lineHeight: 24 }]}>实物卖品凭票至影城柜台兑换。</Text>
             </View>
         );
     }
@@ -100,16 +108,19 @@ class ComboOrderDetailScreen extends Component {
     }
 
     callCinema = () => {
-        Communications.phonecall('10086', true)
+        Communications.phonecall(this.props.cinema.phone, true)
     }
 
     renderCinemaCell = () => {
+        let cinema = this.props.cinema;
         return (
-            <View style={[styles.rowSpaceBetween, styles.backgroundWhite, {paddingVertical: 15}]} >
-                <View style={[globalStyles.flex, {paddingHorizontal: 15}]} >
-                    <Text style={[globalStyles.font16, globalStyles.fontBlack]} >中瑞国际影城红星店</Text>
+            <View style={[styles.rowSpaceBetween, styles.backgroundWhite, { paddingVertical: 15 }]} >
+                <View style={[globalStyles.flex, { paddingHorizontal: 15 }]} >
+                    {/* <Text style={[globalStyles.font16, globalStyles.fontBlack]} >中瑞国际影城红星店</Text> */}
+                    <Text style={[globalStyles.font16, globalStyles.fontBlack]} >{cinema.name}</Text>
                     {globalStyles.vSeparatorWithHeight(8)}
-                    <Text style={[globalStyles.font16, globalStyles.fontGray]} >台江区工业路红星美凯龙(宝龙城市广场)</Text>
+                    {/* <Text style={[globalStyles.font16, globalStyles.fontGray]} >台江区工业路红星美凯龙(宝龙城市广场)</Text> */}
+                    <Text style={[globalStyles.font16, globalStyles.fontGray]} >{cinema.address}</Text>
                 </View>
                 <TouchableOpacity style={styles.phoneContainer} onPress={this.callCinema}>
                     <Image resizeMode="contain" style={{ width: 25, height: 25 }} source={require('../../../assets/me/phone.png')} />
@@ -132,9 +143,9 @@ class ComboOrderDetailScreen extends Component {
                 <FlatList
                     data={[1, 2, 3]}
                     keyExtractor={(item, index) => index}
-                    ListHeaderComponent={()=>globalStyles.vSeparatorWithHeight(6)}
+                    ListHeaderComponent={() => globalStyles.vSeparatorWithHeight(6)}
                     renderItem={({ item, index }) => (
-                        <View style={[styles.rowSpaceBetween, {paddingVertical: 3}]} >
+                        <View style={[styles.rowSpaceBetween, { paddingVertical: 3 }]} >
                             <Text style={[globalStyles.font14, globalStyles.fontGray]}>账户余额支付：</Text>
                             <Text style={[globalStyles.font14, globalStyles.fontGray]}>￥80</Text>
                         </View>
@@ -211,5 +222,7 @@ const styles = StyleSheet.create({
         height: 50
     }
 });
+
+const ComboOrderDetailScreen = connect(mapStateToProps)(ComboOrderDetail);
 
 module.exports = ComboOrderDetailScreen;
