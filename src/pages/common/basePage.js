@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     View,
     StatusBar,
@@ -10,30 +10,37 @@ let theme = require('../../style')
 
 export default class BasePage extends Component {
 
+
     constructor(props) {
         super(props)
+        this.showDialog = this.showDialog.bind(this)
     }
 
     showDialog(props) {
         console.log(this.refs.mDialog)
-        this.refs.mDialog.setNativeProps(props)
-        this.refs.mDialog.showDialog()
+        this.dialog._showDialog()
     }
+
     hideDialog() {
-        this.refs.mDialog.hideDialog()
+        this.dialog.hideDialog()
     }
+
+
 
     render() {
         return (
-            <View style={[theme.flex, { position: 'relative' }]} >
+            <View style={[theme.flex, {position: 'relative'}]}>
                 <StatusBar
                     hidden={false}
                     barStyle={'light-content'}
                 />
-                <Header showCinema={this.props.showCinema} tab={this.props.tab} changeSelect={this.props.changeSelect} disableBack={this.props.disableBack} title={this.props.title} theme={this.props.theme} rightTxt={this.props.rightTxt} rightClick={this.props.rightClick} rightImg={this.props.rightImg} />
+                <Header showCinema={this.props.showCinema} tab={this.props.tab} changeSelect={this.props.changeSelect}
+                        disableBack={this.props.disableBack} title={this.props.title} theme={this.props.theme}
+                        rightTxt={this.props.rightTxt} rightClick={this.props.rightClick}
+                        rightImg={this.props.rightImg}/>
                 {this.props.children}
-                <Dialog ref='mDialog'
-                 />
+                <Dialog ref={c => (this.dialog = c)}
+                />
             </View>)
     }
 }

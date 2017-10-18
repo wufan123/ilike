@@ -10,7 +10,7 @@ export default class BasePullPage extends BasePage {
     }
 
     render() {
-        return (<BasePage style={globalStyle.flex} {...this.props} ref='mBasePage'>
+        return (<BasePage style={globalStyle.flex} {...this.props} >
             <RefreshScrollView
                 onPullRelease={this.props.onPullRelease}
                 style={{backgroundColor:globalStyle.pageBackground}}
@@ -23,4 +23,9 @@ export default class BasePullPage extends BasePage {
 BasePullPage.propTypes = {
     ...BasePage.propTypes,
     onPullRelease:PropTypes.func,
+    title:PropTypes.string,
+    rightTxt:PropTypes.string,
+    rightClick:PropTypes.func,
+    rightImg:PropTypes.object,
+    theme:PropTypes.oneOf(['white','red'])
 }

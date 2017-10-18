@@ -24,8 +24,8 @@ export default class extends Component {
         return (<BaseBottomButtonView style={theme.flex} title={'支付'} bottomTxt={'确定'} onBottomClick={()=>{
             global.navigation.navigate('PayResult');
         }}>
+            <CountDown/>
             <ScrollView>
-                <CountDown/>
                 <View style={styles.amount}>
                     {this.comfirmOrder.getPayInfo()}
                     <Image style={{marginTop: 18}} source={require('../../assets/order/dash_line_r.png')}
