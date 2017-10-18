@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import BasePage from './basePage'
 import globalStyle from '../../style/index'
 import { RefreshScrollView } from '../common/pull'
 import PropTypes from 'prop-types';
 
-export default class BasePullPage extends BasePage {
+export default class BasePullPage extends Component {
     constructor(props) {
         super(props)
+    }
+
+    showDialog(props) {
+        this.refs.mBasePage.showDialog(props)
     }
 
     render() {
