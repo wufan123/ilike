@@ -13,6 +13,10 @@ import {
     SectionList
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectCinema } from '../../../actions'
+
 import * as WeChat from 'react-native-wechat';
 import Header from '../../common/header';
 import Swiper from 'react-native-swiper';
@@ -21,13 +25,29 @@ import theme from '../../../style/index'
 
 const { width, height } = Dimensions.get('window')
 
+const mapStateToProps = state => ({
+    currentCinema: state.cinema.currentCinema,
+});
 
-export default class Cinema extends Component {
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(
+        {
+            selectCinema,
+        },
+        dispatch
+    );
+
+class Cinema extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             title: '选择影城',
+            tCinema: {
+                name: '影城1',
+                address: '福州',
+                phone: '10086',
+            },
             cinemaList: [
                 { data: [1, 2, 3, 4, 5], title: '福州市' },
                 { data: [1, 2, 3], title: '池州市' },
@@ -83,16 +103,23 @@ export default class Cinema extends Component {
             marginHorizontal: 15
         }} />;
     }
+
+    selectCinema = (cinema) => {
+        this.props.selectCinema(this.state.tCinema);
+    }
+
     _renderItem = ({ item }) => {
 
         return (
-            <View style={[theme.row, theme.whiteBlockWithPadding, styles.item]}> 
-                <View style={[theme.flex]}>
-                    <Text style={[theme.flex, theme.fontBlack, theme.font16,theme.mt15]}>中瑞国际影城红星店</Text>
-                    <Text style={[theme.flex, theme.fontGray, theme.font12]}>台江区工业路红星美凯龙（宝龙城市广场旁）7楼</Text>
-                </View> 
-                <Image style={styles.itemImg} source={require('../../../assets/common/right_btn.png')} />
-            </View>
+            <TouchableOpacity onPress={() => this.selectCinema(item)}>
+                <View style={[theme.row, theme.whiteBlockWithPadding, styles.item]}>
+                    <View style={[theme.flex]}>
+                        <Text style={[theme.flex, theme.fontBlack, theme.font16, theme.mt15]}>中瑞国际影城红星店</Text>
+                        <Text style={[theme.flex, theme.fontGray, theme.font12]}>台江区工业路红星美凯龙（宝龙城市广场旁）7楼</Text>
+                    </View>
+                    <Image style={styles.itemImg} source={require('../../../assets/common/right_btn.png')} />
+                </View>
+            </TouchableOpacity>
         );
     }
 
@@ -105,8 +132,8 @@ export default class Cinema extends Component {
                     renderSectionHeader={this._sectionHeader}
                     sections={this.state.cinemaList}
                     renderItem={this._renderItem}
-                    keyExtractor={(item, index) => index} 
-                    scrollEnabled={false} 
+                    keyExtractor={(item, index) => index}
+                    scrollEnabled={false}
                 />
             );
         }
@@ -152,3 +179,6 @@ const styles = StyleSheet.create({
     }
 });
 
+const CinemaScreen = connect(mapStateToProps, mapDispatchToProps)(Cinema);
+
+module.exports = CinemaScreen;

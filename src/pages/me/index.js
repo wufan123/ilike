@@ -6,10 +6,27 @@ import {
     StyleSheet,
     TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { loginSuccess, logout } from '../../actions';
+
 import BasePullPage from '../common/basePullPage'
 import { Button } from '../common/component'
 import accountBusiness from '../../business/accountBusiness'
 var theme = require('../../style')
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(
+        {
+            loginSuccess,
+            logout,
+        },
+        dispatch
+    );
 
 
 function tabBarIcons(focused) {
@@ -47,7 +64,7 @@ class ItemComponet extends Component {
 
 }
 
-export default class MeScreen extends Component {
+class MeScreen extends Component {
     static navigationOptions = {
         tabBarLabel: '我的',
         tabBarIcon: ({ focused }) => tabBarIcons(focused)
@@ -109,7 +126,7 @@ export default class MeScreen extends Component {
                 marginTop: false,
                 borderBottom: true,
                 image: require('../../assets/me/icon_refund.png'),
-                goToUrl:'Ticketoperation'
+                goToUrl: 'Ticketoperation'
             },
             {
                 id: 'card',
@@ -179,8 +196,8 @@ export default class MeScreen extends Component {
     _itemClick(item) {
         if (item.id == 'customerService') {
             this.refs.mBasePage.showDialog({
-                title:'温馨提示',
-                msg:'确定呼叫客服？'
+                title: '温馨提示',
+                msg: '确定呼叫客服？'
             })
             return
         }
@@ -198,6 +215,7 @@ export default class MeScreen extends Component {
     }
 
     _navigateToLogin() {
+        this.props.logout();
         global.navigation.navigate('Login');
     }
 
@@ -208,6 +226,7 @@ export default class MeScreen extends Component {
     _loadMore() {
     }
     render() {
+        console.log('props:', this.props.dispatch, this.props);
         global.tabNavigation = this.props.navigation;
         return (<BasePullPage style={theme.flex} disableBack={true} ref='mBasePage' style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
 
@@ -244,7 +263,7 @@ export default class MeScreen extends Component {
                 this.state.items.map((item, index) =>
                     (<ItemComponet onPress={() => this._itemClick(item)} source={item.image} key={item.id} title={item.title} marginTop={item.marginTop} borderBottom={item.borderBottom} />))
             }
-            <Button buttonStyle={styles.button} text={'退出登陆'} onPress={() => this._navigateToLogin()} />
+            <Button buttonStyle={styles.button} text={'退出登录'} onPress={() => this._navigateToLogin()} />
         </BasePullPage>)
     }
 }
@@ -300,3 +319,8 @@ const styles = StyleSheet.create({
     }
 });
 
+const Me = connect(mapStateToProps, mapDispatchToProps)(
+    MeScreen
+);
+
+module.exports = Me;
