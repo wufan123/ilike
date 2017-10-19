@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
     ScrollView,
     Text,
@@ -11,10 +12,13 @@ import {
     Dimensions,
     TouchableHighlight,
     StyleSheet,
-    NetInfo
+    NetInfo,
+    FlatList
 } from 'react-native';
 
 import Pullable from './Pullable';
+
+var theme = require('../../../style');
  
 const LoadingState = 1;    //初始loading页面
 const EmptyState = 2;    //空页面
@@ -25,7 +29,15 @@ const NoMoreState = 6;    //没有更多了
 const NoMoreErrorState = 7;    //加载更多出错
 const NOState=8;//正常状态
 
+const STATE_NO_MORE = 0;
+const STATE_LOADING = 1;
+
 export default class RefreshScrollView extends Pullable {
+
+    static defaultProps = {
+        footerViewState: STATE_NO_MORE,
+        showFooterView: true,
+    }
 
     constructor(props) {
         super(props);
@@ -33,6 +45,7 @@ export default class RefreshScrollView extends Pullable {
         // this.scrollToOffset = this.scrollToOffset.bind(this);
         this.scrollToEnd = this.scrollToEnd.bind(this);
         this.currentState = NoMoreState; 
+        this.count = 1;
     }
 
     getMetrics(args) {
@@ -150,6 +163,32 @@ export default class RefreshScrollView extends Pullable {
         )
     }
 
+    _onEndReached = ({ distanceFromEnd }) => {
+        if (Math.abs(distanceFromEnd - 0) >= 0.3)
+            return
+        if (!this.props.loadMore)
+            return
+        if (this.props.footerViewState == STATE_NO_MORE)
+            this.props.loadMore()
+        else {
+            return
+        }
+    }
+    _defaultFooterView = () => {
+        if (!this.props.showFooterView)
+            return null
+        if (this.props.footerViewState == STATE_NO_MORE) {
+            return (<View style={[theme.alignItemsCenter, theme.justifyContentCenter, { height: 40 }]}>
+                <Text style={[theme.fontGray, theme.font12]}>没有更多了</Text>
+            </View>)
+        }
+        if (this.props.footerViewState == STATE_LOADING) {
+            return (<View style={[theme.alignItemsCenter, theme.justifyContentCenter, { height: 40 }]}>
+                <Text style={[theme.fontGray, theme.font12]}>正在加载</Text>
+            </View>)
+        }
+    }
+
     /**
      * 加载列表数据
      * @returns {XML}
@@ -157,14 +196,21 @@ export default class RefreshScrollView extends Pullable {
      */
     _renderList() {
         return (
-            <ScrollView ref={(c) => { this.scroll = c; }}
+            <FlatList ref={(c) => { this.scroll = c; }}
                 onScroll={this.onScroll}
                 scrollEnabled={this.state.scrollEnabled}
                 refreshing={false}
-                onEndThreshold={0}
-                {...this.props} >
-                {/*{this._renderFoot()}*/}
-            </ScrollView> 
+                data={[1]}
+                keyExtractor={(item, index)=>index}
+                renderItem={({item, index})=>{
+                    return(
+                        this.props.children
+                    );
+                }}
+                onEndReached={this._onEndReached}
+                onEndReachedThreshold={0.1}
+                ListFooterComponent={this._defaultFooterView}
+                />
         );
     }
 
@@ -206,7 +252,7 @@ export default class RefreshScrollView extends Pullable {
      * 类似 render() 方法,具体在父类里面
      * @returns {*}
      */
-    getScrollable() {
+    getScrollable = () => {
         if (this.currentState === LoadingState) {
             return this.props.renderLoading || this._renderLoading();
         } else if (this.currentState === EmptyState) {
@@ -219,6 +265,15 @@ export default class RefreshScrollView extends Pullable {
     }
 
 
+
+}
+
+RefreshScrollView.propTypes = {
+    ...View.propTypes,
+    onPullRelease: PropTypes.func,
+    loadMore: PropTypes.func,
+    showFooterView: PropTypes.bool,
+    footerViewState: PropTypes.oneOf([STATE_NO_MORE, STATE_LOADING]),
 }
 
 const styles = StyleSheet.create({

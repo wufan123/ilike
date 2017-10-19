@@ -21,7 +21,6 @@ export default class CFlatList extends Component {
             {...this.props}></FlatList>)
     }
     _onEndReached = ({ distanceFromEnd }) => {
-        console.log('loading more in cflatlist....');
         if (!this.props.loadMore)
             return
         if (this.props.footerViewState == STATE_NO_MORE)
