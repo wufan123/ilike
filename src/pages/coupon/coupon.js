@@ -3,6 +3,7 @@ import {
     View,
     StyleSheet, Image, TextInput, TouchableOpacity, Text,
     ImageBackground,
+    FlatList,
 } from 'react-native';
 import {RefreshScrollView} from "../common/pull/index";
 import * as globalStyle from "../../style/index";
@@ -98,7 +99,7 @@ export default class Coupon extends Component {
                 onPullRelease={this.props.onPullRelease}
                 style={{backgroundColor: globalStyle.pageBackground}}
             >
-                <CFlatList style={theme.flex}
+                <FlatList style={theme.flex}
                            extraData={this.state}
                            data={[1,2, 3, 4, 5]}
                            keyExtractor={(item, index) =>index}

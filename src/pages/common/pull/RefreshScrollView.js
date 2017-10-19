@@ -29,13 +29,14 @@ const NoMoreState = 6;    //没有更多了
 const NoMoreErrorState = 7;    //加载更多出错
 const NOState=8;//正常状态
 
-const STATE_NO_MORE = 0;
-const STATE_LOADING = 1;
+export const STATE_NO_MORE = 0;
+export const STATE_LOADING = 1;
+export const STATE_NORMAL = 2;
 
 export default class RefreshScrollView extends Pullable {
 
     static defaultProps = {
-        footerViewState: STATE_NO_MORE,
+        footerViewState: STATE_NORMAL,
         showFooterView: true,
     }
 
@@ -164,11 +165,9 @@ export default class RefreshScrollView extends Pullable {
     }
 
     _onEndReached = ({ distanceFromEnd }) => {
-        if (Math.abs(distanceFromEnd - 0) >= 0.3)
-            return
         if (!this.props.loadMore)
             return
-        if (this.props.footerViewState == STATE_NO_MORE)
+        if (this.props.footerViewState == STATE_NORMAL)
             this.props.loadMore()
         else {
             return
@@ -187,6 +186,7 @@ export default class RefreshScrollView extends Pullable {
                 <Text style={[theme.fontGray, theme.font12]}>正在加载</Text>
             </View>)
         }
+        return null
     }
 
     /**
@@ -208,7 +208,7 @@ export default class RefreshScrollView extends Pullable {
                     );
                 }}
                 onEndReached={this._onEndReached}
-                onEndReachedThreshold={0.1}
+                onEndReachedThreshold={0.7}
                 ListFooterComponent={this._defaultFooterView}
                 />
         );
@@ -273,7 +273,7 @@ RefreshScrollView.propTypes = {
     onPullRelease: PropTypes.func,
     loadMore: PropTypes.func,
     showFooterView: PropTypes.bool,
-    footerViewState: PropTypes.oneOf([STATE_NO_MORE, STATE_LOADING]),
+    footerViewState: PropTypes.oneOf([STATE_NO_MORE, STATE_LOADING, STATE_NORMAL]),
 }
 
 const styles = StyleSheet.create({

@@ -171,7 +171,7 @@ class GoodsScreen extends Component {
 
     return (<View style={theme.flex}  >
       <BasePullPage style={theme.flex} showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}>
-        <CFlatList style={theme.flex}
+        <FlatList style={theme.flex}
           extraData={this.state}
           data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}
           keyExtractor={this._keyExtractor}
