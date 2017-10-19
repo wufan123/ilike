@@ -323,7 +323,6 @@ class MovieDetailScreen extends Component {
     }
 
     loadMoreComments = () => {
-        console.log('loading more....');
         this.setState({
             isLoadingMoreComments: STATE_LOADING,
         }, () => {
