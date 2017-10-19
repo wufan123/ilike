@@ -73,6 +73,7 @@ class MeScreen extends Component {
     constructor(props) {
         super(props)
         let items = this._getItemsData()
+        this._itemClick = this._itemClick.bind(this)
         this.state = {
             items: items
         }
@@ -133,7 +134,8 @@ class MeScreen extends Component {
                 title: '影城会员卡',
                 marginTop: false,
                 borderBottom: true,
-                image: require('../../assets/me/icon_refund.png')
+                image: require('../../assets/me/icon_refund.png'),
+                goToUrl:'VipCard'
             },
             {
                 id: 'coupon',
@@ -195,9 +197,9 @@ class MeScreen extends Component {
     }
     _itemClick(item) {
         if (item.id == 'customerService') {
-            this.refs.mBasePage.showDialog({
-                title: '温馨提示',
-                msg: '确定呼叫客服？'
+            this.basePullPage.showDialog({
+                title:'温馨提示',
+                msg:'确定呼叫客服？'
             })
             return
         }
@@ -228,7 +230,9 @@ class MeScreen extends Component {
     render() {
         console.log('props:', this.props.dispatch, this.props);
         global.tabNavigation = this.props.navigation;
-        return (<BasePullPage style={theme.flex} disableBack={true} ref='mBasePage' style={theme.flex} onPullRelease={(resolve) => this._onPullRelease(resolve)}>
+        return (<BasePullPage style={theme.flex} disableBack={true} ref={(c)=>{
+            this.basePullPage =c
+        }}  onPullRelease={(resolve) => this._onPullRelease(resolve)}>
 
             <View style={styles.top}>
                 <View style={styles.avatarbox}>

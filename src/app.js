@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React,{Component} from 'react';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { configureStore } from './reduxStore';
 import { Text, Button, AsyncStorage } from 'react-native';
-
 import * as WeChat from 'react-native-wechat';
 import { StackNavigator } from 'react-navigation'
 import Welcome from './pages/welcome'
@@ -51,6 +50,8 @@ import './business/storage'
 import './style/index'
 import Coupon from "./pages/coupon/coupon";
 import UnWatchMovieTicketScreen from "./pages/me/unwatchMovieTicket"
+import VipCard from "./pages/me/vipCard/vipCard"
+import VipAddCard from "./pages/me/vipCard/addCard"
 import ComboOrderScreen from './pages/me/comboOrder/comboOrderList'
 import ComboOrderDetailScreen from './pages/me/comboOrder/comboOrderDetail'
 
@@ -91,14 +92,16 @@ const RootStackNav = StackNavigator(
         MovieDetail: { screen: MovieDetail },
         ConfirmOrder: { screen: ConfirmOrder },
         WriteComment: { screen: WriteComment },
-        CommentReplyList: { screen: CommentReplyList },
-        ImageViewer: { screen: ImageViewer },
-        UseCoupon: { screen: UseCoupon },
-        Setting: { screen: Setting },
-        PayResult: { screen: PayResult },
-        Pay: { screen: Pay },
-        Coupon: { screen: Coupon },
-        UnWatchMovieTicket: { screen: UnWatchMovieTicketScreen },
+        CommentReplyList: { screen: CommentReplyList},
+        ImageViewer: {screen: ImageViewer},
+        UseCoupon: { screen: UseCoupon},
+        Setting: {screen: Setting},
+        PayResult: {screen: PayResult},
+        Pay: {screen: Pay},
+        Coupon: { screen: Coupon},
+        UnWatchMovieTicket: {screen: UnWatchMovieTicketScreen},
+        VipCard: {screen: VipCard},
+        VipAddCard: {screen: VipAddCard},
         ComboOrder: { screen: ComboOrderScreen },
         ComboOrderDetail: { screen: ComboOrderDetailScreen },
     },
