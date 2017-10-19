@@ -18,6 +18,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import RatingView from '../common/component/ratingView';
 import RefreshScrollView from '../common/pull/RefreshScrollView';
 import ImageViewer from 'react-native-image-zoom-viewer';
+import CFlatList from '../common/component/cFlatList';
 
 const {width, height} = Dimensions.get('window')
 
@@ -40,11 +41,43 @@ class MovieDetailScreen extends Component {
                     nickname: 'zmax',
                     comment: 'Oh sorry. I just clicked the "Run code snippet" button above and the result showed an error. But I think it\'s nothing to do with your code. Sorry.'
                 },
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+                {nickname: 'zmax', comment: 'and whats the error?',},
+
             ],
             movieBriefToggle: false,
             movieLiked: false,
             presentMovieThumbs: false,
-            videoUrl: 'http://hd.yinyuetai.com/uploads/videos/common/C9330152A4DFC7FB2FBC3B6070E67899.flv?sc\u003dbac17f82edd35935\u0026br\u003d1105\u0026vid\u003d2491056\u0026aid\u003d201\u0026area\u003dHT\u0026vst\u003d4'
+            videoUrl: 'http://hd.yinyuetai.com/uploads/videos/common/C9330152A4DFC7FB2FBC3B6070E67899.flv?sc\u003dbac17f82edd35935\u0026br\u003d1105\u0026vid\u003d2491056\u0026aid\u003d201\u0026area\u003dHT\u0026vst\u003d4',
+            isLoadingMoreComments: 0,
         };
         this._rendMovieBrief = this._rendMovieBrief.bind(this);
         this._rendScrollThumbItem = this._rendScrollThumbItem.bind(this);
@@ -289,13 +322,29 @@ class MovieDetailScreen extends Component {
         );
     }
 
+    loadMoreComments = () => {
+        console.log('loading more....');
+        this.setState({
+            isLoadingMoreComments: 1,
+        }, ()=>{
+            setTimeout(()=>{
+                this.setState({
+                    isLoadingMoreComments: 0,
+                })
+            }, 2000);
+        });
+    }
+
     _renderCommentList() {
         return (
-            <FlatList
+            <CFlatList
                 data={this.state.commentList}
                 renderItem={this._renderCommentCell.bind(this)}
                 ItemSeparatorComponent={() => <View style={[globalStyle.lineSeperator]}/>}
                 keyExtractor={(item, index) => ('' + index)}
+                extraData={this.state}
+                loadMore={this.loadMoreComments}
+                footerViewState={this.state.isLoadingMoreComments}
             />
         )
     }
@@ -311,15 +360,10 @@ class MovieDetailScreen extends Component {
                     hidden={true}
                 />
                 {this._renderBackButton()}
-                <RefreshScrollView style={styles.screenContainer}>
-                    {this._renderVideoView.bind(this)()}
-                    {this._renderMovieItem()}
-                    {this._rendSectionSeparate()}
-                    {this._rendMovieBrief()}
-                    {this._rendSectionSeparate()}
+                <View style={styles.screenContainer}>
                     {this._renderCommentList()}
                     <View style={{height: 8}}/>
-                </RefreshScrollView>
+                </View>
                 <TouchableOpacity
                     onPress={() => {
                         this._gotoChooseSeat.bind()()
