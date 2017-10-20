@@ -14,7 +14,8 @@ import {
     StyleSheet,
     NetInfo,
     FlatList,
-    RefreshControl
+    RefreshControl,
+    Vibration
 } from 'react-native';
 
 import Pullable from './Pullable';
@@ -245,9 +246,16 @@ export default class RefreshScrollView extends Pullable {
         this.setState({
             flatListOffsetY: e.nativeEvent.contentOffset.y
         })
+        if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
+            if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
+                this.readyToRefresh = true;
+                Vibration.vibrate(50);
+            }
+        }
     }
 
     handleRelease = (e) => {
+        this.readyToRefresh = false;
         if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
             if (!this.props.onPullRelease) return
             this.scroll.scrollToOffset({
