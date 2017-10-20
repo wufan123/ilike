@@ -35,6 +35,8 @@ export const STATE_LOADING = 1;
 export const STATE_NORMAL = 2;
 
 const { width, height } = Dimensions.get('window')
+const MINI_PULL_DISTANCE = -120
+const HANGING_DISTANCE = -100
 
 export default class RefreshScrollView extends Pullable {
 
@@ -55,6 +57,7 @@ export default class RefreshScrollView extends Pullable {
         this.state.headerViewState = STATE_NORMAL;
         this.freshState = false;
         this.state.flatListOffsetY = 0;
+        this.readyToRefresh = false;
     }
 
     getMetrics(args) {
@@ -212,13 +215,13 @@ export default class RefreshScrollView extends Pullable {
 
     renderHeader = () => {
         // if (this.state.headerViewState == STATE_LOADING)
-            return (
-                <View
-                    style={[{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', paddingVertical: 20 }]}
-                >
-                    <ActivityIndicator animating size="large" />
-                </View>
-            );
+        return (
+            <View
+                style={[{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', paddingVertical: 20 }]}
+            >
+                <ActivityIndicator animating size="large" />
+            </View>
+        );
         return null;
     }
 
@@ -238,9 +241,34 @@ export default class RefreshScrollView extends Pullable {
 
     flatListOnScroll = (e) => {
         console.log('offset y', e.nativeEvent.contentOffset.y);
+        this.state.flatListOffsetY = e.nativeEvent.contentOffset.y
         this.setState({
-            flatListOffsetY: -e.nativeEvent.contentOffset.y
+            flatListOffsetY: e.nativeEvent.contentOffset.y
         })
+    }
+
+    handleRelease = (e) => {
+        console.log('flatlist', this.scroll);
+        if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
+            if (!this.props.onPullRelease) return
+            this.scroll.scrollToOffset({
+                offset: HANGING_DISTANCE,
+                animated: true
+            })
+            if (this.state.headerViewState==STATE_LOADING) return
+            this.setState({
+                headerViewState: STATE_LOADING
+            }, () => {
+                console.log('loading......')
+                this.props.onPullRelease(() => {
+                    if (this.state.flatListOffsetY < 0 )
+                        this.scroll.scrollToOffset({ offset: 0, animated: true })
+                    this.setState({
+                        headerViewState: STATE_NORMAL
+                    })
+                })
+            })
+        }
     }
 
     /**
@@ -248,7 +276,7 @@ export default class RefreshScrollView extends Pullable {
      * @returns {XML}
      * @private
      */
-    _renderList() {
+    _renderList = () => {
         return (
             <FlatList ref={(c) => { this.scroll = c; }}
                 onScroll={this.flatListOnScroll}
@@ -260,15 +288,11 @@ export default class RefreshScrollView extends Pullable {
                         this.props.children
                     );
                 }}
-                refreshControl={<RefreshControl
-                    style={{ opacity: 0 }}
-                    refreshing={this.state.headerViewState == STATE_LOADING ? true : false}
-                    onRefresh={this.onPullRelease}
-                    title="Pull to refresh"
-                />}
                 onEndReached={this._onEndReached}
                 onEndReachedThreshold={0.7}
                 ListFooterComponent={this._defaultFooterView}
+                onResponderRelease={this.handleRelease}
+                scrollEventThrottle={16}
             />
         );
     }
@@ -324,14 +348,20 @@ export default class RefreshScrollView extends Pullable {
     }
 
     renderCustomIndicator = () => {
-        var viewHeight = this.state.flatListOffsetY > 0 ? this.state.flatListOffsetY : 0;
-        // viewHeight = viewHeight>40
+        var viewHeight = this.state.flatListOffsetY < 0 ? this.state.flatListOffsetY : 0;
         if (viewHeight == 0)
             return null;
+        var tipText;
+        if (this.state.flatListOffsetY<MINI_PULL_DISTANCE)
+            tipText = '释放立即刷新'
+        else
+            tipText = '下拉刷新'
+        if (this.state.headerViewState == STATE_LOADING)
+            tipText = '正在刷新'
         return (
-            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: viewHeight, alignContent: 'center' }}>
+            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 130, alignItems: 'center' }}>
                 {this.renderHeader()}
-                <Text>pull to fresh</Text>
+                <Text>{tipText}</Text>
             </View>
         )
     }
