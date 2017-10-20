@@ -3,6 +3,7 @@ import {
     View,
     StyleSheet, Image, TextInput, TouchableOpacity, Text,
     ImageBackground,
+    FlatList
 } from 'react-native';
 import BaseBottomButtonView from '../common/baseBottomButtonPage'
 import {RefreshScrollView} from "../common/pull/index";

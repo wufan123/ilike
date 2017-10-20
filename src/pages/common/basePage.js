@@ -18,7 +18,8 @@ export default class BasePage extends Component {
 
     showDialog(props) {
         console.log(this.refs.mDialog)
-        this.dialog._showDialog()
+        this.refs.mDialog.setNativeProps(props)
+        this.refs.mDialog._showDialog()
     }
 
     hideDialog() {
@@ -39,8 +40,8 @@ export default class BasePage extends Component {
                         rightTxt={this.props.rightTxt} rightClick={this.props.rightClick}
                         rightImg={this.props.rightImg}/>
                 {this.props.children}
-                <Dialog ref={c => (this.dialog = c)}
-                />
+                <Dialog ref='mDialog' ></Dialog>
+                
             </View>)
     }
 }

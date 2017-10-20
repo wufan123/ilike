@@ -1,4 +1,4 @@
-import React, { Component,PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Text, View, StyleSheet, Dimensions, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 var theme = require('../../../style')
 const { width, height } = Dimensions.get('window')
@@ -15,21 +15,21 @@ export default class CFlatList extends Component {
     }
     render() {
         return (<FlatList
-            ListFooterComponent={this._defaultFooterView()}
-            onEndReached={this._onEndReached()}
-            onEndReachedThreshold={30}
+            ListFooterComponent={this._defaultFooterView}
+            onEndReached={this._onEndReached}
+            onEndReachedThreshold={0.3}
             {...this.props}></FlatList>)
     }
-    _onEndReached() { 
+    _onEndReached = ({ distanceFromEnd }) => {
         if (!this.props.loadMore)
             return
-        if (this.props.footerViewState == STATE_LOADING)
+        if (this.props.footerViewState == STATE_NO_MORE)
             this.props.loadMore()
         else {
             return
         }
     }
-    _defaultFooterView() {
+    _defaultFooterView = () => {
         if (!this.props.showFooterView)
             return null
         if (!this.props.data || this.props.data.length == 0)

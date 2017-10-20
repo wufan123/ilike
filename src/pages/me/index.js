@@ -197,11 +197,10 @@ class MeScreen extends Component {
     }
     _itemClick(item) {
         if (item.id == 'customerService') {
-            console.log(this.refs)
-           /* this.basePullPage.showDialog({
+            this.basePullPage.showDialog({
                 title:'温馨提示',
                 msg:'确定呼叫客服？'
-            })*/
+            })
             return
         }
         global.navigation.navigate(item.goToUrl);
