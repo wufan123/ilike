@@ -19,7 +19,7 @@ import {
 import Pullable from './Pullable';
 
 var theme = require('../../../style');
- 
+
 const LoadingState = 1;    //初始loading页面
 const EmptyState = 2;    //空页面
 const ErrorState = 3;    //加载数据错误
@@ -27,11 +27,13 @@ const ListState = 4;    //正常加载
 const MoreState = 5;    //正在加载更多
 const NoMoreState = 6;    //没有更多了
 const NoMoreErrorState = 7;    //加载更多出错
-const NOState=8;//正常状态
+const NOState = 8;//正常状态
 
 export const STATE_NO_MORE = 0;
 export const STATE_LOADING = 1;
 export const STATE_NORMAL = 2;
+
+const { width, height } = Dimensions.get('window')
 
 export default class RefreshScrollView extends Pullable {
 
@@ -45,8 +47,9 @@ export default class RefreshScrollView extends Pullable {
         this.getMetrics = this.getMetrics.bind(this);
         // this.scrollToOffset = this.scrollToOffset.bind(this);
         this.scrollToEnd = this.scrollToEnd.bind(this);
-        this.currentState = NoMoreState; 
+        this.currentState = NoMoreState;
         this.count = 1;
+        this.preDistanceFromEnd = height;
     }
 
     getMetrics(args) {
@@ -58,7 +61,7 @@ export default class RefreshScrollView extends Pullable {
     // }
 
     scrollToEnd(args) {
-        this.scroll.scrollToEnd(args); 
+        this.scroll.scrollToEnd(args);
     }
 
     /**
@@ -72,7 +75,7 @@ export default class RefreshScrollView extends Pullable {
         }
         this.setState({
             data: _data,
-        }) 
+        })
     }
 
     /**
@@ -87,7 +90,7 @@ export default class RefreshScrollView extends Pullable {
         }
         this.setState({
             data: this.state.data.concat(_data),
-        }) 
+        })
     }
 
     /**
@@ -165,6 +168,16 @@ export default class RefreshScrollView extends Pullable {
     }
 
     _onEndReached = ({ distanceFromEnd }) => {
+        // 判断手势是向上还是向下，向下return掉
+        if ((distanceFromEnd - this.preDistanceFromEnd) > 0)
+        {
+            this.preDistanceFromEnd = distanceFromEnd;
+            return;
+        }
+        this.preDistanceFromEnd = distanceFromEnd;
+        // 距离底部大于60不刷新
+        if (distanceFromEnd > 60)
+            return;
         if (!this.props.loadMore)
             return
         if (this.props.footerViewState == STATE_NORMAL)
@@ -182,9 +195,13 @@ export default class RefreshScrollView extends Pullable {
             </View>)
         }
         if (this.props.footerViewState == STATE_LOADING) {
-            return (<View style={[theme.alignItemsCenter, theme.justifyContentCenter, { height: 40 }]}>
-                <Text style={[theme.fontGray, theme.font12]}>正在加载</Text>
-            </View>)
+            return (
+                <View
+                    style={[styles.contain, {backgroundColor: 'transparent'}]}
+                >
+                    <ActivityIndicator animating size="large" />
+                </View>
+            )
         }
         return null
     }
@@ -201,16 +218,16 @@ export default class RefreshScrollView extends Pullable {
                 scrollEnabled={this.state.scrollEnabled}
                 refreshing={false}
                 data={[1]}
-                keyExtractor={(item, index)=>index}
-                renderItem={({item, index})=>{
-                    return(
+                keyExtractor={(item, index) => index}
+                renderItem={({ item, index }) => {
+                    return (
                         this.props.children
                     );
                 }}
                 onEndReached={this._onEndReached}
                 onEndReachedThreshold={0.7}
                 ListFooterComponent={this._defaultFooterView}
-                />
+            />
         );
     }
 
