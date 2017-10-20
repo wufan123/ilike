@@ -8,9 +8,9 @@ import {
 import BaseBottomButtonView from '../common/baseBottomButtonPage'
 import { RadioGroup } from '../common/cardRadio'
 import CountDown from '../order/countDown'
+import { connect } from 'react-redux';
 let theme = require('../../style')
-
-export default class extends Component {
+class ConfirmOrder extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -36,7 +36,7 @@ export default class extends Component {
     }
     getPayInfo() {
         let payInfo = [];
-        payInfo.push(<View  style={styles.orderItem}>
+        payInfo.push(<View key={0} style={styles.orderItem}>
             <Text style={styles.orderItemTitle}>影票总额</Text>
             <View style={styles.orderItemTip}>
                 <Text style={styles.orderItemTipTxt}>会员折扣</Text>
@@ -44,12 +44,12 @@ export default class extends Component {
             <View style={{ flex: 1 }} />
             <Text>￥100</Text>
         </View>)
-        payInfo.push(<View  style={styles.orderItem}>
+        payInfo.push(<View key={1} style={styles.orderItem}>
             <Text style={styles.orderItemTitle}>卖品总额</Text>
             <View style={{ flex: 1 }} />
             <Text>￥100</Text>
         </View>)
-        payInfo.push(<View  style={styles.orderItem}>
+        payInfo.push(<View key={2} style={styles.orderItem}>
             <Text style={styles.infoTitle}>订单总额</Text>
             <View style={{ flex: 1 }} />
             <Text style={styles.orderTotalPrice}>￥125</Text>
@@ -59,9 +59,14 @@ export default class extends Component {
     getDashLine() {
         return (<Image source={require('../../assets/order/dash_line_r.png')} resizeMode="contain" style={styles.dashLine} />)
     }
+    bottomClick(){
+        // global.navigation.navigate('Pay');
+        global.navigation.goBack(null);
+    }
     render() {
+        let {ticketCoupon} = this.props;
         return (<BaseBottomButtonView style={theme.flex} title={'确认订单'} bottomTxt={'确定'} onBottomClick={() => {
-            global.navigation.navigate('Pay');
+            this.bottomClick();
         }}>
             <CountDown />
             <ScrollView>
@@ -111,7 +116,7 @@ export default class extends Component {
                                 <Image source={require('../../assets/order/check_movie.png')} style={styles.ticketItemIcon} />
                                 <Text style={styles.infoTitle}>电影优惠券</Text>
                                 <View style={{ flex: 1 }} />
-                                <Text>0张可用 ></Text>
+                                <Text>0张可用 > {ticketCoupon.isSelected?"已选":"未选"}</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity  onPress={()=>{
@@ -200,7 +205,11 @@ export default class extends Component {
         })
     }
 }
-
+export default connect((globalState)=>{
+    return {
+        ticketCoupon:globalState.coupon.ticketCoupon
+    }
+})(ConfirmOrder);
 const styles = StyleSheet.create({
     bottomAddTxt: { color: theme.colorPrimary, fontSize: 15 },
     cardBottomAdd: { justifyContent: 'center', alignItems: 'center', backgroundColor: '#fff', height: 44, marginTop: 12 },

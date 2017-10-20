@@ -14,7 +14,7 @@ export default class ImageButton extends Component {
             <TouchableOpacity
                 style={[styles.defaultStyle, this.props.buttonStyle]}
                 onPress={this.props.onPress}
-                activeOpacity={0.8}
+                activeOpacity={0.85}
             >
                 <Text style={[styles.defaultTextStyle, this.props.textStyle]}>{this.props.text}</Text>
             </TouchableOpacity> 
