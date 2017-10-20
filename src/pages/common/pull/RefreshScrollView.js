@@ -248,7 +248,6 @@ export default class RefreshScrollView extends Pullable {
     }
 
     handleRelease = (e) => {
-        console.log('flatlist', this.scroll);
         if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
             if (!this.props.onPullRelease) return
             this.scroll.scrollToOffset({
