@@ -53,6 +53,7 @@
 		F95D38351F905488007553D7 /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379C1F8F58EF007553D7 /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F95D38361F905488007553D7 /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */; };
 		F95D38371F905488007553D7 /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F98A10691F9AE34700C4075B /* libReactNativeHaptic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F98A10661F9AE33500C4075B /* libReactNativeHaptic.a */; };
 		F99F063E1F6BB6AB006E4055 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */; };
 		F99F06401F6BB6BD006E4055 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */; };
 		F99F06421F6BB6CA006E4055 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06411F6BB6CA006E4055 /* libsqlite3.0.tbd */; };
@@ -309,6 +310,13 @@
 			remoteGlobalIDString = 3400A8081CEB54A6008A0BC7;
 			remoteInfo = imageCropPicker;
 		};
+		F98A10651F9AE33500C4075B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F98A10361F9AE33500C4075B /* ReactNativeHaptic.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = ReactNativeHaptic;
+		};
 		F99F06211F6BB696006E4055 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -461,6 +469,7 @@
 		F918F4DC1F739892006C9AE8 /* movie-seats.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "movie-seats.bundle"; path = "../node_modules/react-native-movie-seats/ios/movie-seats.bundle"; sourceTree = "<group>"; };
 		F95D379C1F8F58EF007553D7 /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95D379F1F8F58EF007553D7 /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F98A10361F9AE33500C4075B /* ReactNativeHaptic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeHaptic.xcodeproj; path = "../node_modules/react-native-haptic/ios/ReactNativeHaptic.xcodeproj"; sourceTree = "<group>"; };
 		F99F063D1F6BB6AA006E4055 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F99F063F1F6BB6BD006E4055 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		F99F06411F6BB6CA006E4055 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -486,6 +495,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98A10691F9AE34700C4075B /* libReactNativeHaptic.a in Frameworks */,
 				F9B619511F8B0F760052469A /* libRCTCameraRoll.a in Frameworks */,
 				F99F06461F6BB6DC006E4055 /* libz.tbd in Frameworks */,
 				F99F06441F6BB6D3006E4055 /* libc++.tbd in Frameworks */,
@@ -671,6 +681,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F98A10361F9AE33500C4075B /* ReactNativeHaptic.xcodeproj */,
 				F9B619241F8B0F2C0052469A /* RCTCameraRoll.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -785,6 +796,14 @@
 			isa = PBXGroup;
 			children = (
 				F95D379B1F8F577A007553D7 /* libimageCropPicker.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F98A10371F9AE33500C4075B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F98A10661F9AE33500C4075B /* libReactNativeHaptic.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1040,6 +1059,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = F98A10371F9AE33500C4075B /* Products */;
+					ProjectRef = F98A10361F9AE33500C4075B /* ReactNativeHaptic.xcodeproj */;
+				},
+				{
 					ProductGroup = F918F5E01F7A28C9006C9AE8 /* Products */;
 					ProjectRef = C4BD55DA3E8347B5AD11857F /* RNMovieSeats.xcodeproj */;
 				},
@@ -1293,6 +1316,13 @@
 			fileType = archive.ar;
 			path = libimageCropPicker.a;
 			remoteRef = F95D379A1F8F577A007553D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F98A10661F9AE33500C4075B /* libReactNativeHaptic.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeHaptic.a;
+			remoteRef = F98A10651F9AE33500C4075B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		F99F06221F6BB696006E4055 /* libRCTBlob-tvOS.a */ = {

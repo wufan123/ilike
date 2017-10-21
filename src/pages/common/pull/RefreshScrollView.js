@@ -15,8 +15,9 @@ import {
     NetInfo,
     FlatList,
     RefreshControl,
-    Vibration
+    Platform
 } from 'react-native';
+import ReactNativeHapTic from 'react-native-haptic';
 
 import Pullable from './Pullable';
 
@@ -35,9 +36,11 @@ export const STATE_NO_MORE = 0;
 export const STATE_LOADING = 1;
 export const STATE_NORMAL = 2;
 
-const { width, height } = Dimensions.get('window')
-const MINI_PULL_DISTANCE = -120
-const HANGING_DISTANCE = -100
+const { width, height } = Dimensions.get('window');
+const MINI_PULL_DISTANCE = -120;
+const HANGING_DISTANCE = -100;
+
+var haptic = ReactNativeHapTic;
 
 export default class RefreshScrollView extends Pullable {
 
@@ -52,9 +55,7 @@ export default class RefreshScrollView extends Pullable {
         // this.scrollToOffset = this.scrollToOffset.bind(this);
         this.scrollToEnd = this.scrollToEnd.bind(this);
         this.currentState = NoMoreState;
-        this.count = 1;
         this.preDistanceFromEnd = height;
-        this.props.headerViewState = STATE_NORMAL;
         this.state.headerViewState = STATE_NORMAL;
         this.freshState = false;
         this.state.flatListOffsetY = 0;
@@ -215,7 +216,6 @@ export default class RefreshScrollView extends Pullable {
     }
 
     renderHeader = () => {
-        // if (this.state.headerViewState == STATE_LOADING)
         return (
             <View
                 style={[{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', paddingVertical: 20 }]}
@@ -223,7 +223,6 @@ export default class RefreshScrollView extends Pullable {
                 <ActivityIndicator animating size="large" />
             </View>
         );
-        return null;
     }
 
     onPullRelease = () => {
@@ -249,7 +248,7 @@ export default class RefreshScrollView extends Pullable {
         if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
             if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
                 this.readyToRefresh = true;
-                Vibration.vibrate(50);
+                haptic.generate('impact');
             }
         }
     }
@@ -262,13 +261,13 @@ export default class RefreshScrollView extends Pullable {
                 offset: HANGING_DISTANCE,
                 animated: true
             })
-            if (this.state.headerViewState==STATE_LOADING) return
+            if (this.state.headerViewState == STATE_LOADING) return
             this.setState({
                 headerViewState: STATE_LOADING
             }, () => {
                 console.log('loading......')
                 this.props.onPullRelease(() => {
-                    if (this.state.flatListOffsetY < 0 )
+                    if (this.state.flatListOffsetY < 0)
                         this.scroll.scrollToOffset({ offset: 0, animated: true })
                     this.setState({
                         headerViewState: STATE_NORMAL
@@ -283,11 +282,11 @@ export default class RefreshScrollView extends Pullable {
      * @returns {XML}
      * @private
      */
-    _renderList = () => {
+    _renderIOSList = () => {
         return (
             <FlatList ref={(c) => { this.scroll = c; }}
                 onScroll={this.flatListOnScroll}
-                scrollEnabled={true}//{this.state.scrollEnabled}
+                scrollEnabled={true}
                 data={[1]}
                 keyExtractor={(item, index) => index}
                 renderItem={({ item, index }) => {
@@ -300,6 +299,31 @@ export default class RefreshScrollView extends Pullable {
                 ListFooterComponent={this._defaultFooterView}
                 onResponderRelease={this.handleRelease}
                 scrollEventThrottle={16}
+            />
+        );
+    }
+
+    /**
+     * 加载列表数据
+     * @returns {XML}
+     * @private
+     */
+    _renderList() {
+        return (
+            <FlatList ref={(c) => { this.scroll = c; }}
+                onScroll={this.onScroll}
+                scrollEnabled={this.state.scrollEnabled}
+                refreshing={false}
+                data={[1]}
+                keyExtractor={(item, index) => index}
+                renderItem={({ item, index }) => {
+                    return (
+                        this.props.children
+                    );
+                }}
+                onEndReached={this._onEndReached}
+                onEndReachedThreshold={0.7}
+                ListFooterComponent={this._defaultFooterView}
             />
         );
     }
@@ -359,7 +383,7 @@ export default class RefreshScrollView extends Pullable {
         if (viewHeight == 0)
             return null;
         var tipText;
-        if (this.state.flatListOffsetY<MINI_PULL_DISTANCE)
+        if (this.state.flatListOffsetY < MINI_PULL_DISTANCE)
             tipText = '释放立即刷新'
         else
             tipText = '下拉刷新'
@@ -374,12 +398,16 @@ export default class RefreshScrollView extends Pullable {
     }
 
     render() {
-        return (
-            <View style={{ flex: 1 }}>
-                {this.renderCustomIndicator()}
-                {this._renderList()}
-            </View>
-        );
+        if (Platform.OS == 'ios') {
+            return (
+                <View style={{ flex: 1 }}>
+                    {this.renderCustomIndicator()}
+                    {this._renderIOSList()}
+                </View>
+            );
+        } else {
+            return super.render();
+        }
     }
 
 

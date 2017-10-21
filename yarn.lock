@@ -3678,6 +3678,10 @@ react-native-flexi-radio-button@^0.2.1:
   version "0.2.1"
   resolved "http://registry.npm.taobao.org/react-native-flexi-radio-button/download/react-native-flexi-radio-button-0.2.1.tgz#8b76274480c90eb87bfdc349e24ea64cde53cff3"
 
+react-native-haptic@^1.0.5:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/react-native-haptic/download/react-native-haptic-1.0.5.tgz#91fff9233a0eb0a4e420a00c2bf5cf29610946ed"
+
 react-native-image-crop-picker@^0.17.2:
   version "0.17.2"
   resolved "http://registry.npm.taobao.org/react-native-image-crop-picker/download/react-native-image-crop-picker-0.17.2.tgz#0e617170ab84f5a65a11cb4988f9f02f0a27b8bd"
