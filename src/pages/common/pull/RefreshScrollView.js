@@ -178,6 +178,10 @@ export default class RefreshScrollView extends Pullable {
     }
 
     _onEndReached = ({ distanceFromEnd }) => {
+        if (this.preDistanceFromEnd == height) {
+            this.preDistanceFromEnd = distanceFromEnd;
+            return;
+        }
         // 判断手势是向上还是向下，向下return掉
         if ((distanceFromEnd - this.preDistanceFromEnd) > 0) {
             this.preDistanceFromEnd = distanceFromEnd;
@@ -185,7 +189,7 @@ export default class RefreshScrollView extends Pullable {
         }
         this.preDistanceFromEnd = distanceFromEnd;
         // 距离底部大于60不刷新
-        if (distanceFromEnd > 60)
+        if (distanceFromEnd > (height / 3))
             return;
         if (!this.props.loadMore)
             return
@@ -240,7 +244,7 @@ export default class RefreshScrollView extends Pullable {
     }
 
     flatListOnScroll = (e) => {
-        console.log('offset y', e.nativeEvent.contentOffset.y);
+        // console.log('offset y', e.nativeEvent.contentOffset.y);
         this.state.flatListOffsetY = e.nativeEvent.contentOffset.y
         this.setState({
             flatListOffsetY: e.nativeEvent.contentOffset.y
