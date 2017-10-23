@@ -60,8 +60,14 @@ export default class RefreshScrollView extends Pullable {
         this.preDistanceFromEnd = height;
         this.state.headerViewState = STATE_NORMAL;
         this.freshState = false;
-        this.state.flatListOffsetY = 0;
+        this.state.scrollOffsetY = 0;
         this.readyToRefresh = false;
+    }
+
+    onLayout = (e) => {
+        if (Platform.OS !== 'ios')
+            super.onLayout(e);
+        this.height = e.nativeEvent.layout.height;
     }
 
     getMetrics(args) {
@@ -190,31 +196,33 @@ export default class RefreshScrollView extends Pullable {
             return;
         }
         this.preDistanceFromEnd = distanceFromEnd;
-        // 距离底部大于60不刷新
-        if (distanceFromEnd > (height / 3))
+        // 距离底部大于this.height/3不刷新
+        if (distanceFromEnd > (this.height / 3))
             return;
         if (!this.props.loadMore)
-            return
+            return;
         if (this.props.footerViewState == STATE_NORMAL)
-            this.props.loadMore()
+            this.props.loadMore();
         else {
-            return
+            return;
         }
     }
     _defaultFooterView = () => {
         if (!this.props.showFooterView)
             return null
         if (this.props.footerViewState == STATE_NO_MORE) {
-            return (<View style={[theme.alignItemsCenter, theme.justifyContentCenter, { height: 40 }]}>
-                <Text style={[theme.fontGray, theme.font12]}>没有更多了</Text>
-            </View>)
+            return (
+                <View style={[theme.alignItemsCenter, theme.justifyContentCenter, { height: 40 }]}>
+                    <Text style={[theme.fontGray, theme.font12]}>没有更多了</Text>
+                </View>
+            )
         }
         if (this.props.footerViewState == STATE_LOADING) {
             return (
                 <View
-                    style={[styles.contain, { backgroundColor: 'transparent' }]}
+                    style={[styles.contain, { backgroundColor: 'transparent', paddingVertical: 15 }]}
                 >
-                    <ActivityIndicator animating size="large" />
+                    <ActivityIndicator animating size="small" />
                 </View>
             )
         }
@@ -245,11 +253,11 @@ export default class RefreshScrollView extends Pullable {
         })
     }
 
-    flatListOnScroll = (e) => {
+    iosOnScroll = (e) => {
         // console.log('offset y', e.nativeEvent.contentOffset.y);
-        this.state.flatListOffsetY = e.nativeEvent.contentOffset.y
+        this.state.scrollOffsetY = e.nativeEvent.contentOffset.y
         this.setState({
-            flatListOffsetY: this.state.flatListOffsetY,
+            scrollOffsetY: this.state.scrollOffsetY,
         });
         if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
             if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
@@ -271,29 +279,32 @@ export default class RefreshScrollView extends Pullable {
                 }).start();
             }
         }
+        var distanceFromEnd = this.scrollContentHeight - this.state.scrollOffsetY - this.height;
+        if (distanceFromEnd < this.height / 3) this._onEndReached({ distanceFromEnd })
     }
 
     handleRelease = (e) => {
-        if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
+        if (this.state.scrollOffsetY < MINI_PULL_DISTANCE) {
             if (!this.props.onPullRelease) return
-            this.scroll.scrollToOffset({
-                offset: HANGING_DISTANCE,
-                animated: true
-            })
+            this.scroll.scrollTo({ x: 0, y: HANGING_DISTANCE });
             if (this.state.headerViewState == STATE_LOADING) return
             this.setState({
                 headerViewState: STATE_LOADING
             }, () => {
                 console.log('loading......')
                 this.props.onPullRelease(() => {
-                    if (this.state.flatListOffsetY <= 0 && this.scroll)
-                        this.scroll.scrollToOffset({ offset: 0, animated: true })
+                    if (this.state.scrollOffsetY <= 0 && this.scroll)
+                        this.scroll.scrollTo({ x: 0, y: 0 });
                     this.setState({
                         headerViewState: STATE_NORMAL
                     })
                 })
             })
         }
+    }
+
+    onContentSizeChange = (width, height) => {
+        this.scrollContentHeight = height;
     }
 
     /**
@@ -303,23 +314,24 @@ export default class RefreshScrollView extends Pullable {
      */
     _renderIOSList = () => {
         return (
-            <FlatList ref={(c) => { this.scroll = c; }}
-                onScroll={this.flatListOnScroll}
+            <ScrollView ref={(c) => { this.scroll = c; }}
+                onScroll={this.iosOnScroll}
+                onContentSizeChange={this.onContentSizeChange}
                 scrollEnabled={true}
-                data={[1]}
-                keyExtractor={(item, index) => index}
-                renderItem={({ item, index }) => {
-                    return (
-                        this.props.children
-                    );
-                }}
-                onEndReached={this._onEndReached}
-                onEndReachedThreshold={0.7}
-                ListFooterComponent={this._defaultFooterView}
                 onResponderRelease={this.handleRelease}
-                scrollEventThrottle={1}
-            />
+                scrollEventThrottle={10}
+            >
+                {this.props.children}
+                {this._defaultFooterView()}
+            </ScrollView>
         );
+    }
+
+    onScroll = (e) => {
+        super.onScroll(e);
+        this.state.scrollOffsetY = e.nativeEvent.contentOffset.y
+        var distanceFromEnd = this.scrollContentHeight - this.state.scrollOffsetY - this.height;
+        if (distanceFromEnd < this.height / 3) this._onEndReached({ distanceFromEnd })
     }
 
     /**
@@ -329,21 +341,15 @@ export default class RefreshScrollView extends Pullable {
      */
     _renderList() {
         return (
-            <FlatList ref={(c) => { this.scroll = c; }}
+            <ScrollView ref={(c) => { this.scroll = c; }}
                 onScroll={this.onScroll}
+                onContentSizeChange={this.onContentSizeChange}
                 scrollEnabled={this.state.scrollEnabled}
-                refreshing={false}
-                data={[1]}
-                keyExtractor={(item, index) => index}
-                renderItem={({ item, index }) => {
-                    return (
-                        this.props.children
-                    );
-                }}
-                onEndReached={this._onEndReached}
-                onEndReachedThreshold={0.7}
-                ListFooterComponent={this._defaultFooterView}
-            />
+                scrollEventThrottle={10}
+            >
+                {this.props.children}
+                {this._defaultFooterView()}
+            </ScrollView>
         );
     }
 
@@ -398,18 +404,18 @@ export default class RefreshScrollView extends Pullable {
     }
 
     renderCustomIndicator = () => {
-        if (this.state.flatListOffsetY > 0) return;
+        if (this.state.scrollOffsetY > 0) return;
         this.transform = [{
             rotate: this.state.prArrowDeg.interpolate({
                 inputRange: [0, 1],
                 outputRange: ['0deg', '-180deg']
             })
         }];
-        var viewHeight = this.state.flatListOffsetY <= 0 ? this.state.flatListOffsetY : 0;
+        var viewHeight = this.state.scrollOffsetY <= 0 ? this.state.scrollOffsetY : 0;
         var tipText;
         var indicatorImg;
-        var topPostion = Math.abs(this.state.flatListOffsetY) - Math.abs(MINI_PULL_DISTANCE);
-        if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
+        var topPostion = Math.abs(this.state.scrollOffsetY) - Math.abs(MINI_PULL_DISTANCE);
+        if (this.state.scrollOffsetY < MINI_PULL_DISTANCE) {
             tipText = '释放立即刷新';
             indicatorImg = (
                 <Animated.Image
@@ -445,7 +451,7 @@ export default class RefreshScrollView extends Pullable {
     render() {
         if (Platform.OS == 'ios') {
             return (
-                <View style={[{ flex: 1, zIndex: -1 }, this.props.style]}>
+                <View style={[{ flex: 1, zIndex: -1 }, this.props.style]} onLayout={this.onLayout}>
                     {this.renderCustomIndicator()}
                     {this._renderIOSList()}
                 </View>
