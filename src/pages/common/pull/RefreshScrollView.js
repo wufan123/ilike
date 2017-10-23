@@ -254,9 +254,6 @@ export default class RefreshScrollView extends Pullable {
         if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
             if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
                 this.readyToRefresh = true;
-                // this.setState({
-                //     flatListOffsetY: this.state.flatListOffsetY,
-                // })
                 Animated.timing(this.state.prArrowDeg, {
                     toValue: 1,
                     duration: 100,
@@ -267,9 +264,6 @@ export default class RefreshScrollView extends Pullable {
         } else {
             if (this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
                 this.readyToRefresh = false;
-                // this.setState({
-                //     flatListOffsetY: this.state.flatListOffsetY,
-                // });
                 Animated.timing(this.state.prArrowDeg, {
                     toValue: 0,
                     duration: 100,
@@ -292,7 +286,7 @@ export default class RefreshScrollView extends Pullable {
             }, () => {
                 console.log('loading......')
                 this.props.onPullRelease(() => {
-                    if (this.state.flatListOffsetY <= 0)
+                    if (this.state.flatListOffsetY <= 0 && this.scroll)
                         this.scroll.scrollToOffset({ offset: 0, animated: true })
                     this.setState({
                         headerViewState: STATE_NORMAL
@@ -323,7 +317,7 @@ export default class RefreshScrollView extends Pullable {
                 onEndReachedThreshold={0.7}
                 ListFooterComponent={this._defaultFooterView}
                 onResponderRelease={this.handleRelease}
-                scrollEventThrottle={16}
+                scrollEventThrottle={1}
             />
         );
     }
@@ -451,7 +445,7 @@ export default class RefreshScrollView extends Pullable {
     render() {
         if (Platform.OS == 'ios') {
             return (
-                <View style={{ flex: 1, zIndex: -1 }}>
+                <View style={[{ flex: 1, zIndex: -1 }, this.props.style]}>
                     {this.renderCustomIndicator()}
                     {this._renderIOSList()}
                 </View>
