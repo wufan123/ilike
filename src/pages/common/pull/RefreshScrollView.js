@@ -15,7 +15,9 @@ import {
     NetInfo,
     FlatList,
     RefreshControl,
-    Platform
+    Platform,
+    Animated,
+    Easing,
 } from 'react-native';
 import ReactNativeHapTic from 'react-native-haptic';
 
@@ -246,20 +248,23 @@ export default class RefreshScrollView extends Pullable {
     flatListOnScroll = (e) => {
         // console.log('offset y', e.nativeEvent.contentOffset.y);
         this.state.flatListOffsetY = e.nativeEvent.contentOffset.y
+        this.setState({
+            flatListOffsetY: this.state.flatListOffsetY,
+        });
         if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
             if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
                 this.readyToRefresh = true;
-                this.setState({
-                    flatListOffsetY: this.state.flatListOffsetY,
-                })
+                // this.setState({
+                //     flatListOffsetY: this.state.flatListOffsetY,
+                // })
                 haptic.generate('impact');
             }
         } else {
             if (this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
                 this.readyToRefresh = false;
-                this.setState({
-                    flatListOffsetY: this.state.flatListOffsetY,
-                });
+                // this.setState({
+                //     flatListOffsetY: this.state.flatListOffsetY,
+                // });
             }
         }
     }
@@ -389,17 +394,55 @@ export default class RefreshScrollView extends Pullable {
     }
 
     renderCustomIndicator = () => {
+        if (this.state.flatListOffsetY > 0) return;
+        this.transform = [{
+            rotate: this.state.prArrowDeg.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0deg', '-180deg']
+            })
+        }];
         var viewHeight = this.state.flatListOffsetY <= 0 ? this.state.flatListOffsetY : 0;
         var tipText;
-        if (this.state.flatListOffsetY < MINI_PULL_DISTANCE)
-            tipText = '释放立即刷新'
-        else
-            tipText = '下拉刷新'
-        if (this.state.headerViewState == STATE_LOADING)
-            tipText = '正在刷新 ...'
+        var indicatorImg;
+        var topPostion = Math.abs(this.state.flatListOffsetY) - Math.abs(MINI_PULL_DISTANCE);
+        if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
+            tipText = '释放立即刷新';
+            Animated.timing(this.state.prArrowDeg, {
+                toValue: 1,
+                duration: 100,
+                easing: Easing.inOut(Easing.quad)
+            }).start();
+            indicatorImg = (
+                <Animated.Image
+                    style={[styles.arrow, { transform: this.transform }]}
+                    source={{ uri: this.base64Icon }}
+                    resizeMode={'contain'}
+                />
+            );
+        }
+        else {
+            tipText = '下拉可以刷新';
+            Animated.timing(this.state.prArrowDeg, {
+                toValue: 0,
+                duration: 100,
+                easing: Easing.inOut(Easing.quad)
+            }).start();
+            indicatorImg = (
+                <Animated.Image
+                    style={[styles.arrow, { transform: this.transform }]}
+                    source={{ uri: this.base64Icon }}
+                    resizeMode={'contain'}
+                />
+            );
+        }
+        if (this.state.headerViewState == STATE_LOADING) {
+            tipText = '';
+            indicatorImg = this.renderHeader();
+            topPostion = topPostion > 0 ? topPostion : 0;
+        }
         return (
-            <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 130, alignItems: 'center' }}>
-                {this.renderHeader()}
+            <View style={{ position: 'absolute', top: topPostion, left: 0, right: 0, height: 130, alignItems: 'center' }}>
+                {indicatorImg}
                 <Text>{tipText}</Text>
             </View>
         )
@@ -408,7 +451,7 @@ export default class RefreshScrollView extends Pullable {
     render() {
         if (Platform.OS == 'ios') {
             return (
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1, zIndex: -1 }}>
                     {this.renderCustomIndicator()}
                     {this._renderIOSList()}
                 </View>
@@ -442,5 +485,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderTopWidth: 1,
         borderColor: "#CED0CE"
+    },
+    arrow: {
+        width: 30,
+        height: 30,
+        marginVertical: 15,
     }
 });
