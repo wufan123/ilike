@@ -257,6 +257,11 @@ export default class RefreshScrollView extends Pullable {
                 // this.setState({
                 //     flatListOffsetY: this.state.flatListOffsetY,
                 // })
+                Animated.timing(this.state.prArrowDeg, {
+                    toValue: 1,
+                    duration: 100,
+                    easing: Easing.inOut(Easing.quad)
+                }).start();
                 haptic.generate('impact');
             }
         } else {
@@ -265,6 +270,11 @@ export default class RefreshScrollView extends Pullable {
                 // this.setState({
                 //     flatListOffsetY: this.state.flatListOffsetY,
                 // });
+                Animated.timing(this.state.prArrowDeg, {
+                    toValue: 0,
+                    duration: 100,
+                    easing: Easing.inOut(Easing.quad)
+                }).start();
             }
         }
     }
@@ -407,11 +417,6 @@ export default class RefreshScrollView extends Pullable {
         var topPostion = Math.abs(this.state.flatListOffsetY) - Math.abs(MINI_PULL_DISTANCE);
         if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
             tipText = '释放立即刷新';
-            Animated.timing(this.state.prArrowDeg, {
-                toValue: 1,
-                duration: 100,
-                easing: Easing.inOut(Easing.quad)
-            }).start();
             indicatorImg = (
                 <Animated.Image
                     style={[styles.arrow, { transform: this.transform }]}
@@ -422,11 +427,6 @@ export default class RefreshScrollView extends Pullable {
         }
         else {
             tipText = '下拉可以刷新';
-            Animated.timing(this.state.prArrowDeg, {
-                toValue: 0,
-                duration: 100,
-                easing: Easing.inOut(Easing.quad)
-            }).start();
             indicatorImg = (
                 <Animated.Image
                     style={[styles.arrow, { transform: this.transform }]}
