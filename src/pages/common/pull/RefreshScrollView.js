@@ -37,8 +37,8 @@ export const STATE_LOADING = 1;
 export const STATE_NORMAL = 2;
 
 const { width, height } = Dimensions.get('window');
-const MINI_PULL_DISTANCE = -120;
-const HANGING_DISTANCE = -100;
+const MINI_PULL_DISTANCE = -90;
+const HANGING_DISTANCE = -60;
 
 var haptic = ReactNativeHapTic;
 
@@ -224,7 +224,7 @@ export default class RefreshScrollView extends Pullable {
             <View
                 style={[{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'transparent', paddingVertical: 20 }]}
             >
-                <ActivityIndicator animating size="large" />
+                <ActivityIndicator animating size="small" />
             </View>
         );
     }
@@ -246,19 +246,25 @@ export default class RefreshScrollView extends Pullable {
     flatListOnScroll = (e) => {
         // console.log('offset y', e.nativeEvent.contentOffset.y);
         this.state.flatListOffsetY = e.nativeEvent.contentOffset.y
-        this.setState({
-            flatListOffsetY: e.nativeEvent.contentOffset.y
-        })
         if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
             if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
                 this.readyToRefresh = true;
+                this.setState({
+                    flatListOffsetY: this.state.flatListOffsetY,
+                })
                 haptic.generate('impact');
+            }
+        } else {
+            if (this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
+                this.readyToRefresh = false;
+                this.setState({
+                    flatListOffsetY: this.state.flatListOffsetY,
+                });
             }
         }
     }
 
     handleRelease = (e) => {
-        this.readyToRefresh = false;
         if (this.state.flatListOffsetY < MINI_PULL_DISTANCE) {
             if (!this.props.onPullRelease) return
             this.scroll.scrollToOffset({
@@ -271,7 +277,7 @@ export default class RefreshScrollView extends Pullable {
             }, () => {
                 console.log('loading......')
                 this.props.onPullRelease(() => {
-                    if (this.state.flatListOffsetY < 0)
+                    if (this.state.flatListOffsetY <= 0)
                         this.scroll.scrollToOffset({ offset: 0, animated: true })
                     this.setState({
                         headerViewState: STATE_NORMAL
@@ -383,16 +389,14 @@ export default class RefreshScrollView extends Pullable {
     }
 
     renderCustomIndicator = () => {
-        var viewHeight = this.state.flatListOffsetY < 0 ? this.state.flatListOffsetY : 0;
-        if (viewHeight == 0)
-            return null;
+        var viewHeight = this.state.flatListOffsetY <= 0 ? this.state.flatListOffsetY : 0;
         var tipText;
         if (this.state.flatListOffsetY < MINI_PULL_DISTANCE)
             tipText = '释放立即刷新'
         else
             tipText = '下拉刷新'
         if (this.state.headerViewState == STATE_LOADING)
-            tipText = '正在刷新'
+            tipText = '正在刷新 ...'
         return (
             <View style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 130, alignItems: 'center' }}>
                 {this.renderHeader()}
