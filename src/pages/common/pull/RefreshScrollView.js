@@ -39,8 +39,8 @@ export const STATE_LOADING = 1;
 export const STATE_NORMAL = 2;
 
 const { width, height } = Dimensions.get('window');
-const MINI_PULL_DISTANCE = -90;
-const HANGING_DISTANCE = -60;
+const MINI_PULL_DISTANCE = -110;
+const HANGING_DISTANCE = -90;
 
 var haptic = ReactNativeHapTic;
 
@@ -61,7 +61,8 @@ export default class RefreshScrollView extends Pullable {
         this.state.headerViewState = STATE_NORMAL;
         this.freshState = false;
         this.state.scrollOffsetY = 0;
-        this.readyToRefresh = false;
+        this.state.readyToRefresh = false;
+        this.state.topIndicatorHeight = -HANGING_DISTANCE;
     }
 
     onLayout = (e) => {
@@ -253,15 +254,22 @@ export default class RefreshScrollView extends Pullable {
         })
     }
 
+    getMiniPullDistance = () => {
+        return (this.getHangingDistance() + 15);
+    }
+
+    getHangingDistance = () => {
+        return (this.state.topIndicatorHeight + 15);
+    }
+
     iosOnScroll = (e) => {
         // console.log('offset y', e.nativeEvent.contentOffset.y);
         this.state.scrollOffsetY = e.nativeEvent.contentOffset.y
-        this.setState({
-            scrollOffsetY: this.state.scrollOffsetY,
-        });
-        if (e.nativeEvent.contentOffset.y < MINI_PULL_DISTANCE) {
-            if (!this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
-                this.readyToRefresh = true;
+        if (e.nativeEvent.contentOffset.y < -this.getMiniPullDistance()) {
+            if (!this.state.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
+                this.setState({
+                    readyToRefresh: true,
+                });
                 Animated.timing(this.state.prArrowDeg, {
                     toValue: 1,
                     duration: 100,
@@ -270,8 +278,10 @@ export default class RefreshScrollView extends Pullable {
                 haptic.generate('impact');
             }
         } else {
-            if (this.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
-                this.readyToRefresh = false;
+            if (this.state.readyToRefresh && this.state.headerViewState == STATE_NORMAL) {
+                this.setState({
+                    readyToRefresh: false,
+                });
                 Animated.timing(this.state.prArrowDeg, {
                     toValue: 0,
                     duration: 100,
@@ -284,9 +294,9 @@ export default class RefreshScrollView extends Pullable {
     }
 
     handleRelease = (e) => {
-        if (this.state.scrollOffsetY < MINI_PULL_DISTANCE) {
+        if (this.state.scrollOffsetY < -this.getMiniPullDistance()) {
             if (!this.props.onPullRelease) return
-            this.scroll.scrollTo({ x: 0, y: HANGING_DISTANCE });
+            this.scroll.scrollTo({ x: 0, y: -this.getHangingDistance() });
             if (this.state.headerViewState == STATE_LOADING) return
             this.setState({
                 headerViewState: STATE_LOADING
@@ -321,6 +331,7 @@ export default class RefreshScrollView extends Pullable {
                 onResponderRelease={this.handleRelease}
                 scrollEventThrottle={10}
             >
+                {this.renderCustomIndicator()}
                 {this.props.children}
                 {this._defaultFooterView()}
             </ScrollView>
@@ -403,8 +414,14 @@ export default class RefreshScrollView extends Pullable {
         }
     }
 
+    onTopIndicatorLayout = (e) => {
+        this.state.topIndicatorHeight = e.nativeEvent.layout.height;
+        this.setState({
+            topIndicatorHeight: e.nativeEvent.layout.height,
+        });
+    }
+
     renderCustomIndicator = () => {
-        if (this.state.scrollOffsetY > 0) return;
         this.transform = [{
             rotate: this.state.prArrowDeg.interpolate({
                 inputRange: [0, 1],
@@ -414,9 +431,8 @@ export default class RefreshScrollView extends Pullable {
         var viewHeight = this.state.scrollOffsetY <= 0 ? this.state.scrollOffsetY : 0;
         var tipText;
         var indicatorImg;
-        var topPostion = Math.abs(this.state.scrollOffsetY) - Math.abs(MINI_PULL_DISTANCE);
-        if (this.state.scrollOffsetY < MINI_PULL_DISTANCE) {
-            tipText = '释放立即刷新';
+        if (this.state.scrollOffsetY < -this.getMiniPullDistance()) {
+            tipText = <Text>释放立即刷新</Text>;
             indicatorImg = (
                 <Animated.Image
                     style={[styles.arrow, { transform: this.transform }]}
@@ -426,7 +442,7 @@ export default class RefreshScrollView extends Pullable {
             );
         }
         else {
-            tipText = '下拉可以刷新';
+            tipText = <Text>下拉可以刷新</Text>;
             indicatorImg = (
                 <Animated.Image
                     style={[styles.arrow, { transform: this.transform }]}
@@ -436,14 +452,15 @@ export default class RefreshScrollView extends Pullable {
             );
         }
         if (this.state.headerViewState == STATE_LOADING) {
-            tipText = '';
+            tipText = null;
             indicatorImg = this.renderHeader();
-            topPostion = topPostion > 0 ? topPostion : 0;
         }
         return (
-            <View style={{ position: 'absolute', top: topPostion, left: 0, right: 0, height: 130, alignItems: 'center' }}>
+            <View style={{ position: 'absolute', top: -this.getHangingDistance(), left: 0, right: 0, alignItems: 'center' }}
+                onLayout={this.onTopIndicatorLayout}
+            >
                 {indicatorImg}
-                <Text>{tipText}</Text>
+                {tipText}
             </View>
         )
     }
@@ -452,7 +469,6 @@ export default class RefreshScrollView extends Pullable {
         if (Platform.OS == 'ios') {
             return (
                 <View style={[{ flex: 1, zIndex: -1 }, this.props.style]} onLayout={this.onLayout}>
-                    {this.renderCustomIndicator()}
                     {this._renderIOSList()}
                 </View>
             );
@@ -489,6 +505,6 @@ const styles = StyleSheet.create({
     arrow: {
         width: 30,
         height: 30,
-        marginVertical: 15,
+        marginVertical: 10,
     }
 });
