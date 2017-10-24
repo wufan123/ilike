@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import BaseBottomButtonView from '../../common/baseBottomButtonPage'
 import CountDown from '../../order/countDown'
-import ComfirmOrder from  '../../order/comfirmOrder'
+import ComfirmOrder from  '../../order/confirmOrder'
 import RightRadioGroup from "../../common/rightRadio/rightRadioGroup";
 let theme = require('../../../style')
 
