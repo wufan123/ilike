@@ -13,7 +13,6 @@ export default class extends Component {
 
     constructor(props) {
         super(props)
-        this.comfirmOrder = new ComfirmOrder()
         this.state = {
             useAccount: false,
             useScore: false
@@ -27,7 +26,6 @@ export default class extends Component {
             <CountDown/>
             <ScrollView>
                 <View style={styles.amount}>
-                    {this.comfirmOrder.getPayInfo()}
                     <Image style={{marginTop: 18}} source={require('../../assets/order/dash_line_r.png')}
                            resizeMode="contain"/>
                 </View>
@@ -92,14 +90,14 @@ export default class extends Component {
                             </View>
                         </View>
                         <View style={styles.payWayItem}>
-                            <Image style={styles.payWayIcon} source={require('../../assets/order/alipay.png')}
+                            <Image style={styles.payWayIcon} source={require('../../assets/order/wechat_pay.png')}
                                    resizeMode={'stretch'}/>
                             <View style={{marginLeft: 10}}>
                                 <Text style={styles.payWayTitle}>
-                                    支付宝
+                                    微信支付
                                 </Text>
                                 <Text>
-                                    推荐持有支付宝账户的用户使用
+                                    推荐安装有微信的用户使用
                                 </Text>
                             </View>
                         </View>

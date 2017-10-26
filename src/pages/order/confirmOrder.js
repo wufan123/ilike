@@ -61,7 +61,7 @@ class ConfirmOrder extends Component {
     }
     bottomClick(){
         // global.navigation.navigate('Pay');
-        global.navigation.goBack(null);
+        this.props.navigation.navigate('Pay')
     }
     render() {
         let {ticketCoupon} = this.props;
@@ -116,7 +116,7 @@ class ConfirmOrder extends Component {
                                 <Image source={require('../../assets/order/check_movie.png')} style={styles.ticketItemIcon} />
                                 <Text style={styles.infoTitle}>电影优惠券</Text>
                                 <View style={{ flex: 1 }} />
-                                <Text>0张可用 > {ticketCoupon.isSelected?"已选":"未选"}</Text>
+                                <Text>0张可用 ></Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity  onPress={()=>{

@@ -106,6 +106,7 @@ class Cinema extends Component {
 
     selectCinema = (cinema) => {
         this.props.selectCinema(this.state.tCinema);
+        this.props.navigation.goBack()
     }
 
     _renderItem = ({ item }) => {

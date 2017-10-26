@@ -19,6 +19,7 @@ import RatingView from '../common/component/ratingView';
 import RefreshScrollView, { STATE_NORMAL, STATE_LOADING, STATE_NO_MORE } from '../common/pull/RefreshScrollView';
 import ImageViewer from 'react-native-image-zoom-viewer';
 import CFlatList from '../common/component/cFlatList';
+import {Button} from "../common/component/index";
 
 const { width, height } = Dimensions.get('window')
 
@@ -371,14 +372,17 @@ class MovieDetailScreen extends Component {
                     {this._renderCommentList()}
                     <View style={{ height: 8 }} />
                 </RefreshScrollView>
-                <TouchableOpacity
+                <Button  text={'选座购票'} onPress={() => {
+                    this._gotoChooseSeat.bind()()
+                }}/>
+                {/*<TouchableOpacity
                     onPress={() => {
                         this._gotoChooseSeat.bind()()
                     }}
                     style={styles.buyButton}
                 >
                     <Text style={[globalStyle.fontWhite, globalStyle.font18]}>选座购票</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>*/}
             </View>
         )
     }
