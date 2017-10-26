@@ -1,19 +1,14 @@
 import React, {Component} from 'react';
 import {
-    View,
-    StyleSheet, Text, Image, ScrollView, Switch,
+    View, StyleSheet, Text, Image, ScrollView, Switch,
 } from 'react-native';
 import BaseBottomButtonView from '../../common/baseBottomButtonPage'
-import CountDown from '../../order/countDown'
-import ComfirmOrder from  '../../order/confirmOrder'
 import RightRadioGroup from "../../common/rightRadio/rightRadioGroup";
-let theme = require('../../../style')
+import theme from '../../../style/index';
 
 export default class extends Component {
-
     constructor(props) {
         super(props)
-        this.comfirmOrder = new ComfirmOrder()
         this.state = {
             useAccount: false,
             useScore: false
