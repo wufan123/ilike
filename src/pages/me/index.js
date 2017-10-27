@@ -13,7 +13,7 @@ import { loginSuccess, logout } from '../../actions';
 import BasePullPage from '../common/basePullPage'
 import { Button } from '../common/component'
 import accountBusiness from '../../business/accountBusiness'
-import deviceUtil from '../../utils/deviceUtil'
+import pageUtil from '../../utils/pageUtil'
 var theme = require('../../style')
 
 const mapStateToProps = state => ({
@@ -202,7 +202,7 @@ class MeScreen extends Component {
                 title:'温馨提示',
                 msg:'确定呼叫客服？',
                 onConfirmPress:function(){
-                    deviceUtil.callPhone('15396005445')
+                    pageUtil.callPhone('15396005445')
                 }
             })
             return

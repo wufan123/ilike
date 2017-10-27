@@ -12,7 +12,9 @@ import {
   ImageButton, Button, CFlatList
 } from '../common/component'
 import { RefreshScrollView } from '../common/pull'
+import pageUtil from '../../utils/pageUtil'
 var theme = require('../../style')
+
 
 function tabBarIcons(focused) {
   let icon = focused ? require('../../assets/tabs/icon_goods_s.png') : require('../../assets/tabs/icon_goods_n.png')
@@ -156,12 +158,16 @@ class GoodsScreen extends Component {
     )
   }
 
+  _gotoConfirmOrder(){
+    pageUtil.gotoConfirmOrder()
+  }
+
   getSubmitButton() {
     if (this.state.curTab == this.state.tab[0] && this.state.goodsCount > 0) {
-      return (<Button text={'去支付(' + this.state.goodsCount + ')'} />)
+      return (<Button text={'去支付(' + this.state.goodsCount + ')'} onPress={()=>this._gotoConfirmOrder()}/>)
     }
     if (this.state.curTab == this.state.tab[1] && this.state.comboCount > 0) {
-      return (<Button text={'去支付(' + this.state.comboCount + ')'} />)
+      return (<Button text={'去支付(' + this.state.comboCount + ')'}  onPress={()=>this._gotoConfirmOrder()} />)
     }
     return null
   }

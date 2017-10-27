@@ -11,6 +11,7 @@ import Header from '../../common/header'
 import {
     ImageButton, Button
 } from '../../common/component'
+import pageUtil from '../../../utils/pageUtil'
 var theme = require('../../../style')
 
 export default class extends Component {
@@ -40,6 +41,9 @@ export default class extends Component {
     }
     getGoodsDetail(){
         return null
+    }
+    _gotoConfirmOrder(){
+        pageUtil.gotoConfirmOrder()
     }
 
     render() {
@@ -80,7 +84,7 @@ export default class extends Component {
                     </View>
                 </View>
             </View>
-            <Button text={'确定(' + this.state.info.num + ')'} />
+            <Button text={'确定(' + this.state.info.num + ')'} onPress={()=>this._gotoConfirmOrder()} />
         </View>)
     }
 }
