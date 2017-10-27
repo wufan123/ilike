@@ -21,26 +21,35 @@ export default class Dialog extends Component {
         this.state = {
             visible: false,
             animationType: 'slide',
-            transparent: true
+            transparent: true,
+            showCancel: props.showCancel,
+            showConfirm: props.showConfirm,
+            onCancelPress: props.onCancelPress,
+            onConfirmPress: props.onConfirmPress,
+            cancelText: props.cancelText,
+            confirmText: props.confirmText,
+            msg: props.msg,
+            title: props.title
         }
     }
-    setNativeProps(props) {
+    setProps(props) {
         if (!props)
             props = {}
-        this.props.showCancel = props.showCancel || true
-        this.props.showConfirm = props.showCancel || true
-        this.props.onCancelPress = props.onCancelPress || null
-        this.props.onConfirmPress = props.onConfirmPress || null
-        this.props.cancelText = props.cancelText || '取消'
-        this.props.confirmText = props.confirmText || '确定'
-        this.props.msg = props.msg || ''
-        this.props.title = props.title || ''
+        this.state.showCancel = props.showCancel || true
+        this.state.showConfirm = props.showCancel || true
+        this.state.onCancelPress = props.onCancelPress || null
+        this.state.onConfirmPress = props.onConfirmPress || null
+        this.state.cancelText = props.cancelText || '取消'
+        this.state.confirmText = props.confirmText || '确定'
+        this.state.msg = props.msg || ''
+        this.state.title = props.title || ''
         if (props.showCancel == null || props.showCancel == undefined) {
-            this.props.showCancel = true
+            this.state.showCancel = true
         }
         if (props.showConfirm == null || props.showConfirm == undefined) {
-            this.props.showConfirm = true
+            this.state.showConfirm = true
         }
+
 
     }
 
@@ -53,8 +62,11 @@ export default class Dialog extends Component {
         this.setState({ transparent: !this.state.transparent });
     }
 
-    _showDialog() {
+    _showDialog(props) {
+        console.log(">............props", this.props.title)
+        this.setProps(props)
         this.setState({
+            ...this.state,
             visible: true,
         })
     }
@@ -65,46 +77,46 @@ export default class Dialog extends Component {
     }
 
     _cancelPress() {
-        if (this.props.onCancelPress) {
-            this.props.onCancelPress()
+        if (this.state.onCancelPress) {
+            this.state.onCancelPress()
             return
         }
         this._hideDialog()
     }
 
     _confirmPress() {
-        if (this.props.onConfirmPress) {
-            this.props.onConfirmPress()
+        if (this.state.onConfirmPress) {
+            this.state.onConfirmPress()
             return
         }
-        if (!this.props._showDialog) {
+        if (!this.state._showDialog) {
             this._hideDialog()
         }
     }
 
     _getButton() {
-        if (this.props.showCancel && !this.props.showConfirm) {
+        if (this.state.showCancel && !this.state.showConfirm) {
             return (<View style={[styles.footer, theme.row]}>
-                <Button text={this.props.cancelText} buttonStyle={[theme.flex, styles.cancelButton, styles.confirmButton]} onPress={() => this._cancelPress()} />
+                <Button text={this.state.cancelText} buttonStyle={[theme.flex, styles.cancelButton, styles.confirmButton]} textStyle={[theme.fontBlack]} onPress={() => this._cancelPress()} />
             </View>)
         }
-        if (!this.props.showCancel && this.props.showConfirm) {
+        if (!this.state.showCancel && this.state.showConfirm) {
             return (<View style={[styles.footer, theme.row]}>
-                <Button text={this.props.confirmText} buttonStyle={[theme.flex, styles.cancelButton, styles.confirmButton]} onPress={() => this._confirmPress()} />
+                <Button text={this.state.confirmText} buttonStyle={[theme.flex, styles.cancelButton, styles.confirmButton]} onPress={() => this._confirmPress()} textStyle={[theme.fontBlack]}/>
             </View>)
-        }
-        if (this.props.showCancel && this.props.showConfirm)
+        } 
+        if (this.state.showCancel && this.state.showConfirm)
             return (<View style={[styles.footer, theme.row]}>
-                <Button text={this.props.cancelText} buttonStyle={[theme.flex, styles.cancelButton]} onPress={() => this._cancelPress()} />
-                <Button text={this.props.confirmText} buttonStyle={[theme.flex, styles.confirmButton]} onPress={() => this._confirmPress()} />
+                <Button text={this.state.cancelText} buttonStyle={[theme.flex, styles.cancelButton,{marginRight:1}]} textStyle={[theme.fontBlack]} onPress={() => this._cancelPress()} />
+                <Button text={this.state.confirmText} buttonStyle={[theme.flex, styles.confirmButton]} textStyle={[theme.fontBlack]}  onPress={() => this._confirmPress()} />
             </View>)
         return null
     }
 
     _getTitle() {
-        if (!this.props.title)
+        if (!this.state.title)
             return null
-        return (<Text style={[theme.font18, theme.fontBlack]}>{this.props.title}</Text>)
+        return (<Text style={[theme.font18, theme.fontBlack, theme.mt15]}>{this.state.title}</Text>)
     }
 
 
@@ -123,7 +135,9 @@ export default class Dialog extends Component {
                 <View style={[modalBackgroundStyle, theme.alignItemsCenter, theme.justifyContentCenter, theme.flex]}>
                     <View style={[styles.dialogContainer]}>
                         {this._getTitle()}
-                        <Text style={theme.flex}>{this.props.msg}</Text>
+                        <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>
+                            <Text style={[theme.font16]}>{this.state.msg}</Text>
+                        </View>
                         {this._getButton()}
                     </View>
                 </View>
@@ -136,7 +150,7 @@ const styles = StyleSheet.create({
     dialogContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: 150,
+        minHeight: 200,
         width: '80%',
         backgroundColor: '#ffffff',
         borderRadius: 5,
@@ -151,9 +165,11 @@ const styles = StyleSheet.create({
     },
     cancelButton: {
         borderBottomLeftRadius: 5,
+        backgroundColor: '#e8e8e8'
     },
     confirmButton: {
-        borderBottomRightRadius: 5
+        borderBottomRightRadius: 5,
+        backgroundColor: '#e8e8e8'
     },
     buttonMarginRight: {
         marginRight: 20

@@ -13,6 +13,7 @@ import { loginSuccess, logout } from '../../actions';
 import BasePullPage from '../common/basePullPage'
 import { Button } from '../common/component'
 import accountBusiness from '../../business/accountBusiness'
+import deviceUtil from '../../utils/deviceUtil'
 var theme = require('../../style')
 
 const mapStateToProps = state => ({
@@ -79,13 +80,13 @@ class MeScreen extends Component {
         }
     }
     componentDidMount() {
-        accountBusiness.login('15396005445', '123456')
-            .then(res => {
-                console.log("============res", res)
-            })
-            .catch(reason => {
-                console.log("============reason", reason)
-            })
+        // accountBusiness.login('15396005445', '123456')
+        //     .then(res => {
+        //         console.log("============res", res)
+        //     })
+        //     .catch(reason => {
+        //         console.log("============reason", reason)
+        //     })
     }
     _getItemsData() {
         return [
@@ -199,12 +200,16 @@ class MeScreen extends Component {
         if (item.id == 'customerService') {
             this.basePullPage.showDialog({
                 title:'温馨提示',
-                msg:'确定呼叫客服？'
+                msg:'确定呼叫客服？',
+                onConfirmPress:function(){
+                    deviceUtil.callPhone('15396005445')
+                }
             })
             return
         }
         global.navigation.navigate(item.goToUrl);
     }
+    
     /**
      * 下拉刷新
      * @private
