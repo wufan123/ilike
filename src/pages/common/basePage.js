@@ -17,7 +17,6 @@ export default class BasePage extends Component {
     }
 
     showDialog(props) {
-        console.log(this.refs.mDialog)
         this.refs.mDialog._showDialog(props)
     }
 

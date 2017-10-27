@@ -20,7 +20,7 @@ export default class Dialog extends Component {
         super(props)
         this.state = {
             visible: false,
-            animationType: 'slide',
+            animationType: 'none',
             transparent: true,
             showCancel: props.showCancel,
             showConfirm: props.showConfirm,
@@ -63,7 +63,6 @@ export default class Dialog extends Component {
     }
 
     _showDialog(props) {
-        console.log(">............props", this.props.title)
         this.setProps(props)
         this.setState({
             ...this.state,
@@ -102,13 +101,13 @@ export default class Dialog extends Component {
         }
         if (!this.state.showCancel && this.state.showConfirm) {
             return (<View style={[styles.footer, theme.row]}>
-                <Button text={this.state.confirmText} buttonStyle={[theme.flex, styles.cancelButton, styles.confirmButton]} onPress={() => this._confirmPress()} textStyle={[theme.fontBlack]}/>
+                <Button text={this.state.confirmText} buttonStyle={[theme.flex, styles.cancelButton, styles.confirmButton]} onPress={() => this._confirmPress()} textStyle={[theme.fontBlack]} />
             </View>)
-        } 
+        }
         if (this.state.showCancel && this.state.showConfirm)
             return (<View style={[styles.footer, theme.row]}>
-                <Button text={this.state.cancelText} buttonStyle={[theme.flex, styles.cancelButton,{marginRight:1}]} textStyle={[theme.fontBlack]} onPress={() => this._cancelPress()} />
-                <Button text={this.state.confirmText} buttonStyle={[theme.flex, styles.confirmButton]} textStyle={[theme.fontBlack]}  onPress={() => this._confirmPress()} />
+                <Button text={this.state.cancelText} buttonStyle={[theme.flex, styles.cancelButton, { marginRight: 1 }]} textStyle={[theme.fontBlack]} onPress={() => this._cancelPress()} />
+                <Button text={this.state.confirmText} buttonStyle={[theme.flex, styles.confirmButton]} textStyle={[theme.fontBlack]} onPress={() => this._confirmPress()} />
             </View>)
         return null
     }
@@ -121,9 +120,6 @@ export default class Dialog extends Component {
 
 
     render() {
-        var modalBackgroundStyle = {
-            backgroundColor: this.state.transparent ? '#00000088' : '#f5fcff',
-        }
         return (
             <Modal
                 onRequestClose={() => { }}
@@ -132,7 +128,9 @@ export default class Dialog extends Component {
                 transparent={this.state.transparent}
                 style={[theme.alignItemsCenter, theme.justifyContentCenter, theme.flex]}
             >
-                <View style={[modalBackgroundStyle, theme.alignItemsCenter, theme.justifyContentCenter, theme.flex]}>
+                <View style={[{
+                    backgroundColor: this.state.transparent ? '#00000088' : '#f5fcff',
+                }, theme.alignItemsCenter, theme.justifyContentCenter, theme.flex]}>
                     <View style={[styles.dialogContainer]}>
                         {this._getTitle()}
                         <View style={[theme.flex, theme.alignItemsCenter, theme.justifyContentCenter]}>

@@ -30,7 +30,6 @@ class LoginScreen extends Component {
     }
 
     _goToRegister(){
-        console.log('有没有点到')
         global.navigation.navigate('Register');  
     }
 

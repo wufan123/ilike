@@ -301,7 +301,7 @@ export default class RefreshScrollView extends Pullable {
             this.setState({
                 headerViewState: STATE_LOADING
             }, () => {
-                console.log('loading......')
+    
                 this.props.onPullRelease(() => {
                     if (this.state.scrollOffsetY <= 0 && this.scroll)
                         this.scroll.scrollTo({ x: 0, y: 0 });
