@@ -30,7 +30,6 @@
 		22FC065BE09E4456ADF99325 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E1C5E3DC3B4D34A563D4EC /* UIKit.framework */; };
 		2355722A0A41401BB249EF56 /* libthird-party.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F1AED4AEC20E4A13A1BE3285 /* libthird-party.a */; };
 		37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DFC48B84444928BB43C531 /* libRCTVideo.a */; };
-		4222568AC5DF460B96276EB9 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B446CD37304356932830EF /* libRCTJCoreModule.a */; };
 		44AE2E09BE764597A1BD3D8C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 465674A9EB034238BC1A732A /* CFNetwork.framework */; };
 		47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C73036BE7A8843468501CEDF /* libRNMovieSeats.a */; };
 		56681A84B492464CBF4DF8C1 /* libdouble-conversion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FE106F672BCB4D13A637ADBE /* libdouble-conversion.a */; };
@@ -62,6 +61,7 @@
 		F99F064F1F6BB7AF006E4055 /* libRCTWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99F06391F6BB696006E4055 /* libRCTWeChat.a */; };
 		F9B619511F8B0F760052469A /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B619311F8B0F2D0052469A /* libRCTCameraRoll.a */; };
 		F9B619D51F8B74E70052469A /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B619D41F8B74DD0052469A /* AlipaySDK.framework */; };
+		F9B625521FA2C77D00D60493 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B619AA1F8B6D120052469A /* libRCTJCoreModule.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -495,6 +495,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B625521FA2C77D00D60493 /* libRCTJCoreModule.a in Frameworks */,
 				F98A10691F9AE34700C4075B /* libReactNativeHaptic.a in Frameworks */,
 				F9B619511F8B0F760052469A /* libRCTCameraRoll.a in Frameworks */,
 				F99F06461F6BB6DC006E4055 /* libz.tbd in Frameworks */,
@@ -526,7 +527,6 @@
 				37F1B15FF0A3494896D21272 /* libRCTVideo.a in Frameworks */,
 				47439C2EAD94478F97F1694A /* libRNMovieSeats.a in Frameworks */,
 				8575AC48832D4FD682C3496F /* libBVLinearGradient.a in Frameworks */,
-				4222568AC5DF460B96276EB9 /* libRCTJCoreModule.a in Frameworks */,
 				F95D38341F905488007553D7 /* RSKImageCropper.framework in Frameworks */,
 				D7FE9CE45A7242419774704C /* libRCTJPushModule.a in Frameworks */,
 				1B3197050CA34FC08112068E /* UserNotifications.framework in Frameworks */,
