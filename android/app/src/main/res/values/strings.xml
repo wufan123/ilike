@@ -1,3 +1,4 @@
 <resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">2VOwqBjkMELQmCt1vUaNd7Dwvg_Vf2a0b2bc-bb88-4a25-b568-5aaa58f68f42</string>
     <string name="app_name">zmfilm</string>
 </resources>

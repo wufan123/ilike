@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { configureStore } from './reduxStore';
+import codePush from "react-native-code-push";
 import { Text, Button, AsyncStorage } from 'react-native';
 import * as WeChat from 'react-native-wechat';
 import { StackNavigator } from 'react-navigation'
@@ -132,4 +133,5 @@ class App extends Component {
     }
     
 }
+App = codePush(App)
 export default App 
