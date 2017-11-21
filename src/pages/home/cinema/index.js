@@ -15,24 +15,29 @@ import {
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectCinema } from '../../../actions'
+import { selectCinema, loadCinemaList } from '../../../actions'
 
 import * as WeChat from 'react-native-wechat';
 import Header from '../../common/header';
 import Swiper from 'react-native-swiper';
 import { RefreshScrollView } from '../../common/pull'
 import theme from '../../../style/index'
+import pageUtil from '../../../utils/pageUtil'
 
 const { width, height } = Dimensions.get('window')
 
-const mapStateToProps = state => ({
-    currentCinema: state.cinema.currentCinema,
-});
+const mapStateToProps = function (store) {
+    return ({
+        currentCinema: store.cinema.currentCinema,
+        cinemaList: store.cinema.cinemaList
+    })
+};
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             selectCinema,
+            loadCinemaList
         },
         dispatch
     );
@@ -47,12 +52,12 @@ class Cinema extends Component {
                 name: '影城1',
                 address: '福州',
                 phone: '10086',
-            },
-            cinemaList: [
-                { data: [1, 2, 3, 4, 5], title: '福州市' },
-                { data: [1, 2, 3], title: '池州市' },
-            ],
+            }
         }
+    }
+
+    componentDidMount() {
+        this.props.loadCinemaList();
     }
 
 
@@ -82,7 +87,7 @@ class Cinema extends Component {
         return (
             <View style={styles.sectionHeader}>
                 <Text style={[theme.font16, theme.fontBlack]}>
-                    {section.title}
+                    {section.cityName}
                 </Text>
             </View>
         );
@@ -104,19 +109,26 @@ class Cinema extends Component {
         }} />;
     }
 
-    selectCinema = (cinema) => {
-        this.props.selectCinema(this.state.tCinema);
-        this.props.navigation.goBack()
+    _selectCinema = (cinema) => {
+        let firstChoose = this.props.currentCinema ? false : true
+        this.props.selectCinema(cinema);
+        if (firstChoose) {
+            pageUtil.navigate("MainPage")
+        } else {
+            pageUtil.goBack()
+        }
+
+
     }
 
     _renderItem = ({ item }) => {
 
         return (
-            <TouchableOpacity onPress={() => this.selectCinema(item)}>
+            <TouchableOpacity onPress={() => this._selectCinema(item)}>
                 <View style={[theme.row, theme.whiteBlockWithPadding, styles.item]}>
                     <View style={[theme.flex]}>
-                        <Text style={[theme.flex, theme.fontBlack, theme.font16, theme.mt15]}>中瑞国际影城红星店</Text>
-                        <Text style={[theme.flex, theme.fontGray, theme.font12]}>台江区工业路红星美凯龙（宝龙城市广场旁）7楼</Text>
+                        <Text style={[theme.flex, theme.fontBlack, theme.font16, theme.mt15]}>{item.cinemaName}</Text>
+                        <Text style={[theme.flex, theme.fontGray, theme.font12]}>{item.address}</Text>
                     </View>
                     <Image style={styles.itemImg} source={require('../../../assets/common/right_btn.png')} />
                 </View>
@@ -131,7 +143,7 @@ class Cinema extends Component {
                     ListFooterComponent={this._footer}
                     ItemSeparatorComponent={this._separator}
                     renderSectionHeader={this._sectionHeader}
-                    sections={this.state.cinemaList}
+                    sections={this.props.cinemaList}
                     renderItem={this._renderItem}
                     keyExtractor={(item, index) => index}
                     scrollEnabled={false}
@@ -142,10 +154,9 @@ class Cinema extends Component {
     }
 
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={theme.flex}>
-                <Header title={this.state.title} ></Header>
+                <Header title={this.state.title} showBack={this.props.currentCinema}></Header>
                 <RefreshScrollView
                     onPullRelease={(resolve) => this._onPullRelease(resolve)}
                 >
@@ -180,6 +191,4 @@ const styles = StyleSheet.create({
     }
 });
 
-const CinemaScreen = connect(mapStateToProps, mapDispatchToProps)(Cinema);
-
-module.exports = CinemaScreen;
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Cinema);

@@ -1,6 +1,7 @@
 import * as Action from '../actions'
 const initialState = {
-    currentCinema: {}
+    currentCinema: null,
+    cinemaList: []
 };
 
 export const cinemaReducer = (state = initialState, action = {}) => {
@@ -10,6 +11,11 @@ export const cinemaReducer = (state = initialState, action = {}) => {
                 ...state,
                 currentCinema: action.payload
             };
+        case Action.CINEMA_LIST:
+            return {
+                ...state,
+                cinemaList: action.payload || state.cinemaList
+            }
         default:
             return state;
     }

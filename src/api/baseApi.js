@@ -56,8 +56,8 @@ function request(method, url, params, tryAgain) {
         delete params.tokenId
         if (params) {
             formData = new FormData();
-            Object.keys(params).forEach(key=>{
-                formData.append(key,params[key])
+            Object.keys(params).forEach(key => {
+                formData.append(key, params[key])
             })
         }
 
@@ -78,7 +78,7 @@ function request(method, url, params, tryAgain) {
             })
             .then((responseJson) => {
                 if (!tryAgain && responseJson && responseJson.status == '10001') {
-
+                    console.log("the token is expired ==========", responseJson)
                     return getToken(method, url, params)
                 }
                 return responseJson;
@@ -97,6 +97,7 @@ function request(method, url, params, tryAgain) {
             reject('timeout');
         }, TIMEOUT);
     });
+
     return Promise.race([fetchPromise, abortPromise])
 }
 

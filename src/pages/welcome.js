@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Text, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation'
+import pageUtil from '../utils/pageUtil'
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class Welcome extends Component {
     constructor(props) {
@@ -9,13 +13,10 @@ class Welcome extends Component {
     componentDidMount() {
         // 处理数据源
         global.navigation = this.props.navigation;
-        let resetAction = NavigationActions.reset({
-            index: 0,
-            actions: [
-                NavigationActions.navigate({ routeName: 'MainPage' })
-            ]
-        })
-        global.navigation.dispatch(resetAction)
+        if (this.props.curCinema)
+            pageUtil.resetTo('MainPage')
+        else
+            pageUtil.resetTo('Cinema')
     }
 
     render() {
@@ -29,4 +30,14 @@ class Welcome extends Component {
     }
 }
 
-export default Welcome
+const mapStateToProps = store => ({
+    curCinema: store.cinema.currentCinema
+});
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(
+        {
+        },
+        dispatch
+    );
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome)

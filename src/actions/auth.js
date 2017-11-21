@@ -1,9 +1,23 @@
-import accountApi from '../api/accountApi'
+import * as accountApi from '../api/accountApi'
 
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
-export const loginSuccess = (user) => {
+
+export function login(phoneNum, password) {
+    return dispatch => {
+        accountApi.login(phoneNum, password)
+            .then(res => {
+                dispatch(loginSuccess(res.data))
+            })
+            .catch(reason => {
+                dispatch(logout())
+            })
+    }
+
+}
+
+export function loginSuccess(user) {
     return dispatch => {
         dispatch({
             type: USER_LOGIN_SUCCESS,
@@ -12,7 +26,7 @@ export const loginSuccess = (user) => {
     };
 }
 
-export const logout = () => {
+export function logout() {
     return dispatch => {
         dispatch({
             type: USER_LOGOUT
