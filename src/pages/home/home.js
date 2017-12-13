@@ -30,8 +30,8 @@ const { width, height } = Dimensions.get('window')
 const mapStateToProps = function (store) {
     return ({
         cinemaCode: store.cinema.cinemaCode,
-        hotMovies: store.movies.hotMovies,
-        commingMovies: store.movies.commingMovies
+        hotMovies: store.movies.hotMovies||[],
+        commingMovies: store.movies.commingMovies||[]
     })
 };
 
@@ -344,7 +344,7 @@ class HomeScreen extends Component {
                     onPullRelease={(resolve) => this._onPullRelease(resolve)}
                 >
                     {this._header()}
-                    {this.renderListWithTab()}
+                     {this.renderListWithTab()}
                 </RefreshScrollView>
             </View>
         )
