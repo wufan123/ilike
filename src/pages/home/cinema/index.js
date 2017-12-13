@@ -57,6 +57,8 @@ class Cinema extends Component {
     }
 
     componentDidMount() {
+
+        console.log("tttttttttttttttttttttttttttttlength", this.props.cinemaList ? this.props.cinemaList.length : 0)
         this.props.loadCinemaList();
     }
 

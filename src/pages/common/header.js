@@ -63,7 +63,7 @@ class Header extends Component {
                     </View>
                     <View style={styles.rightBox}>
                         {this.props.showCinema ? (<TouchableOpacity onPress={this.selectCinema} style={theme.flex}><Text
-                            style={styles.cinemaName} numberOfLines={1}>{this.props.currentCinema.shortName} > </Text></TouchableOpacity>) : null}
+                            style={styles.cinemaName} numberOfLines={1}>{this.props.currentCinema?this.props.currentCinema.shortName:''} > </Text></TouchableOpacity>) : null}
                         {this.props.RText ? (
                             <TouchableOpacity onPress={this._goToForgetPw}><Text style={this.props.textColor}
                                 numberOfLines={1}>{this.props.RText}</Text></TouchableOpacity>) : null}

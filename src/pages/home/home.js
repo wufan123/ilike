@@ -21,7 +21,28 @@ import Swiper from 'react-native-swiper';
 import { RefreshScrollView } from '../common/pull'
 import globalStyle from '../../style/index'
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getHotMovies, getCommingMovies } from '../../actions'
+
 const { width, height } = Dimensions.get('window')
+
+const mapStateToProps = function (store) {
+    return ({
+        cinemaCode: store.cinema.cinemaCode,
+        hotMovies: store.movies.hotMovies,
+        commingMovies: store.movies.commingMovies
+    })
+};
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(
+        {
+            getHotMovies,
+            getCommingMovies
+        },
+        dispatch
+    );
 
 function tabBarIcons(focused) {
     let icon = focused ? require('../../assets/tabs/icon_home_s.png') : require('../../assets/tabs/icon_home_n.png')
@@ -45,16 +66,6 @@ class HomeScreen extends Component {
             title: '首页',
             tab: [
                 '热映', '待映'
-            ],
-            movies: [
-                1,
-                2,
-                3,
-                4,
-                5,
-                6,
-                7,
-                8
             ],
             commingMovies: [
                 { data: [1, 2, 3, 4, 5], title: 'section 0' },
@@ -85,6 +96,8 @@ class HomeScreen extends Component {
     }
 
     componentDidMount() {
+        this.props.getHotMovies(this.props.cinemaCode)
+        this.props.getCommingMovies(this.props.cinemaCode)
         setTimeout(() => {
             this.setState({
                 swiperShow: true
@@ -148,13 +161,13 @@ class HomeScreen extends Component {
                 <View style={styles.row}>
                     <View style={styles.movieThumbContainer}>
                         <Image resizeMode="stretch" style={styles.movieThumb} source={{
-                            uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'
+                            uri: item.image
                         }} />
                     </View>
                     <View style={styles.movieDetailContainer}>
                         <View style={styles.titleScoreContainer}>
-                            <Text style={styles.movieTitle}>异形：契约</Text>
-                            <Text style={styles.scoreNum}>7.5<Text style={styles.scoreUnit}>分</Text>
+                            <Text style={styles.movieTitle}>{item.filmName}</Text>
+                            <Text style={styles.scoreNum}>{item.score||0}<Text style={styles.scoreUnit}>分</Text>
                             </Text>
                         </View>
                         <View style={{
@@ -175,8 +188,8 @@ class HomeScreen extends Component {
                                 justifyContent: 'space-between',
                                 alignSelf: 'stretch'
                             }}>
-                                <Text style={styles.movieSlogan}><Text>导演： </Text>天堂实假象，险象险中还</Text>
-                                <Text style={styles.movieActress} numberOfLines={1}><Text style={globalStyle.fontBalck}>主演： </Text>迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰迈克尔格林／约翰·洛根／杰</Text>
+                                <Text style={styles.movieSlogan}><Text>导演： </Text>{item.director||''}</Text>
+                                <Text style={styles.movieActress} numberOfLines={1}><Text style={globalStyle.fontBalck}>主演： </Text>{item.cast}</Text>
                             </View>
                             <View style={{ width: 46, }}>
                                 <TouchableOpacity style={styles.buyButton} onPress={() => this._gotoSchedule(item)}>
@@ -198,13 +211,13 @@ class HomeScreen extends Component {
             <View style={styles.row}>
                 <View style={styles.movieThumbContainer}>
                     <Image resizeMode="stretch" style={styles.movieThumb} source={{
-                        uri: 'http://img5.mtime.cn/pi/2017/03/23/233340.20916876_1000X1000.jpg'
+                        uri: item.image
                     }} />
                 </View>
                 <View style={styles.movieDetailContainer}>
                     <View style={styles.titleScoreContainer}>
-                        <Text style={styles.movieTitle}>异形：契约</Text>
-                        <Text style={[globalStyle.fontGray, globalStyle.font14]}>98min</Text>
+                        <Text style={styles.movieTitle}>{item.filmName}</Text>
+                        <Text style={[globalStyle.fontGray, globalStyle.font14]}>{item.duration}min</Text>
                     </View>
                     <View style={{
                         flex: 1,
@@ -224,14 +237,14 @@ class HomeScreen extends Component {
                             justifyContent: 'space-between',
                             alignSelf: 'stretch'
                         }}>
-                            <Text style={styles.movieSlogan}><Text>主演： </Text>迈克尔格林／约翰·洛根／杰</Text>
+                            <Text style={styles.movieSlogan} numberOfLines={2}><Text>主演： </Text>{item.cast}</Text>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Image
                                     source={require('../../assets/home/icon_like.png')}
                                     style={{ width: 8, height: 12 }}
                                 />
                                 <Text style={[globalStyle.fontOrange, globalStyle.font12]}
-                                    numberOfLines={1}>166影迷关注</Text>
+                                    numberOfLines={1}>{item.lookNum}影迷关注</Text>
                             </View>
                         </View>
                         <View style={{ width: 46, }}>
@@ -249,7 +262,7 @@ class HomeScreen extends Component {
         );
     }
 
-    _keyExtractor = (item, index) => item;
+    _keyExtractor = (item, index) => index;
 
     /**
      * 下拉刷新
@@ -276,7 +289,7 @@ class HomeScreen extends Component {
                     ref={(list) => this._listRef = list}
                     ListFooterComponent={this._footer}
                     ItemSeparatorComponent={this._separator}
-                    data={this.state.movies}
+                    data={this.props.hotMovies}
                     renderItem={this._reanderItem}
                     keyExtractor={this._keyExtractor}
                     scrollEnabled={false} />
@@ -289,7 +302,7 @@ class HomeScreen extends Component {
         return (
             <View style={styles.commingSectionHeader}>
                 <Text style={{ fontSize: 15, color: globalStyle.fontColorGray, }}>
-                    {section.title}
+                    {section.time}
                 </Text>
             </View>
         );
@@ -302,7 +315,7 @@ class HomeScreen extends Component {
                     ListFooterComponent={this._footer}
                     ItemSeparatorComponent={this._separator}
                     renderSectionHeader={this._commingSectionHeader}
-                    sections={this.state.commingMovies}
+                    sections={this.props.commingMovies}
                     renderItem={this._renderCommingMovieItem}
                     keyExtractor={(item, index) => index}
                     scrollEnabled={false}
@@ -326,7 +339,7 @@ class HomeScreen extends Component {
                     barStyle={'light-content'}
                 />
                 <Header showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)}
-                    disableBack={true}/>
+                    disableBack={true} />
                 <RefreshScrollView
                     onPullRelease={(resolve) => this._onPullRelease(resolve)}
                 >
@@ -440,4 +453,4 @@ const styles = StyleSheet.create({
     },
 });
 
-module.exports = HomeScreen;
+module.exports = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

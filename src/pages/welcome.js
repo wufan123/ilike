@@ -13,17 +13,20 @@ class Welcome extends Component {
     componentDidMount() {
         // 处理数据源
         global.navigation = this.props.navigation;
-        if (this.props.curCinema)
-            pageUtil.resetTo('MainPage')
-        else
-            pageUtil.resetTo('Cinema')
+        setTimeout(() => {
+            if (this.props.curCinema)
+                pageUtil.resetTo('MainPage')
+            else
+                pageUtil.resetTo('Cinema')
+        }, 1000)
+
     }
 
     render() {
         return (
             <Button title="click"
                 onPress={
-                    () => global.navigate('MainPage')
+                    () => pageUtil.resetTo('MainPage')
                 }
             />
         );

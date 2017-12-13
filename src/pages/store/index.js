@@ -13,7 +13,31 @@ import {
 } from '../common/component'
 import { RefreshScrollView } from '../common/pull'
 import pageUtil from '../../utils/pageUtil'
+import { getCinemaCombo, getCinemaGoods, goodsQuantity } from '../../actions'
 var theme = require('../../style')
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+const mapStateToProps = function (store) {
+  return ({
+    cinemaCode: store.cinema.cinemaCode,
+    cinemaGoods: store.shop.cinemaGoods,
+    cinemaCombo: store.shop.cinemaCombo,
+    goodsCount:store.shop.goodsCount||0
+
+  })
+};
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      getCinemaCombo,
+      getCinemaGoods,
+      goodsQuantity
+    },
+    dispatch
+  );
 
 
 function tabBarIcons(focused) {
@@ -44,6 +68,11 @@ class GoodsScreen extends Component {
     }
   }
 
+  componentDidMount() {
+    this.props.getCinemaCombo(this.props.cinemaCode)
+    this.props.getCinemaGoods(this.props.cinemaCode)
+  }
+
   changeSelect(selectItem) {
     this.state.curTab = selectItem
     this.setState(this.state)
@@ -53,16 +82,16 @@ class GoodsScreen extends Component {
 
   _onSubPress(item, index) {
     if (this.state.curTab == this.state.tab[0]) {
-      if (!this.state.goodsList[index].num)
+      if (!this.props.cinemaGoods[index].num)
         return
-      this.state.goodsList[index].num--
+      this.props.cinemaGoods[index].num--
       this.state.goodsCount--
-      this.setState(this.state)
+      this.props.goodsQuantity(this.props.cinemaGoods[index])
     }
     if (this.state.curTab == this.state.tab[1]) {
-      if (!this.state.comboList[index].num)
+      if (!this.props.cinemaCombo[index].num)
         return
-      this.state.comboList[index].num--
+      this.props.cinemaCombo[index].num--
       this.state.comboCount--
       this.setState(this.state)
     }
@@ -70,11 +99,11 @@ class GoodsScreen extends Component {
   _onAddPress(item, index) {
 
     if (this.state.curTab == this.state.tab[0]) {
-      if (!this.state.goodsList[index].num)
-        this.state.goodsList[index].num = 0
-      this.state.goodsList[index].num++
+      if (!this.props.cinemaGoods[index].num)
+        this.props.cinemaGoods[index].num = 0
+      this.props.cinemaGoods[index].num++
       this.state.goodsCount++
-      this.setState(this.state)
+      this.props.goodsQuantity(this.props.cinemaGoods[index])
     }
     if (this.state.curTab == this.state.tab[1]) {
       if (!this.state.comboList[index].num)
@@ -85,21 +114,21 @@ class GoodsScreen extends Component {
     }
   }
 
-  gotoDetail() {
-    global.navigation.navigate('GoodsDetail');
+  gotoDetail(item) {
+    pageUtil.navigate('GoodsDetail', { goodsId: item.goodsId })
   }
 
   getGoodsListItem = ({ item, index }) => {
     return (
-      <TouchableOpacity onPress={() => this.gotoDetail()}>
+      <TouchableOpacity onPress={() => this.gotoDetail(item)}>
         <View style={[styles.itemContainer, theme.flex]} >
-          <Image style={styles.image} source={require('../../assets/common/default_goods.png')}>
+          <Image style={styles.image} source={{ uri: item.goodsImg }}>
           </Image>
           <View style={[theme.flex, styles.rigth]}>
-            <Text style={[theme.fontBalck, theme.font16]}>双人套餐</Text>
-            <Text style={[theme.fontGray, theme.font12]}>一份爆米花+一份可乐</Text>
-            <Text style={[theme.fontOrange, theme.font16]}>￥30
-          <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]} >￥35</Text>
+            <Text style={[theme.fontBalck, theme.font16]}>{item.goodsName}</Text>
+            <Text style={[theme.fontGray, theme.font12]}>{item.detail}</Text>
+            <Text style={[theme.fontOrange, theme.font16]}>￥{item.price}
+              <Text style={[theme.fontGray, theme.font12, theme.textLineThrough]} >￥{item.showPrice}</Text>
             </Text>
             <View style={styles.operation}>
               {item.num && item.num > 0 ? (<ImageButton style={styles.operationItem}
@@ -158,16 +187,16 @@ class GoodsScreen extends Component {
     )
   }
 
-  _gotoConfirmOrder(){
+  _gotoConfirmOrder() {
     pageUtil.gotoConfirmOrder()
   }
 
   getSubmitButton() {
-    if (this.state.curTab == this.state.tab[0] && this.state.goodsCount > 0) {
-      return (<Button text={'去支付(' + this.state.goodsCount + ')'} onPress={()=>this._gotoConfirmOrder()}/>)
+    if (this.state.curTab == this.state.tab[0] && this.props.goodsCount > 0) {
+      return (<Button text={'去支付(' + this.props.goodsCount + ')'} onPress={() => this._gotoConfirmOrder()} />)
     }
     if (this.state.curTab == this.state.tab[1] && this.state.comboCount > 0) {
-      return (<Button text={'去支付(' + this.state.comboCount + ')'}  onPress={()=>this._gotoConfirmOrder()} />)
+      return (<Button text={'去支付(' + this.state.comboCount + ')'} onPress={() => this._gotoConfirmOrder()} />)
     }
     return null
   }
@@ -179,7 +208,7 @@ class GoodsScreen extends Component {
       <BasePullPage style={theme.flex} showCinema={true} tab={this.state.tab} changeSelect={(item) => this.changeSelect(item)} disableBack={true}>
         <FlatList style={theme.flex}
           extraData={this.state}
-          data={this.state.curTab == this.state.tab[0] ? this.state.goodsList : this.state.comboList}
+          data={this.state.curTab == this.state.tab[0] ? this.props.cinemaGoods : this.props.cinemaCombo}
           keyExtractor={this._keyExtractor}
           renderItem={this.state.curTab == this.state.tab[0] ? this.getGoodsListItem : this.getComboListItem}
         />
@@ -256,4 +285,4 @@ const styles = StyleSheet.create({
 
 });
 
-module.exports = GoodsScreen;
+module.exports = connect(mapStateToProps, mapDispatchToProps)(GoodsScreen);

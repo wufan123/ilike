@@ -1,6 +1,7 @@
 import * as Action from '../actions'
 const initialState = {
     currentCinema: null,
+    cinemaCode:'',
     cinemaList: []
 };
 
@@ -9,7 +10,8 @@ export const cinemaReducer = (state = initialState, action = {}) => {
         case Action.SELECT_CINEMA:
             return {
                 ...state,
-                currentCinema: action.payload
+                currentCinema: action.payload,
+                cinemaCode: action.payload ? action.payload.cinemaCode : state.cinemaCode
             };
         case Action.CINEMA_LIST:
             return {

@@ -7,7 +7,6 @@ export const couponReducer = (state = {
                 ...state,
                 ticketCoupon: action.coupon
             };
-            break;
         default:
             return state
     }

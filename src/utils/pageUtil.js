@@ -9,8 +9,8 @@ function gotoConfirmOrder() {
     global.navigation.navigate('ConfirmOrder');
 }
 
-function navigate(pageName) {
-    global.navigation.navigate(pageName);
+function navigate(pageName, params) {
+    global.navigation.navigate(pageName, params);
 }
 
 function resetTo(pageName, index) {
@@ -27,10 +27,15 @@ function goBack() {
     global.navigation.goBack(null);
 }
 
+function getParams(props) {
+    return props.navigation.state.params
+}
+
 module.exports = {
     callPhone,
     gotoConfirmOrder,
     navigate,
     resetTo,
     goBack,
+    getParams
 }

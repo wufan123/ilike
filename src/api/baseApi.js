@@ -2,7 +2,7 @@
 
 import signUtil from '../utils/signUtil'
 // let base_url = 'https://premapi.zmaxfilm.com/Api_35/';  //服务器地址
-let base_url = 'https://m.zmaxfilm.com/Api_35/';  //服务器地址
+import { base_url, appAccount, appPasswd, appVersion, deviceNumber, deviceType } from '../config/httpConfig'
 var token = '26b89ca24914bced1814aa4be216fd63';
 let headers = {
 
@@ -12,11 +12,11 @@ let TIMEOUT = 10000
 
 async function getToken(method, url, requestParams) {
     let params = {
-        appAccount: 'zmaxfilm',
-        appPasswd: 'adflkjlsda',
-        appVersion: '1.0.0',
-        deviceNumber: '',
-        deviceType: 'weixin - xcx',
+        appAccount: appAccount,
+        appPasswd: appPasswd,
+        appVersion: appVersion,
+        deviceNumber: deviceNumber,
+        deviceType: deviceType,
         tokenId: token
     }
     var res = await request('GET', 'service/getToken', params)
@@ -40,6 +40,7 @@ function request(method, url, params, tryAgain) {
     requestUrl = base_url + url
     if (method == 'GET') {
         params.tokenId = token
+        delete params.sign
         params.sign = getSign(params)
         if (params) {
             let paramsArray = [];
@@ -52,7 +53,8 @@ function request(method, url, params, tryAgain) {
             }
         }
     } else {
-        requestUrl += '?tokenId=' + token + '&sign=' + getSign(params, token)
+        params.tokenId = token
+        requestUrl += '?tokenId=' + params.tokenId + '&sign=' + getSign(params)
         delete params.tokenId
         if (params) {
             formData = new FormData();
@@ -64,9 +66,7 @@ function request(method, url, params, tryAgain) {
 
 
     }
-    console.log("params=============", params)
-    console.log("formData=============", formData)
-    console.log("requestUrl=============", requestUrl)
+
     fetchPromise = new Promise(function (resolve, reject) {
         fetch(requestUrl, { method: method, headers: headers, body: formData })
             .then((response) => {
@@ -84,6 +84,9 @@ function request(method, url, params, tryAgain) {
                 return responseJson;
             })
             .then(responseJson => {
+                console.log("params=============", params)
+                console.log("formData=============", formData)
+                console.log("requestUrl=============", requestUrl)
                 console.log("responseJson ==========", responseJson)
                 resolve(responseJson);
             })
